@@ -2,7 +2,9 @@ import './App.css';
 
 function App() {
   return (
-  null
+  <div className="container-fluid">
+    <h1>Kirjasto</h1>
+  </div>
   );
 }
 
