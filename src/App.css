@@ -23,6 +23,11 @@ background-color: #6e4e0e2a;
     border: 1px solid black;
 }
 
+.footer_top {
+    background-color: #b9926c85;
+    height: 40px;
+}
+
 .social-list {
     display: inline-flex
 }
