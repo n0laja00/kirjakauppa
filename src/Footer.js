@@ -18,7 +18,7 @@ export default function Footer() {
             <div className="col-4">
                 <p>Lorem impsum lorem ipsum lorem ipsum</p>
             </div>
-            <div className="col-4 border-dark border">
+            <div className="col-4 border-dark border border-top-0">
                 <div class="container mt-5 mb-5 d-flex justify-content-center">
                     <ul class="social-list">
                         <li>
