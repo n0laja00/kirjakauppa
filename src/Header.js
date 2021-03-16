@@ -6,7 +6,6 @@ export default function Header() {
         <div className="row header">
             <div className="col-12 text-center">
             <h1>Kirjasto</h1>
-            
             </div>
             <Navbar />
         </div>
