@@ -1,10 +1,11 @@
 import React from 'react'
 import Navbar from './Navbar'
+import SearchBar from './Searchbar'
 
 export default function Header() {
     return (
-        <div className="row header">
-            <div className="row">
+        <div className="row header p-3">
+            <div className="row p-3">
                 <div className="col-sm-1">Logo?</div>
                 <div className="col-sm-10">
                     <h1 className="text-center">Satun Satumaailma</h1>
@@ -14,6 +15,7 @@ export default function Header() {
                 </div>
             </div>
             <Navbar />
+            <SearchBar />
         </div>
     )
 }
