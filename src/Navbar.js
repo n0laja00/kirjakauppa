@@ -10,36 +10,50 @@ export default function Navbar() {
                 </button>
                 <div class="collapse navbar-collapse row" id="navbarNavDropdown">
                     <ul class="navbar-nav align-middle align-items-center">
-                        <li class="nav-item active">
+                        <div className="col-1 text-start">
                             <a class="nav-link" href="#">Etusivu <span class="sr-only">(current)</span></a>
-                        </li>
-                        <div className="col navbar">
+                        </div>
+                        <div className="col-9 navbar justify-content-center">
                             <li class="nav-item">
-                                <i className="fa fa-book fa-2x"></i>
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-book fa-2x"></i>
+                                </div>
                                 <div className="col-12">Tietokirjallisuus</div>
                             </li>
                             <li class="nav-item">
-                                <i className="fa fa-exclamation fa-2x "></i> 
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-exclamation fa-2x "></i> 
+                                </div>
                                 <div className="col-12">Toiminta</div>
                             </li>
                             <li class="nav-item">
-                                <i className="fa fa-magic fa-2x"></i>
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-magic fa-2x"></i>
+                                </div>
                                 <div className="col-12">Sci-fi ja Fantasia</div>
                             </li>
                             <li class="nav-item">
-                                <i className="fa fa-mortar-board fa-2x"></i>
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-mortar-board fa-2x"></i>
+                                </div>
                                 <div className="col-12">Oppikirjat</div>
                             </li>
                             <li class="nav-item">
-                                <i className="fa fa-user-secret fa-2x"></i>
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-user-secret fa-2x"></i>
+                                </div>
                                 <div className="col-12">Kauhu ja Trilleri</div>
                             </li>
                             <li class="nav-item">
-                                <i className="fa fa-heart fa-2x"></i>
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-heart fa-2x"></i>
+                                </div>
                                 <div className="col-12">Romantiikka</div>
                             </li>
                             <li class="nav-item">
-                                <i className="fa fa-map-pin fa-2x"></i>
+                                <div className="col-12 text-center">
+                                    <i className="fa fa-map-pin fa-2x"></i>
+                                </div>
                                 <div className="col-12">Lastenkirjat</div>
                             </li>
                         </div>
