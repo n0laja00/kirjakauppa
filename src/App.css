@@ -35,6 +35,14 @@ body {
 .content {
 background-color: #b970111f;
 }
+<<<<<<< HEAD
+.navbar {
+    border: 1px solid black;
+    
+}
+=======
+>>>>>>> 1b9795ea84573d938a84567dc5506dc6c1d8d3ca
+
 
 .footer_top {
     background-color: #b9926c85;
@@ -91,11 +99,11 @@ background-color: #b970111f;
     border-radius: 10px;
     transform: rotateY(180deg);
     border: 1px solid #eee;
-    padding: 6px
+    padding: 16px
 }
 
 .social-text small {
-    font-size: 8px
+    font-size: 12px
 }
 
 @media (max-width:700px) {
