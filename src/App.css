@@ -8,6 +8,22 @@
 
 #c4b7a6
 */
+.dark_brown {
+    background-color: #b9936c;
+}
+
+.light_brown {
+    background-color: #dac292;
+}
+
+.white_brown {
+    background-color: #e6e2d3;
+}
+
+.grey {
+    background-color: #c4b7a6;
+}
+
 body {
     background-color: rgba(250, 235, 215, 0.315);
 }
