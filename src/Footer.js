@@ -3,24 +3,24 @@ import React from 'react'
 export default function Footer() {
     return (
         <footer className="mt-5">
-            <section className="row text-center fw-bold">
-                <div className="col-4 border-dark border footer_top pt-2">
+            <section className="row text-center fw-bold border-dark border-bottom border-top">
+                <div className="col-4 footer_top pt-2">
                     <p>Sijainti</p>
                 </div>
-                <div className="col-4 border-dark border footer_top pt-2">
+                <div className="col-4 footer_top pt-2">
                     <p>Somet</p>
                 </div>
-                <div className="col-4 border-dark border footer_top pt-2">
+                <div className="col-4 footer_top pt-2">
                     <p>Yhteystiedot</p>
                 </div>
             </section>
-            <section className="row border border-dark">
-            <div className="col-4">
+            <section className="row">
+            <div className="col-4 dark_brown">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, 
                     earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi
                      facilis iste modi illum libero natus ipsam accusantium!</p>
             </div>
-            <div className="col-4 border-dark border border-top-0">
+            <div className="col-4 light_brown">
                 <div class="container mt-5 mb-5 d-flex justify-content-center">
                     <ul class="social-list">
                         <li>
@@ -68,7 +68,7 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="col-4 text-end">
+            <div className="col-4 text-end dark_brown">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat,
                     earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, 
                     earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>

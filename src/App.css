@@ -8,6 +8,22 @@
 
 #c4b7a6
 */
+.dark_brown {
+    background-color: #b9936c;
+}
+
+.light_brown {
+    background-color: #dac292;
+}
+
+.white_brown {
+    background-color: #e6e2d3;
+}
+
+.grey {
+    background-color: #c4b7a6;
+}
+
 body {
     background-color: rgba(250, 235, 215, 0.315);
 }
@@ -45,8 +61,8 @@ background-color: #b970111f;
 
 .maincard {
     position: relative;
-    width: 60px;
-    height: 50px
+    width: 80px;
+    height: 70px
 }
 
 .thecard {
@@ -70,7 +86,7 @@ background-color: #b970111f;
     border-radius: 10px;
     cursor: pointer;
     border: 1px solid #eee;
-    padding: 6px
+    padding:20px
 }
 
 .theback {
@@ -83,11 +99,11 @@ background-color: #b970111f;
     border-radius: 10px;
     transform: rotateY(180deg);
     border: 1px solid #eee;
-    padding: 6px
+    padding: 16px
 }
 
 .social-text small {
-    font-size: 8px
+    font-size: 12px
 }
 
 @media (max-width:700px) {
@@ -106,5 +122,13 @@ background-color: #b970111f;
 
 .youtube {
     background: #ff0000
+}
+
+.shopcart_cs {
+    bottom: 40px;
+}
+
+.fa-shopping-cart {
+    font-size: 50px;
 }
 /* Navbar */
