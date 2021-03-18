@@ -6,7 +6,7 @@ export default function Header() {
         <div className="row header">
             <div className="col-12">
             <h1 className="text-center">Satun Satumaailma</h1>  
-            <div className="shopcart_cs">
+            <div className="text-end shopcart_cs">
             <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </div>
             </div>
