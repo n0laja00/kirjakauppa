@@ -19,9 +19,6 @@ body {
 .content {
 background-color: #b970111f;
 }
-.navbar {
-    border: 1px solid black;
-}
 
 .footer_top {
     background-color: #b9926c85;
@@ -110,3 +107,4 @@ background-color: #b970111f;
 .fa-shopping-cart {
     font-size: 40px;
 }
+/* Navbar */
