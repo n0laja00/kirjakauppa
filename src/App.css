@@ -35,13 +35,12 @@ body {
 .content {
 background-color: #b970111f;
 }
-<<<<<<< HEAD
-.navbar {
-    border: 1px solid black;
-    
+.navbar{
+    justify-content: space-between !important;
 }
-=======
->>>>>>> 1b9795ea84573d938a84567dc5506dc6c1d8d3ca
+.nav-item {
+    padding: 0.2em;
+}
 
 
 .footer_top {
