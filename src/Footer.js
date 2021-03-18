@@ -16,7 +16,9 @@ export default function Footer() {
             </section>
             <section className="row border border-dark">
             <div className="col-4">
-                <p>Lorem impsum lorem ipsum lorem ipsum</p>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, 
+                    earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi
+                     facilis iste modi illum libero natus ipsam accusantium!</p>
             </div>
             <div className="col-4 border-dark border border-top-0">
                 <div class="container mt-5 mb-5 d-flex justify-content-center">
@@ -66,8 +68,10 @@ export default function Footer() {
                     </ul>
                 </div>
             </div>
-            <div className="col-4">
-                <p>Lorem impsum lorem ipsum lorem ipsum</p>
+            <div className="col-4 text-end">
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat,
+                    earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, 
+                    earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </div>
             </section>
     </footer>

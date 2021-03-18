@@ -19,10 +19,13 @@ body {
 .content {
 background-color: #b970111f;
 }
+<<<<<<< HEAD
 .navbar {
     border: 1px solid black;
     
 }
+=======
+>>>>>>> 1b9795ea84573d938a84567dc5506dc6c1d8d3ca
 
 
 .footer_top {
@@ -104,13 +107,4 @@ background-color: #b970111f;
 .youtube {
     background: #ff0000
 }
-
-.shopcart_cs {
-    position: relative;
-    left: 1250px;
-    bottom: 40px;
-}
-
-fa-shopping-cart {
-    font-size: 200px;
-}
+/* Navbar */
