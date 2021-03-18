@@ -4,8 +4,11 @@ import Navbar from './Navbar'
 export default function Header() {
     return (
         <div className="row header">
-            <div className="col-12 text-center">
-            <h1>Satun Satumaailma</h1>  
+            <div className="col-12">
+            <h1 className="text-center">Satun Satumaailma</h1>  
+            <div className="shopcart_cs">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            </div>
             </div>
             <Navbar />
         </div>
