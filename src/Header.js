@@ -7,7 +7,7 @@ export default function Header() {
             <div className="col-12">
             <h1 className="text-center">Satun Satumaailma</h1>  
             <div className="shopcart_cs">
-            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
             </div>
             </div>
             <Navbar />

@@ -104,11 +104,11 @@ background-color: #b970111f;
 }
 
 .shopcart_cs {
-    position: relative;
-    left: 1250px;
-    bottom: 40px;
+    position: absolute;
+    left: 1320px;
+    bottom: 850px;
 }
 
-fa-shopping-cart {
-    font-size: 200px;
+.fa-shopping-cart {
+    font-size: 40px;
 }
