@@ -1,6 +1,8 @@
 import React from 'react'
+import BookCarousel from './Carousel'
 
 export default function Content() {
+    
     return (
         <div className="row">
             <div className="row d-flex justify-content-center">
@@ -24,26 +26,10 @@ export default function Content() {
                 </div>
 
                 <h3>Kuukauden kirjat tms</h3>
-                <div className="col-1 d-flex align-items-center" >Previous</div>
-                <div className="col content m-2">
-                    <img src="{book}" height=""></img>
-                    <p>Kirjan nimi</p>
-                    <p>Kuvaus</p>
-                    <p>Hinta</p>
+                <div className="row">
+                <BookCarousel className="col content m-2"/>
                 </div>
-                <div className="col content m-2">
-                    <img src="{book}" height=""></img>
-                    <p>Kirjan nimi</p>
-                    <p>Kuvaus</p>
-                    <p>Hinta</p>
-                </div>
-                <div className="col content m-2">
-                    <img src="{book}" height=""></img>
-                    <p>Kirjan nimi</p>
-                    <p>Kuvaus</p>
-                    <p>Hinta</p>
-                </div>
-                <div className="col-1 d-flex align-items-center">Next</div>
+               
             </div>
         </div>
     )

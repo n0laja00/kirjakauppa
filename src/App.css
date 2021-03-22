@@ -176,3 +176,18 @@ body {
     font-size: 50px;
 }
 /* Navbar */
+
+/*Book Carousel */ 
+
+.book_img {
+    size: 50%;
+}
+
+.centered {
+    /*Tämä jätetty tähän siltä varalta, jos halutaan kirjan kuvaukset kirjan kuvan päälle. Poistetaan jos ei käytetä*/
+    position: absolute;
+    bottom: 10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(209, 209, 224, 0.5);
+}
