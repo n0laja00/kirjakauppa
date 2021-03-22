@@ -2,7 +2,7 @@ import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 
-// Siis ei voi mennä näin kauan aikaa yhen toimivan reactjs carouselin ehtimiseen prkl 
+// https://www.npmjs.com/package/react-multi-carousel sivulta mallia
 export default function BookCarousel() {
     const responsive = {
         desktop: {
