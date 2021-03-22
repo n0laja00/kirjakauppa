@@ -42,6 +42,17 @@ background-color: #b970111f;
     padding: 0.2em;
 }
 
+.loginButton {
+    border-radius: 20px 5px 20px 5px;
+    background-color: rgba(215, 250, 217, 0.521);
+    border: 1px solid #b9926cc4;
+}
+
+.loginButton:hover{
+  background-color: rgb(215, 250, 217);
+  border: 1px solid #b9926cc4;
+}
+
 
 .footer_top {
     background-color: #b9926c85;

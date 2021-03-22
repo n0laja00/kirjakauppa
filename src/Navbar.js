@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 export default function Navbar() {
     return (
@@ -11,7 +12,7 @@ export default function Navbar() {
                 <div class="collapse navbar-collapse row" id="navbarNavDropdown">
                     <ul class="navbar-nav align-middle align-items-center">
                         <div className="col-1 text-start">
-                            <a class="nav-link" href="#">Etusivu <span class="sr-only">(current)</span></a>
+                            <a class="nav-link"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
                         </div>
                         <div className="col-9 navbar justify-content-center">
                             <li class="nav-item">
@@ -58,8 +59,7 @@ export default function Navbar() {
                             </li>
                         </div>
                         <div className="col-2 text-end">
-                        
-                                <a className="nav-link" href="#">Kirjaudu</a>
+                                <Link className="nav-link" to="/LoginPage">Login</Link>
                         
                         </div>
                     </ul>

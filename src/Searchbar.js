@@ -7,7 +7,7 @@ export default function SearchBar() {
                 <div class="form-outline col-md-6 col-sm-10">
                     <input type="search" id="form1" className="form-control input-lg" />
                 </div>
-                <button type="button" class="btn btn-primary col-sm-2">
+                <button type="button" class="loginButton col-sm-2">
                     <i class="fa fa-search"></i>
                 </button>
             </div>
