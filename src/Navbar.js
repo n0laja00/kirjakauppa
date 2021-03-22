@@ -12,7 +12,7 @@ export default function Navbar() {
                 <div class="collapse navbar-collapse row" id="navbarNavDropdown">
                     <ul class="navbar-nav align-middle align-items-center">
                         <div className="col-1 text-start">
-                            <a class="nav-link"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
+                            <a class="nav-link nav-item"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
                         </div>
                         <div className="col-9 navbar justify-content-center">
                             <li class="nav-item">
@@ -59,8 +59,7 @@ export default function Navbar() {
                             </li>
                         </div>
                         <div className="col-2 text-end">
-                                <Link className="nav-link" to="/LoginPage">Login</Link>
-                        
+                                <Link className="nav-link nav-item" to="/LoginPage">Login</Link>
                         </div>
                     </ul>
                 </div>
