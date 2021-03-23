@@ -154,19 +154,13 @@ body {
 
 /*Book Carousel */
 
-.centered {
-    /*Tämä jätetty tähän siltä varalta, jos halutaan kirjan kuvaukset kirjan kuvan päälle. Poistetaan jos ei käytetä*/
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(209, 209, 224, 0.5);
+.book_divider {
+    border-right: 3px dashed rgb(3, 13, 20, 0.7);
 }
 
 .float_container {
     padding: 20px;
     overflow: auto;
- 
 }
 
 .float_child {
