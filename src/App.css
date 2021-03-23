@@ -8,7 +8,7 @@
 }
 
 .white_brown {
-  background-color: #e6e2d3;
+  background-color: rgb(230, 226, 211);
 }
 
 .grey {
@@ -175,8 +175,8 @@ body {
 }  
 
 .float_child p {
-    margin-top: 40px;
-    margin-left: 40px;
+    margin-bottom: 40%;
+    margin-left: 20%;
 }
 
 .float_child_book_img {
@@ -187,4 +187,6 @@ body {
 
 .book_description {
     padding: 20px;
+    margin: 5px;
+    background-color: rgb(230, 226, 211, 0.5);
 }
