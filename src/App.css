@@ -1,193 +1,168 @@
-/* väripalettitestejä*/
-
-/* #b9936c
-
-#dac292
-
-#e6e2d3
-
-#c4b7a6
-*/
-
-/* väripalettitestejä*/
-/* Color Theme Swatches in RGBA */
-.Fashion-1-rgba {
-  color: rgba(65, 191, 144, 1);
-}
-.Fashion-2-rgba {
-  color: rgba(191, 134, 101, 1);
-}
-.Fashion-3-rgba {
-  color: rgba(89, 41, 24, 1);
-}
-.Fashion-4-rgba {
-  color: rgba(165, 98, 74, 1);
-}
-.Fashion-5-rgba {
-  color: rgba(114, 44, 44, 1);
-}
-
-/* text color #0a3b28 */
-
+/* värit */
 .dark_brown {
-    background-color: #b9926c6b;
+  background-color: #b9926c6b;
 }
 
 .light_brown {
-    background-color: #dac29273;
+  background-color: #dac29273;
 }
 
 .white_brown {
-    background-color: #e6e2d3;
+  background-color: #e6e2d3;
 }
 
 .grey {
-    background-color: #c4b7a6;
+  background-color: #c4b7a6;
 }
 
+/* fontin väri */
 body {
-    background-color:  #41bf9003;
-    color: #0a3b28;
-
+  color: #37485a;
 }
 
+/* header */
 .header {
-    margin-top: 30px;
-    background-color: #b9926c6b;
+  background-color: #b9926c6b;
 }
-
-/* test */
-/* .content {
-    
-/* background-color: #a5624a33;
-
-} */
-/* .content:hover{
-    box-shadow: -0.5em .2em .4em .2em #b9926c6b;
-} */
-.navbar{
-    justify-content: space-between !important;
+.navbar {
+  justify-content: space-between !important;
 }
 .nav-item {
-    padding: 0.2em;
+  padding: 0.2em;
 }
 .nav-item:hover {
-    text-shadow: -2px -2px 10px #0a3b284f;
+  text-shadow: -2px -2px 10px #0a3b284f;
 }
 
-/* Login ja search buttonit */
+/* etusivun (ylä)kuva */
+.fpimg {
+  border-radius: 50%;
+}
+
+/* Login ja search painikkeet */
 .loginButton {
-    border-radius: 20px 5px 20px 5px;
-    background-color: #d7fad985;
-    border: 1px solid #b9926cc4;
+  border-radius: 20px 5px 20px 5px;
+  background-color: #d7fad985;
+  border: 1px solid #b9926cc4;
 }
 
-.loginButton:hover{
+.loginButton:hover {
   background-color: #d7fad9;
   border: 1px solid #b9926cc4;
 }
 
+/* kategoriapainikkeet */
+.categoryButton {
+  border: 1px solid #cbd0d4;
+  min-width: 150px;
+  min-height: 70px;
+}
 
+.categoryButton:hover {
+  background-color: #eff8fa;
+  border: 1px solid #37485a;
+}
+
+/* footerin yläosa */
 .footer_top {
-    background-color: #b9926c85;
-    height: 40px;
+  background-color: #b9926c6b;
+  height: 40px;
 }
 
 /*Some korttien tekemiseen käytetty avuksi https://bbbootstrap.com/snippets/bootstrap-social-media-icons-3d-flips-78890278 */
 .social-list {
-    display: inline-flex
+  display: inline-flex;
 }
 
 .social-list li {
-    list-style: none;
-    margin-right: 3px
+  list-style: none;
+  margin-right: 3px;
 }
 
 .maincard {
-    position: relative;
-    width: 80px;
-    height: 70px
+  position: relative;
+  width: 80px;
+  height: 70px;
 }
 
 .thecard {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    transform-style: preserve-3d;
-    transition: all 0.8s ease
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: all 0.8s ease;
 }
 
 .thecard:hover {
-    transform: rotateY(180deg)
+  transform: rotateY(180deg);
 }
 
 .thefront {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: hidden;
-    color: #fff;
-    border-radius: 10px;
-    cursor: pointer;
-    border: 1px solid #eee;
-    padding:20px
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: hidden;
+  color: #fff;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid #eee;
+  padding: 20px;
 }
 
 .theback {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    background-color: hidden;
-    color: #fff;
-    border-radius: 10px;
-    transform: rotateY(180deg);
-    border: 1px solid #eee;
-    padding: 16px
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  background-color: hidden;
+  color: #fff;
+  border-radius: 10px;
+  transform: rotateY(180deg);
+  border: 1px solid #eee;
+  padding: 16px;
 }
 
 .social-text small {
-    font-size: 12px
+  font-size: 12px;
 }
 
-@media (max-width:700px) {
-    .social-list {
-        display: block
-    }
+@media (max-width: 700px) {
+  .social-list {
+    display: block;
+  }
 }
 
 .facebook {
-    background: #3b5998
+  background: #3b5998;
 }
 
 .instagram {
-    background: #3f729b
+  background: #3f729b;
 }
 
 .youtube {
-    background: #ff0000
+  background: #ff0000;
 }
 
 .shopcart_cs {
-    bottom: 40px;
+  bottom: 40px;
 }
 
 .fa-shopping-cart {
-    font-size: 50px;
+  font-size: 50px;
 }
-/* Navbar */
 
-/*Book Carousel */ 
+/*Book Carousel */
 
 .book_img {
-    size: 50%;
+  size: 50%;
 }
 
 .centered {
-    /*Tämä jätetty tähän siltä varalta, jos halutaan kirjan kuvaukset kirjan kuvan päälle. Poistetaan jos ei käytetä*/
-    position: absolute;
-    bottom: 10%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: rgb(209, 209, 224, 0.5);
+  /*Tämä jätetty tähän siltä varalta, jos halutaan kirjan kuvaukset kirjan kuvan päälle. Poistetaan jos ei käytetä*/
+  position: absolute;
+  bottom: 10%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: rgb(209, 209, 224, 0.5);
 }

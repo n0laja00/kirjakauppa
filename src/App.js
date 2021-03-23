@@ -7,7 +7,7 @@ import LoginPage from './LoginPage';
 
 function App() {
   return (
-  <div className="container shadow">
+  <div className="container">
     <Header />
     <Switch>
       <Route path="/" component={Content} exact/>
