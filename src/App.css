@@ -179,10 +179,6 @@ body {
 
 /*Book Carousel */ 
 
-.book_img {
-    size: 50%;
-}
-
 .centered {
     /*Tämä jätetty tähän siltä varalta, jos halutaan kirjan kuvaukset kirjan kuvan päälle. Poistetaan jos ei käytetä*/
     position: absolute;
@@ -190,4 +186,30 @@ body {
     left: 50%;
     transform: translate(-50%, -50%);
     background-color: rgb(209, 209, 224, 0.5);
+}
+
+.float_container {
+    padding: 20px;
+    overflow: auto;
+}
+
+.float_child {
+    width: 40%;
+    float: left;
+    padding: 20px;
+}  
+
+.float_child p {
+    margin-top: 40px;
+    margin-left: 40px;
+}
+
+.float_child_book_img {
+    width: 60%;
+    float: left;
+    padding: 0px;
+}
+
+.book_description {
+    padding: 20px;
 }

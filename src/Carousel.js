@@ -29,44 +29,96 @@ export default function BookCarousel() {
         itemClass="carousel-item-padding-40-px"
         removeArrowOnDeviceType={["tablet", "mobile"]} >
 
-        <div className="text-center">
-        <img
-            className="d-block w-100 book_img"
-            src={require('./img/eka.png').default}
-            alt="First slide"
-        />
-        <h3>Kirja yksi</h3>
-        <p>Kirjan kuvaus</p>
+        <div>
+            <section className="float_container">
+                <div className="float_child_book_img">
+                <img
+                    className="d-block w-100"
+                    src={require('./img/eka.png').default}
+                    alt="First slide"
+                />
+                </div>
+                <div className="float_child">
+                    <p>Nimi</p>
+                    <p>Kirjoittaja</p>
+                    <p>Julkaisija</p>
+                    <p>Vuosi</p>
+                </div>
+            </section>
+
+            <section>
+                <p className="book_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
+            </section>
+
         </div>
 
-        <div className="text-center">
-        <img
-            className="d-block w-100 book_img"
-            src={require('./img/toka.png').default}
-            alt="Second slide"
-        />
-        <h3>Kirja kaksi</h3>
-        <p>Kirjan kuvaus</p>
+        <div>
+            <section className="float_container">
+                <div className="float_child_book_img">
+                <img
+                    className="d-block w-100"
+                    src={require('./img/toka.png').default}
+                    alt="First slide"
+                />
+                </div>
+                <div className="float_child">
+                    <p>Nimi</p>
+                    <p>Kirjoittaja</p>
+                    <p>Julkaisija</p>
+                    <p>Vuosi</p>
+                </div>
+            </section>
+
+            <section>
+                <p className="book_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
+            </section>
+
         </div>
 
-        <div className="text-center">
-        <img
-            className="d-block w-100 book_img"
-            src={require('./img/kolmas.png').default}
-            alt="Third slide"
-        />
-        <h3>Kirja kolme</h3>
-        <p>Kirjan kuvaus</p>
+        <div>
+            <section className="float_container">
+                <div className="float_child_book_img">
+                <img
+                    className="d-block w-100"
+                    src={require('./img/kolmas.png').default}
+                    alt="First slide"
+                />
+                </div>
+                <div className="float_child">
+                    <p>Nimi</p>
+                    <p>Kirjoittaja</p>
+                    <p>Julkaisija</p>
+                    <p>Vuosi</p>
+                </div>
+            </section>
+
+            <section>
+                <p className="book_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
+            </section>
+
         </div>
 
-        <div className="text-center">
-        <img
-            className="d-block w-100 book_img"
-            src={require('./img/eka.png').default}
-            alt="Fourth slide"
-        />
-        <h3>Kirja yksi</h3>
-        <p>Kirjan kuvaus</p>
+        <div>
+            <section className="float_container">
+                <div className="float_child_book_img">
+                <img
+                    className="d-block w-100"
+                    src={require('./img/eka.png').default}
+                    alt="First slide"
+                />
+                </div>
+                <div className="float_child">
+                    <p>Nimi</p>
+                    <p>Kirjoittaja</p>
+                    <p>Julkaisija</p>
+                    <p>Vuosi</p>
+                </div>
+            </section>
+
+            <section>
+                <p className="book_description">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
+            </section>
+
         </div>
         </Carousel>
     )
