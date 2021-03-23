@@ -38,7 +38,7 @@ export default function BookCarousel() {
                     alt="First slide"
                 />
                 </div>
-                <div className="float_child">
+                <div className="float_child col-sm-auto">
                     <p>Nimi</p>
                     <p>Kirjoittaja</p>
                     <p>Julkaisija</p>
