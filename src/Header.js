@@ -4,7 +4,7 @@ import SearchBar from './Searchbar'
 
 export default function Header() {
     return (
-        <div className="row header py-3">
+        <div className="row header py-3 shadow">
             <div className="row p-3">
                 <div className="col-sm-1">Logo?</div>
                 <div className="col-sm-10">
