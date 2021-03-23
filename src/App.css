@@ -206,3 +206,32 @@ body {
     background-color: rgb(230, 226, 211, 0.5);
     overflow-wrap: break-word;
 }
+
+/*Custom arrows for carousel*/ 
+.custom_right_arrow {
+    position: absolute !important;
+    width: 10%;
+    height: 10%;
+    opacity: 0.9;
+    right: 5px !important;
+    -webkit-filter: drop-shadow(10px 10px 10px black);
+    filter: drop-shadow(10px 10px 10px black); 
+    
+  }
+  .custom_right_arrow:hover {
+    opacity: 1;
+  }
+
+  .custom_left_arrow {
+    position: absolute !important;
+    width: 10%;
+    height: 10%;
+    opacity: 0.9;
+    left: 5px !important;
+    -webkit-filter: drop-shadow(10px 10px 10px black);
+    filter: drop-shadow(10px 10px 10px black); 
+    
+  }
+  .custom_left_arrow:hover {
+    opacity: 1;
+  }

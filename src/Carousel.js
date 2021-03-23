@@ -21,8 +21,28 @@ export default function BookCarousel() {
           slidesToSlide: 1 // optional, default to 1.
         }
       };
+      const CustomRightArrow = ({ onClick, ...rest }) => {
+        const {
+          onMove,
+          carouselState: { currentSlide, deviceType }
+        } = rest;
+        // onMove means if dragging or swiping in progress.
+        return <img aria-label="Mene seuraavaan diaan" className="custom_right_arrow"
+        src={require('./custom_carousel/arrow-right.png').default} onClick={() => onClick()} />;
+      };
+      const CustomLeftArrow = ({ onClick, ...rest }) => {
+        const {
+          onMove,
+          carouselState: { currentSlide, deviceType }
+        } = rest;
+        // onMove means if dragging or swiping in progress.
+        return <img aria-label="Mene seuraavaan diaan" className="custom_left_arrow"
+        src={require('./custom_carousel/arrow-left.png').default} onClick={() => onClick()} />;
+      };
     return(
         <Carousel 
+        customRightArrow={<CustomRightArrow />}
+        customLeftArrow={<CustomLeftArrow />}
         centerMode={true}
         responsive={responsive}
         infinite={true}
