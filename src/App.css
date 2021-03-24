@@ -197,9 +197,9 @@ body {
   
 
 .book_description {
-    padding: 20px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     margin: 5px;
-    background-color: rgb(230, 226, 211, 0.5);
     overflow-wrap: break-word;
 }
 

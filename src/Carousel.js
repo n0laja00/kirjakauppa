@@ -12,7 +12,7 @@ export default function BookCarousel() {
         },
         tablet: {
           breakpoint: { max: 1024, min: 464 },
-          items: 2,
+          items: 1,
           slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
@@ -46,10 +46,9 @@ export default function BookCarousel() {
         centerMode={true}
         responsive={responsive}
         infinite={true}
-        itemClass="carousel-item-padding-40-px"
         removeArrowOnDeviceType={["tablet", "mobile"]} >
 
-        <div className="book_divider">
+        <div className="book_divider light_brown">
             <section className="float_container">
                 <div className="float_child_book_img">
                 <img
@@ -66,12 +65,12 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description">
+            <section className="book_description dark_brown">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
 
-        <div className="book_divider">
+        <div className="book_divider light_brown">
             <section className="float_container">
                 <div className="float_child_book_img">
                 <img
@@ -88,12 +87,12 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description">
+            <section className="book_description dark_brown">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
 
-        <div className="book_divider">
+        <div className="book_divider light_brown">
             <section className="float_container">
                 <div className="float_child_book_img">
                 <img
@@ -110,12 +109,12 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description">
+            <section className="book_description dark_brown">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
 
-        <div className="book_divider">
+        <div className="book_divider light_brown">
             <section className="float_container">
                 <div className="float_child_book_img">
                 <img
@@ -132,7 +131,7 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description">
+            <section className="book_description dark_brown">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
