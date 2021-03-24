@@ -8,7 +8,7 @@ import ShoppingCart from './ShoppingCart';
 
 function App() {
   return (
-  <div className="container">
+  <main className="container">
     <Header />
     <Switch>
       <Route path="/" component={Content} exact/>
@@ -16,7 +16,7 @@ function App() {
       <Route path="/ShoppingCart" component={ShoppingCart} /> 
     </Switch>
     <Footer />
-  </div>
+  </main>
   );
 }
 

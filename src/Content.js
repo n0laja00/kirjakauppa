@@ -5,7 +5,7 @@ import fpimage from './img/frontpgimg.jpg'
 export default function Content() {
 
     return (
-        <div className="row">
+        <div className="row me-2 ms-2">
             <div>
                 <div className="row py-5">
                     <div className="col-md-7 col-sm-12">
