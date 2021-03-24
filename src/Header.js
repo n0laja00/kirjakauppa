@@ -12,7 +12,7 @@ export default function Header() {
                     <h1 className="text-center">Satun Satumaailma</h1>
                 </div>
                 <div className="shopcart_cs col-sm-1 text-end">
-                <Link className="cartlink" to="/ShoppingCart">
+                <Link className="link" to="/ShoppingCart">
                     <i className="fa fa-shopping-cart" aria-hidden="true"></i>
                 </Link> 
                 </div>
