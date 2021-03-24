@@ -153,6 +153,13 @@ body {
   font-size: 50px;
 }
 
+.cartlink {
+  color: #37485a;
+}
+.cartlink:hover {
+  color: #ffffff;
+}
+
 /*Book Carousel */
 
 .book_divider {

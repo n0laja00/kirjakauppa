@@ -1,6 +1,7 @@
 import React from 'react'
 import Navbar from './Navbar'
 import SearchBar from './Searchbar'
+import { Link } from 'react-router-dom'
 
 export default function Header() {
     return (
@@ -11,7 +12,9 @@ export default function Header() {
                     <h1 className="text-center">Satun Satumaailma</h1>
                 </div>
                 <div className="shopcart_cs col-sm-1 text-end">
-            <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                <Link className="cartlink" to="/ShoppingCart">
+                    <i className="fa fa-shopping-cart" aria-hidden="true"></i>
+                </Link> 
                 </div>
             </div>
             <Navbar />

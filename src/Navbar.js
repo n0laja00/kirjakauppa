@@ -10,7 +10,7 @@ export default function Navbar() {
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="collapse navbar-collapse float-start row" id="navbarNavDropdown">
+                <div class="collapse navbar-collapse row" id="navbarNavDropdown">
                     <ul class="navbar-nav navbar">
                         <div className="text-lg-start text-center col-lg-1 col-xl-2">
                             <a class="nav-link nav-item"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
