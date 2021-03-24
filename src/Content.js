@@ -10,7 +10,8 @@ export default function Content() {
                 <div className="row py-5">
                     <div className="col-md-7 col-sm-12">
                         <h1 className="pb-3">Tervetuloa</h1>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!
+                        <p>Satun Satumaailma on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
+                
                     </div>
                     <div className="col-md-5 pb-3"><img src={fpimage} alt="shop" className="img-fluid fpimg d-none d-md-block"></img></div>
                 </div>
