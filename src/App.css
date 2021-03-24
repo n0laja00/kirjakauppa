@@ -215,6 +215,7 @@ body {
   }
   .custom_right_arrow:hover {
     opacity: 1;
+    cursor: pointer;
   }
 
   .custom_left_arrow {
@@ -229,4 +230,5 @@ body {
   }
   .custom_left_arrow:hover {
     opacity: 1;
+    cursor: pointer;
   }
