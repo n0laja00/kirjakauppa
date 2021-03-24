@@ -7,14 +7,14 @@ import LoginPage from './LoginPage';
 
 function App() {
   return (
-  <div className="container">
+  <main className="container">
     <Header />
     <Switch>
       <Route path="/" component={Content} exact/>
       <Route path="/LoginPage" component={LoginPage} /> 
     </Switch>
     <Footer />
-  </div>
+  </main>
   );
 }
 
