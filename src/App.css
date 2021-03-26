@@ -26,13 +26,15 @@
 /* fontin väri */
 body {
   color: #104570;
-
-  /*https://www.toptal.com/designers/subtlepatterns/moroccan-flower-pattern/*/
   background: url('./img/bgimage.jpg') no-repeat center center fixed;
   background-size: cover;
 }
 main {
-  background-color: none;
+  /* background: url('./img/bgimage.jpg') no-repeat center center fixed;
+background-size: cover; */
+}
+.bottomBg{
+  background-color: rgb(192, 192, 192);
 }
 
 /* header */
