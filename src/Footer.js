@@ -18,8 +18,8 @@ export default function Footer() {
             <section className="row">
                 <div className="col-4 ">
                     <p>Löydät myymälöitämme Katajakoskelta ja Tarveeselältä!</p>
-                     <div className="square">
-                        <Maps></Maps>
+                     <div className="map_container">
+                        <Maps className="map"/>
                      </div>
                 </div>
                 <div className="col-4 ">

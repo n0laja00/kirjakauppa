@@ -298,7 +298,19 @@ footer {
 
 /*Footer map*/
 
-.mapStyle {
-  width: '100%';
-  height: '100%';
+.map {
+  margin-left: 1%;
+  margin-top: 1%;
 }
+
+.map_container {
+  width: 100%;
+  height: 300px;
+}
+
+@media only screen and (max-width: 800px) {
+  .map_container {
+    display: none;
+  }
+}
+
