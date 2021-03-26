@@ -7,20 +7,23 @@ export default function Header() {
     return (
         <div className="row header py-3 shadow">
             <div className="row">
-                <div className="col-8">
+                <div className="col-4 col-lg-3 col-xl-2">
+                    <a><img src={require('./img/logo.png').default} alt="logo"/></a>
+                </div>
+                <div className="col-7 col-lg col-xl-9 d-flex align-items-center">
                     <h2>Ruotsalainen kirjakauppa :D</h2>
                 </div>
-                <div className="col-4">
-                    <div className="col-12 text-end"><Link className="link" to="/">Home</Link>
+                <div className="col-1">
+                    <div className="text-end"><Link className="link" to="/">Home</Link>
                     </div>
                     {/* tämän col-4:n sisässä ostoskori ja Login */}
-                    <div className="col-12 text-end">
-                        <div className="shopcart_cs col-12">
+                    <div className="text-end">
+                        <div className="shopcart_cs">
                             <Link className="link varjo" to="/ShoppingCart">
                                 <i className="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
                             </Link>
-                            <div className="col-12">
-                                <Link className="link col-12" to="/LoginPage">Login</Link>
+                            <div>
+                                <Link className="link" to="/LoginPage">Login</Link>
                             </div>
                         </div>
                     </div>
