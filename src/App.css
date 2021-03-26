@@ -8,13 +8,18 @@ body {
   background: url('./img/bgimage.jpg') no-repeat center center fixed;
   background-size: cover;
 }
-main {
-  /* background-image: url('./img/bgimage.jpg');
-background-size: cover; */
-}
+/* main {
+  background-image: url('./img/bgimage.jpg');
+background-size: cover;
+} */
 
-h1, h2, h3, h4, h5, h6 {
-  font-size: 2rem;
+h1 {
+  font-size: 3rem;
+  text-decoration: underline;
+  color: white;
+}
+p{
+  font-size: large;
 }
 /* värit */
 .dark_brown {
@@ -44,6 +49,16 @@ h1, h2, h3, h4, h5, h6 {
 .bottomBg {
   background-color: rgba(228, 228, 228, 0.836);
 }
+.customBorder{
+  border: 3px solid white;
+  border-radius: 50px 50px 50px 2px;
+}
+@media (max-width: 575px) {
+  .customBorder {
+    border: none;
+  }
+}
+
 
 /* header */
 .header {
