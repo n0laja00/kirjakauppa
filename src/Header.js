@@ -10,10 +10,10 @@ export default function Header() {
                 <div className="col-4 col-lg-3 col-xl-2">
                     <a><img src={require('./img/logo.png').default} alt="logo"/></a>
                 </div>
-                <div className="col-7 col-lg col-xl-9 d-flex align-items-center">
+                <div className="col-7 col-xl-8 d-flex align-items-center">
                     <h2>Ruotsalainen kirjakauppa :D</h2>
                 </div>
-                <div className="col-1">
+                <div className="col-1 col-lg-2">
                     <div className="text-end"><Link className="link" to="/">Home</Link>
                     </div>
                     {/* tämän col-4:n sisässä ostoskori ja Login */}
