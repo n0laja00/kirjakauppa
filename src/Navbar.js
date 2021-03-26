@@ -12,7 +12,7 @@ export default function Navbar() {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse row" id="navbarNavDropdown">
-                    <ul class="navbar-nav navbar">
+                <ul class="navbar-nav navbar  col-1 col-sm-2 col-lg-12">
                         <div className="text-lg-start text-center col-lg-1 col-xl-2">
                             <a class="nav-link nav-item"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
                         </div>
