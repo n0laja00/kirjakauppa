@@ -17,7 +17,9 @@ export default function Content() {
                 </div>
 
                 <div className="row pb-5 d-flex justify-content-center">
-                    <h3 className="pb-4">Kategoriat</h3>
+                    <div className="row ">
+                    <h1 className="pb-4 col-12 text-center">Kategoriat</h1>
+                    </div>
                     <button className="col-sm-2 m-2 btn categoryButton">Tietokirjallisuus</button>
 
                     <button className="col-sm-2 m-2 btn categoryButton">Toiminta</button>
@@ -25,7 +27,12 @@ export default function Content() {
                     <button className="col-sm-2 m-2 btn categoryButton">Sci-fi ja fantasia</button>
 
                     <button className="col-sm-2 m-2 btn categoryButton">Oppikirjat</button>
+
                     <button className="col-sm-2 m-2 btn categoryButton">Kauhu ja trilleri</button>
+
+                    <button className="col-sm-2 m-2 btn categoryButton">Romantiikka</button>
+
+                    <button className="col-sm-2 m-2 btn categoryButton">Lastenkirjat</button>
                 </div>
                 <h3>Kuukauden kirjat tms</h3>
                 <div className="row carouselBorder">
