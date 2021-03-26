@@ -28,7 +28,7 @@ export default function Content() {
                     <button className="col-sm-2 m-2 btn categoryButton">Kauhu ja trilleri</button>
                 </div>
                 <h3>Kuukauden kirjat tms</h3>
-                <div className="row" style={{border: "6px ridge #A4684A", borderRadius:"26px 14px 22px 0px", boxShadow:"5px 10px"}}>
+                <div className="row carouselBorder">
                     <BookCarousel/>
                 </div>
             </div>

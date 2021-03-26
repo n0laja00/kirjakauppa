@@ -65,7 +65,7 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description dark_brown">
+            <section className="book_description">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
@@ -87,7 +87,7 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description dark_brown">
+            <section className="book_description">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
@@ -109,7 +109,7 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description dark_brown">
+            <section className="book_description">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
@@ -131,7 +131,7 @@ export default function BookCarousel() {
                 </div>
             </section>
 
-            <section className="book_description dark_brown">
+            <section className="book_description">
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
             </section>
         </div>
