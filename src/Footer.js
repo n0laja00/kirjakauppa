@@ -17,7 +17,7 @@ export default function Footer() {
             </section>
             <section className="row">
                 <div className="col-4 ">
-                    <p>Löydät myymälöitämme Katajakoskelta ja Tarveeselältä!</p>
+                    <p>Löydät myymälöitämme Kalajoelta Mäntyperäntieltä sekä Vierivainiontieltä!</p>
                      <div className="map_container">
                         <Maps className="map"/>
                      </div>

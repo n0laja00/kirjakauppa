@@ -9,8 +9,8 @@ export class MapContainer extends Component {
           selectedPlace: {},
 
           mapCenter: {
-                  lat: 64.06470711212933,
-                  lng: 23.63987559178628
+                  lat:  64.17880595013182,
+                  lng:  23.766703601551217
           }
         };
        
@@ -35,7 +35,7 @@ export class MapContainer extends Component {
             <Map google={this.props.google}
                 style={{width: '26%', height: '20%', position: 'relative'}}
                 className={'map'}
-                zoom={15}
+                zoom={8}
                 initialCenter={{
                         lat: this.state.mapCenter.lat,
                         lng: this.state.mapCenter.lng
@@ -45,9 +45,17 @@ export class MapContainer extends Component {
                         lng: this.state.mapCenter.lng
                 }}>
               <Marker
+              //Mäntyperäntie 
               position={{
-                lat: this.state.mapCenter.lat,
-                lng: this.state.mapCenter.lng
+                lat: 64.06470711212933,
+                lng: 23.63987559178628
+              }}
+              />
+              <Marker 
+              //Vierivainiontie
+              position = {{
+                lat: 64.26302764829185,
+                lng: 23.94636991002418
               }}
               />
             </Map>
