@@ -8,15 +8,18 @@ import ShoppingCart from './ShoppingCart';
 
 function App() {
   return (
-  <main className="container">
-    <Header />
-    <Switch>
-      <Route path="/" component={Content} exact/>
-      <Route path="/LoginPage" component={LoginPage} /> 
-      <Route path="/ShoppingCart" component={ShoppingCart} /> 
-    </Switch>
-    <Footer />
-  </main>
+    <div>
+      <main className="container pb-5">
+        <Header />
+        <Switch>
+          <Route path="/" component={Content} exact/>
+          <Route path="/LoginPage" component={LoginPage} /> 
+        </Switch>
+      </main>
+      <div className="container">
+        <Footer />
+      </div>
+  </div>
   );
 }
 
