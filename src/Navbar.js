@@ -12,8 +12,14 @@ export default function Navbar() {
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse row" id="navbarNavDropdown">
-                <ul class="navbar-nav navbar  col-1 col-sm-2 col-lg-12">
-                        
+                    {/* tämä col-2, että nav ikonit on keskellä XD */}
+                    <div className="col-2 d-none d-lg-block"></div>
+                <ul class="navbar-nav navbar col-1 col-sm-2 col-lg-8">
+
+                    {/* <div className="col-1">
+                        <a class="nav-link nav-item"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
+                    </div> */}
+
                         <Link className="link" to="/">
                         <li class="nav-item"> 
                             <div className="text-center">
