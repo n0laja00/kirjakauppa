@@ -1,4 +1,5 @@
 import React from 'react'
+import Maps from './Maps'
 
 export default function Footer() {
     return (
@@ -16,9 +17,10 @@ export default function Footer() {
             </section>
             <section className="row">
                 <div className="col-4 dark_brown">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat,
-                    earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi
-                     facilis iste modi illum libero natus ipsam accusantium!</p>
+                    <p>Osoite</p>
+                    <Maps>
+                    </Maps>
+                    
                 </div>
                 <div className="col-4 light_brown">
                     <div class="container mt-5 mb-5 d-flex justify-content-center">
@@ -75,5 +77,7 @@ export default function Footer() {
                 </div>
             </section>
         </footer>
+
+        
     )
 }

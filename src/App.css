@@ -218,6 +218,11 @@ main {
     overflow-wrap: break-word;
 }
 
+.light_brown_book_carousel {
+  background-color: #dac29273;
+  border-radius: 26px 14px 22px 0px;
+}
+
 /*Custom arrows for carousel*/ 
 .custom_right_arrow {
     position: absolute !important;
