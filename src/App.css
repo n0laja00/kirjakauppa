@@ -273,11 +273,16 @@ footer {
   overflow-wrap: break-word;
 }
 
-/*Custom arrows for carousel*/
+.light_brown_book_carousel {
+  background-color: #dac29273;
+  border-radius: 26px 14px 22px 0px;
+}
+
+/*Custom arrows for carousel*/ 
 .custom_right_arrow {
   position: absolute !important;
-  width: 5%;
-  height: 5%;
+  width: 10%;
+  height: 10%;
   opacity: 0.5;
   right: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
@@ -290,9 +295,9 @@ footer {
 
 .custom_left_arrow {
   position: absolute !important;
-  width: 5%;
-  height: 5%;
-  opacity: 0.5;
+  width: 10%;
+  height: 10%;
+  opacity: 0.8;
   left: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
   filter: drop-shadow(10px 10px 10px black);
@@ -308,7 +313,19 @@ footer {
 
 /*Footer map*/
 
-.mapStyle {
-  width: '100%';
-  height: '100%';
+.map {
+  margin-left: 1%;
+  margin-top: 1%;
 }
+
+.map_container {
+  width: 100%;
+  height: 300px;
+}
+
+@media only screen and (max-width: 800px) {
+  .map_container {
+    display: none;
+  }
+}
+

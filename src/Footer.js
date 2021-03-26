@@ -1,4 +1,5 @@
 import React from 'react'
+import Maps from './Maps'
 
 export default function Footer() {
     return (
@@ -17,8 +18,8 @@ export default function Footer() {
             <section className="row">
                 <div className="col-4 ">
                     <p>Löydät myymälöitämme Katajakoskelta ja Tarveeselältä!</p>
-                     <div className="square">
-                        <p>Possible Map Here</p>
+                     <div className="map_container">
+                        <Maps className="map"/>
                      </div>
                 </div>
                 <div className="col-4 ">
@@ -81,5 +82,7 @@ export default function Footer() {
                 </div>
             </section>
         </footer>
+
+        
     )
 }
