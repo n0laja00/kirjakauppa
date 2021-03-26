@@ -20,11 +20,11 @@ body {
   color: #37485a;
   
   /*https://www.toptal.com/designers/subtlepatterns/moroccan-flower-pattern/*/
-  /* background-image: url(../src/img/moroccan-flower.png); */
+  background-image: url(../src/img/moroccan-flower.png);
   
 }
 main {
-  background-color: rgba(241, 199, 151, 0.288);
+  background-color: #fff;
 
   
 }
