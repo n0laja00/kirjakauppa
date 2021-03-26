@@ -17,21 +17,22 @@
 
 /* fontin väri */
 body {
-  color: #37485a;
+  color: #104570;
   
   /*https://www.toptal.com/designers/subtlepatterns/moroccan-flower-pattern/*/
-  background-image: url(../src/img/moroccan-flower.png);
-  
+  background: url('./img/bgimage.jpg') no-repeat center center fixed;
+background-size: cover;
+
 }
 main {
-  background-color: #fff;
+  background-color: none;
 
   
 }
 
 /* header */
 .header {
-  background-color: #e2c7ad;
+  background-color: #66b8fc;
 }
 .navbar {
   justify-content: space-between !important;
@@ -51,18 +52,19 @@ main {
 /* Login ja search painikkeet */
 .loginButton {
   border-radius: 20px 5px 20px 5px;
-  background-color: #d7fad985;
-  border: 1px solid #b9926cc4;
+  background-color: #73def1;
+  border: 1px solid #127cb9c4;
 }
 
 .loginButton:hover {
-  background-color: #d7fad9;
+  background-color: #49d4ec;
   border: 1px solid #b9926cc4;
 }
 
 /* kategoriapainikkeet */
 .categoryButton {
   border: 1px solid #cbd0d4;
+  background-color: #fff;
   min-width: 150px;
   min-height: 70px;
 }
