@@ -17,7 +17,7 @@ export default function Content() {
                 </div>
 
                 <div className="row pb-5 d-flex justify-content-center">
-                    <div className="row ">
+                    <div className="row">
                     <h1 className="pb-4 col-12 text-center">Kategoriat</h1>
                     </div>
                     <button className="col-sm-2 m-2 btn categoryButton">Tietokirjallisuus</button>

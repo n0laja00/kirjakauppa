@@ -9,7 +9,7 @@ export default function Header() {
             <div className="row p-3">
                 <div className="col-sm-1">Logo?</div>
                 <div className="col-sm-10">
-                    <h1 className="text-center">Satun Satumaailma</h1>
+                    <h1 className="text-center">Ruotsalainen kirjakauppa :D</h1>
                 </div>
                 <div className="shopcart_cs col-sm-1 text-end">
                 <Link className="link varjo" to="/ShoppingCart">
