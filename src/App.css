@@ -11,6 +11,14 @@
   background-color: rgb(230, 226, 211);
 }
 
+.whiter_brown {
+  background-color: #ece7e26b;
+}
+
+.lighter_brown {
+  background-color: #e7d9bb73;
+}
+
 .grey {
   background-color: #c4b7a6;
 }
@@ -21,6 +29,7 @@ body {
   
   /*https://www.toptal.com/designers/subtlepatterns/moroccan-flower-pattern/*/
   background-image: url(../src/img/moroccan-flower.png);
+  
   
 }
 main {
@@ -72,10 +81,33 @@ main {
   border: 1px solid #37485a;
 }
 
+footer {
+  background-image: none;
+}
 /* footerin yläosa */
 .footer_top {
-  background-color: #b9926c6b;
-  height: 40px;
+ height: 40px;
+  border-top: solid black 1px;
+}
+
+.footer_top_section {
+  color: #37485a;
+}
+
+.square {
+  height: 15em;
+  width: 15em;
+  background-color: white;
+  border: solid black 1px;
+  margin-bottom: 1em;
+}
+
+.copyright_footer{
+  border: solid black 1px;
+  border-radius: 50px 50px 5px 5px;
+  height: 1.5em;
+  text-align: center;
+  
 }
 
 /*Some korttien tekemiseen käytetty avuksi https://bbbootstrap.com/snippets/bootstrap-social-media-icons-3d-flips-78890278 */
