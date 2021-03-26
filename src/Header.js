@@ -18,7 +18,9 @@ export default function Header() {
                 </div>
             </div>
             <Navbar />
+            <div className="d-none d-sm-block">
             <SearchBar />
+            </div>
         </div>
     )
 }

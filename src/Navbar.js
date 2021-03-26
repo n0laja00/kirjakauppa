@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import SearchBar from './Searchbar'
 
 export default function Navbar() {
     return (
 
             <nav class="navbar navbar-expand-lg navbar-light">
-
+            
                 {/* <a class="navbar-brand" href="#">Navbar</a> */}
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -76,8 +77,10 @@ export default function Navbar() {
                         </div>
                     </ul>
                 </div>
-
+            <div className="d-block d-sm-none">
+            <SearchBar />
+            </div>
             </nav>
-       
+            
     )
 }
