@@ -13,9 +13,7 @@ export default function Navbar() {
                 </button>
                 <div class="collapse navbar-collapse row" id="navbarNavDropdown">
                 <ul class="navbar-nav navbar  col-1 col-sm-2 col-lg-12">
-                        <div className="text-lg-start text-center col-lg-1 col-xl-2">
-                            <a class="nav-link nav-item"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
-                        </div>
+                        
                         <Link className="link" to="/">
                         <li class="nav-item"> 
                             <div className="text-center">
@@ -71,10 +69,7 @@ export default function Navbar() {
                                 <div>Lastenkirjat</div>
                             </div>
                         </li>
-                        </Link>
-                        <div className="col-lg-1 col-xl-2 text-center text-lg-end">
-                                <Link className="nav-link nav-item" to="/LoginPage">Login</Link>
-                        </div>
+                        </Link>                   
                     </ul>
                 </div>
             <div className="d-block d-sm-none">

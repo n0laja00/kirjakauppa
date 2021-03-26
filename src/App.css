@@ -1,3 +1,21 @@
+/* google font */
+@import url('https://fonts.googleapis.com/css2?family=Exo&display=swap');
+
+/* fontin väri */
+body {
+  font-family: 'Exo', sans-serif;
+  color: #104570;
+  background: url('./img/bgimage.jpg') no-repeat center center fixed;
+  background-size: cover;
+}
+main {
+  /* background-image: url('./img/bgimage.jpg');
+background-size: cover; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 2rem;
+}
 /* värit */
 .dark_brown {
   background-color: #b9926c6b;
@@ -23,22 +41,13 @@
   background-color: #c4b7a6;
 }
 
-/* fontin väri */
-body {
-  color: #104570;
-  background: url('./img/bgimage.jpg') no-repeat center center fixed;
-  background-size: cover;
-}
-main {
-  /* background-image: url('./img/bgimage.jpg');
-background-size: cover; */
-}
 .bottomBg {
-  background-color: rgb(228, 228, 228);
+  background-color: rgba(228, 228, 228, 0.836);
 }
 
 /* header */
 .header {
+  font-size: .8em;
   background-color: #66b8fc;
 }
 .navbar {
@@ -184,12 +193,8 @@ footer {
   background: #ff0000;
 }
 
-.shopcart_cs {
-  bottom: 40px;
-}
-
-.fa-shopping-cart {
-  font-size: 50px;
+.shopcart_cs i {
+  font-size: 1.7rem;
 }
 
 .link {
