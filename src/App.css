@@ -315,7 +315,7 @@ footer {
   position: absolute !important;
   width: 10%;
   height: 10%;
-  opacity: 0.8g;
+  opacity: 0.8;
   right: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
   filter: drop-shadow(10px 10px 10px black);
