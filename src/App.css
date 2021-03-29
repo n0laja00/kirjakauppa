@@ -136,6 +136,7 @@ footer {
 /*Some korttien tekemiseen käytetty avuksi https://bbbootstrap.com/snippets/bootstrap-social-media-icons-3d-flips-78890278 */
 .social-list {
   display: inline-flex;
+  padding: 0px !important;
 }
 
 .social-list li {
