@@ -14,6 +14,7 @@ function App() {
         <Switch>
           <Route path="/" component={Content} exact/>
           <Route path="/LoginPage" component={LoginPage} /> 
+          <Route path="/ShoppingCart" component={ShoppingCart} />
         </Switch>
       </main>
       <div className="container bottomBg">

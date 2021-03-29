@@ -20,56 +20,56 @@ export default function Navbar() {
                         <a class="nav-link nav-item"><Link className="nav-link" to="/">Home</Link> <span class="sr-only">(current)</span></a>
                     </div> */}
 
-                        <Link className="link" to="/">
-                        <li class="nav-item"> 
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0"> 
                             <div className="text-center">
                                 <i className="fa fa-book fa-2x"></i>
                                 <div>Tietokirjallisuus</div>
                             </div>
                         </li>
                         </Link>
-                        <Link className="link" to="/">
-                        <li class="nav-item">
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-exclamation fa-2x "></i> 
                                 <div>Toiminta</div>
                             </div>
                         </li>
                         </Link>
-                        <Link className="link" to="/">
-                        <li class="nav-item">
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-magic fa-2x"></i>
                                 <div>Sci-fi ja Fantasia</div>
                             </div>
                         </li>
                         </Link>
-                        <Link className="link" to="/">
-                        <li class="nav-item">
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-mortar-board fa-2x"></i>
                                 <div>Oppikirjat</div>
                             </div>
                         </li>
                         </Link>
-                        <Link className="link" to="/">
-                        <li class="nav-item">
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-user-secret fa-2x"></i>
                                 <div>Kauhu ja Trilleri</div>
                             </div>
                         </li>
                         </Link>
-                        <Link className="link" to="/">
-                        <li class="nav-item">
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-heart fa-2x"></i>
                                 <div>Romantiikka</div>
                             </div>
                         </li>
                         </Link>
-                        <Link className="link" to="/">
-                        <li class="nav-item">
+                        <Link className="link mb-2 mb-lg-0" to="/">
+                        <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-map-pin fa-2x"></i>
                                 <div>Lastenkirjat</div>
