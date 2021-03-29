@@ -21,6 +21,8 @@ export default function BookCarousel() {
           slidesToSlide: 1 // optional, default to 1.
         }
       };
+
+      //Book carousel arrows
       const CustomRightArrow = ({ onClick, ...rest }) => {
         const {
           onMove,
