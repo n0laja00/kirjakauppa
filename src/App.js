@@ -1,4 +1,4 @@
-import { Switch, Route } from 'react-router';
+import { Switch, Route, useState, useEffect } from 'react-router';
 import './App.css';
 import Content from './Content';
 import Footer from './Footer';
@@ -7,6 +7,13 @@ import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
 
 function App() {
+
+  const [useState, setUseState]  = useState(0);
+
+  useEffect(() => {
+    
+  })
+
   return (
     <div>
       <main className="container pb-5">
