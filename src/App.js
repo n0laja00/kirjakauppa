@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Header from './Header';
 import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
+import AllBooks from './AllBooks';
 
 
 const URL = 'http://localhost/kirjakauppa/'
@@ -43,6 +44,7 @@ function App() {
           <Route path="/" component={Content} exact/>
           <Route path="/LoginPage" component={LoginPage} /> 
           <Route path="/ShoppingCart" component={ShoppingCart} />
+          <Route path="/AllBooks" component={AllBooks} />
         </Switch>
       </main>
       <div className="container bottomBg">

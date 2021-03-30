@@ -10,8 +10,8 @@ export default function Content() {
                 <div className="row py-5 d-flex justify-content-center">
                     <div className="col-md-8 col-sm-8 mx-5 mb-5 p-5 customBorder">
                         <h1 className="pb-3">Tervetuloa</h1>
-                        <p>Satun Satumaailma on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
-                        <p> Etsi valikoimastamme lempikirjasi ja nauti lukuhetkistä! Kategoriat löytyvät alta.</p>
+                        <p>Ruotsalainen kirjakauppa on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
+                        <p> Etsi valikoimastamme lempikirjasi ja nauti lukuhetkistä!.</p>
                     </div>
                     <div className="col-2 d-none d-lg-block pb-3"><img src={fpimage} alt="shop" className="img-fluid fpimg d-none d-md-block"></img></div>
                 </div>

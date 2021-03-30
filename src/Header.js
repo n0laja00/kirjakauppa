@@ -11,7 +11,7 @@ export default function Header() {
                     <a><img src={require('./img/logo.png').default} alt="logo"/></a>
                 </div>
                 <div className="col-7 col-xl-8 d-flex align-items-center">
-                    <h2>Ruotsalainen kirjakauppa :D</h2>
+                    <h2>Ruotsalainen kirjakauppa</h2>
                 </div>
                 <div className="col-1 col-lg-2">
                     <div className="text-end"><Link className="link" to="/">Home</Link>
