@@ -61,10 +61,24 @@ export default function Footer() {
                         </ul>
                     </div>
                 </div>
-                <div className="col-4 text-end">
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat,
-                    earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus,
-                    earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
+                <div className="col-4 text-center">
+                    <h4 className="text-center"><u>Kalajoki</u></h4>
+                    <div className="mb-4">
+                    <p>Mäntyperäntie 8, 6800</p>
+                    <p> <i class="fa fa-phone-square" aria-hidden="true"></i> 
+                        0440428562</p>
+                    <p className="text-muted">Ma-Pe 09:00 - 19:00</p>
+                    <p className="text-muted">La-Su 12:00 - 16:00</p>
+                    </div>
+
+                    <div>
+                    <p>Vierivainiontie 10, 85100</p>
+                    <p><i class="fa fa-phone-square" aria-hidden="true"></i>
+                        0449623267</p>
+                    <p className="text-muted">Ma-Pe 09:00 - 19:00</p>
+                    <p className="text-muted">La 10:00 - 18:00, Su 12:00 - 16:00</p>
+                    </div>
+                    
                 </div>
             </section>
             <section className="row">
