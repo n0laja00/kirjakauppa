@@ -1,5 +1,5 @@
 import { Switch, Route} from 'react-router';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Content from './Content';
 import Footer from './Footer';
@@ -9,7 +9,7 @@ import ShoppingCart from './ShoppingCart';
 
 function App() {
 
-  const [useState, setUseState]  = useState(0);
+  // const [useState, setUseState]  = useState(0);
 
   /* Etusivun lataus
   useEffect(() => {
