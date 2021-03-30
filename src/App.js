@@ -1,5 +1,5 @@
 import { Switch, Route} from 'react-router';
-import {useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import './App.css';
 import Content from './Content';
 import Footer from './Footer';
@@ -7,12 +7,15 @@ import Header from './Header';
 import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
 
+
+const URL = 'http://localhost/kirjakauppa/'
+
 function App() {
 
-  const [useState, setUseState]  = useState(0);
+  // const [useState, setUseState]  = useState(0);
 
-  /* Etusivun lataus
-  useEffect(() => {
+
+  /*useEffect(() => {
     let status = 0; 
     fetch (URL + 'index.php')
       .then(res => {
