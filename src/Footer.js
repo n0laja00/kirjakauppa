@@ -62,9 +62,8 @@ export default function Footer() {
                     </div>
                 </div>
                 <div className="col-4 text-center">
-                    <h4 className="text-center"><u>Kalajoki</u></h4>
                     <div className="mb-4">
-                    <p>Mäntyperäntie 8, 6800</p>
+                    <p>Kalajoki, Mäntyperäntie 8, 6800</p>
                     <p> <i class="fa fa-phone-square" aria-hidden="true"></i> 
                         0440428562</p>
                     <p className="text-muted">Ma-Pe 09:00 - 19:00</p>
@@ -72,7 +71,7 @@ export default function Footer() {
                     </div>
 
                     <div>
-                    <p>Vierivainiontie 10, 85100</p>
+                    <p>Kalajoki, Vierivainiontie 10, 85100</p>
                     <p><i class="fa fa-phone-square" aria-hidden="true"></i>
                         0449623267</p>
                     <p className="text-muted">Ma-Pe 09:00 - 19:00</p>
