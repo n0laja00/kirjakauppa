@@ -16,7 +16,6 @@ export default function Header() {
                 <div className="col-1 col-lg-2">
                     <div className="text-end"><Link className="link" to="/">Home</Link>
                     </div>
-                    {/* tämän col-4:n sisässä ostoskori ja Login */}
                     <div className="text-end">
                         <div className="shopcart_cs">
                             <Link className="link varjo" to="/ShoppingCart">
@@ -36,5 +35,3 @@ export default function Header() {
         </div>
     )
 }
-//  <div className="col-12 text-end">ASD</div>
-//                     <div className="col-12 text-end">ASD</div>
