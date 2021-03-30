@@ -7,12 +7,15 @@ import Header from './Header';
 import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
 
+
+const URL = 'http://localhost/kirjakauppa/'
+
 function App() {
 
   // const [useState, setUseState]  = useState(0);
 
-  /* Etusivun lataus
-  useEffect(() => {
+
+  /*useEffect(() => {
     let status = 0; 
     fetch (URL + 'index.php')
       .then(res => {
