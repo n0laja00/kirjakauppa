@@ -1,4 +1,5 @@
-import { Switch, Route, useState, useEffect } from 'react-router';
+import { Switch, Route} from 'react-router';
+import {useState, useEffect} from 'react';
 import './App.css';
 import Content from './Content';
 import Footer from './Footer';
@@ -10,9 +11,26 @@ function App() {
 
   const [useState, setUseState]  = useState(0);
 
+  /* Etusivun lataus
   useEffect(() => {
-    
-  })
+    let status = 0; 
+    fetch (URL + 'index.php')
+      .then(res => {
+        status = parseInt(res.status);
+        return res.json();
+      })
+      .then(
+        (res) => {
+          if ( status === 200) {
+            setEditList(res);
+          } else {
+            alert(res.error); 
+          }
+        }, (error) => {
+          alert(error);
+        }
+      )
+  }, []);*/
 
   return (
     <div>
