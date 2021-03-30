@@ -1,4 +1,5 @@
-import { Switch, Route, useState, useEffect } from 'react-router';
+import { Switch, Route} from 'react-router';
+import {useState, useEffect} from 'react';
 import './App.css';
 import Content from './Content';
 import Footer from './Footer';
