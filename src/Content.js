@@ -11,7 +11,7 @@ export default function Content() {
                     <div className="col-md-8 col-sm-8 mx-5 mb-5 p-5 customBorder">
                         <h1 className="pb-3">Tervetuloa</h1>
                         <p>Ruotsalainen kirjakauppa on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
-                        <p> Etsi valikoimastamme lempikirjasi ja nauti lukuhetkistä!.</p>
+                        <p> Etsi valikoimastamme lempikirjasi ja nauti lukuhetkistä!</p>
                     </div>
                     <div className="col-2 d-none d-lg-block pb-3"><img src={fpimage} alt="shop" className="img-fluid fpimg d-none d-md-block"></img></div>
                 </div>
