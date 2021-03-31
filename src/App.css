@@ -142,7 +142,8 @@ footer {
 /* footerin yläosa */
 .footer_top {
   height: 40px;
-  border-top: solid black 1px;
+  border-bottom: solid black 1px;
+  margin-bottom: 5px
 }
 
 .footer_top_section {
@@ -203,12 +204,6 @@ footer {
   cursor: pointer;
   border: 1px solid #eee;
   padding: 20px;
-}
-
-@media (max-width: 700px) {
-  .social-list {
-    display: block;
-  }
 }
 
 .facebook {
@@ -342,12 +337,20 @@ footer {
   height: 20em !important;
 }
 
+.map_explanation {
+  display: none;
+}
+
+
 @media only screen and (max-width: 1000px) {
   .map_container {
     display: none;
   }
   .map {
     display: none;
+  }
+  .map_explanation {
+    display: initial;
   }
 }
 
