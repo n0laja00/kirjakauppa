@@ -5,8 +5,8 @@ export default function AllBooks() {
 
     const [books, setBooks] = useState([]);
     const [error, setError] = useState('');
-    const URL = 'http://localhost/projekti/kaikkiKirjat.php';
-    const imgURL = 'http://localhost/projekti/img/'
+    const URL = 'http://localhost/kirjakauppa/kaikkiKirjat.php';
+    // const imgURL = 'http://localhost/projekti/img/'
 
     useEffect(() => {
         fetch(URL)
