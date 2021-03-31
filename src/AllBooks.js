@@ -6,7 +6,7 @@ export default function AllBooks() {
     const [books, setBooks] = useState([]);
     const [error, setError] = useState('');
     const URL = 'http://localhost/kirjakauppa/kaikkiKirjat.php';
-    // const imgURL = 'http://localhost/projekti/img/'
+    const imgURL = 'http://localhost/kirjakauppa/img/'
 
     useEffect(() => {
         fetch(URL)
@@ -35,14 +35,13 @@ export default function AllBooks() {
             </div>
             <div className="row d-flex justify-content-center">
                 {books.map(book => (
-                    <div className="col-5 bookDiv"><img src="{imgURL}+{book.kuva}" /* alt={book.kirjaNimi} */ className="img-fluid"></img>
+                    <div className="col-5 bookDiv"><img src={imgURL + book.kuva} /* alt={book.kirjaNimi} */ className="img-fluid"></img>
                     {book.kirjaNimi}
                     <div>{book.kuvaus}</div>
                     <div>Sivumäärä: {book.sivuNro}</div>
                         <div>Julkaisupäivä: {book.julkaistu}</div>
                         <div><b>Hinta: {book.hinta}</b></div>
                     </div>
-
                 ))}
             </div>
         </div>
