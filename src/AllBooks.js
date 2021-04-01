@@ -1,4 +1,5 @@
 import { useState, useEffect, React } from 'react'
+import { Link } from 'react-router-dom';
 
 
 export default function AllBooks() {
@@ -28,7 +29,6 @@ export default function AllBooks() {
         return null;
     }
 
-
     return (
         <div className="row">
             <div className="col-12 text-center py-4">
@@ -36,23 +36,17 @@ export default function AllBooks() {
             </div>
             <div className="row d-flex justify-content-center">
                 {books.map(book => (
+                    
                     <div class="card col-5 mx-2 my-3 shadow">
                         <img class="card-img-top p-5" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
                         <div class="card-body row">
                             <h5 class="card-title col-sm-8">{book.kirjaNimi}</h5>
                             <h6 class="card-subtitle col-sm-4">{book.hinta}</h6>
                             <div class="card-text cut-text col-sm-12">{book.kuvaus}</div>
-                            <a href="#" class="my-3 btn addToCartBtn col-8">Ostoskoriin</a>
+                            <Link className="link" to={'/'}>
+                                <div class="my-3 btn addToCartBtn col-8">Lue lisää</div></Link>
                         </div>
                     </div>
-
-                    // <div className="col-5 bookDiv"><img src={imgURL + book.kuva} alt={book.kirjaNimi} className="img-fluid"></img>
-                    //     {book.kirjaNimi}
-                    //     <div>{book.kuvaus}</div>
-                    //     <div>Sivumäärä: {book.sivuNro}</div>
-                    //     <div>Julkaisupäivä: {book.julkaistu}</div>
-                    //     <div><b>Hinta: {book.hinta}</b></div>
-                    // </div>
                 ))}
             </div>
         </div>
