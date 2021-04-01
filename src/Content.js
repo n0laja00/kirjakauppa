@@ -4,6 +4,12 @@ import fpimage from './img/frontpgimg.jpg'
 
 export default function Content() {
 
+    //Tässä on kirjat, jotka menee book carouseliin. Ne on tässä vielä ja jos aika riittää tehdään muuttujille niin, että ylläpitäjänä voit valita kuukauden kirjat.
+    const book1 = "Jannen kirja";
+    const book2 = "Terror of London";
+    const book3 = "Maamme Kauneus";
+    const book4 = "Jalkaväen Kauhein Hetki";
+
     return (
         <div className="row">
             <div>
@@ -36,7 +42,7 @@ export default function Content() {
                 </div>
                 <h3>Kuukauden kirjat tms</h3>
                 <div className="row carouselBorder">
-                    <BookCarousel/>
+                    <BookCarousel book1 = {book1} book2 = {book2} book3 = {book3} book4 = {book4}/>
                 </div>
             </div>
         </div>

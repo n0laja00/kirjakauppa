@@ -3,15 +3,16 @@ import 'react-multi-carousel/lib/styles.css';
 import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
-export default function BookCarousel() {
+export default function BookCarousel({book1, book2, book3, book4}) {
     const [books, setBooks] = useState([]);
     const [error, setError] = useState('');
+    
     const URL = 'http://localhost/kirjakauppa/';
-    const imgURL = 'http://localhost/kirjakauppa/img/'
+    const imgURL = 'http://localhost/kirjakauppa/img/';
 
     useEffect(() => {
         let status = 0;
-        fetch(URL + "kaikkikirjat.php")
+        fetch(URL + "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4)
         .then (res => {
          status = parseInt(res.status);
          return res.json();
@@ -92,7 +93,7 @@ export default function BookCarousel() {
                         <p>{book.kirjaNimi}</p>
                         <p>{book.sukunimi} {book.etunimi}</p>
                         <p>{book.julkaisija}</p>
-                        <p>{book.julkaistu}</p>
+                        <p>{book.vuosi}</p>
                     </div>
                 </section>
 
