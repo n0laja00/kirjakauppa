@@ -29,7 +29,7 @@ export default function Header() {
                 </div>
             </div>
             <Navbar />
-            <div className="d-none d-sm-block">
+            <div className="d-none d-lg-block">
                 <SearchBar />
             </div>
         </div>

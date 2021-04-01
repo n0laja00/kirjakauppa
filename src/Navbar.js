@@ -4,22 +4,21 @@ import SearchBar from './Searchbar'
 
 export default function Navbar() {
     return (
+        <div className="row">
 
-        <nav class="navbar navbar-expand-lg navbar-light">
+        <nav class="navbar navbar-expand-lg navbar-light col-sm">
 
             {/* <a class="navbar-brand" href="#">Navbar</a> */}
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse row" id="navbarNavDropdown">
-                {/* tämä col-2, että nav ikonit on keskellä XD */}
                 <div className="col-2 d-none d-lg-block"></div>
                 <ul class="navbar-nav navbar col-1 col-sm-2 col-lg-8">
                     <Link className="link mb-2 mb-lg-0" to="/AllBooks">
                         <li class="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i>
-                               
                                 <div>Kaikki kirjat</div>
                             </div>
                         </li>
@@ -82,10 +81,10 @@ export default function Navbar() {
                     </Link>
                 </ul>
             </div>
-            <div className="d-block d-sm-none">
-                <SearchBar />
-            </div>
+                <div className="d-block d-lg-none col justify-content-center">
+                    <SearchBar />
+                </div>
         </nav>
-
+        </div>
     )
 }
