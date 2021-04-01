@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export default function AllBooks() {
 
     const [books, setBooks] = useState([]);
+    const [booksLength, setBooksLength] = useState(0);
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(true);
     const URL = 'http://localhost/kirjakauppa/kaikkiKirjat.php';
@@ -17,6 +18,7 @@ export default function AllBooks() {
                 (result) => {
                     setBooks(result);
                     setIsLoaded(true);
+                    setBooksLength(result.length)
                 }, (error) => {
                     setError(error);
                     setIsLoaded(false);
@@ -34,9 +36,9 @@ export default function AllBooks() {
             <div className="col-12 text-center py-4">
                 <h1>Kaikki kirjat</h1>
             </div>
-            <div className="row d-flex justify-content-center">
+            <div className="row justify-content-center p-5">
                 {books.map(book => (
-                    <div class="card col-5 mx-2 my-3 cardHover">
+                    <div class="card col-sm-5 mx-2 my-3 cardHover">
                         <img class="card-img-top p-4" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
                         <div class="row">
                             <h5 class="card-title col-12">{book.kirjaNimi}</h5>
