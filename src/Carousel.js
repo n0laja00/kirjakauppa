@@ -1,9 +1,36 @@
-import React from 'react';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
 export default function BookCarousel() {
+    const [books, setBooks] = useState([]);
+    const [error, setError] = useState('');
+    const URL = 'http://localhost/kirjakauppa/';
+    const imgURL = 'http://localhost/kirjakauppa/img/'
+
+    useEffect(() => {
+        let status = 0;
+        fetch(URL + "kaikkikirjat.php")
+        .then (res => {
+         status = parseInt(res.status);
+         return res.json();
+        })
+        .then(
+          (res) => {
+     
+            if(status === 200) {
+           setBooks(res);
+           } else {
+             alert(res.error);
+           }
+     
+          }, (error) => {
+           alert("An error has occurred, please try again later.");
+          }
+        )
+      }, [])
+
     const responsive = {
         desktop: {
           breakpoint: { max: 3000, min: 1024 },
@@ -50,93 +77,31 @@ export default function BookCarousel() {
         infinite={true}
         removeArrowOnDeviceType={["tablet", "mobile"]} >
 
-        <div className="book_divider light_brown">
-            <section className="float_container">
-                <div className="float_child_book_img">
-                <img
-                    className="d-block w-100"
-                    src={require('./img/eka.png').default}
-                    alt="First slide"
-                />
-                </div>
-                <div className="float_child col-sm-auto">
-                    <p>Nimi</p>
-                    <p>Kirjoittaja</p>
-                    <p>Julkaisija</p>
-                    <p>Vuosi</p>
-                </div>
-            </section>
+                
+        {books.map(book => (
+            <div className="book_divider light_brown">
+                <section className="float_container">
+                    <div className="float_child_book_img">
+                    <img
+                        className="d-block w-100"
+                        src={imgURL + book.kuva}
+                        alt="Kirjan kuva"
+                    />
+                    </div>
+                    <div className="float_child col-sm-auto">
+                        <p>{book.kirjaNimi}</p>
+                        <p>{book.sukunimi} {book.etunimi}</p>
+                        <p>{book.julkaisija}</p>
+                        <p>{book.julkaistu}</p>
+                    </div>
+                </section>
 
-            <section className="book_description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
-            </section>
-        </div>
+                <section className="book_description">
+                    <p>{book.kuvaus}</p>
+                </section>
+            </div>
+            ))}
 
-        <div className="book_divider light_brown">
-            <section className="float_container">
-                <div className="float_child_book_img">
-                <img
-                    className="d-block w-100"
-                    src={require('./img/toka.png').default}
-                    alt="First slide"
-                />
-                </div>
-                <div className="float_child">
-                    <p>Nimi</p>
-                    <p>Kirjoittaja</p>
-                    <p>Julkaisija</p>
-                    <p>Vuosi</p>
-                </div>
-            </section>
-
-            <section className="book_description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
-            </section>
-        </div>
-
-        <div className="book_divider light_brown">
-            <section className="float_container">
-                <div className="float_child_book_img">
-                <img
-                    className="d-block w-100"
-                    src={require('./img/kolmas.png').default}
-                    alt="First slide"
-                />
-                </div>
-                <div className="float_child">
-                    <p>Nimi</p>
-                    <p>Kirjoittaja</p>
-                    <p>Julkaisija</p>
-                    <p>Vuosi</p>
-                </div>
-            </section>
-
-            <section className="book_description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
-            </section>
-        </div>
-
-        <div className="book_divider light_brown">
-            <section className="float_container">
-                <div className="float_child_book_img">
-                <img
-                    className="d-block w-100"
-                    src={require('./img/eka.png').default}
-                    alt="First slide"
-                />
-                </div>
-                <div className="float_child">
-                    <p>Nimi</p>
-                    <p>Kirjoittaja</p>
-                    <p>Julkaisija</p>
-                    <p>Vuosi</p>
-                </div>
-            </section>
-
-            <section className="book_description">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolor maiores, minus, ducimus animi voluptatibus fugiat, earum esse rem eveniet veritatis quia! Maxime suscipit ratione saepe sed dolor aperiam velit accusamus, earum optio excepturi facilis iste modi illum libero natus ipsam accusantium!</p>
-            </section>
-        </div>
         </Carousel>
     )
 }
