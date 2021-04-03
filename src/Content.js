@@ -46,7 +46,7 @@ export default function Content() {
                 </div>
                 <h3>Uutuudet</h3>
                 <div className="row carouslBorder">
-                <BookCarousel kanta= "uutuudet"/>
+                    <BookCarousel kanta= "uutuudet"/>
                 </div>
             </div>
         </div>
