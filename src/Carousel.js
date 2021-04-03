@@ -3,16 +3,23 @@ import 'react-multi-carousel/lib/styles.css';
 import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
-export default function BookCarousel({book1, book2, book3, book4}) {
+export default function BookCarousel({book1, book2, book3, book4, kanta}) {
     const [books, setBooks] = useState([]);
-    const [error, setError] = useState('');
-    
+    let selectedPHP = "";
     const URL = 'http://localhost/kirjakauppa/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
 
+    
     useEffect(() => {
         let status = 0;
-        fetch(URL + "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4)
+
+        if (kanta = "valitut") {
+          selectedPHP = "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4}
+        if (kanta = "uutuudet") {
+          selectedPHP = "uutuusKirjat.php"
+        }
+
+        fetch(URL + selectedPHP)
         .then (res => {
          status = parseInt(res.status);
          return res.json();
@@ -69,6 +76,7 @@ export default function BookCarousel({book1, book2, book3, book4}) {
         return <img aria-label="Mene seuraavaan diaan" className="custom_left_arrow"
         src={require('./custom_carousel/arrow-left.png').default} onClick={() => onClick()} />;
       };
+
     return(
         <Carousel 
         customRightArrow={<CustomRightArrow />}

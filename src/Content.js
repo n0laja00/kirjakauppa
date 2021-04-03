@@ -42,7 +42,11 @@ export default function Content() {
                 </div>
                 <h3>Kuukauden kirjat tms</h3>
                 <div className="row carouselBorder">
-                    <BookCarousel book1 = {book1} book2 = {book2} book3 = {book3} book4 = {book4}/>
+                    <BookCarousel kanta = "valitut" book1 = {book1} book2 = {book2} book3 = {book3} book4 = {book4} />
+                </div>
+                <h3>Uutuudet</h3>
+                <div className="row carouslBorder">
+                <BookCarousel kanta= "uutuudet"/>
                 </div>
             </div>
         </div>

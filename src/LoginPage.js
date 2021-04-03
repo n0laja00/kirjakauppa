@@ -7,6 +7,7 @@ export default function LoginPage() {
                 <input className="form-control mt-2" type="text" placeholder="account/email"></input>
                 <input className="form-control mt-2" type="password" placeholder="password"></input>
             <button className="loginButton mt-3 px-5">Login</button>
+            
         </div>
         </div>
         
