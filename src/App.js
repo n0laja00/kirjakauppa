@@ -10,8 +10,6 @@ import AllBooks from './AllBooks';
 import Navbar from './Navbar';
 
 
-const URL = 'http://localhost/kirjakauppa/'
-
 function App() {
   const [category, setCategory] = useState(null);
 
