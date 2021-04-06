@@ -8,6 +8,7 @@ import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
 import Navbar from './Navbar';
+import BookDetails from './BookDetails';
 
 
 const URL = 'http://localhost/kirjakauppa/'
@@ -53,13 +54,11 @@ function App() {
           <Route path="/" component={Content} exact />
           <Route path="/LoginPage" component={LoginPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
-
           <Route path="/Navbar" component={Navbar} setCategory={setCategory} />
-
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} />}
             exact />
-            <Route path="/BookDetails" />
+            <Route path="/BookDetails" component={BookDetails}/>
         </Switch>
       </main>
       <div className="container bottomBg">
