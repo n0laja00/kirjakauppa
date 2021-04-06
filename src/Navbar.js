@@ -33,8 +33,8 @@ export default function Navbar({setCategory}) {
             <div className="collapse navbar-collapse row" id="navbarNavDropdown">
                 <div className="col-2 d-none d-lg-block"></div>
                 <ul className="navbar-nav navbar col-1 col-sm-2 col-lg-8 pe-0">
-                    <li key={"Kaikki kirjat"} className="nav-item border-xs-bottom border-lg-bottom-0 border-md-right border-lg-right-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Kaikki kirjat"} className="nav-item border-xs-bottom border-lg-bottom-0 border-md-right border-lg-right-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -71,8 +71,8 @@ export default function Navbar({setCategory}) {
                         </li>
                     ))} */}
 
-                    <li key={"Tietokirjallisuus"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Tietokirjallisuus"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -88,8 +88,8 @@ export default function Navbar({setCategory}) {
                         </Link>
                     </li>
 
-                    <li key={"Toiminta"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Toiminta"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -105,8 +105,8 @@ export default function Navbar({setCategory}) {
                         </Link>
                     </li>
 
-                    <li key={"Sci-fi ja Fantasia"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Sci-fi ja Fantasia"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -122,8 +122,8 @@ export default function Navbar({setCategory}) {
                         </Link>
                     </li>
 
-                    <li key={"Oppikirjat"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Oppikirjat"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -139,8 +139,8 @@ export default function Navbar({setCategory}) {
                         </Link>
                     </li>
 
-                    <li key={"Kauhu ja Trilleri"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Kauhu ja Trilleri"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -156,8 +156,8 @@ export default function Navbar({setCategory}) {
                         </Link>
                     </li>
 
-                    <li key={"Romantiikka"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Romantiikka"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
@@ -173,8 +173,8 @@ export default function Navbar({setCategory}) {
                         </Link>
                     </li>
 
-                    <li key={"Lastenkirjat"} className="nav-item border-xs-bottom border-lg-bottom-0">
-                        <Link className="link mb-2 mb-lg-0" 
+                    <li key={"Lastenkirjat"} className="nav-item border-xs-bottom border-lg-bottom-0 mb-2 mb-lg-0">
+                        <Link className="link" 
                             to={{
                                 pathname: '/AllBooks',
                                 state: {
