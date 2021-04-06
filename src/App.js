@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation} from 'react-router';
+import { Switch, Route, useLocation } from 'react-router';
 import { useState, useEffect } from 'react';
 import './App.css';
 import Content from './Content';
@@ -18,8 +18,8 @@ function App() {
   let location = useLocation();
 
   useEffect(() => {
-    if (location.state!==undefined) {
-      setCategory({id: location.state.id,name: location.state.name});
+    if (location.state !== undefined) {
+      setCategory({ id: location.state.id, name: location.state.name });
     }
   }, [location.state]);
 
@@ -48,24 +48,24 @@ function App() {
   return (
     <div>
       <main className="container pb-5">
-        <Header/>
+        <Header />
         <Switch>
-          <Route path="/" component={Content} exact/>
-          <Route path="/LoginPage" component={LoginPage} /> 
+          <Route path="/" component={Content} exact />
+          <Route path="/LoginPage" component={LoginPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
 
-          <Route path="/Navbar" component={Navbar} setCategory={setCategory}/>
+          <Route path="/Navbar" component={Navbar} setCategory={setCategory} />
 
           <Route path="/AllBooks" render={() => <AllBooks
-            category={category}/>}
-            exact
-          />
+            category={category} />}
+            exact />
+            <Route path="/BookDetails" />
         </Switch>
       </main>
       <div className="container bottomBg">
         <Footer />
       </div>
-  </div>
+    </div>
   );
 }
 

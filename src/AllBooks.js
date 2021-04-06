@@ -33,10 +33,10 @@ export default function AllBooks({category}) {
             )
     }, [category])
 
-    if (!isLoaded) {
+/*     if (!isLoaded) {
         alert(error);
         return <div>Loading...</div>;
-    }
+    } */
 
     return (
         <div className="row">
@@ -53,7 +53,7 @@ export default function AllBooks({category}) {
                             <h5 class="card-title col-12">{book.kirjaNimi}</h5>
                             <div class="card-text cut-text col-sm-12">{book.kuvaus}</div>
                             <h5 class="card-subtitle col-md-12 text-end p-3">{book.hinta} €</h5>
-                            <Link className="link" to={'/'}>
+                            <Link className="link" to={'/BookDetails'} className="text-center">
                                 <div class="my-3 btn addToCartBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
                             </Link>
                         </div>
