@@ -14,8 +14,6 @@ export default function Header() {
                     <h2>Ruotsalainen kirjakauppa</h2>
                 </div>
                 <div className="col-1 col-lg-2">
-                    <div className="text-end"><Link className="link" to="/">Home</Link>
-                    </div>
                     <div className="text-end">
                         <div className="shopcart_cs">
                             <Link className="link varjo" to="/ShoppingCart">
