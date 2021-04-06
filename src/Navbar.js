@@ -49,7 +49,7 @@ export default function Navbar({setCategory}) {
                         </li>
                     </Link>
 
-                    {categories.map(category =>(
+                    {/* {categories.map(category =>(
                         <li key={category.kategoria} className="nav-item border-xs-bottom border-lg-bottom-0">
                             <Link 
                                 className="link mb-2 mb-lg-0" 
@@ -67,9 +67,16 @@ export default function Navbar({setCategory}) {
                                 </div>
                             </Link>
                         </li>
-                    ))}
+                    ))} */}
 
-                    {/* <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "1",
+                                    name: "Tietokirjallisuus"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-book fa-2x"></i>
@@ -77,7 +84,14 @@ export default function Navbar({setCategory}) {
                             </div>
                         </li>
                     </Link>
-                    <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "2",
+                                    name: "Toiminta"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-exclamation fa-2x "></i>
@@ -85,7 +99,14 @@ export default function Navbar({setCategory}) {
                             </div>
                         </li>
                     </Link>
-                    <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "3",
+                                    name: "Sci-fi ja Fantasia"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-magic fa-2x"></i>
@@ -93,7 +114,14 @@ export default function Navbar({setCategory}) {
                             </div>
                         </li>
                     </Link>
-                    <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "4",
+                                    name: "Oppikirjat"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-mortar-board fa-2x"></i>
@@ -101,7 +129,14 @@ export default function Navbar({setCategory}) {
                             </div>
                         </li>
                     </Link>
-                    <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "5",
+                                    name: "Kauhu ja Trilleri"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-user-secret fa-2x"></i>
@@ -109,7 +144,14 @@ export default function Navbar({setCategory}) {
                             </div>
                         </li>
                     </Link>
-                    <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "6",
+                                    name: "Romantiikka"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-heart fa-2x"></i>
@@ -117,14 +159,21 @@ export default function Navbar({setCategory}) {
                             </div>
                         </li>
                     </Link>
-                    <Link className="link mb-2 mb-lg-0" to="/AllBooks">
+                    <Link className="link mb-2 mb-lg-0" 
+                        to={{
+                                pathname: '/AllBooks',
+                                state: {
+                                    id: "7",
+                                    name: "Lastenkirjat"
+                                }
+                            }}>
                         <li className="nav-item border-xs-bottom border-lg-bottom-0">
                             <div className="text-center">
                                 <i className="fa fa-map-pin fa-2x"></i>
                                 <div>Lastenkirjat</div>
                             </div>
                         </li>
-                    </Link> */}
+                    </Link>
                 </ul>
             </div>
                 <div className="d-block d-lg-none col justify-content-center">
