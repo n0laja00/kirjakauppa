@@ -8,7 +8,7 @@ export default function Header() {
         <div className="row header py-3 shadow">
             <div className="row">
                 <div className="col-4 col-lg-3 col-xl-2">
-                    <a><img src={require('./img/logo.png').default} alt="logo"/></a>
+                    <Link to="/"><img src={require('./img/logo.png').default} alt="logo"/></Link>
                 </div>
                 <div className="col-7 col-xl-8 d-flex align-items-center">
                     <h2>Ruotsalainen kirjakauppa</h2>
