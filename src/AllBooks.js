@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 
 export default function AllBooks({category}) {
-    // const [title, setTitle] = useState([]);
     const [books, setBooks] = useState([]);
-    const [booksLength, setBooksLength] = useState(0);
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(true);
     const URL1 = 'http://localhost/kirjakauppa/yksiKategoria.php/';
@@ -17,14 +15,9 @@ export default function AllBooks({category}) {
             return;
         }
         
-
         let address = URL1 + category?.id;
-        console.log('testi',category?.id, category?.name)
-
         if (category?.id === "22") {
             address = URL2;
-        } else {
-            
         }
 
         fetch(address)
@@ -33,7 +26,6 @@ export default function AllBooks({category}) {
                 (result) => {
                     setBooks(result);
                     setIsLoaded(true);
-                    setBooksLength(result.length)
                 }, (error) => {
                     setError(error);
                     setIsLoaded(false);
