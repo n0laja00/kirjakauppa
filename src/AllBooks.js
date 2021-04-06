@@ -1,18 +1,33 @@
-import { useState, useEffect, React } from 'react'
+import { useState, useEffect, React, useLocation } from 'react'
 import { Link } from 'react-router-dom';
 
 
-export default function AllBooks() {
-
+export default function AllBooks({category}) {
+    // const [title, setTitle] = useState([]);
     const [books, setBooks] = useState([]);
     const [booksLength, setBooksLength] = useState(0);
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(true);
-    const URL = 'http://localhost/kirjakauppa/kaikkiKirjat.php';
+    const URL1 = 'http://localhost/kirjakauppa/yksiKategoria.php/';
+    const URL2 = 'http://localhost/kirjakauppa/kaikkiKirjat.php/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
 
     useEffect(() => {
-        fetch(URL)
+        if (category?.id === undefined) {
+            return;
+        }
+        
+
+        let address = URL1 + category?.id;
+        console.log('testi',category?.id, category?.name)
+
+        if (category?.id === "22") {
+            address = URL2;
+        } else {
+            
+        }
+
+        fetch(address)
             .then(response => response.json())
             .then(
                 (result) => {
@@ -24,7 +39,17 @@ export default function AllBooks() {
                     setIsLoaded(false);
                 }
             )
-    }, [])
+            // .then(
+            //     (result) => {
+            //         if (setBooksLength === 1) {
+            //         setTitle(result);
+            //       } else {
+            //         setTitle(['Kaikki kirjat']);
+            //       }
+            //     }
+                
+            // )
+    }, [category])
 
     if (!isLoaded) {
         alert(error);
@@ -34,7 +59,9 @@ export default function AllBooks() {
     return (
         <div className="row">
             <div className="col-12 text-center py-4">
-                <h1>Kaikki kirjat</h1>
+                {books.map(title => (
+                    <h1>{title.kategoria}</h1>
+                ))}
             </div>
             <div className="row justify-content-center p-5">
                 {books.map(book => (
