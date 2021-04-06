@@ -3,23 +3,17 @@ import 'react-multi-carousel/lib/styles.css';
 import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
-export default function BookCarousel({book1, book2, book3, book4, kanta}) {
+export default function BookCarousel({bookdata}) {
     const [books, setBooks] = useState([]);
-    let selectedPHP = "";
     const URL = 'http://localhost/kirjakauppa/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
+
 
     
     useEffect(() => {
         let status = 0;
 
-        if (kanta = "valitut") {
-          selectedPHP = "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4}
-        if (kanta = "uutuudet") {
-          selectedPHP = "uutuusKirjat.php"
-        }
-
-        fetch(URL + selectedPHP)
+        fetch(URL + bookdata)
         .then (res => {
          status = parseInt(res.status);
          return res.json();

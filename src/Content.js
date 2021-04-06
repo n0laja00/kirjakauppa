@@ -9,6 +9,8 @@ export default function Content() {
     const book2 = "Terror of London";
     const book3 = "Maamme Kauneus";
     const book4 = "Jalkaväen Kauhein Hetki";
+    const selected = "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4;
+    const newbooks =  "uutuusKirjat.php";
 
     return (
         <div className="row">
@@ -42,11 +44,11 @@ export default function Content() {
                 </div>
                 <h3>Kuukauden kirjat tms</h3>
                 <div className="row carouselBorder">
-                    <BookCarousel kanta = "valitut" book1 = {book1} book2 = {book2} book3 = {book3} book4 = {book4} />
+                    <BookCarousel bookdata = {selected} />
                 </div>
                 <h3>Uutuudet</h3>
                 <div className="row carouslBorder">
-                    <BookCarousel kanta= "uutuudet"/>
+                    <BookCarousel bookdata = {newbooks}/>
                 </div>
             </div>
         </div>
