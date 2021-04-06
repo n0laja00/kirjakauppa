@@ -1,5 +1,6 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import uuid from "react-uuid"
 import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
@@ -52,21 +53,11 @@ export default function BookCarousel({bookdata}) {
       };
 
       //Book carousel arrows
-      const CustomRightArrow = ({ onClick, ...rest }) => {
-        const {
-          onMove,
-          carouselState: { currentSlide, deviceType }
-        } = rest;
-        // onMove means if dragging or swiping in progress.
+      const CustomRightArrow = ({ onClick }) => {
         return <img aria-label="Mene seuraavaan diaan" className="custom_right_arrow"
         src={require('./custom_carousel/arrow-right.png').default} onClick={() => onClick()} />;
       };
-      const CustomLeftArrow = ({ onClick, ...rest }) => {
-        const {
-          onMove,
-          carouselState: { currentSlide, deviceType }
-        } = rest;
-        // onMove means if dragging or swiping in progress.
+      const CustomLeftArrow = ({ onClick }) => {
         return <img aria-label="Mene seuraavaan diaan" className="custom_left_arrow"
         src={require('./custom_carousel/arrow-left.png').default} onClick={() => onClick()} />;
       };
@@ -82,7 +73,7 @@ export default function BookCarousel({bookdata}) {
 
                 
         {books.map(book => (
-            <div className="book_divider light_brown">
+            <div className="book_divider light_brown" key={uuid()}>
                 <section className="float_container">
                     <div className="float_child_book_img">
                     <img
@@ -92,7 +83,7 @@ export default function BookCarousel({bookdata}) {
                     />
                     </div>
                     <div className="float_child col-sm-auto">
-                        <p>{book.kirjaNimi}</p>
+                        <p className="cut-text">{book.kirjaNimi}</p>
                         <p>{book.sukunimi} {book.etunimi}</p>
                         <p>{book.julkaisija}</p>
                         <p>{book.vuosi}</p>
@@ -100,7 +91,7 @@ export default function BookCarousel({bookdata}) {
                 </section>
 
                 <section className="book_description">
-                    <p>{book.kuvaus}</p>
+                    <p className="cut-text">{book.kuvaus}</p>
                 </section>
             </div>
             ))}

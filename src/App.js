@@ -11,8 +11,6 @@ import Navbar from './Navbar';
 import BookDetails from './BookDetails';
 
 
-const URL = 'http://localhost/kirjakauppa/'
-
 function App() {
   const [category, setCategory] = useState(null);
 
