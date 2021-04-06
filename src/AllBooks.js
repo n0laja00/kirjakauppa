@@ -1,4 +1,4 @@
-import { useState, useEffect, React, useLocation } from 'react'
+import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
 
 
@@ -31,16 +31,6 @@ export default function AllBooks({category}) {
                     setIsLoaded(false);
                 }
             )
-            // .then(
-            //     (result) => {
-            //         if (setBooksLength === 1) {
-            //         setTitle(result);
-            //       } else {
-            //         setTitle(['Kaikki kirjat']);
-            //       }
-            //     }
-                
-            // )
     }, [category])
 
     if (!isLoaded) {
