@@ -39,7 +39,7 @@ export default function BookDetails() {
                 {book.map(el => (
                     <div className="row" key={el.kirjaNro}>
                         <div className="row">
-                            <h1 className="col-12 px-5 my-4 text-center">{el.kirjaNimi}</h1>
+                            <h1 className="col-12 px-5 my-4">{el.kirjaNimi}</h1>
                         </div>
                         <div className="row">
                             <div className="col-sm-6">
