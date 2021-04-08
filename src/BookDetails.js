@@ -29,12 +29,10 @@ export default function BookDetails() {
     if (!isLoaded) {
         //tähän jotain jos tulee virhe
         console.log(error);
-        return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
+        return <div className="row text-center pt-5">
+            <h2>Loading...</h2>
+        </div>;
     } else {
-
-
-
-
         return (
             <>
                 {book.map(el => (
