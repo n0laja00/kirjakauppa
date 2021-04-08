@@ -2,8 +2,6 @@ import React from 'react'
 import Navbar from './Navbar'
 import SearchBar from './Searchbar'
 import { Link } from 'react-router-dom'
-import { Switch, Route, useLocation} from 'react-router';
-
 
 export default function Header() {
     return (
