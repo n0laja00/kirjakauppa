@@ -13,7 +13,7 @@ const AddToCart = ({item}) => {
 
     return ( 
         <form onSubmit={handleSubmit}>
-            <input type="submit" value={item.kirjaNro} onClick={(e) => setKirjaNumero(e.target.value)}></input>
+            <button className="btn btn-primary m-3 col-8" type="submit" value={item.kirjaNro} onClick={(e) => setKirjaNumero(e.target.value)}>Lisää Ostoskoriin</button>
         </form>
      );
 }

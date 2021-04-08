@@ -7,8 +7,10 @@ import CartDetails from './CartDetails';
 const CartList = () => {
     const { cart } = useContext(CartContext);
     useEffect(() => {
-        console.log(" terve CartLististä");
+        console.log(cart);
+
     }, []);
+
 
     return cart.length ? ( 
         <div className = "cart-list">
@@ -17,7 +19,9 @@ const CartList = () => {
                     return ( <CartDetails item={item} key={item.id} />)
                 })}
             </ul>
-
+            <div className="col-12 text-end">
+                total Cost: 
+            </div>
         </div>
      ) : (
          <div className="empty"> Ei kirjoja! </div>

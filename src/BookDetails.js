@@ -1,5 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import AddToCart from './cartComponents/AddToCart';
+import CartContextProvider from './contexts/CartContext';
 
 export default function BookDetails() {
 
@@ -51,7 +53,11 @@ export default function BookDetails() {
                                     <h3 className="col-sm-12">Kuvaus</h3>
                                     <div className="col-sm-12">{el.kuvaus}</div>
                                     <div className="mt-4 col-sm-6">Hinta: {el.hinta} €</div>
-                                    <button className="btn btn-primary m-3 col-8">Ostoskoriin</button>
+                                    <div className="text-center">
+                                        <CartContextProvider>
+                                            <AddToCart item={el}/>
+                                        </CartContextProvider>
+                                    </div>
                                 </div>
                                 <div className="customBorder bottomBg p-4 my-3">
                                     <h3 className="col-12">Kirjan tiedot</h3>

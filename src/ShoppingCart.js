@@ -12,7 +12,6 @@ const ShoppingCart = () => {
                 <h3 className="text-primary">Ostoskori</h3>
                 <CartContextProvider>
                     <CartList/> 
-                    <TestAddItem/>
                 </CartContextProvider>
                 
             </div>
