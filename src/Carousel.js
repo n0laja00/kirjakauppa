@@ -1,25 +1,22 @@
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
+import uuid from "react-uuid"
 import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
-export default function BookCarousel({book1, book2, book3, book4, kanta}) {
+export default function BookCarousel({bookdata}) {
+  // Bookdata kertoo, mitä PHP tiedostoa käytetään.
+  // Books ja setBooks sisältää PHP tiedostosta SQL haulla saadut kirjat. 
     const [books, setBooks] = useState([]);
-    let selectedPHP = "";
     const URL = 'http://localhost/kirjakauppa/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
+
 
     
     useEffect(() => {
         let status = 0;
 
-        if (kanta = "valitut") {
-          selectedPHP = "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4}
-        if (kanta = "uutuudet") {
-          selectedPHP = "uutuusKirjat.php"
-        }
-
-        fetch(URL + selectedPHP)
+        fetch(URL + bookdata)
         .then (res => {
          status = parseInt(res.status);
          return res.json();
@@ -37,7 +34,7 @@ export default function BookCarousel({book1, book2, book3, book4, kanta}) {
            alert("An error has occurred, please try again later.");
           }
         )
-      }, [])
+      }, [bookdata])
 
     const responsive = {
         desktop: {
@@ -58,21 +55,11 @@ export default function BookCarousel({book1, book2, book3, book4, kanta}) {
       };
 
       //Book carousel arrows
-      const CustomRightArrow = ({ onClick, ...rest }) => {
-        const {
-          onMove,
-          carouselState: { currentSlide, deviceType }
-        } = rest;
-        // onMove means if dragging or swiping in progress.
+      const CustomRightArrow = ({ onClick }) => {
         return <img aria-label="Mene seuraavaan diaan" className="custom_right_arrow"
         src={require('./custom_carousel/arrow-right.png').default} onClick={() => onClick()} />;
       };
-      const CustomLeftArrow = ({ onClick, ...rest }) => {
-        const {
-          onMove,
-          carouselState: { currentSlide, deviceType }
-        } = rest;
-        // onMove means if dragging or swiping in progress.
+      const CustomLeftArrow = ({ onClick }) => {
         return <img aria-label="Mene seuraavaan diaan" className="custom_left_arrow"
         src={require('./custom_carousel/arrow-left.png').default} onClick={() => onClick()} />;
       };
@@ -86,9 +73,9 @@ export default function BookCarousel({book1, book2, book3, book4, kanta}) {
         infinite={true}
         removeArrowOnDeviceType={["tablet", "mobile"]} >
 
-                
+        {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
-            <div className="book_divider light_brown">
+            <div className="book_divider light_brown" key={uuid()}>
                 <section className="float_container">
                     <div className="float_child_book_img">
                     <img
@@ -98,7 +85,7 @@ export default function BookCarousel({book1, book2, book3, book4, kanta}) {
                     />
                     </div>
                     <div className="float_child col-sm-auto">
-                        <p>{book.kirjaNimi}</p>
+                        <p className="cut-text mt-1">{book.kirjaNimi}</p>
                         <p>{book.sukunimi} {book.etunimi}</p>
                         <p>{book.julkaisija}</p>
                         <p>{book.vuosi}</p>
@@ -106,7 +93,7 @@ export default function BookCarousel({book1, book2, book3, book4, kanta}) {
                 </section>
 
                 <section className="book_description">
-                    <p>{book.kuvaus}</p>
+                    <p className="cut-text">{book.kuvaus}</p>
                 </section>
             </div>
             ))}

@@ -3,7 +3,7 @@ import Navbar from './Navbar'
 import SearchBar from './Searchbar'
 import { Link } from 'react-router-dom'
 import { Switch, Route, useLocation} from 'react-router';
-import Dummytest from './Dummytest';
+
 
 export default function Header() {
     return (
@@ -18,8 +18,6 @@ export default function Header() {
                     <h2>Ruotsalainen kirjakauppa</h2>
                 </div>
                 <div className="col-1 col-lg-2">
-                    <div className="text-end"><Link className="link" to="/">Home</Link>
-                    </div>
                     <div className="text-end">
                         
                         <div className="shopcart_cs">
@@ -28,7 +26,7 @@ export default function Header() {
                             </Link>
                             <div>
                                 <Link className="link" to="/LoginPage">Login</Link>
-                                <Dummytest/>
+                                <Link className="link" to="/AddItem">Lisää kirja</Link>
                             </div>
                         </div>
                     </div>
