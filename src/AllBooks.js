@@ -40,6 +40,7 @@ export default function AllBooks({category}) {
         <div className="row">
             <div className="col-12 text-center py-4">
                     <h1>{category?.name}</h1>
+                    <Link className="link" to="/AddItem">Lisää kirja</Link>
             </div>
             <div className="row justify-content-center p-5">
                 {books.map(book => (

@@ -21,12 +21,12 @@ export default function Header() {
                     <div className="text-end">
                         
                         <div className="shopcart_cs">
+                            
                             <Link className="link varjo" to="/ShoppingCart">
                                 <i className="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
                             </Link>
                             <div>
                                 <Link className="link" to="/LoginPage">Login</Link>
-                                <Link className="link" to="/AddItem">Lisää kirja</Link>
                             </div>
                         </div>
                     </div>

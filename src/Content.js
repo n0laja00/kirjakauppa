@@ -2,6 +2,7 @@ import React from 'react'
 import BookCarousel from './Carousel'
 import fpimage from './img/frontpgimg.jpg'
 
+
 export default function Content() {
 
     //Tässä on kirjat, jotka menee book carouseliin. Ne on tässä vielä ja jos aika riittää tehdään muuttujille niin, että ylläpitäjänä voit valita kuukauden kirjat.
@@ -14,6 +15,7 @@ export default function Content() {
 
     return (
         <div className="row">
+            
             <div>
                 <div className="row py-5 d-flex justify-content-center">
                     <div className="col-md-8 col-sm-8 mx-5 mb-5 p-5 customBorder">
