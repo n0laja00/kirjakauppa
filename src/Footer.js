@@ -24,7 +24,7 @@ export default function Footer() {
                             <li>
                                 <div class="maincard">
                                     <div class="thecard">
-                                        <a href="facebook.com">
+                                        <a target="_blank" href="https://www.facebook.com/">
                                             <div class="thefront text-center facebook">
                                                 <div class="social-icon"> <i class="fa fa-facebook fa-2x"></i> </div>
                                             </div>
@@ -35,7 +35,7 @@ export default function Footer() {
                             <li>
                                 <div class="maincard">
                                     <div class="thecard">
-                                        <a href="instagram.com">
+                                        <a target="_blank" href="https://www.instagram.com">
                                             <div class="thefront text-center instagram">
                                                 <div class="social-icon"> <i class="fa fa-instagram fa-2x"></i> </div>
                                             </div>
@@ -46,7 +46,7 @@ export default function Footer() {
                             <li>
                                 <div class="maincard ">
                                     <div class="thecard">
-                                        <a href="youtube.com">
+                                        <a target="_blank" href="https://www.youtube.com/">
                                             <div class="thefront text-center youtube">
                                                 <div class="social-icon"> <i class="fa fa-youtube fa-2x"></i> </div>
                                             </div>

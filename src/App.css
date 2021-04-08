@@ -378,3 +378,13 @@ box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
 border-radius: 20px;
 border: 1px solid rgb(0, 0, 0, .5);
 }
+
+/* AddItem tuotteen lisääminen */
+
+.addItemContainer {
+  padding: 20px;
+}
+
+.addItemForm {
+  background-color: #ffc444cc;
+}

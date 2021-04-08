@@ -5,6 +5,8 @@ import { useState, useEffect, React } from 'react'
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
 export default function BookCarousel({bookdata}) {
+  // Bookdata kertoo, mitä PHP tiedostoa käytetään.
+  // Books ja setBooks sisältää PHP tiedostosta SQL haulla saadut kirjat. 
     const [books, setBooks] = useState([]);
     const URL = 'http://localhost/kirjakauppa/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
@@ -71,7 +73,7 @@ export default function BookCarousel({bookdata}) {
         infinite={true}
         removeArrowOnDeviceType={["tablet", "mobile"]} >
 
-                
+        {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
             <div className="book_divider light_brown" key={uuid()}>
                 <section className="float_container">
