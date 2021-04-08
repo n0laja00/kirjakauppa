@@ -13,12 +13,22 @@ export default function AllBooks({ category }) {
     const URL2 = 'http://localhost/kirjakauppa/kaikkiKirjat.php/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
 
-    useEffect(() => {
-        if (category?.id === undefined) {
-            return;
+    function title () {
+        if (category?.name === undefined) {
+            let otsikko = "Kaikki kirjat";
+            return otsikko;
+        } else {
+            let otsikko = category?.name;
+            return otsikko;
         }
+    }
+
+    useEffect(() => {
         let address = URL1 + category?.id;
         if (category?.id === "22") {
+            address = URL2;
+        }
+        if (category?.id === undefined) {
             address = URL2;
         }
 
@@ -43,7 +53,7 @@ export default function AllBooks({ category }) {
         return (
             <div className="row">
                 <div className="col-12 text-center py-4">
-                    <h1>{category?.name}</h1>
+                    <h1>{title()}</h1>
                     <Link className="link" to="/AddItem">Lisää kirja</Link>
                 </div>
                 <div className="row justify-content-center p-5 text-center">

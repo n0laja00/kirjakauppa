@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
 import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
+import Reviews from './Reviews';
 
 export default function BookDetails() {
 
@@ -31,18 +32,16 @@ export default function BookDetails() {
     if (!isLoaded) {
         //tähän jotain jos tulee virhe
         console.log(error);
-        return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
+        return <div className="row text-center pt-5">
+            <h2>Loading...</h2>
+        </div>;
     } else {
-
-
-
-
         return (
             <>
                 {book.map(el => (
                     <div className="row" key={el.kirjaNro}>
                         <div className="row">
-                            <h1 className="col-12 px-5 my-4 text-center">{el.kirjaNimi}</h1>
+                            <h1 className="col-12 px-5 my-4">{el.kirjaNimi}</h1>
                         </div>
                         <div className="row">
                             <div className="col-sm-6">
@@ -71,6 +70,7 @@ export default function BookDetails() {
                         </div>
                     </div>
                 ))}
+                <Reviews />
             </>
         )
     }
