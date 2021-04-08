@@ -1,25 +1,26 @@
-import { useState, useEffect, React } from 'react'
+import { React } from 'react'
 import { Link } from 'react-router-dom'
 import SearchBar from './Searchbar'
 
-export default function Navbar({setCategory}) {
-    const [categories, setCategories] = useState([])
+export default function Navbar() {
+    // {setCategory}
+    // const [categories, setCategories] = useState([])
 
-    useEffect(() => {
-        (async() => {
-        try {
-            const response = await fetch('http://localhost/kirjakauppa/navKategoriat.php/');
-            const json = await response.json();
-            if (response.ok) {
-                setCategories(json);
-                setCategory = json[0];
-            } else {
-                alert(json.error);
-            }
-        } catch (error) {
-            alert(error);
-        }}) ()
-    }, [])
+    // useEffect(() => {
+    //     (async() => {
+    //     try {
+    //         const response = await fetch('http://localhost/kirjakauppa/navKategoriat.php/');
+    //         const json = await response.json();
+    //         if (response.ok) {
+    //             setCategories(json);
+    //             setCategory = json[0];
+    //         } else {
+    //             alert(json.error);
+    //         }
+    //     } catch (error) {
+    //         alert(error);
+    //     }}) ()
+    // }, [])
 
     return (
         <div className="row m-0 p-0">
