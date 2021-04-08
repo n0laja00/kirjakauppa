@@ -50,7 +50,7 @@ p{
 }
 
 .bottomBg {
-  background-color: rgba(228, 228, 228, 0.836);
+  background-color: hsla(0, 0%, 89%, 0.95);
 }
 .customBorder{
   border: 3px solid white;
