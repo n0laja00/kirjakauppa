@@ -64,7 +64,7 @@ export default function BookDetails() {
                         </div>
                     </div>
                 ))}
-                <Reviews />
+                <Reviews id={id}/>
             </>
         )
     }

@@ -1,6 +1,26 @@
-import React from 'react'
+import {React, useState, useEffect} from 'react'
 
-export default function Reviews() {
+export default function Reviews({id}) {
+
+    const URL = 'http://localhost/kirjakauppa/haeArvostelu.php/';
+
+    const [review, setReview] = useState([])
+
+    useEffect(() => {
+        fetch(URL + id)
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    setReview(result);
+                }, (error) => {
+                    // setError(error);
+                    // setIsLoaded(false);
+                }
+            )
+    }, [id])
+
+
+    console.log(review);
     return (
         <div className="row">
             <div className="col mx-3 p-4 bottomBg customBorder">
