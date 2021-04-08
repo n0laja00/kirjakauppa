@@ -21,7 +21,6 @@ export default function Content() {
                         <p>Ruotsalainen kirjakauppa on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
                         <p> Etsi valikoimastamme lempikirjasi ja nauti lukuhetkistä!</p>
                     </div>
-                    <div className="col-2 d-none d-lg-block pb-3"><img src={fpimage} alt="shop" className="img-fluid fpimg d-none d-md-block"></img></div>
                 </div>
 
                 <div className="row pb-5 d-flex justify-content-center">
