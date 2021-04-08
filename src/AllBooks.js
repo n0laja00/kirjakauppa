@@ -56,7 +56,7 @@ export default function AllBooks({ category }) {
                     <h1>{title()}</h1>
                     <Link className="link" to="/AddItem">Lisää kirja</Link>
                 </div>
-                <div className="row justify-content-center p-5">
+                <div className="row justify-content-center p-5 text-center">
                     {books.map(book => (
                         <div class="card col-sm-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
                             <img class="card-img-top p-4" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>

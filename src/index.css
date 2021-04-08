@@ -11,3 +11,18 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.lista-kuva{
+  display: inline-block !important;
+  max-width: 4em;
+
+}
+.cart-list {
+  background-color: #66b8fc91;
+  padding: 3em;
+}
+.cart-list li {
+  padding-bottom: 1em;
+  margin-bottom: 1em;
+  border-bottom: black 1px solid;
+}

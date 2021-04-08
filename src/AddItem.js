@@ -4,14 +4,15 @@ export default function AddItem() {
 
     const [book, setBook] = useState([]);
     const [allPublishers, setAllPublishers] = useState([]);
-    const [publisher, setPublisher] = useState([]);
-    const [bookName, setBookName] = useState([]); 
-    const [bookWriter, setBookWriter] = useState([]); 
-    const [bookPage, setBookPage] = useState([]); 
-    const [bookPrice, setBookPrice] = useState([]); 
-    const [bookExpense, setBookExpense] = useState([]); 
-    const [bookDesc, setBookDesc] = useState([]); 
-    const [bookPublished, setBookPublished] = useState([]); 
+    const [publisher, setPublisher] = useState('');
+    const [bookName, setBookName] = useState(''); 
+    const [bookWriterFN, setBookWriterFN] = useState(''); 
+    const [bookWriterLN, setBookWriterLN] = useState(''); 
+    const [bookPage, setBookPage] = useState(''); 
+    const [bookPrice, setBookPrice] = useState(''); 
+    const [bookExpense, setBookExpense] = useState(''); 
+    const [bookDesc, setBookDesc] = useState(''); 
+    const [bookPublished, setBookPublished] = useState(''); 
 
     const URL = 'http://localhost/kirjakauppa/';
 
@@ -54,7 +55,9 @@ export default function AddItem() {
             bookExpense: bookExpense,
             bookDesc: bookDesc,
             publisherNo: publisher.julkaisijaNro,
-            bookPublished: bookPublished
+            bookPublished: bookPublished,
+            bookWriterFN: bookWriterFN,
+            bookWriterLN: bookWriterLN
           })
         })
         .then (res => {
@@ -93,9 +96,13 @@ export default function AddItem() {
                     {/* Pitää tehdä myöhemmin "Lisää uusi julkaisija" */}
                     </select>
                 </div>
-                <div className="col-md-6">
-                    <label for="kirjoittaja" className="form-label">Kirjoittaja</label>
-                    <input type="text" className="form-control" id="kirjoittaja" name="kirjoittaja" onChange={e => setBookWriter(e.target.value)}/>
+                <div className="col-md-3">
+                    <label for="kirjoittajaEN" className="form-label">Kirjoittaja etunimi</label>
+                    <input type="text" className="form-control" id="kirjoittajaEN" name="kirjoittajaEN" onChange={e => setBookWriterFN(e.target.value)}/>
+                </div>
+                <div className="col-md-3">
+                    <label for="kirjoittajaSN" className="form-label">Kirjoittaja sukunimi</label>
+                    <input type="text" className="form-control" id="kirjoittajaSN" name="kirjoittajaSN" onChange={e => setBookWriterLN(e.target.value)}/>
                 </div>
                 <div className="col-md-2">
                     <label for="sivuNro" className="form-label">Sivumäärä</label>
