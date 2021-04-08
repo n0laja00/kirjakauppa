@@ -2,10 +2,14 @@ import React from 'react'
 import Navbar from './Navbar'
 import SearchBar from './Searchbar'
 import { Link } from 'react-router-dom'
+import { Switch, Route, useLocation} from 'react-router';
+
 
 export default function Header() {
     return (
         <div className="row header py-3 shadow">
+           
+         
             <div className="row">
                 <div className="col-4 col-lg-3 col-xl-2">
                     <Link to="/"><img src={require('./img/logo.png').default} alt="logo"/></Link>
@@ -15,6 +19,7 @@ export default function Header() {
                 </div>
                 <div className="col-1 col-lg-2">
                     <div className="text-end">
+                        
                         <div className="shopcart_cs">
                             <Link className="link varjo" to="/ShoppingCart">
                                 <i className="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
@@ -32,5 +37,6 @@ export default function Header() {
                 <SearchBar />
             </div>
         </div>
+        
     )
 }

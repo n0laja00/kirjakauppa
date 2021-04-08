@@ -1,14 +1,23 @@
 import React from 'react'
+import CartList from './cartComponents/CartList'
+import TestAddItem from './cartComponents/TestAddItem'
+import CartContextProvider from './contexts/CartContext'
 
-export default function ShoppingCart() {
-    return (
+
+
+const ShoppingCart = () => {
+    return ( 
         <div className="row mt-3 py-4 d-flex justify-content-center">
-            <h3>Ostoskori</h3>
-            <div className="col-3">
-                <input className="form-control mt-2" type="text" placeholder="account/email"></input>
-                <input className="form-control mt-2" type="password" placeholder="password"></input>
-            <button className="loginButton mt-3 px-5">Login</button>
-        </div>
-        </div>
-    )
+            <div>
+                <h3 className="text-primary">Ostoskori</h3>
+                <CartContextProvider>
+                    <CartList/> 
+                    <TestAddItem/>
+                </CartContextProvider>
+                
+            </div>
+        </div> 
+   );
 }
+ 
+export default ShoppingCart;
