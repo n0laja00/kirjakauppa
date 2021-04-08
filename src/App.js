@@ -9,6 +9,7 @@ import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
 import Navbar from './Navbar';
 import AddItem from './AddItem';
+import BookDetails from './BookDetails';
 
 
 function App() {
@@ -22,28 +23,6 @@ function App() {
     }
   }, [location.state]);
 
-
-
-  /*useEffect(() => {
-    let status = 0; 
-    fetch (URL + 'index.php')
-      .then(res => {
-        status = parseInt(res.status);
-        return res.json();
-      })
-      .then(
-        (res) => {
-          if ( status === 200) {
-            setEditList(res);
-          } else {
-            alert(res.error); 
-          }
-        }, (error) => {
-          alert(error);
-        }
-      )
-  }, []);*/
-
   return (
     <div>
       <main className="container pb-5">
@@ -54,11 +33,10 @@ function App() {
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Route path="/AddItem" component={AddItem}/>
           <Route path="/Navbar" component={Navbar} setCategory={setCategory} />
-
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} />}
             exact />
-            <Route path="/BookDetails" />
+            <Route path="/BookDetails/:id" component={BookDetails}/>
         </Switch>
       </main>
       <div className="container bottomBg">
