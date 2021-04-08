@@ -1,4 +1,4 @@
-import React, {useContext } from 'react';
+import React, {useContext, useEffect } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import CartDetails from './CartDetails';
 
@@ -6,7 +6,10 @@ import CartDetails from './CartDetails';
 /*sfc*/
 const CartList = () => {
     const { cart } = useContext(CartContext);
-    
+    useEffect(() => {
+        console.log(" terve CartLististä");
+    }, []);
+
     return cart.length ? ( 
         <div className = "cart-list">
             <ul>

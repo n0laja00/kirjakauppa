@@ -6,11 +6,11 @@ export const CartContext = createContext();
 
 const CartContextProvider = (props) => {
     
-    /*const [cart, dispatch] = useReducer(cartReducer,[],() => {
+    const [cart, dispatch] = useReducer(cartReducer,[],() => {
         const localData = localStorage.getItem('cart');
          return localData ? JSON.parse(localData): []
-    });*/
-    const [cart, dispatch] = useReducer(cartReducer,[{kirjaNro:1, id:uuid()}]);
+    });
+
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
@@ -19,7 +19,7 @@ const CartContextProvider = (props) => {
 
     return ( 
         <CartContext.Provider value = {{cart, dispatch}}>
-            {props.childen}
+            {props.children}
         </CartContext.Provider>
      );
 }
