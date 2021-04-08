@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import Reviews from './Reviews';
 
 export default function BookDetails() {
 
@@ -63,6 +64,7 @@ export default function BookDetails() {
                         </div>
                     </div>
                 ))}
+                <Reviews />
             </>
         )
     }
