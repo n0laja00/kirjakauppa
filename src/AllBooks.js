@@ -39,9 +39,7 @@ export default function AllBooks({category}) {
     return (
         <div className="row">
             <div className="col-12 text-center py-4">
-                {books.map(title => (
-                    <h1>{title.kategoria}</h1>
-                ))}
+                    <h1>{category?.name}</h1>
             </div>
             <div className="row justify-content-center p-5">
                 {books.map(book => (

@@ -32,7 +32,7 @@ export default function BookCarousel({bookdata}) {
            alert("An error has occurred, please try again later.");
           }
         )
-      }, [])
+      }, [bookdata])
 
     const responsive = {
         desktop: {
@@ -83,7 +83,7 @@ export default function BookCarousel({bookdata}) {
                     />
                     </div>
                     <div className="float_child col-sm-auto">
-                        <p className="cut-text">{book.kirjaNimi}</p>
+                        <p className="cut-text mt-1">{book.kirjaNimi}</p>
                         <p>{book.sukunimi} {book.etunimi}</p>
                         <p>{book.julkaisija}</p>
                         <p>{book.vuosi}</p>
