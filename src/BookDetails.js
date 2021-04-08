@@ -37,7 +37,7 @@ export default function BookDetails() {
                         </div>
                         <div className="col-sm-6">
                             <div className="row customBorder bottomBg p-3">
-                                <h3 className="col-sm-12">Kirja</h3>
+                                <h3 className="col-sm-12">Kuvaus</h3>
                                 <div className="col-sm-12">{el.kuvaus}</div>
                                 <div className="mt-4 col-sm-6">Hinta: {el.hinta} €</div>
                                 <button className="btn btn-primary m-3 col-8">Ostoskoriin</button>
