@@ -6,7 +6,6 @@ import CartDetails from './CartDetails';
 /*sfc*/
 const CartList = () => {
     const { cart } = useContext(CartContext);
-    
     return cart.length ? ( 
         <div className = "cart-list">
             <ul>
