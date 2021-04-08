@@ -1,7 +1,5 @@
 import React from 'react'
 import BookCarousel from './Carousel'
-import fpimage from './img/frontpgimg.jpg'
-
 
 export default function Content() {
 
@@ -15,7 +13,6 @@ export default function Content() {
 
     return (
         <div className="row">
-            
             <div>
                 <div className="row py-5 d-flex justify-content-center">
                     <div className="col-md-8 col-sm-8 mx-5 mb-5 p-5 customBorder">

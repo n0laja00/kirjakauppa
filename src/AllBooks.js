@@ -2,7 +2,7 @@ import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
 
 
-export default function AllBooks({category}) {
+export default function AllBooks({ category }) {
 
     const [books, setBooks] = useState([]);
     const [error, setError] = useState('');
@@ -34,30 +34,32 @@ export default function AllBooks({category}) {
     }, [category])
 
     if (!isLoaded) {
+        //tähän jotain jos tulee virhe
+        console.log(error)
         return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
     } else {
-    return (
-        <div className="row">
-            <div className="col-12 text-center py-4">
+        return (
+            <div className="row">
+                <div className="col-12 text-center py-4">
                     <h1>{category?.name}</h1>
                     <Link className="link" to="/AddItem">Lisää kirja</Link>
-            </div>
-            <div className="row justify-content-center p-5">
-                {books.map(book => (
-                    <div className="card col-sm-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
-                        <img className="card-img-top p-4" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
-                        <div className="row">
-                            <h5 className="card-title col-12">{book.kirjaNimi}</h5>
-                            <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
-                            <h5 className="card-subtitle col-md-12 text-end p-3">{book.hinta} €</h5>
-                            <Link to={'/BookDetails/'+ book.kirjaNro} className="link text-center">
-                                <div className="my-3 btn addToCartBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
-                            </Link>
+                </div>
+                <div className="row justify-content-center p-5">
+                    {books.map(book => (
+                        <div className="card col-sm-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
+                            <img className="card-img-top p-4" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
+                            <div className="row">
+                                <h5 className="card-title col-12">{book.kirjaNimi}</h5>
+                                <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
+                                <h5 className="card-subtitle col-md-12 text-end p-3">{book.hinta} €</h5>
+                                <Link to={'/BookDetails/' + book.kirjaNro} className="link text-center">
+                                    <div className="my-3 btn addToCartBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
+                                </Link>
+                            </div>
                         </div>
-                    </div>
-                ))}
+                    ))}
+                </div>
             </div>
-        </div>
-    )
+        )
     }
 }
