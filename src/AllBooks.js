@@ -1,5 +1,7 @@
 import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
+import AddToCart from './cartComponents/AddToCart';
+import CartContextProvider from './contexts/CartContext';
 
 
 export default function AllBooks({category}) {
@@ -53,6 +55,9 @@ export default function AllBooks({category}) {
                             <Link to={'/BookDetails/'+ book.kirjaNro} className="link text-center">
                                 <div class="my-3 btn addToCartBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
                             </Link>
+                            <CartContextProvider>
+                                <AddToCart item={book}/>
+                            </CartContextProvider>
                         </div>
                     </div>
                 ))}
