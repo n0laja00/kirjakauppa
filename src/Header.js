@@ -21,6 +21,7 @@ export default function Header() {
                             </Link>
                             <div>
                                 <Link className="link" to="/LoginPage">Login</Link>
+                                <Link className="link" to="/AddItem">Lisää kirja</Link>
                             </div>
                         </div>
                     </div>
