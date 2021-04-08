@@ -8,6 +8,7 @@ import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
 import Navbar from './Navbar';
+import ls from 'local-storage';
 
 
 const URL = 'http://localhost/kirjakauppa/'
