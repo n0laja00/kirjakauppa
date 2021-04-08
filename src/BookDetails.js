@@ -27,11 +27,9 @@ export default function BookDetails() {
     return (
         <>
             {book.map(el => (
-                // poista tästä bg-warning ku valmis
                 <div className="row">
                     <div className="row">
                         <h1 className="col-sm-12">{el.kirjaNimi}</h1>
-                        <div className="col-sm-12">{el.etunimi} {el.sukunimi}</div>
                     </div>
                     <div className="row">
                         <div className="col-sm-6">
@@ -39,10 +37,18 @@ export default function BookDetails() {
                         </div>
                         <div className="col-sm-6">
                             <div className="row customBorder bottomBg p-3">
-                                <h3 className="col-sm-12">Tuotekuvaus</h3>
+                                <h3 className="col-sm-12">Kirja</h3>
                                 <div className="col-sm-12">{el.kuvaus}</div>
-                                <div className="col-sm-6">Hinta: {el.hinta} €</div>
+                                <div className="mt-4 col-sm-6">Hinta: {el.hinta} €</div>
                                 <button className="btn btn-primary m-3 col-8">Ostoskoriin</button>
+                            </div>
+                            <div className="row customBorder bottomBg p-3 my-3">
+                                <h3 className="col-12">Kirjan tiedot</h3>
+                                <div className="col-12">Kirjan nimi: {el.kirjaNimi}</div>
+                                <div className="col-12">Kirjailija: {el.sukunimi}, {el.etunimi}</div>
+                                <div className="col-12">Sivuja: {el.sivuNro} </div>
+                                <div className="col-12">Julkaisuvuosi: {el.julkaistu} </div>
+                                <div className="col-12">Julkaisija: {el.julkaisija} </div>
                             </div>
                         </div>
                     </div>
