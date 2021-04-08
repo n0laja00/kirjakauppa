@@ -24,7 +24,7 @@ export default function Footer() {
                             <li>
                                 <div className="maincard">
                                     <div className="thecard">
-                                        <a target="_blank" href="https://www.facebook.com/">
+                                        <a target="_blank" rel="noreferrer" href="https://www.facebook.com/">
                                             <div className="thefront text-center facebook">
                                                 <div className="social-icon"> <i className="fa fa-facebook fa-2x"></i> </div>
                                             </div>
@@ -35,7 +35,7 @@ export default function Footer() {
                             <li>
                                 <div className="maincard">
                                     <div className="thecard">
-                                        <a target="_blank" href="https://www.instagram.com">
+                                        <a target="_blank" rel="noreferrer" href="https://www.instagram.com">
                                             <div className="thefront text-center instagram">
                                                 <div className="social-icon"> <i className="fa fa-instagram fa-2x"></i> </div>
                                             </div>
@@ -46,7 +46,7 @@ export default function Footer() {
                             <li>
                                 <div className="maincard ">
                                     <div className="thecard">
-                                        <a target="_blank" href="https://www.youtube.com/">
+                                        <a target="_blank" rel="noreferrer" href="https://www.youtube.com/">
                                             <div className="thefront text-center youtube">
                                                 <div className="social-icon"> <i className="fa fa-youtube fa-2x"></i> </div>
                                             </div>
