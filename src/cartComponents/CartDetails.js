@@ -35,7 +35,7 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
         return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
     } else {
         return (
-            <li className="row" onClick={() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})}>
+            <li className="row">
                 {book.map(el => (
                     <>
                     <div className="col-3">
@@ -44,8 +44,10 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
                         
                         <div className="col-9 "> 
                             <p className="col-12 text-end">{el.kirjaNro} {el.kirjaNimi}</p>
-                            <div className="hinta text-end"> {el.hinta} €</div>
+                            <p className="hinta text-end"> {el.hinta} €</p>
+                            <button className="btn btn-danger float-end" onClick={() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})} type="button">Poista</button>
                         </div>
+                       
                             
                     </>
                     
