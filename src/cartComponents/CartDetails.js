@@ -11,8 +11,14 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
     const [isLoaded, setIsLoaded] = useState(true);
     const URL = 'http://localhost/kirjakauppa/haeKirjaNro.php/'
     const imgURL = 'http://localhost/kirjakauppa/img/';
-    const [totalPrice, setTotalPrice] = useState('');
+    const [totalPrice, setTotalPrice] = useState(0);
+    let [all, setAll] = useState([]);
 
+    const handleTotalPrice = (e) => {
+        let count = e; 
+        console.log(count)
+    }
+   
 
     useEffect(() => {
 
@@ -21,21 +27,44 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
         .then(
             (result) => {
                 setBook(result);
+ 
+                
             }, (error) => {
                 setError(error);
                 setIsLoaded(false);
             }
-        )
-  
-        console.log(totalPrice)
+            
+        );
+        
     }, []);
+    
+    
+    /*useEffect(() => {
+        
+        let count = result1
+        setTotalPrice(totalPrice+Number(count))
+        
+        console.log(totalPrice)
+    }, [])*/
+        
+   
+    
+
+
+
+
+    
+
+
     
     if (!isLoaded) {
         //tähän jotain jos tulee virhe
         console.log(error);
         return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
     } else {
+        
         return (
+            
             <li className="row">
                 {book.map(el => (
                     <>
@@ -48,9 +77,10 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
                                 <h4 className="col-12 text-end cart-book-title">{el.kirjaNro} {el.kirjaNimi}</h4>
                             </Link>
                             <p className="kirjailija text-end"> {el.sukunimi}, {el.etunimi} </p>
-                            <h5 className="hinta text-end"> {el.hinta} €</h5>
+                            <h5 className="hinta text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
                             <button className="btn btn-danger float-end" onClick={() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})} type="button">Poista</button>
                         </div>
+                        
                        
                             
                     </>

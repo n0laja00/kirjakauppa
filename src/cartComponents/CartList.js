@@ -1,4 +1,4 @@
-import React, {useContext, useEffect } from 'react';
+import React, {useContext, useEffect, useState } from 'react';
 import { CartContext } from '../contexts/CartContext';
 import CartDetails from './CartDetails';
 
@@ -6,9 +6,15 @@ import CartDetails from './CartDetails';
 /*sfc*/
 const CartList = () => {
     const { cart } = useContext(CartContext);
+    const [totalCost, setTotalCost] = useState(0);
+
     useEffect(() => {
         console.log(cart);
-
+        const hinta = 0; 
+        let cost = cart.map(a => a.hinta*a.maara);
+        cost = cost.reduce((a,b) => a+b, 0)
+        setTotalCost(cost);
+        console.log(cost);
     }, []);
 
 
@@ -21,7 +27,7 @@ const CartList = () => {
                 })}
             </ul>
             <div className="col-12 text-end">
-                total Cost: 
+                total Cost: {totalCost}
             </div>
         </div>
      ) : (
