@@ -1,5 +1,6 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
 const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
@@ -38,12 +39,14 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
             <li className="row">
                 {book.map(el => (
                     <>
-                    <div className="col-3">
-                        <img className="lista-kuva pull-left mr-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
-                    </div>
+                        <div className="col-3">
+                            <img className="lista-kuva pull-left mr-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                        </div>
                         
                         <div className="col-9 "> 
-                            <p className="col-12 text-end">{el.kirjaNro} {el.kirjaNimi}</p>
+                            <Link to={'/BookDetails/'+ el.kirjaNro} className="link text-center">
+                                <h4 className="col-12 text-end cart-book-title">{el.kirjaNro} {el.kirjaNimi}</h4>
+                            </Link>
                             <p className="hinta text-end"> {el.hinta} €</p>
                             <button className="btn btn-danger float-end" onClick={() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})} type="button">Poista</button>
                         </div>

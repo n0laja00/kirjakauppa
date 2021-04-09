@@ -7,15 +7,16 @@ import CartContextProvider from './contexts/CartContext'
 
 const ShoppingCart = () => {
     return ( 
+        
         <div className="row mt-3 py-4 d-flex justify-content-center">
             <div>
-                <h3 className="text-primary">Ostoskori</h3>
                 <CartContextProvider>
                     <CartList/> 
                 </CartContextProvider>
                 
             </div>
         </div> 
+        
    );
 }
  
