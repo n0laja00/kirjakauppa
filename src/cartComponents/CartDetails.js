@@ -47,7 +47,8 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
                             <Link to={'/BookDetails/'+ el.kirjaNro} className="link text-center">
                                 <h4 className="col-12 text-end cart-book-title">{el.kirjaNro} {el.kirjaNimi}</h4>
                             </Link>
-                            <p className="hinta text-end"> {el.hinta} €</p>
+                            <p className="kirjailija text-end"> {el.sukunimi}, {el.etunimi} </p>
+                            <h5 className="hinta text-end"> {el.hinta} €</h5>
                             <button className="btn btn-danger float-end" onClick={() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})} type="button">Poista</button>
                         </div>
                        
