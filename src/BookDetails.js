@@ -1,5 +1,8 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
+import AddToCart from './cartComponents/AddToCart';
+import CartContextProvider from './contexts/CartContext';
 import Reviews from './Reviews';
 
 export default function BookDetails() {
@@ -12,7 +15,6 @@ export default function BookDetails() {
     const [isLoaded, setIsLoaded] = useState(true);
     const URL = 'http://localhost/kirjakauppa/haeKirjaNro.php/'
     const imgURL = 'http://localhost/kirjakauppa/img/';
-
 
     useEffect(() => {
         fetch(URL + id)
@@ -46,11 +48,15 @@ export default function BookDetails() {
                                 <img className="card-img-top customBorder mb-3" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                             </div>
                             <div className="col-sm-6">
-                                <div className="customBorder bottomBg p-4">
+                                <div className="col-12 customBorder bottomBg p-4">
                                     <h3 className="col-sm-12">Kuvaus</h3>
                                     <div className="col-sm-12">{el.kuvaus}</div>
-                                    <div className="mt-4 col-sm-6">Hinta: {el.hinta} €</div>
-                                    <button className="btn btn-primary m-3 col-8">Ostoskoriin</button>
+                                    <div className="mt-4 col-12 text-center"> <h4>{el.hinta} €</h4></div>
+                                    <div className="text-center">
+                                        <CartContextProvider>
+                                            <AddToCart item={el} />
+                                        </CartContextProvider>
+                                    </div>
                                 </div>
                                 <div className="customBorder bottomBg p-4 my-3">
                                     <h3 className="col-12">Kirjan tiedot</h3>
@@ -59,12 +65,14 @@ export default function BookDetails() {
                                     <div className="col-12">Sivuja: {el.sivuNro} </div>
                                     <div className="col-12">Julkaisuvuosi: {el.julkaistu} </div>
                                     <div className="col-12">Julkaisija: {el.julkaisija} </div>
+                                    <div className="col-12 mt-3">
+                                        <Link to={'/Reviews/' + id}>Lue arvostelut</Link>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 ))}
-                <Reviews />
             </>
         )
     }

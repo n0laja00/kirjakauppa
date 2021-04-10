@@ -10,6 +10,7 @@ import AllBooks from './AllBooks';
 import Navbar from './Navbar';
 import AddItem from './AddItem';
 import BookDetails from './BookDetails';
+import Reviews from './Reviews';
 
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
             category={category} />}
             exact />
             <Route path="/BookDetails/:id" component={BookDetails}/>
+            <Route path="/Reviews/:id" component={Reviews}/>
         </Switch>
       </main>
       <div className="container bottomBg">
