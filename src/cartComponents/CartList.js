@@ -10,9 +10,9 @@ const CartList = () => {
     const {dispatch} = useContext(CartContext)
     const [kori, setKori] = useState([cart]);
     console.log("tämä on kori:")
-    console.log(kori)
-    
-    const handleDelete = (item) => {
+    console.log(kori);
+
+    const handleDelete = (item, cartObject) => {
         const books = cart;
         const change = 1;
         const itemIndex = books.findIndex((book) => book.kirjaNro === item.kirjaNro);
@@ -25,8 +25,9 @@ const CartList = () => {
             setKori(cart[itemIndex].maara);
 
         } else {
-            dispatch({type: 'REMOVE_FROM_CART', id: item.id})
+            dispatch({type: 'REMOVE_FROM_CART', id: cartObject.id})
         }
+        setKori([cart]);
     };
 
     useEffect(() => {

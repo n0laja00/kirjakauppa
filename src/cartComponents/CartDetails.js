@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
 const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
-    const {dispatch} = useContext(CartContext);
+
     const [book, setBook] = useState([])
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(true);
@@ -71,7 +71,7 @@ const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
                             <p className="kirjailija text-end"> {el.sukunimi}, {el.etunimi} </p>
                             <h5 className="hinta text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
                             
-                            <button className="btn btn-danger float-end" onClick={() => handleDelete(el)} type="button">Poista</button>
+                            <button className="btn btn-danger float-end" onClick={() => handleDelete(el, item)} type="button">Poista</button>
                         </div>
                     </> 
                 ))}
