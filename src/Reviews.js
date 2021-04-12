@@ -17,6 +17,7 @@ export default function Reviews() {
 
     function updateReview() {
         setSubmit(!submit);
+        console.log(submit)
     }
 
     useEffect(() => {
@@ -55,8 +56,8 @@ export default function Reviews() {
             })
         })
         .then((res) => res.json(... review, res))
-        .then ((result) => {
-            console.log(result);
+        .then ((res) => {
+            console.log(res);
         })
     }
 
