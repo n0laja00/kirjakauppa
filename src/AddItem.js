@@ -17,6 +17,11 @@ export default function AddItem() {
     const [bookCategory, setBookCategory] = useState('Toiminta');
     const [image, setImage] = useState(null);
 
+    //Julkaisijan lisääminen 
+    const[newPublisher, setNewPublisher] = useState('');
+    const[newPublisherPhone, setNewPublisherPhone] = useState('');
+    const[newPublisherEmail, setNewPublisherEmail] = useState('');
+
     const URL = 'http://localhost/kirjakauppa/';
 
     useEffect(() => {
@@ -80,7 +85,7 @@ export default function AddItem() {
         formData.append('bookWriterFN',bookWriterFN);
         formData.append('bookWriterLN',bookWriterLN);
         formData.append('bookCategory',bookCategory);
-        fetch (URL + 'saveimage.php',
+        fetch (URL + 'lisaaTuote.php',
             {
             method: 'POST',
             body: formData 
@@ -108,8 +113,15 @@ export default function AddItem() {
                         <option>{publisher.julkaisija}</option>
                     ))}
                     {/* Pitää tehdä myöhemmin "Lisää uusi julkaisija" */}
+                    <option className="fw-bold">Lisää uusi</option>
                     </select>
                 </div>
+
+                <div className="col-md-3">
+                    <label for="julkaisijaNimi" className="form-label">Julkaisijan nimi</label>
+                    <input type="text" className="form-control" id="julkaisijaNimi" name="julkaisijaNimi" placeholder="Eero" onChange={e => setBookWriterFN(e.target.value)}/>
+                </div>
+
                 <div className="col-md-3">
                     <label for="kirjoittajaEN" className="form-label">Kirjoittaja etunimi</label>
                     <input type="text" className="form-control" id="kirjoittajaEN" name="kirjoittajaEN" placeholder="Eero" onChange={e => setBookWriterFN(e.target.value)}/>

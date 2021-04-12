@@ -9,7 +9,7 @@ export default function Reviews() {
 
 
     const [submit, setSubmit] = useState(false);
-    const [review, setReview] = useState([])
+    const [review, setReview] = useState([]);
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('')
