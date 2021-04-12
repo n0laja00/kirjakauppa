@@ -22,22 +22,21 @@ export default function Reviews() {
     useEffect(() => {
         let status = 0;
         fetch(URL + 'haeArvostelu.php/' + id)
-            .then(res =>
-                {
-                    status = parseInt(res.status);
-                    return res.json();
-                })
-                .then(
-                    (res) => {
-                        if (status===200) {
-                            setReview(res);
-                        }
+            .then(res => {
+                status = parseInt(res.status);
+                return res.json();
+            })
+            .then(
+                (res) => {
+                    if (status === 200) {
+                        setReview(res);
+                    }
                 }, (error) => {
                     setError(error);
                     // setIsLoaded(false);
                 }
             )
-    }, [id])
+    }, [review])
 
     function save(e) {
         e.preventDefault();
@@ -55,24 +54,13 @@ export default function Reviews() {
                 kirjaNro: id
             })
         })
-            .then(res => {
-                status = parseInt(res.status);
-                return res.json();
+            .then((res) => res.json(...review, res))
+            .then((res) => {
+                setName('');
+                setTitle('');
+                setText('');
+                console.log('rendered');
             })
-            .then(
-                (res) => {
-                    if (status === 200) {
-                        setReview(review => [...review, res]);
-                        setName('');
-                        setTitle('');
-                        setText('');
-                    } else {
-                        console.log(res.error);
-                    }
-                }, (error) => {
-                    console.log(error);
-                }
-            )
     }
 
     return (
