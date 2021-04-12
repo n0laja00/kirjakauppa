@@ -4,22 +4,25 @@ export default function AddItem() {
 
     const [book, setBook] = useState([]);
     const [allPublishers, setAllPublishers] = useState([]);
-    const [publisher, setPublisher] = useState('');
-    const [bookName, setBookName] = useState(''); 
-    const [bookWriterFN, setBookWriterFN] = useState(''); 
-    const [bookWriterLN, setBookWriterLN] = useState(''); 
-    const [bookPage, setBookPage] = useState(''); 
-    const [bookPrice, setBookPrice] = useState(''); 
-    const [bookExpense, setBookExpense] = useState(''); 
-    const [bookDesc, setBookDesc] = useState(''); 
-    const [bookPublished, setBookPublished] = useState(''); 
+    const [allBookCategories, setAllCategories] = useState([]);
+    const [publisher, setPublisher] = useState('publisher');
+    const [bookName, setBookName] = useState('name'); 
+    const [bookWriterFN, setBookWriterFN] = useState('FN'); 
+    const [bookWriterLN, setBookWriterLN] = useState('LN'); 
+    const [bookPage, setBookPage] = useState('1'); 
+    const [bookPrice, setBookPrice] = useState('2'); 
+    const [bookExpense, setBookExpense] = useState('3'); 
+    const [bookDesc, setBookDesc] = useState('description'); 
+    const [bookPublished, setBookPublished] = useState('2021-04-01'); 
+    const [bookCategory, setBookCategory] = useState('Toiminta');
+    const [image, setImage] = useState(null);
 
     const URL = 'http://localhost/kirjakauppa/';
 
     useEffect(() => {
         let status = 0;
 
-        fetch(URL + "julkaisija.php")
+        fetch(URL + "julkaisijatLisaaTuote.php")
         .then (res => {
         status = parseInt(res.status);
         return res.json();
@@ -34,49 +37,60 @@ export default function AddItem() {
         }
     
         }, (error) => {
-        alert("An error has occurred, please try again later.");
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
+        }
+        )
+        
+        fetch(URL + "kategoriatLisaaTuote.php")
+        .then (res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+    
+            if(status === 200) {
+        setAllCategories(res);
+        } else {
+            alert(res.error);
+        }
+    
+        }, (error) => {
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
         }
         )
     }, [])
 
+    function handleChange(e) {
+        setImage(e.target.files[0]);
+      }
+
+
     function addBook(e) {
+        //Tiedoston lisäys 
         e.preventDefault();
-        let status = 0;
-        fetch(URL + 'lisaaKirja.php',{
-          method: 'POST',
-          headers: {
-            'Accept': 'application/json',
-            'Content-type': 'application/json',
-          },
-          body: JSON.stringify({
-            bookName: bookName,
-            bookPage: bookPage,
-            bookPrice: bookPrice,
-            bookExpense: bookExpense,
-            bookDesc: bookDesc,
-            publisherNo: publisher.julkaisijaNro,
-            bookPublished: bookPublished,
-            bookWriterFN: bookWriterFN,
-            bookWriterLN: bookWriterLN
-          })
-        })
-        .then (res => {
-          status = parseInt(res.status);
-          return res.json();
-        })
-        .then(
-          (res) => {
-            if (status === 200) {
-              setBook(book=>[...book,res]);
-              setBook('');
-            }else {
-              alert(res.error);
+        const formData = new FormData();
+        formData.append('file',image);
+        formData.append('bookName',bookName);
+        formData.append('bookDesc',bookDesc);
+        formData.append('bookPrice',bookPrice);
+        formData.append('bookExpense',bookExpense);
+        formData.append('publisher',publisher);
+        formData.append('bookPublished',bookPublished);
+        formData.append('bookWriterFN',bookWriterFN);
+        formData.append('bookWriterLN',bookWriterLN);
+        formData.append('bookCategory',bookCategory);
+        fetch (URL + 'saveimage.php',
+            {
+            method: 'POST',
+            body: formData 
             }
-          }, (error) => {
-            alert('Häiriö järjestelmässä, yritä kohta uudelleen');
-          }
         )
-       }
+        .then((res) => res.json())
+        .then ((result) => {
+            console.log(result);
+        })
+    }
 
     return (
         <div className="addItemContainer">
@@ -84,7 +98,7 @@ export default function AddItem() {
             <form className="row g-3 addItemForm mt-1" onSubmit={addBook}>
                 <div className="col-md-6">
                     <label for="kirjaNimi" className="form-label">Kirjan nimi</label>
-                    <input type="text" className="form-control" id="kirjaNimi" name="kirjanimi" onChange={e => setBookName(e.target.value)}/>
+                    <input type="text" className="form-control" id="kirjaNimi" name="kirjanimi" placeholder="Kirjan nimi" onChange={e => setBookName(e.target.value)}/>
                 </div>
                 <div className="col-md-6">
                     <label for="julkaisija" className="form-label">Julkaisija</label>
@@ -98,27 +112,27 @@ export default function AddItem() {
                 </div>
                 <div className="col-md-3">
                     <label for="kirjoittajaEN" className="form-label">Kirjoittaja etunimi</label>
-                    <input type="text" className="form-control" id="kirjoittajaEN" name="kirjoittajaEN" onChange={e => setBookWriterFN(e.target.value)}/>
+                    <input type="text" className="form-control" id="kirjoittajaEN" name="kirjoittajaEN" placeholder="Eero" onChange={e => setBookWriterFN(e.target.value)}/>
                 </div>
                 <div className="col-md-3">
                     <label for="kirjoittajaSN" className="form-label">Kirjoittaja sukunimi</label>
-                    <input type="text" className="form-control" id="kirjoittajaSN" name="kirjoittajaSN" onChange={e => setBookWriterLN(e.target.value)}/>
+                    <input type="text" className="form-control" id="kirjoittajaSN" name="kirjoittajaSN" placeholder="Esimerkki" onChange={e => setBookWriterLN(e.target.value)}/>
                 </div>
                 <div className="col-md-2">
                     <label for="sivuNro" className="form-label">Sivumäärä</label>
-                    <input type="number" className="form-control" min="1" id="sivuNro" name="sivuNro" onChange={e => setBookPage(e.target.value)}/>
+                    <input type="number" className="form-control" min="1" id="sivuNro" name="sivuNro" placeholder="Esim: 150" onChange={e => setBookPage(e.target.value)}/>
                 </div>
                 <div className="col-md-2">
                     <label for="hinta" className="form-label">Hinta</label>
-                    <input type="number" className="form-control" id="hinta" min="1" onChange={e => setBookPrice(e.target.value)}/>
+                    <input type="number" className="form-control" id="hinta" placeholder="Esim: 12.50" onChange={e => setBookPrice(e.target.value)}/>
                 </div>
                 <div className="col-md-2">
                     <label for="kustannus" className="form-label">Kustannus</label>
-                    <input type="number" className="form-control" id="kustannus" min="1" onChange={e => setBookExpense(e.target.value)}/>
+                    <input type="number" className="form-control" id="kustannus" placeholder="Esim: 11.50" onChange={e => setBookExpense(e.target.value)}/>
                 </div>
                 <div className="col-12">
                     <label for="kuvaus" className="form-label">Kuvaus</label>
-                    <textarea name="kuvaus" id="kuvaus" cols="10" rows="10" className="form-control" onChange={e => setBookDesc(e.target.value)}>
+                    <textarea name="kuvaus" id="kuvaus" cols="10" rows="10" className="form-control" placeholder="Kirjan kuvaus" onChange={e => setBookDesc(e.target.value)}>
                     </textarea>
                 </div>
                 <div className="col-md-3">
@@ -127,12 +141,18 @@ export default function AddItem() {
                 </div>
 
                 <div className="col-5">
-
+                    <label for="kategoria" className="form-label">Kategoria</label>
+                    <select id="kategoria" className="form-select" onChange={e => setBookCategory(e.target.value)}>
+                    <option selected>Valitse...</option>
+                    {allBookCategories.map(bookCategory => (
+                        <option>{bookCategory.kategoria}</option>
+                    ))}
+                    </select>
                 </div>
 
                 <div className="col-md-4">
                     <label for="tiedosto" className="form-label">Lisää kuva</label>
-                    <input className="form-control text-end" type="file" name="tiedosto" id="tiedosto"/>
+                    <input className="form-control text-end" type="file" name="file" id="file" onChange={handleChange}/>
                 </div>
                 <div className="col-12 p-2">
                     <button type="submit" className="btn btn-primary">Lisää kirja</button>
