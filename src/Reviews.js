@@ -13,23 +13,31 @@ export default function Reviews() {
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
     const [text, setText] = useState('')
+    const [error, setError] = useState('');
 
     function updateReview() {
         setSubmit(!submit);
     }
 
     useEffect(() => {
+        let status = 0;
         fetch(URL + 'haeArvostelu.php/' + id)
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    setReview(result);
+            .then(res =>
+                {
+                    status = parseInt(res.status);
+                    return res.json();
+                })
+                .then(
+                    (res) => {
+                        if (status===200) {
+                            setReview(res);
+                        }
                 }, (error) => {
-                    // setError(error);
+                    setError(error);
                     // setIsLoaded(false);
                 }
             )
-    }, [submit])
+    }, [id])
 
     function save(e) {
         e.preventDefault();
@@ -98,7 +106,7 @@ export default function Reviews() {
                         <div className="mb-3">
                             <label for="reviewText" className="form-label">Arvostelu</label>
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
-                            <button className="btn btn-primary col-6 mt-4" onClick={updateReview}>Lähetä arvostelu</button>
+                            <button className="btn btn-primary col-6 mt-4">Lähetä arvostelu</button>
                         </div>
                     </div>
                 </div>
