@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
@@ -13,6 +14,7 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
     const imgURL = 'http://localhost/kirjakauppa/img/';
     const [totalPrice, setTotalPrice] = useState(0);
     let [all, setAll] = useState([]);
+    
 
     const handleTotalPrice = (e) => {
         let count = e; 
@@ -48,7 +50,20 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
     }, [])*/
         
    
-    
+    const handleDelete = (e) => {
+        const cart = JSON.parse(localStorage.getItem('cart') || []); 
+        if (item.maara > 1) {
+            const books = cart;
+            const change = 1;
+            const itemIndex = books.findIndex((book) => book.kirjaNro === item.kirjaNro);
+            cart[itemIndex].maara = cart[itemIndex].maara - change;
+            console.log(cart[itemIndex].maara);
+            localStorage.setItem('cart', JSON.stringify(books));
+            console.log("iso");
+        } else {
+            dispatch({type: 'REMOVE_FROM_CART', id: item.id})
+        }
+    }
 
 
 
@@ -78,7 +93,8 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
                             </Link>
                             <p className="kirjailija text-end"> {el.sukunimi}, {el.etunimi} </p>
                             <h5 className="hinta text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
-                            <button className="btn btn-danger float-end" onClick={() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})} type="button">Poista</button>
+                            
+                            <button className="btn btn-danger float-end" onClick={(e) => handleDelete()} type="button">Poista</button>
                         </div>
                         
                        
@@ -93,6 +109,10 @@ const CartDetails = ({item}) /*item annetaan alas proppina*/ => {
          );
     }
          /*
+
+         {() => dispatch({type: 'REMOVE_FROM_CART', id: item.id})}
+
+
         return (
             <>
                 {book.map(el => (

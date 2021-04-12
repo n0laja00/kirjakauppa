@@ -15,7 +15,7 @@ const CartList = () => {
         cost = cost.reduce((a,b) => a+b, 0)
         setTotalCost(cost);
         console.log(cost);
-    }, []);
+    }, [cart]);
 
 
     return cart.length ? ( 
@@ -23,9 +23,11 @@ const CartList = () => {
             <h1 className="text-primary pb-5">Ostoskori</h1>
             <ul>
                 { cart.map(item => {
-                    return ( <CartDetails item={item} key={item.id} />)
+                    return ( <CartDetails item={item} key={item.id} />) 
                 })}
+                
             </ul>
+               
             <div className="col-12 text-end">
                 total Cost: {totalCost}
             </div>
