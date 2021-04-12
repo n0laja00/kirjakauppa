@@ -7,10 +7,12 @@ const AddToCart = ({item}) => {
     const [kirjaNro, setKirjaNumero] = useState(item.kirjaNro);
     const [hinta, setHinta] = useState(Number(item.hinta));
     const [maara, setMaara] = useState(1);
+    const {cart} = useContext(CartContext);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const cart = JSON.parse(localStorage.getItem('cart') || []); 
+        
 
         if(cart.some((yksi) => yksi.kirjaNro === item.kirjaNro)) {
             const books = cart;
