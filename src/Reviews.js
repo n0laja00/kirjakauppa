@@ -37,11 +37,10 @@ export default function Reviews() {
                     // setIsLoaded(false);
                 }
             )
-    }, [id])
+    }, [submit])
 
     function save(e) {
         e.preventDefault();
-        let status = 0;
         fetch(URL + 'lisaaArvostelu.php', {
             method: 'POST',
             headers: {
@@ -55,24 +54,10 @@ export default function Reviews() {
                 kirjaNro: id
             })
         })
-            .then(res => {
-                status = parseInt(res.status);
-                return res.json();
-            })
-            .then(
-                (res) => {
-                    if (status === 200) {
-                        setReview(review => [...review, res]);
-                        setName('');
-                        setTitle('');
-                        setText('');
-                    } else {
-                        console.log(res.error);
-                    }
-                }, (error) => {
-                    console.log(error);
-                }
-            )
+        .then((res) => res.json(... review, res))
+        .then ((result) => {
+            console.log(result);
+        })
     }
 
     return (
@@ -106,7 +91,7 @@ export default function Reviews() {
                         <div className="mb-3">
                             <label for="reviewText" className="form-label">Arvostelu</label>
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
-                            <button className="btn btn-primary col-6 mt-4">Lähetä arvostelu</button>
+                            <button className="btn btn-primary col-6 mt-4" onClick={updateReview}>Lähetä arvostelu</button>
                         </div>
                     </div>
                 </div>
