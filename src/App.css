@@ -406,3 +406,12 @@ footer {
     font-size: 1.3em;
   }
 }
+.hidden {
+  display: none;
+}
+
+.publisherContainer {
+  background-color: #b38013cc !important;
+  margin: auto;
+  margin-top: 2%;
+}

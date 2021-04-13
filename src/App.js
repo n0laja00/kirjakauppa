@@ -12,6 +12,7 @@ import AddItem from './AddItem';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
 import HistoryNav from './HistoryNav';
+import Registry from './registryComponents/Registry';
 
 
 function App() {
@@ -42,6 +43,9 @@ function App() {
           <Route path="/BookDetails/:id" component={BookDetails} />
           <Route path="/Reviews/:id" component={Reviews} />
           <Route path="/HistoryNav" component={HistoryNav} />
+            <Route path="/BookDetails/:id" component={BookDetails}/>
+            <Route path="/Reviews/:id" component={Reviews}/>
+            <Route path="/registryComponents/Registry" component={Registry}/>
         </Switch>
       </main>
       <div className="container bottomBg">
