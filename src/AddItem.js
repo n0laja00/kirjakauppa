@@ -116,6 +116,7 @@ export default function AddItem() {
         setBookWriterFN('');
         setBookWriterLN('');
         setBookCategory('');
+        setBookCategory2('');
         }
         }
     }
@@ -221,7 +222,7 @@ export default function AddItem() {
 
                 <div className="col-5">
                     <label for="kategoria" className="form-label">Kategoria</label>
-                    <select id="kategoria" className="form-select" required value={bookCategory} onChange={e => setBookCategory(e.target.value)}>
+                    <select id="kategoria" className="form-select mb-1" required value={bookCategory} onChange={e => setBookCategory(e.target.value)}>
                     <option selected>Valitse...</option>
                     {allBookCategories.map(bookCategory => (
                         <option>{bookCategory.kategoria}</option>
@@ -230,7 +231,7 @@ export default function AddItem() {
                     <select id="kategoria2" className="form-select" required value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
                     <option selected>Valitse...</option>
                     {allBookCategories.map(bookCategory2 => (
-                        <option>+{bookCategory2.kategoria}</option>
+                        <option>{bookCategory2.kategoria}</option>
                     ))}
                     </select>
                 </div>
