@@ -38,9 +38,6 @@ code {
   text-decoration: underline;
 }
 
-body{
-  margin:100px;
-}
 a.btn1{
   height:50px;
   width: 10em;
@@ -65,11 +62,4 @@ a.btn1:after{
 }
 a.btn1:hover{
   background-color:rgb(43, 201, 61);
-}
-a.btn1:hover:after{
-  width: 0px;
-  height: 0px;
-  border-style: solid;
-  border-width: 25px 0 25px 20px;
-  border-color: transparent transparent transparent rgb(43, 201, 61);
 }
