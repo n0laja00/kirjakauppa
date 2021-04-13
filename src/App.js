@@ -7,7 +7,7 @@ import Header from './Header';
 import LoginPage from './LoginPage';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
-import Navbar from './Navbar';
+// import Navbar from './Navbar';
 import AddItem from './AddItem';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
@@ -33,7 +33,7 @@ function App() {
           <Route path="/LoginPage" component={LoginPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Route path="/AddItem" component={AddItem}/>
-          <Route path="/Navbar" component={Navbar} setCategory={setCategory} />
+          {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} />}
             exact />
