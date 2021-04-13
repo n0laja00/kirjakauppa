@@ -1,5 +1,6 @@
 import React from 'react'
 import BookCarousel from './Carousel'
+import HistoryNav from './HistoryNav';
 
 export default function Content() {
 

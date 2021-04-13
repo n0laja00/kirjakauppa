@@ -15,10 +15,6 @@ export default function Reviews() {
     const [text, setText] = useState('')
     const [error, setError] = useState('');
 
-    function updateReview() {
-        setSubmit(!submit);
-    }
-
     useEffect(() => {
         let status = 0;
         fetch(URL + 'haeArvostelu.php/' + id)
@@ -33,18 +29,21 @@ export default function Reviews() {
                     }
                 }, (error) => {
                     setError(error);
-                    // setIsLoaded(false);
                 }
             )
-    }, [review])
+    }, [submit])
 
-    function save(e) {
+
+    function updateReview() {
+        setSubmit(!submit);
+    }
+
+    function saveReview(e) {
         e.preventDefault();
         fetch(URL + 'lisaaArvostelu.php', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
-                'Content-type': 'application/json',
             },
             body: JSON.stringify({
                 nimimerkki: name,
@@ -52,13 +51,12 @@ export default function Reviews() {
                 teksti: text,
                 kirjaNro: id
             })
-        })
+        }) 
             .then((res) => res.json(...review, res))
             .then((res) => {
                 setName('');
                 setTitle('');
                 setText('');
-                console.log('rendered');
             })
     }
 
@@ -66,7 +64,9 @@ export default function Reviews() {
         <>
             <div className="row">
                 <div className="col mx-3 mt-5 p-4 bottomBg customBorder">
-                    <h3><u>Kirjan arvostelut</u></h3>
+                    <h3>
+                        <u>Kirjan arvostelut</u>
+                    </h3>
                     <div className="col mt-3">
                         {review.map(rev => (
                             <div key={rev.arvosteluNro}>
@@ -79,7 +79,7 @@ export default function Reviews() {
                     </div>
                 </div>
             </div>
-            <form onSubmit={save} method="POST">
+            <form onSubmit={saveReview} method="POST">
                 <div className="row">
                     <div className="row col mx-3 mt-5 p-4 bottomBg customBorder">
                         <div className="col-12">
