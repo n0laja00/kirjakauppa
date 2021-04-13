@@ -1,7 +1,10 @@
 import React, {useContext, useEffect, useState } from 'react';
 import CartContextProvider, { CartContext } from '../contexts/CartContext';
 import CartDetails from './CartDetails';
-
+import { Switch, Route } from 'react-router';
+import { Link } from 'react-router-dom'
+import Registry from '../registryComponents/Registry.js';
+import ToRegistry from './ToRegistry';
 
 /*sfc*/
 const CartList = () => {
@@ -55,6 +58,7 @@ const CartList = () => {
             <div className="col-12 text-end">
                 <h5>Hinta: {totalCost} €</h5>
             </div>
+            
         </div>
      ) : (
          <div className="empty"> Ei kirjoja! </div>

@@ -11,6 +11,7 @@ import AllBooks from './AllBooks';
 import AddItem from './AddItem';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
+import Registry from './registryComponents/Registry';
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             exact />
             <Route path="/BookDetails/:id" component={BookDetails}/>
             <Route path="/Reviews/:id" component={Reviews}/>
+            <Route path="/registryComponents/Registry" component={Registry}/>
         </Switch>
       </main>
       <div className="container bottomBg">
