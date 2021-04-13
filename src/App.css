@@ -388,3 +388,13 @@ border: 1px solid rgb(0, 0, 0, .5);
 .addItemForm {
   background-color: #ffc444cc;
 }
+
+.hidden {
+  display: none;
+}
+
+.publisherContainer {
+  background-color: #b38013cc !important;
+  margin: auto;
+  margin-top: 2%;
+}
