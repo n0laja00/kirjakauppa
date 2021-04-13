@@ -5,7 +5,7 @@ import uuid from 'react-uuid';
 export const CartContext = createContext();
 
 const CartContextProvider = (props) => {
-    
+
     const [cart, dispatch] = useReducer(cartReducer,[],() => {
         const localData = localStorage.getItem('cart');
         return localData ? JSON.parse(localData): []
