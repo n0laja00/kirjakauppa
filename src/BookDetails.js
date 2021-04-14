@@ -3,7 +3,6 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
-import Reviews from './Reviews';
 
 export default function BookDetails() {
 

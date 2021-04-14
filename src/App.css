@@ -21,7 +21,7 @@ h1 {
   text-decoration: underline;
   color: white;
 }
-p{
+p {
   font-size: large;
 }
 /* värit */
@@ -52,7 +52,7 @@ p{
 .bottomBg {
   background-color: hsla(0, 0%, 89%, 0.95);
 }
-.customBorder{
+.customBorder {
   border: 3px solid white;
   border-radius: 50px 50px 50px 2px;
 }
@@ -62,10 +62,9 @@ p{
   }
 }
 
-
 /* header */
 .header {
-  font-size: .8em;
+  font-size: 0.8em;
   background-color: #66b8fc;
 }
 .navbar {
@@ -90,8 +89,12 @@ p{
   .border-xs-bottom {
     border-bottom: 1px solid #e3e7eb !important;
     width: 170px;
-    background: rgb(255,255,255);
-    background: linear-gradient(90deg, rgba(255, 255, 255, 0.08) 50%, rgba(255,255,255,0) 100%);
+    background: rgb(255, 255, 255);
+    background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0.08) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
   }
 }
 
@@ -102,9 +105,6 @@ p{
     background: rgba(255, 255, 255, 0);
   }
 }
-
-
-
 
 /* etusivun kuva - source: https://pixabay.com/images/id-2596809/ */
 .fpimg {
@@ -143,7 +143,7 @@ footer {
 .footer_top {
   height: 40px;
   border-bottom: solid black 1px;
-  margin-bottom: 5px
+  margin-bottom: 5px;
 }
 
 .footer_top_section {
@@ -289,7 +289,7 @@ footer {
   border-radius: 26px 14px 22px 0px;
 }
 
-/*Custom arrows for carousel*/ 
+/*Custom arrows for carousel*/
 .custom_right_arrow {
   position: absolute !important;
   width: 10%;
@@ -327,9 +327,8 @@ footer {
 .map {
   margin-left: 1%;
   margin-top: 1%;
-  max-height:80% !important;
+  max-height: 80% !important;
   max-width: 80% !important;
- 
 }
 
 .map_container {
@@ -341,7 +340,6 @@ footer {
 .map_explanation {
   display: none;
 }
-
 
 @media only screen and (max-width: 1000px) {
   .map_container {
@@ -360,23 +358,23 @@ footer {
 /* source: https://stackoverflow.com/questions/486563/overflowhidden-dots-at-the-end
  */
 .cut-text {
-  font-size: .9em;
+  font-size: 0.9em;
   text-overflow: ellipsis;
   overflow: hidden;
   height: 1.2em;
   white-space: nowrap;
 }
-.addToCartBtn{
+.addToCartBtn {
   background-color: #66b8fc;
   border: 1px solid black;
 }
 .cardHover {
   border-radius: 10px;
 }
-.cardHover:hover{
-box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
-border-radius: 20px;
-border: 1px solid rgb(0, 0, 0, .5);
+.cardHover:hover {
+  box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  border: 1px solid rgb(0, 0, 0, 0.5);
 }
 
 /* AddItem tuotteen lisääminen */
@@ -389,6 +387,25 @@ border: 1px solid rgb(0, 0, 0, .5);
   background-color: #ffc444cc;
 }
 
+/* HistoryNav.js */
+.navHistory {
+  margin-top: 5px;
+  font-size: 0.8em;
+}
+.navHistory i {
+  position: absolute;
+  font-size: 1.2em;
+}
+@media only screen and (max-width: 991px) {
+  .navHistory {
+    margin-top: 5px;
+    font-size: 0.7em;
+  }
+  .navHistory i {
+    position: absolute;
+    font-size: 1.3em;
+  }
+}
 .hidden {
   display: none;
 }

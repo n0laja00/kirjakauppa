@@ -11,6 +11,7 @@ import AllBooks from './AllBooks';
 import AddItem from './AddItem';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
+import HistoryNav from './HistoryNav';
 import Registry from './registryComponents/Registry';
 
 
@@ -29,6 +30,7 @@ function App() {
     <div>
       <main className="container pb-5">
         <Header />
+        <HistoryNav />
         <Switch>
           <Route path="/" component={Content} exact />
           <Route path="/LoginPage" component={LoginPage} />
@@ -38,6 +40,9 @@ function App() {
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} />}
             exact />
+          <Route path="/BookDetails/:id" component={BookDetails} />
+          <Route path="/Reviews/:id" component={Reviews} />
+          <Route path="/HistoryNav" component={HistoryNav} />
             <Route path="/BookDetails/:id" component={BookDetails}/>
             <Route path="/Reviews/:id" component={Reviews}/>
             <Route path="/registryComponents/Registry" component={Registry}/>
