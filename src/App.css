@@ -366,13 +366,16 @@ footer {
   height: 1.2em;
   white-space: nowrap;
 }
+
 .addToCartBtn{
   background-color: #66b8fc;
   border: 1px solid black;
 }
+
 .cardHover {
   border-radius: 10px;
 }
+
 .cardHover:hover{
 box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
 border-radius: 20px;

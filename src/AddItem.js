@@ -2,7 +2,6 @@ import { useState, useEffect, React } from 'react'
 
 export default function AddItem() {
 
-    const [book, setBook] = useState([]);
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
     const [publisher, setPublisher] = useState('publisher');
@@ -164,7 +163,6 @@ export default function AddItem() {
                     {allPublishers.map(publisher => (
                         <option>{publisher.julkaisija}</option>
                     ))}
-                    {/* Pitää tehdä myöhemmin "Lisää uusi julkaisija" */}
                     </select>
                     <button type="button" className="btn border border-dark mt-1" onClick={toggleClass}>{show ? "Lisää uusi" : "Piilota"}</button>
                 </div>
