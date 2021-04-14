@@ -46,8 +46,7 @@ export default function AllBooks({ category }) {
     }, [category])
 
     if (!isLoaded) {
-        //tähän jotain jos tulee virhe
-        console.log(error)
+        alert(error)
         return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
     } else {
         return (
