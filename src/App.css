@@ -368,6 +368,7 @@ footer {
   background-color: #66b8fc;
   border: 1px solid black;
 }
+
 .cardHover {
   border-radius: 10px;
 }
@@ -411,7 +412,27 @@ footer {
 }
 
 .publisherContainer {
-  background-color: #b38013cc !important;
+  background-color: #dfa527cc !important;
   margin: auto;
   margin-top: 2%;
+}
+
+.bookBrowseImg {
+  width: 100%;
+  height: 100%;
+}
+
+.bookCartImg {
+  width: 100%;
+  height: 90%;
+}
+
+@media only screen and (max-width: 769px) {
+  .cartItem {
+    text-align: center !important;
+    margin: auto;
+  }
+  .bookCartImg {
+    height: 98.3px;
+  }
 }

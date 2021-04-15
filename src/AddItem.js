@@ -2,7 +2,6 @@ import { useState, useEffect, React } from 'react'
 
 export default function AddItem() {
 
-    const [book, setBook] = useState([]);
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
     const [publisher, setPublisher] = useState('publisher');
@@ -16,6 +15,8 @@ export default function AddItem() {
     const [bookPublished, setBookPublished] = useState(''); 
     const [bookCategory, setBookCategory] = useState('');
     const [bookCategory2, setBookCategory2] = useState('');
+    const [bookCategory3, setBookCategory3] = useState('');
+    const [bookCategory4, setBookCategory4] = useState('');
     const [image, setImage] = useState(null);
 
     //Julkaisijan lisääminen 
@@ -95,6 +96,8 @@ export default function AddItem() {
         formData.append('bookWriterLN',bookWriterLN);
         formData.append('bookCategory',bookCategory);
         formData.append('bookCategory2',bookCategory2);
+        formData.append('bookCategory3',bookCategory3);
+        formData.append('bookCategory4',bookCategory4);
         fetch (URL + 'lisaaTuote.php',
             {
             method: 'POST',
@@ -117,6 +120,8 @@ export default function AddItem() {
         setBookWriterLN('');
         setBookCategory('');
         setBookCategory2('');
+        setBookCategory3('');
+        setBookCategory4('');
         }
         }
     }
@@ -164,7 +169,6 @@ export default function AddItem() {
                     {allPublishers.map(publisher => (
                         <option>{publisher.julkaisija}</option>
                     ))}
-                    {/* Pitää tehdä myöhemmin "Lisää uusi julkaisija" */}
                     </select>
                     <button type="button" className="btn border border-dark mt-1" onClick={toggleClass}>{show ? "Lisää uusi" : "Piilota"}</button>
                 </div>
@@ -228,10 +232,22 @@ export default function AddItem() {
                         <option>{bookCategory.kategoria}</option>
                     ))}
                     </select>
-                    <select id="kategoria2" className="form-select" required value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
+                    <select id="kategoria2" className="form-select mb-1" required value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
                     <option selected>Valitse...</option>
                     {allBookCategories.map(bookCategory2 => (
                         <option>{bookCategory2.kategoria}</option>
+                    ))}
+                    </select>
+                    <select id="kategoria3" className="form-select mb-1" required value={bookCategory3} onChange={e => setBookCategory3(e.target.value)}>
+                    <option selected>Valitse...</option>
+                    {allBookCategories.map(bookCategory3 => (
+                        <option>{bookCategory3.kategoria}</option>
+                    ))}
+                    </select>
+                    <select id="kategoria4" className="form-select" required value={bookCategory4} onChange={e => setBookCategory4(e.target.value)}>
+                    <option selected>Valitse...</option>
+                    {allBookCategories.map(bookCategory4 => (
+                        <option>{bookCategory4.kategoria}</option>
                     ))}
                     </select>
                 </div>

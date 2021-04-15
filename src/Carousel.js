@@ -75,20 +75,20 @@ export default function BookCarousel({bookdata}) {
 
         {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
-            <div className="book_divider light_brown" key={uuid()}>
+            <div className="book_divider light_brown container" key={uuid()}>
                 <section className="float_container">
                     <div className="float_child_book_img">
                     <img
-                        className="d-block w-100"
+                        className="d-block w-100 bookBrowseImg"
                         src={imgURL + book.kuva}
                         alt="Kirjan kuva"
                     />
                     </div>
                     <div className="float_child col-sm-auto">
                         <p className="cut-text mt-1">{book.kirjaNimi}</p>
-                        <p>{book.sukunimi} {book.etunimi}</p>
-                        <p>{book.julkaisija}</p>
-                        <p>{book.vuosi}</p>
+                        <p className="cut-text">{book.sukunimi} {book.etunimi}</p>
+                        <p className="cut-text">{book.julkaisija}</p>
+                        <p className="cut-text">{book.vuosi}</p>
                     </div>
                 </section>
 
