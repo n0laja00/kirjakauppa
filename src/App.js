@@ -32,7 +32,8 @@ function App() {
         <Header />
         <HistoryNav />
         <Switch>
-          <Route path="/" component={Content} exact />
+          <Route path="/" render={() => <Content
+            category={category} />} exact />
           <Route path="/LoginPage" component={LoginPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Route path="/AddItem" component={AddItem}/>
