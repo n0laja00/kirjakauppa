@@ -44,7 +44,7 @@ export default function BookDetails() {
                         </div>
                         <div className="row">
                             <div className="col-sm-6">
-                                <img className="card-img-top customBorder mb-3" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                                <img className="card-img-top customBorder mb-3 bookBrowseImg" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                             </div>
                             <div className="col-sm-6">
                                 <div className="col-12 customBorder bottomBg p-4">

@@ -10,6 +10,8 @@ export default function HistoryNav() {
     let splitpath = testpath.split("/")
     // console.log(splitpath);
 
+
+    // testing
     if (splitpath.length === 3) {
        pathname = splitpath[2];
     }
