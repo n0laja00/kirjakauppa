@@ -60,18 +60,18 @@ const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
             <li className="row">
                 {book.map(el => (
                     <>
-                        <div className="col-3">
-                            <img className="lista-kuva pull-left mr-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                        <div className="col-md-3 cartItem">
+                            <img className="lista-kuva mr-2 bookCartImg cartItem" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>
                         
-                        <div className="col-9 "> 
+                        <div className="col-md-9 cartItem"> 
                             <Link to={'/BookDetails/'+ el.kirjaNro} className="link text-center">
-                                <h4 className="col-12 text-end cart-book-title">{el.kirjaNro} {el.kirjaNimi}</h4>
+                                <h4 className="col-12 text-end cart-book-title cartItem">{el.kirjaNro} {el.kirjaNimi}</h4>
                             </Link>
-                            <p className="kirjailija text-end"> {el.sukunimi}, {el.etunimi} </p>
-                            <h5 className="hinta text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
+                            <p className="kirjailija text-end cartItem"> {el.sukunimi}, {el.etunimi} </p>
+                            <h5 className="hinta text-end cartItem" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
                             
-                            <button className="btn btn-danger float-end" onClick={() => handleDelete(el, item)} type="button">Poista</button>
+                            <button className="btn btn-danger float-md-end cartItem" onClick={() => handleDelete(el, item)} type="button">Poista</button>
                         </div>
                     </> 
                 ))}
