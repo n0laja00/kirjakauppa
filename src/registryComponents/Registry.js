@@ -12,10 +12,7 @@ export default function Registry() {
     const [address, setAddress] = useState('');
     const [city, setCity] = useState('');
     const [postalCode, setPostalCode] = useState('');
-  
-    
-    
-    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+    const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
     
 
     
@@ -38,7 +35,7 @@ export default function Registry() {
                 lahiosoite: address,
                 postitmp: city,
                 postiNro: postalCode,
-                ostoskori: cart
+                ostoskori: cart,
             })
         })
         .then(res=> {
@@ -47,14 +44,7 @@ export default function Registry() {
           })
         .then ((res) => {
             if (status === 200) {
-                setFirstName('');
-                setLastTName('');
-                setEmail('');
-                setPhone('');
-                setCorporation('');
-                setAddress('');
-                setCity('');
-                setPostalCode('');
+                
                 console.log('tilaus tehty');
             } else {
                 alert(res.error);
@@ -62,6 +52,14 @@ export default function Registry() {
             }, (error) => {
               alert(error)
         })
+        setFirstName('');
+        setLastTName('');
+        setEmail('');
+        setPhone('');
+        setCorporation('');
+        setAddress('');
+        setCity('');
+        setPostalCode('');
     };
 
 
