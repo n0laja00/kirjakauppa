@@ -11,7 +11,7 @@ export default function BookDetails() {
 
     const [book, setBook] = useState([]);
     const [error, setError] = useState('');
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
     const URL = 'http://localhost/kirjakauppa/haeKirjaNro.php/'
     const imgURL = 'http://localhost/kirjakauppa/img/';
 
@@ -21,6 +21,7 @@ export default function BookDetails() {
             .then(
                 (result) => {
                     setBook(result);
+                    setIsLoaded(true);
                 }, (error) => {
                     setError(error);
                     setIsLoaded(false);

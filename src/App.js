@@ -11,7 +11,7 @@ import AllBooks from './AllBooks';
 import AddItem from './AddItem';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
-import HistoryNav from './HistoryNav';
+import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
 
 
@@ -30,23 +30,20 @@ function App() {
     <div>
       <main className="container pb-5">
         <Header />
-        <HistoryNav />
+        <Breadcrumbs />
         <Switch>
           <Route path="/" render={() => <Content
             category={category} />} exact />
           <Route path="/LoginPage" component={LoginPage} />
           <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/AddItem" component={AddItem}/>
+          <Route path="/AddItem" component={AddItem} />
           {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} />}
             exact />
           <Route path="/BookDetails/:id" component={BookDetails} />
           <Route path="/Reviews/:id" component={Reviews} />
-          <Route path="/HistoryNav" component={HistoryNav} />
-            <Route path="/BookDetails/:id" component={BookDetails}/>
-            <Route path="/Reviews/:id" component={Reviews}/>
-            <Route path="/registryComponents/Registry" component={Registry}/>
+          <Route path="/registryComponents/Registry" component={Registry} />
         </Switch>
       </main>
       <div className="container bottomBg">

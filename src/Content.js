@@ -14,9 +14,6 @@ export default function Content({ category }) {
     const URL = 'http://localhost/kirjakauppa/navKategoriat.php/';
     const [categories, setCategories] = useState([]);
 
-    console.log(category)
-    console.log(categories)
-
     useEffect(() => {
         fetch(URL)
             .then(response => response.json())
@@ -51,15 +48,13 @@ export default function Content({ category }) {
                     <div className="row justify-content-center">
                         {categories.map(category => (
 
-                            <Link className="col-sm-12 justify-content-center" to={{
+                            <Link key={category.kategoriaNro} className="col-sm-2 m-2 btn categoryButton" to={{
                                 pathname: '/AllBooks',
                                 state: {
                                     id: category.kategoriaNro,
                                     name: category.kategoria
                                 }
-                            }}>
-                                <button className="col btn categoryButton">{category.kategoria}</button>
-                            </Link>
+                            }}>{category.kategoria}</Link>
                         ))}
                     </div>
                 </div>

@@ -8,7 +8,7 @@ export default function AllBooks({ category }) {
 
     const [books, setBooks] = useState([]);
     const [error, setError] = useState('');
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
     const URL1 = 'http://localhost/kirjakauppa/yksiKategoria.php/';
     const URL2 = 'http://localhost/kirjakauppa/kaikkiKirjat.php/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
@@ -37,7 +37,6 @@ export default function AllBooks({ category }) {
             .then(
                 (result) => {
                     setBooks(result);
-
                     setIsLoaded(true);
                 }, (error) => {
                     setError(error);
@@ -47,7 +46,7 @@ export default function AllBooks({ category }) {
     }, [category])
 
     if (!isLoaded) {
-        alert(error)
+        console.log(error);
         return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
     } else {
         return (

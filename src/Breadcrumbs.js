@@ -1,25 +1,34 @@
 import { useState, useEffect, React } from 'react'
-import { useHistory } from 'react-router'
+import { useHistory, useLocation } from 'react-router'
 import { Link } from 'react-router-dom';
 
 export default function HistoryNav() {
+    const [breadCrumbs, setBreadCrumbs] = useState([]);
     let history = useHistory();
     let pathname = history.location.pathname.substr(1);
-
-    let testpath = history.location.pathname;
-    let splitpath = testpath.split("/")
-    // console.log(splitpath);
-
-
-    // testing
-    if (splitpath.length === 3) {
-       pathname = splitpath[2];
-    }
-
+    console.log(breadCrumbs);
     function goToPreviousPath() {
         history.goBack();
     }
 
+    function pushBreadCrumb(){
+
+        setBreadCrumbs([history.location.pathname])
+        console.log(breadCrumbs);
+    }
+
+    useEffect(() => {
+        if(pathname.includes('/')){
+            console.log('spotted /')
+            // pathname= 
+        }
+        setBreadCrumbs(pathname);
+        return () => {
+            console.log(breadCrumbs)
+        }
+    }, [pathname])
+
+    
     if (pathname !== "") {
         return (
             <div className="row navHistory">
@@ -27,8 +36,10 @@ export default function HistoryNav() {
                 <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
                 <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
                 <div className="col-1">
-                    <u>{pathname}</u>
+                    <u>{breadCrumbs}</u>
                 </div>
+                <div className="col-auto"><button onClick={pushBreadCrumb}>{breadCrumbs}</button></div>
+
             </div>
         )
     } else {
@@ -39,6 +50,7 @@ export default function HistoryNav() {
                 <div className="col-auto">
                     <u>Home</u>
                 </div>
+                <div className="col-auto"><button onClick={pushBreadCrumb}>{breadCrumbs}</button></div>
             </div>
         )
     }
