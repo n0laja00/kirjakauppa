@@ -22,16 +22,17 @@ const AddToCart = ({item}) => {
             cart[itemIndex].maara = cart[itemIndex].maara + change;
             console.log(cart[itemIndex].maara);
             localStorage.setItem('cart', JSON.stringify(books));
+            
         } else {
             dispatch({type: 'ADD_TO_CART', item: {
                 kirjaNro,
                 hinta,
                 maara
-            }});
-            setKirjaNumero('');
-            setHinta('');
-            setMaara('')
+            }
+        });
+            
         }
+        
     }
 
     return ( 
