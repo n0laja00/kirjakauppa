@@ -40,6 +40,8 @@ export default function Reviews() {
 
     function saveReview(e) {
         e.preventDefault();
+        updateReview();
+        console.log(submit)
         let status = 0;
         fetch(URL + 'lisaaArvostelu.php', {
             method: 'POST',

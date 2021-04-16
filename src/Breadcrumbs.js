@@ -1,56 +1,60 @@
 import { useState, useEffect, React } from 'react'
-import { useHistory, useLocation } from 'react-router'
+import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom';
 
-export default function HistoryNav() {
+export default function Breadcrumbs() {
+
+    // variables
     const [breadCrumbs, setBreadCrumbs] = useState([]);
     let history = useHistory();
-    let pathname = history.location.pathname.substr(1);
-    console.log(breadCrumbs);
+    let pathname = history.location.pathname;
+    let pathnameArr = [];
+
+    //  go to previous page
     function goToPreviousPath() {
         history.goBack();
     }
 
-    function pushBreadCrumb(){
-
-        setBreadCrumbs([history.location.pathname])
-        console.log(breadCrumbs);
-    }
-
     useEffect(() => {
-        if(pathname.includes('/')){
-            console.log('spotted /')
-            // pathname= 
+        //if sign "/" present in url, split pathname into array
+        if (pathname.includes('/')) {
+            pathnameArr = pathname.split('/');
+            
+            // Tässä menossa
+            for (let i = 0; i < pathnameArr.length; i++) {
+                if (typeof pathnameArr[i] === "number") {
+                    console.log('ASD')
+                    pathnameArr[i] = ('Book');
+                }
+            }
+            
+            setBreadCrumbs(pathnameArr);
         }
-        setBreadCrumbs(pathname);
-        return () => {
-            console.log(breadCrumbs)
-        }
-    }, [pathname])
+    }, [pathname]) //when pathname changes
 
-    
-    if (pathname !== "") {
+    //return if not at home page
+    if (pathname !== "/") {
         return (
             <div className="row navHistory">
                 <Link to="/" className="link col-auto varjo"> <i className="fa fa-home"></i> </Link>
                 <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
                 <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
-                <div className="col-1">
-                    <u>{breadCrumbs}</u>
-                </div>
-                <div className="col-auto"><button onClick={pushBreadCrumb}>{breadCrumbs}</button></div>
+
+                {/* map breadcrumbs array into span elements */}
+                {breadCrumbs.map(item => (
+                    <span className="col-auto">{item} </span>
+                ))}
 
             </div>
         )
-    } else {
+    } else { /* return at home page */
         return (
             <div className="row navHistory">
                 <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
-                <Link className="link col-auto" onClick={goToPreviousPath}> Edellinen </Link>
+                <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
                 <div className="col-auto">
                     <u>Home</u>
                 </div>
-                <div className="col-auto"><button onClick={pushBreadCrumb}>{breadCrumbs}</button></div>
             </div>
         )
     }

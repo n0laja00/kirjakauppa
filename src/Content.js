@@ -20,8 +20,6 @@ export default function Content({ category }) {
             .then(
                 (result) => {
                     setCategories(result);
-                    console.log('rendered')
-
                     // setIsLoaded(true);
                 }, (error) => {
                     // setError(error);
@@ -33,7 +31,7 @@ export default function Content({ category }) {
     return (
         <div className="row">
             <div>
-                <div className="row py-5 d-flex justify-content-center">
+                <div className="row py-5 justify-content-center">
                     <div className="col-md-8 col-sm-8 mx-5 mb-5 p-5 customBorder">
                         <h1 className="pb-3">Tervetuloa</h1>
                         <p>Ruotsalainen kirjakauppa on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
@@ -41,14 +39,13 @@ export default function Content({ category }) {
                     </div>
                 </div>
 
-                <div className="row pb-5 d-flex justify-content-center">
+                <div className="row pb-5 justify-content-center">
                     <div className="row">
                         <h1 className="pb-4 col-12 text-center">Kategoriat</h1>
                     </div>
                     <div className="row justify-content-center">
                         {categories.map(category => (
-
-                            <Link key={category.kategoriaNro} className="col-sm-2 m-2 btn categoryButton" to={{
+                            <Link key={category.kategoriaNro} className="link col-sm-3 m-2 btn categoryButton d-flex align-items-center" to={{
                                 pathname: '/AllBooks',
                                 state: {
                                     id: category.kategoriaNro,
