@@ -454,3 +454,10 @@ footer {
   }
 }
 
+/* arvostelun tähdet */
+#starDefault {
+  color: rgb(174, 174, 174);
+}
+#starHover {
+color: rgb(255, 196, 0);
+}

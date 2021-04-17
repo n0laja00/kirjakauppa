@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import Rating from './Rating';
 
 export default function Reviews() {
 
@@ -40,7 +41,7 @@ export default function Reviews() {
 
     function saveReview(e) {
         e.preventDefault();
-        let status = 0;
+        updateReview();
         fetch(URL + 'lisaaArvostelu.php', {
             method: 'POST',
             headers: {
@@ -65,7 +66,7 @@ export default function Reviews() {
         <>
             <div className="row">
                 <div className="col mx-3 mt-5 p-4 bottomBg customBorder">
-                    <h3>
+                    <h3 className="col-6">
                         <u>Kirjan arvostelut</u>
                     </h3>
                     <div className="col mt-3">
@@ -82,19 +83,23 @@ export default function Reviews() {
             </div>
             <form onSubmit={saveReview} method="POST">
                 <div className="row">
-                    <div className="row col mx-3 mt-5 p-4 bottomBg customBorder">
-                        <div className="col-12">
+                    <div className="col mx-3 mt-5 p-4 bottomBg customBorder">
+                        <div className="col-sm-6">
                             <label for="reviewerName" className="form-label">Arvostelija</label>
                             <input type="text" className="form-control" id="reviewerName" name="reviewerName" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} required />
                         </div>
-                        <div className="col-12">
+                        <div className="col-sm-6">
                             <label for="reviewTitle" className="form-label">Otsikko</label>
                             <input type="text" className="form-control" id="reviewTitle" name="reviewTitle" placeholder="Arvostelun otsikko" value={title} onChange={e => setTitle(e.target.value)} required />
                         </div>
                         <div className="mb-3">
                             <label for="reviewText" className="form-label">Arvostelu</label>
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
-                            <button className="btn btn-primary col-6 mt-4">Lähetä arvostelu</button>
+                            <div className="col-sm-6 mt-3">Montako tähteä antaisit kirjalle?</div>
+                            <div className="col-sm-6 mt-2">
+                                <Rating />
+                            </div>
+                            <button className="btn btn-primary col-6 mt-3">Lähetä arvostelu</button>
                         </div>
                     </div>
                 </div>

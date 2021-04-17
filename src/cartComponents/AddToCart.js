@@ -12,15 +12,15 @@ const AddToCart = ({item}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        let books = JSON.parse(localStorage.getItem('cart'));
 
         if(cart.some((yksi) => yksi.kirjaNro === item.kirjaNro)) {
-            const books = cart;
+            
             const change = 1;
             const itemIndex = books.findIndex((book) => book.kirjaNro === item.kirjaNro);
             
-            cart[itemIndex].maara = cart[itemIndex].maara + change;
-            console.log(cart[itemIndex].maara);
+            books[itemIndex].maara = books[itemIndex].maara + change;
+            console.log(books[itemIndex].maara);
             localStorage.setItem('cart', JSON.stringify(books));
         } else {
             dispatch({type: 'ADD_TO_CART', item: {
@@ -28,10 +28,11 @@ const AddToCart = ({item}) => {
                 hinta,
                 maara
             }});
-            setKirjaNumero('');
-            setHinta('');
-            setMaara('')
+            
         }
+        setKirjaNumero('');
+        setHinta('');
+        setMaara('')
     }
 
     return ( 
