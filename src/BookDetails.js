@@ -66,7 +66,7 @@ export default function BookDetails() {
                                     <div className="col-12">Julkaisuvuosi: {el.julkaistu} </div>
                                     <div className="col-12">Julkaisija: {el.julkaisija} </div>
                                     <div className="col-12 mt-3">
-                                        <Link to={'/Reviews/' + id}>Lue arvostelut</Link>
+                                        <Link to={'/Reviews/' + id}>Kirjan arvostelut</Link>
                                     </div>
                                 </div>
                             </div>
