@@ -11,10 +11,20 @@ export default function AllBooks({ category }) {
     const [isLoaded, setIsLoaded] = useState(true);
     const URL1 = 'http://localhost/kirjakauppa/yksiKategoria.php/';
     const URL2 = 'http://localhost/kirjakauppa/kaikkiKirjat.php/';
+    const URL3 = 'http://localhost/kirjakauppa/haku.php/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
+
+    console.log("haku", search, query)
+    
+    
 
     function title () {
-        if (category?.name === undefined) {
+        if (query !== null) {
+            let otsikko = "Hakutulokset: " + query;
+            return otsikko;
+        } else if (category?.name === undefined) {
             let otsikko = "Kaikki kirjat";
             return otsikko;
         } else {
@@ -25,11 +35,15 @@ export default function AllBooks({ category }) {
 
     useEffect(() => {
         let address = URL1 + category?.id;
+
         if (category?.id === "22") {
             address = URL2;
         }
         if (category?.id === undefined) {
             address = URL2;
+        }
+        if (query !== null) {
+            address = URL3 + query;
         }
 
         fetch(address)
@@ -58,7 +72,7 @@ export default function AllBooks({ category }) {
                 <div className="row justify-content-center p-5 text-center">
                     {books.map(book => (
                         <div class="card col-sm-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
-                            <img class="card-img-top p-4 bookBrowseImg" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
+                            <img class="card-img-top p-4" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
                             <div class="row">
                                 <h5 class="card-title col-12">{book.kirjaNimi}</h5>
                                 <div class="card-text cut-text col-sm-12">{book.kuvaus}</div>

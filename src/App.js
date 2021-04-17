@@ -1,4 +1,4 @@
-import { Switch, Route, useLocation } from 'react-router';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './App.css';
 import Content from './Content';
