@@ -165,7 +165,6 @@ footer {
   text-align: center;
 }
 
-/*Some korttien tekemiseen käytetty avuksi https://bbbootstrap.com/snippets/bootstrap-social-media-icons-3d-flips-78890278 */
 .social-list {
   display: inline-flex;
   padding: 0px !important;
@@ -261,18 +260,36 @@ footer {
   width: 50%;
   float: left;
   padding: 0px;
+  height: 300.15px;
 }
+
 
 @media only screen and (max-width: 1000px) {
   .float_child {
-    margin-right: 20px;
-    text-align: center;
-    margin-left: 0 !important;
-    padding-left: 0 !important;
+    width: 100%;
+    text-align: left;
+    margin-top: 20%;
+  }
+  .float_child p {
+    margin-bottom: 10%;
+    margin-left: 0%;
   }
   .float_child_book_img {
-    text-align: left;
     width: 100%;
+    text-align: left;
+    height: 500px !important;
+  }
+  .float_child_book_img img {
+    height: 500px;
+  }
+}
+
+@media only screen and (max-width: 770px) {
+  .float_child_book_img {
+    height: 300px !important;
+  }
+  .float_child_book_img img {
+    height: 300px;
   }
 }
 
@@ -436,3 +453,4 @@ footer {
     height: 98.3px;
   }
 }
+
