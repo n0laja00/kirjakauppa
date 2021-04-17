@@ -57,7 +57,7 @@ export default function AllBooks({ category }) {
                     setIsLoaded(false);
                 }
             )
-    }, [category])
+    }, [category, query])
 
     if (!isLoaded) {
         console.log(error);
