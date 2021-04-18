@@ -1,23 +1,25 @@
-import { useState, React } from 'react'
+import { React } from 'react'
 
 export default function Rating({ rev }) {
-    const [rate, setRate] = useState(null)
-    const [hover, setHover] = useState(null)
-    console.log(rate)
-
     return (
         <div>
             {[...Array(5)].map((star, i) => {
-                const ratingValue = rev;
+                const ratingValue = i + 1;
+                function setStars(rv) {
+                    if (ratingValue != rev) {
+                        return 'hoverStar';
+                    } else {
+                        return 'hoverStar';
+                    }
+                }
                 return (
                     <label>
                         <input className="hidden"
                             type="radio"
                             name="rated"
                             value={ratingValue} />
-                            {/* tässä menossa */}
                         <i className="fa fa-star fa-2x"
-                            id={ratingValue > (hover || rate) ? "starHover" : "starDefault"}>
+                            id={ratingValue <= rev ? "starHover" : "starDefault"}>
                         </i>
                     </label>
                 )
