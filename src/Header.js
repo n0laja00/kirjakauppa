@@ -26,6 +26,9 @@ export default function Header() {
                             <div>
                                 <Link className="link" to="/LoginPage">Login</Link>
                             </div>
+                            <div>
+                                <Link className="link" to="/Logout">Logout</Link>
+                            </div>
                         </div>
                     </div>
                 </div>

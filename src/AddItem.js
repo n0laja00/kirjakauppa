@@ -1,6 +1,7 @@
 import { useState, useEffect, React } from 'react'
+import { Redirect } from 'react-router';
 
-export default function AddItem() {
+export default function AddItem({user}) {
 
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
@@ -80,6 +81,10 @@ export default function AddItem() {
         }
         )
     }, [submit])
+
+    if (user===null) {
+        return <Redirect to="/LoginPage" />
+    }
 
     function handleChange(e) {
         setImage(e.target.files[0]);

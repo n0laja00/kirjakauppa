@@ -16,10 +16,6 @@ export default function AllBooks({ category }) {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
 
-    console.log("haku", search, query)
-    
-    
-
     function title () {
         if (query !== null) {
             let otsikko = "Hakutulokset: " + query;
