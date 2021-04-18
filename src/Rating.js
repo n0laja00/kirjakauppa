@@ -5,13 +5,6 @@ export default function Rating({ rev }) {
         <div>
             {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
-                function setStars(rv) {
-                    if (ratingValue != rev) {
-                        return 'hoverStar';
-                    } else {
-                        return 'hoverStar';
-                    }
-                }
                 return (
                     <label>
                         <input className="hidden"
