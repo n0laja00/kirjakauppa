@@ -1,29 +1,27 @@
-import { React, useState } from 'react'
+import { useState, React } from 'react'
 
-export default function Rating() {
-
-    const [rating, setRating] = useState(null)
+export default function Rating({ rev }) {
+    const [rate, setRate] = useState(null)
     const [hover, setHover] = useState(null)
+    console.log(rate)
+
     return (
-        <>
+        <div>
             {[...Array(5)].map((star, i) => {
-                const ratingValue = i + 1;
+                const ratingValue = rev;
                 return (
                     <label>
                         <input className="hidden"
                             type="radio"
-                            name="rating"
-                            value={ratingValue}
-                            onClick={() => setRating(ratingValue)}
-                        />
+                            name="rated"
+                            value={ratingValue} />
+                            {/* tässä menossa */}
                         <i className="fa fa-star fa-2x"
-                            id={ratingValue <= (hover || rating) ? "starHover" : "starDefault"}
-                            onMouseEnter={() => setHover(ratingValue)}
-                            onMouseLeave={() => setHover(null)}>
+                            id={ratingValue > (hover || rate) ? "starHover" : "starDefault"}>
                         </i>
                     </label>
                 )
             })}
-        </>
+        </div>
     )
 }
