@@ -11,10 +11,20 @@ export default function AllBooks({ category }) {
     const [isLoaded, setIsLoaded] = useState(false);
     const URL1 = 'http://localhost/kirjakauppa/yksiKategoria.php/';
     const URL2 = 'http://localhost/kirjakauppa/kaikkiKirjat.php/';
+    const URL3 = 'http://localhost/kirjakauppa/haku.php/';
     const imgURL = 'http://localhost/kirjakauppa/img/';
+    const { search } = window.location;
+    const query = new URLSearchParams(search).get('s');
 
-    function title() {
-        if (category?.name === undefined) {
+    console.log("haku", search, query)
+    
+    
+
+    function title () {
+        if (query !== null) {
+            let otsikko = "Hakutulokset: " + query;
+            return otsikko;
+        } else if (category?.name === undefined) {
             let otsikko = "Kaikki kirjat";
             return otsikko;
         } else {
@@ -25,12 +35,17 @@ export default function AllBooks({ category }) {
 
     useEffect(() => {
         let address = URL1 + category?.id;
+
         if (category?.id === "22") {
             address = URL2;
         }
         if (category?.id === undefined) {
             address = URL2;
         }
+        if (query !== null) {
+            address = URL3 + query;
+        }
+
         fetch(address)
             .then(response => response.json())
             .then(
@@ -42,7 +57,7 @@ export default function AllBooks({ category }) {
                     setIsLoaded(false);
                 }
             )
-    }, [category])
+    }, [category, query])
 
     if (!isLoaded) {
         console.log(error);
