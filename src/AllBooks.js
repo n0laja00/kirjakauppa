@@ -32,15 +32,13 @@ export default function AllBooks({ category }) {
     useEffect(() => {
         let address = URL1 + category?.id;
 
-        if (category?.id === "22") {
-            address = URL2;
-        }
-        if (category?.id === undefined) {
-            address = URL2;
-        }
         if (query !== null) {
             address = URL3 + query;
-        }
+        } else if (category?.id === "22") {
+            address = URL2;
+        } else if (category?.id === undefined) {
+            address = URL2;
+        };
 
         fetch(address)
             .then(response => response.json())
