@@ -14,10 +14,16 @@ export default function Registry() {
     const [city, setCity] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
+    const [paymentMethod, setPaymentMethod] = useState('');
+    const [shippingAddress, setShippingAddress] = useState('');
+    const [shippingMethod, setShippingMethod] = useState('');
     
 
     
     function handleSubmit (e) {
+        if (shippingAddress.length <= 0) {
+            setShippingAddress(address);
+        }
         e.preventDefault();
         const URL = 'http://localhost/kirjakauppa/';
         let status = 0; 
@@ -37,6 +43,9 @@ export default function Registry() {
                 postitmp: city,
                 postiNro: postalCode,
                 ostoskori: cart,
+                paymentMethod: paymentMethod,
+                toimitusosoite: shippingAddress,
+                shippingMethod: toimitustapa,
             })
         })
         .then(res=> {
@@ -68,46 +77,121 @@ export default function Registry() {
 
     function test(e) {
         e.preventDefault();
-        console.log(cart);
+        if (shippingAddress.length <= 0) {
+            setShippingAddress(address);
+        }
+        console.log(shippingAddress);
     }
 
     return (
         <div className="row">
-            <h1 className="mt-2">Kassa</h1>
-            <form onSubmit={handleSubmit}>
-                <div className="col mt-3 ">
-                    <div className="col text-end">
-                        <input type="text" value={firstName} className="col-5 float-start form-control-lg" name="firstName" placeholder="Etunimi" onChange={e => setFirstName(e.target.value)}/>
-                        <input type="text" value={lastName} className="col-6 form-control-lg" name="lastName" placeholder="Sukunimi" onChange={e => setLastTName(e.target.value)}/>
+            <h1 className=" col mt-2">Kassa</h1>
+            <div className="row">
+                <form className="col" onSubmit={test}>
+                    <div className="col mt-3 ">
+                        <div className="row">
+                            <label className="float-start col">Etunimi
+                                <input type="text" value={firstName} maxlength="20" required className="form-control form-control-lg" name="firstName" placeholder="Etunimi" onChange={e => setFirstName(e.target.value)}/>
+                            </label>
+                            <label className="float-end col"> Sukunimi
+                                <input type="text" value={lastName} maxlength="20" required className="form-control form-control-lg" name="lastName" placeholder="Sukunimi" onChange={e => setLastTName(e.target.value)}/>
+                            </label>
+                        </div>
+                        <h2 className="col mt-4">Yhteystiedot:</h2>
+                        <div className="mt-3 row">
+                            <label>Sähköposti
+                                <input type="email" value={email} maxlength="80" required className="form-control form-control-lg" name="email" placeholder="Sähköposti" onChange={e => setEmail(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <label>Sähköposti
+                                <input type="text" value={phone} required className="form-control form-control-lg" name="phone" placeholder="Puhelin (tarvitaan yhteydenpitoon)" onChange={e => setPhone(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <label>Yritys / yhteisö
+                                <input type="text" value={corporation} className="form-control form-control-lg" name="corporation" placeholder="Yritys / yhteisö (valinnainen)" onChange={e => setCorporation(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <label>Osoite
+                                <input type="text" value={address} maxlength="50" required className="form-control form-control-lg" name="address" placeholder="Osoite" onChange={e => setAddress(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <label className="float-start col">Postinumero
+                                <input type="text" value={postalCode} minlength="4" maxlength="5" required className="form-control form-control-lg" name="postalCode" placeholder="Postinumero" onChange={e => setPostalCode(e.target.value)}/>
+                           </label>
+                           <label className="float-end col">Kaupunki
+                                <input type="text" value={city} required className="form-control form-control-lg" name="city" placeholder="Kaupunki" onChange={e => setCity(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3">
+                            <h1>Toimitus</h1>
+                        </div>
+                        <div className="mt-3 row">
+                            <label>Toimitusosoite (Valinainen)
+                                <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite" onChange={e => setShippingAddress(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input " type="radio" name="paymentMethod" id="paymentMethodRadios1" value="lasku" onChange={e => setPaymentMethod(e.target.value)} />
+                                <label className="form-check-label" for="paymentMethodRadios1">
+                                    Lasku
+                                </label>
+                            </div>
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios2" value="postissa" onClick={e => setPaymentMethod(e.target.value)}/>
+                                <label className="form-check-label" for="paymentMethodRadios2">
+                                    Postissa
+                                </label>
+                            </div>
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios3" value="pankkikortti" onClick={e => setPaymentMethod(e.target.value)}/>
+                                <label className="form-check-label" for="paymentMethodRadios3">
+                                    Pankkikortti
+                                </label>
+                            </div>
+                        </div>
+
+                        <div className="mt-3 row">
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input " type="radio" name="shippingMethod" id="shippingMethodRadios1" value="lähinKauppa" onChange={e => setShippingMethod(e.target.value)} />
+                                <label className="form-check-label" for="shippingMethodRadios1">
+                                    Nouda Lähimmästä Kaupasta
+                                </label>
+                            </div>
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios2" value="postiin" onClick={e => setShippingMethod(e.target.value)}/>
+                                <label className="form-check-label" for="shippingMethodRadios2">
+                                    Postiin
+                                </label>
+                            </div>
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="matkahuolto" onClick={e => setShippingMethod(e.target.value)}/>
+                                <label className="form-check-label" for="shippingMethodRadios3">
+                                    Matkahuolto
+                                </label>
+                            </div>
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
+                                <label className="form-check-label" for="shippingMethodRadios3">
+                                    Pikaposti (Matkahuolto)
+                                </label>
+                            </div>
+                        </div>
+                        <input type="submit"/>
                     </div>
-                    <h2 className="col mt-4">Yhteystiedot:</h2>
-                    <div className="mt-3 col">
-                        <input type="email" value={email} className="form-control form-control-lg" name="email" placeholder="Sähköposti" onChange={e => setEmail(e.target.value)}/>
-                    </div>
-                    <div className="mt-3 col">
-                        <input type="text" value={phone} className="form-control form-control-lg" name="phone" placeholder="Puhelin (tarvitaan yhteydenpitoon)" onChange={e => setPhone(e.target.value)}/>
-                    </div>
-                    <div className="mt-3 col">
-                        <input type="text" value={corporation} className="form-control form-control-lg" name="corporation" placeholder="Yritys / yhteisö (valinnainen)" onChange={e => setCorporation(e.target.value)}/>
-                    </div>
-                    <div className="mt-3 col">
-                        <input type="text" value={address} className="form-control form-control-lg" name="address" placeholder="Osoite" onChange={e => setAddress(e.target.value)}/>
-                    </div>
-                    <div className="mt-3 col text-end">
-                        <input type="text" value={postalCode} className="col-5 float-start form-control-lg" name="postalCode" placeholder="Postinumero" onChange={e => setPostalCode(e.target.value)}/>
-                        <input type="text" value={city} className="col-6 form-control-lg" name="city" placeholder="Kaupunki" onChange={e => setCity(e.target.value)}/>
-                    </div>
-                    <input type="submit"/>
-                </div>
-            </form>
-            <div className="col">
+                </form>
+                <div className="col">
                 <div className="ms-5 h-25 w-75 d-inline-block float-end">
                     <CartContextProvider>
                         <CartList></CartList>
                     </CartContextProvider>
                 </div>
             </div>
-            
+            </div>
         </div>
         
         
