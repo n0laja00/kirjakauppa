@@ -72,14 +72,12 @@ export default function BookDetails() {
                                         <Rating rated={el.arvosana} />
                                     </div>
                                     <Link to={'/Reviews/' + id}>Lue arvostelut</Link>
-                                
+                                </div>
                             </div>
                         </div>
                     </div>
-                    </div>
-        ))
-    }
+                ))}
             </>
         )
-}
+    }
 }
