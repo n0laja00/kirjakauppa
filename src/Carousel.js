@@ -79,6 +79,7 @@ export default function BookCarousel({bookdata}) {
                 <section className="float_container">
                     <div className="float_child_book_img">
                     <img
+                        className="bookImgCarousel"
                         src={imgURL + book.kuva}
                         alt="Kirjan kuva"
                     />
