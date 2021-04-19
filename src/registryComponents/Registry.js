@@ -188,7 +188,7 @@ export default function Registry() {
                     </div>
                 </form>
                 <div className="col">
-                <div className="ms-5 h-25 w-75 d-inline-block float-end">
+                <div className="ms-5 mt-2 h-25 w-75 d-inline-block float-md-end float-sm-center">
                     <CartContextProvider>
                         <CartList></CartList>
                     </CartContextProvider>

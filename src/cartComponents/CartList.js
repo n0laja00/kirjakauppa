@@ -46,9 +46,9 @@ const CartList = () => {
 
 
     return cart.length ? ( 
-        <div className = "cart-list">
+        <div className = "row cart-list">
             <h1 className="text-primary pb-5">Ostoskori</h1>
-                <ul>
+                <ul className="col-12">
                     { cart.map(item => {
                         return (<CartDetails item={item} key={item.id} handleDelete={handleDelete} />) 
                         

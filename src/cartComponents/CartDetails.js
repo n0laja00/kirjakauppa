@@ -59,21 +59,22 @@ const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
             
             <li className="row">
                 {book.map(el => (
-                    <>
-                        <div className="col-md-3 cartItem">
-                            <img className="lista-kuva mr-2 bookCartImg cartItem" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                    <div className="row">
+                        <div className="col-md-12 cartItem col-sm-12 col-lg-6 float-start d-none d-lg-block">
+                            <img className="cartItemImg img-fluid" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                        </div>
+                        <Link to={'/BookDetails/'+ el.kirjaNro} className="link col-md-12 col-lg-6 text-end text-md-center">
+                            <h4 className="col-12 col-md-12 col-sm-12 cartItem ">{el.kirjaNro} {el.kirjaNimi}</h4>
+                            <p className="cartItem col-md-12 col-sm-12"> {el.sukunimi}, {el.etunimi} </p>
+                        </Link>
+                       
+                        <h5 className="hinta cartItem text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
+                        
+                        <div className="col text-lg-end text-lg-end text-md-center">
+                            <button className="btn btn-danger col-md-8 col-sm-12" onClick={() => handleDelete(el, item)} type="button">Poista</button>
                         </div>
                         
-                        <div className="col-md-9 cartItem"> 
-                            <Link to={'/BookDetails/'+ el.kirjaNro} className="link text-center">
-                                <h4 className="col-12 text-end cart-book-title cartItem">{el.kirjaNro} {el.kirjaNimi}</h4>
-                            </Link>
-                            <p className="kirjailija text-end cartItem"> {el.sukunimi}, {el.etunimi} </p>
-                            <h5 className="hinta text-end cartItem" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
-                            
-                            <button className="btn btn-danger float-md-end cartItem" onClick={() => handleDelete(el, item)} type="button">Poista</button>
-                        </div>
-                    </> 
+                    </div> 
                 ))}
                 
             </li>
