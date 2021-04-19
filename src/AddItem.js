@@ -290,6 +290,7 @@ export default function AddItem() {
                 <div className="col-md-4">
                     <label for="tiedosto" className="form-label">Lisää kuva</label>
                     <input className="form-control text-end" type="file" name="file" id="file" onChange={handleChange}/>
+                    <p>Suositeltu kuvakoko on 600x900px eli 2 suhde 3</p>
                 </div>
 
                 {/* Uusi kategoria */}
