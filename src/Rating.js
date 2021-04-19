@@ -1,9 +1,6 @@
-import { React, useState } from 'react'
+import { React } from 'react'
 
-export default function Rating() {
-
-    const [rating, setRating] = useState(null)
-    const [hover, setHover] = useState(null)
+export default function Rating({ rated }) {
     return (
         <>
             {[...Array(5)].map((star, i) => {
@@ -12,14 +9,11 @@ export default function Rating() {
                     <label>
                         <input className="hidden"
                             type="radio"
-                            name="rating"
-                            value={ratingValue}
-                            onClick={() => setRating(ratingValue)}
-                        />
+                            name="rated"
+                            value={ratingValue} />
                         <i className="fa fa-star fa-2x"
-                            id={ratingValue <= (hover || rating) ? "starHover" : "starDefault"}
-                            onMouseEnter={() => setHover(ratingValue)}
-                            onMouseLeave={() => setHover(null)}>
+                        // jos tähden arvo pienempi tai yhtä suuri kuin rated, tähti on keltainen
+                            id={ratingValue <= rated ? "starHover" : "starDefault"}>
                         </i>
                     </label>
                 )
