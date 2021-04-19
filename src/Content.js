@@ -74,7 +74,7 @@ export default function Content({ category }) {
                     <BookCarousel bookdata={selected} />
                 </div>
                 <h3>Uutuudet</h3>
-                <div className="row carouslBorder">
+                <div className="row carouselBorder">
                     <BookCarousel bookdata={newbooks} />
                 </div>
             </>
