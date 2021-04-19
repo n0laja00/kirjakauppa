@@ -45,11 +45,7 @@ export default function Registry() {
                 ostoskori: cart,
                 maksutapa: paymentMethod,
                 toimitusosoite: shippingAddress,
-<<<<<<< HEAD
-
-=======
                 toimitustapa: shippingMethod,
->>>>>>> 13119e2599d3c5593e50dfa823915b1ff3198d59
             })
         })
         .then(res=> {
