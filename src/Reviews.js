@@ -17,6 +17,7 @@ export default function Reviews() {
     const [rating, setRating] = useState(null)
     const [hover, setHover] = useState(null)
     const [error, setError] = useState('');
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         let status = 0;
@@ -29,6 +30,7 @@ export default function Reviews() {
                 (res) => {
                     if (status === 200) {
                         setReview(res);
+                        setIsLoaded(true);
                     }
                 }, (error) => {
                     setError(error);
@@ -61,52 +63,61 @@ export default function Reviews() {
             })
     }
 
-    return (
-        <>
-            {/* arvostelujen map komponentti */}
-            <Reviewsmap review={review} />
+    if (!isLoaded) {
+        return <div className="row justify-content-center pt-5">
+            <div className="col-auto d-block">
+                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+            </div>
+            <h2 className="col-auto d-block">Loading...</h2>
+        </div>;
+    } else {
+        return (
+            <>
+                {/* arvostelujen map komponentti */}
+                <Reviewsmap review={review} />
 
-            <form onSubmit={saveReview} method="POST">
-                <div className="row  mx-3 mt-5 p-4 bottomBg customBorder">
-                    <div className="col-sm-6">
-                        <label for="reviewerName" className="form-label">Arvostelija</label>
-                        <input type="text" className="form-control" id="reviewerName" name="reviewerName" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} required />
-                    </div>
-                    <div className="col-sm-6">
-                        <label for="reviewTitle" className="form-label">Otsikko</label>
-                        <input type="text" className="form-control" id="reviewTitle" name="reviewTitle" placeholder="Arvostelun otsikko" value={title} onChange={e => setTitle(e.target.value)} required />
-                    </div>
-                    <div className="mb-3">
-                        <label for="reviewText" className="form-label  mt-2">Arvostelu</label>
-                        <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
-                        <div className="col-sm-6 mt-2">Montako tähteä antaisit kirjalle?</div>
-                        
-                        <div className="col-sm-6 mt-2">
-                            {/* tähtiarvostelu */}
-                            {[...Array(5)].map((star, i) => {
-                                const ratingValue = i + 1;
-                                return (
-                                    <label>
-                                        <input className="hidden"
-                                            type="radio"
-                                            name="rating"
-                                            value={ratingValue}
-                                            onClick={() => setRating(ratingValue)}
-                                        />
-                                        <i className="fa fa-star fa-2x"
-                                            id={ratingValue <= (hover || rating) ? "starHover" : "starDefault"}
-                                            onMouseEnter={() => setHover(ratingValue)}
-                                            onMouseLeave={() => setHover(null)}>
-                                        </i>
-                                    </label>
-                                )
-                            })}
+                <form onSubmit={saveReview} method="POST">
+                    <div className="row  mx-3 mt-5 p-4 bottomBg customBorder">
+                        <div className="col-sm-6">
+                            <label for="reviewerName" className="form-label">Arvostelija</label>
+                            <input type="text" className="form-control" id="reviewerName" name="reviewerName" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} required />
                         </div>
+                        <div className="col-sm-6">
+                            <label for="reviewTitle" className="form-label">Otsikko</label>
+                            <input type="text" className="form-control" id="reviewTitle" name="reviewTitle" placeholder="Arvostelun otsikko" value={title} onChange={e => setTitle(e.target.value)} required />
+                        </div>
+                        <div className="mb-3">
+                            <label for="reviewText" className="form-label  mt-2">Arvostelu</label>
+                            <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
+                            <div className="col-sm-6 mt-2">Montako tähteä antaisit kirjalle?</div>
 
-                        <button className="btn btn-primary col-auto mt-3">Lähetä</button>
+                            <div className="col-sm-6 mt-2">
+                                {/* tähtiarvostelu */}
+                                {[...Array(5)].map((star, i) => {
+                                    const ratingValue = i + 1;
+                                    return (
+                                        <label>
+                                            <input className="hidden"
+                                                type="radio"
+                                                name="rating"
+                                                value={ratingValue}
+                                                onClick={() => setRating(ratingValue)}
+                                            />
+                                            <i className="fa fa-star fa-2x"
+                                                id={ratingValue <= (hover || rating) ? "starHover" : "starDefault"}
+                                                onMouseEnter={() => setHover(ratingValue)}
+                                                onMouseLeave={() => setHover(null)}>
+                                            </i>
+                                        </label>
+                                    )
+                                })}
+                            </div>
+
+                            <button className="btn btn-primary col-auto mt-3">Lähetä</button>
+                        </div>
                     </div>
-                </div>
-            </form>
-        </>
-    )
+                </form>
+            </>
+        )
+    }
 }

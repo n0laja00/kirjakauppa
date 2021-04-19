@@ -1,8 +1,8 @@
 import { React } from 'react'
 
-export default function Rating({ rev }) {
+export default function Rating({ rated }) {
     return (
-        <div>
+        <>
             {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
                 return (
@@ -12,11 +12,12 @@ export default function Rating({ rev }) {
                             name="rated"
                             value={ratingValue} />
                         <i className="fa fa-star fa-2x"
-                            id={ratingValue <= rev ? "starHover" : "starDefault"}>
+                        // jos tähden arvo pienempi tai yhtä suuri kuin rated, tähti on keltainen
+                            id={ratingValue <= rated ? "starHover" : "starDefault"}>
                         </i>
                     </label>
                 )
             })}
-        </div>
+        </>
     )
 }

@@ -16,7 +16,7 @@ export default function AllBooks({ category }) {
     const { search } = window.location;
     const query = new URLSearchParams(search).get('s');
 
-    function title () {
+    function title() {
         if (query !== null) {
             let otsikko = "Hakutulokset: " + query;
             return otsikko;
@@ -56,8 +56,12 @@ export default function AllBooks({ category }) {
     }, [category, query])
 
     if (!isLoaded) {
-        console.log(error);
-        return <div className="row text-center pt-5"> <h2>Loading...</h2></div>;
+        return <div className="row justify-content-center pt-5">  
+        <div className="col-auto d-block">
+            <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+            </div>
+            <h2 className="col-auto d-block">Loading...</h2>
+        </div>;
     } else {
         return (
             <div className="row">

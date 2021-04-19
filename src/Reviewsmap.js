@@ -11,7 +11,9 @@ export default function Reviewsmap({ review }) {
                 {review.map(rev => (
                     <div className="row" key={rev.arvosteluNro}>
                         <h4 className="col-sm-6 mb-3">{rev.otsikko}</h4>
-                        <Rating rev={rev.arvosana} />
+                        <div className="col-sm-6">
+                        <Rating rated={rev.arvosana}/>
+                        </div>
                         <div className="col-sm-12">{rev.teksti}</div>
                         <div className="col-12 text-end mt-3">Arvostelija: {rev.nimimerkki}
                         </div>
