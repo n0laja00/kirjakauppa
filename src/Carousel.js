@@ -38,17 +38,17 @@ export default function BookCarousel({bookdata}) {
 
     const responsive = {
         desktop: {
-          breakpoint: { max: 3000, min: 1024 },
+          breakpoint: { max: 3000, min: 1000 },
           items: 1,
           slidesToSlide: 1 // optional, default to 1.
         },
         tablet: {
-          breakpoint: { max: 1024, min: 464 },
+          breakpoint: { max: 1000, min: 770 },
           items: 1,
           slidesToSlide: 1 // optional, default to 1.
         },
         mobile: {
-          breakpoint: { max: 464, min: 0 },
+          breakpoint: { max: 770, min: 0 },
           items: 1,
           slidesToSlide: 1 // optional, default to 1.
         }
@@ -75,17 +75,16 @@ export default function BookCarousel({bookdata}) {
 
         {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
-            <div className="book_divider light_brown container" key={uuid()}>
+            <div className="book_divider light_brown carousel_container" key={uuid()}>
                 <section className="float_container">
                     <div className="float_child_book_img">
                     <img
-                        className="d-block w-100 bookBrowseImg"
                         src={imgURL + book.kuva}
                         alt="Kirjan kuva"
                     />
                     </div>
                     <div className="float_child col-sm-auto">
-                        <p className="cut-text mt-1">{book.kirjaNimi}</p>
+                        <p className="cut-text mt-md-1">{book.kirjaNimi}</p>
                         <p className="cut-text">{book.sukunimi} {book.etunimi}</p>
                         <p className="cut-text">{book.julkaisija}</p>
                         <p className="cut-text">{book.vuosi}</p>

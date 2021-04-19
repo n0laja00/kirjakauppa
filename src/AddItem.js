@@ -1,6 +1,7 @@
 import { useState, useEffect, React } from 'react'
+import { Redirect } from 'react-router';
 
-export default function AddItem() {
+export default function AddItem({user}) {
 
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
@@ -23,13 +24,19 @@ export default function AddItem() {
     const[newPublisher, setNewPublisher] = useState('');
     const[newPublisherPhone, setNewPublisherPhone] = useState('');
     const[newPublisherEmail, setNewPublisherEmail] = useState('');
-    const [show, setShow] = useState(true);
+    const [showPublisher, setShowPublisher] = useState(true);
 
     //Julkaisulistan päivittäminen 
     const [submit, setSubmit] = useState(0);
 
+    //Kategorian lisääminen 
+    const [newCategory, setNewCategory] = useState('');
+    const [showCategory, setShowCategory] = useState(true);
+
     //Tallennusteksti
     const [saved, setSaved] = useState('');
+    const [savedPublisher, setSavedPublisher] = useState('');
+    const [savedCategory, setSavedCategory] = useState('');
 
     const URL = 'http://localhost/kirjakauppa/';
 
@@ -74,6 +81,10 @@ export default function AddItem() {
         }
         )
     }, [submit])
+
+    if (user===null) {
+        return <Redirect to="/LoginPage" />
+    }
 
     function handleChange(e) {
         setImage(e.target.files[0]);
@@ -128,6 +139,7 @@ export default function AddItem() {
 
     function addPublisher(e) {
         e.preventDefault();
+        setSubmit(submit+1);
         const formData = new FormData();
         formData.append('publisher',newPublisher);
         formData.append('phonenumber',newPublisherPhone);
@@ -141,17 +153,40 @@ export default function AddItem() {
         )
         .then((res) => res.json())
         if (newPublisher !== '' && newPublisherPhone !== '' && newPublisherEmail !== '') {
-        setSaved("Tiedot tallennettu!");
+        setSavedPublisher("Tiedot tallennettu!");
         setNewPublisher('');
         setNewPublisherPhone('');
         setNewPublisherEmail('');
-        setSubmit(submit+1);
         }
     }
 
-    function toggleClass() {
-        setShow(!show)
-        setSaved('');
+    function addCategory(e) {
+        e.preventDefault();
+        setSubmit(submit+1);
+        const formData = new FormData();
+        formData.append('category',newCategory);
+
+        fetch (URL + 'lisaaKategoria.php',
+            {
+            method: 'POST',
+            body: formData 
+            }
+        )
+        .then((res) => res.json())
+        if (newCategory !== '') {
+        setSavedCategory("Tiedot tallennettu!");
+        setNewCategory('');
+        }
+    }
+
+    function toggleClass(classToShow) {
+        if (classToShow === "publisher") {
+            setShowPublisher(!showPublisher);
+            setSaved('');
+        } else {
+            setShowCategory(!showCategory);
+            setSaved('');
+        }
     }
 
     return (
@@ -163,17 +198,20 @@ export default function AddItem() {
                     <input type="text" className="form-control" id="kirjaNimi" name="kirjanimi" value={bookName} placeholder="Kirjan nimi" required onChange={e => setBookName(e.target.value)}/>
                 </div>
                 <div className="col-md-6">
-                    <label for="julkaisija" className="form-label">Julkaisija</label>
+                    <label for="julkaisija" className="form-label">Julkaisija
+                    <button type="button" className="btn btn-secondary py-0 px-1 mx-1" onClick={() => toggleClass("publisher")}>{showPublisher ? "Lisää uusi" : "Piilota"}</button>
+                    </label>
                     <select id="julkaisija" className="form-select" value={publisher} required onChange={e => setPublisher(e.target.value)}>
                     <option selected>Valitse...</option>
                     {allPublishers.map(publisher => (
                         <option>{publisher.julkaisija}</option>
                     ))}
                     </select>
-                    <button type="button" className="btn border border-dark mt-1" onClick={toggleClass}>{show ? "Lisää uusi" : "Piilota"}</button>
+                    
                 </div>
 
-            <section className={"row p-5 publisherContainer m-1" + `section ${show ? "hidden" : ""}`}>
+            {/* Uuden julkaisijan lisäämisen lomake */}
+            <section className={"row p-4 publisherContainer m-1" + `section ${showPublisher ? "hidden" : ""}`}>
                 <div className="col-md-4">
                     <label for="julkaisijaNimi" className="form-label">Julkaisijan nimi</label>
                     <input type="text" className="form-control" id="julkaisijaNimi" name="julkaisijaNimi" value={newPublisher} placeholder="Julkaisijan nimi" onChange={e => setNewPublisher(e.target.value)}/>
@@ -187,10 +225,10 @@ export default function AddItem() {
                     <input type="text" className="form-control" id="sposti" name="sposti" value={newPublisherEmail} placeholder="Esimerkki@sposti.com" onChange={e => setNewPublisherEmail(e.target.value)}/>
                 </div>
                 <div className="col-md-3 mt-1">
-                   <button onClick={addPublisher} className="btn btn-primary" type="button">Lisää julkaisija</button>
+                   <button onClick={addPublisher} className="btn btn-info" type="button">Lisää julkaisija</button>
                 </div>
                 <div className="col-12 text-muted m-0 p-0 ps-2">
-                        <p>{saved}</p>
+                        <p>{savedPublisher}</p>
                 </div>
             </section>
 
@@ -208,11 +246,11 @@ export default function AddItem() {
                 </div>
                 <div className="col-md-2">
                     <label for="hinta" className="form-label">Hinta</label>
-                    <input type="number" className="form-control" id="hinta" placeholder="Esim: 12.50" required value={bookPrice} onChange={e => setBookPrice(e.target.value)}/>
+                    <input type="number" className="form-control" id="hinta" step=".01" presicion={2}  placeholder="Esim: 12.50" required value={bookPrice} onChange={e => setBookPrice(e.target.value)}/>
                 </div>
                 <div className="col-md-2">
                     <label for="kustannus" className="form-label">Kustannus</label>
-                    <input type="number" className="form-control" id="kustannus" placeholder="Esim: 11.50" required value={bookExpense} onChange={e => setBookExpense(e.target.value)}/>
+                    <input type="number" className="form-control" id="kustannus" step=".01" presicion={2}  placeholder="Esim: 11.50" required value={bookExpense} onChange={e => setBookExpense(e.target.value)}/>
                 </div>
                 <div className="col-12">
                     <label for="kuvaus" className="form-label">Kuvaus</label>
@@ -224,28 +262,30 @@ export default function AddItem() {
                     <input type="date" className="form-control" id="julkaistu" value={bookPublished} required onChange={e => setBookPublished(e.target.value)}/>
                 </div>
 
-                <div className="col-5">
-                    <label for="kategoria" className="form-label">Kategoria</label>
+                <div className="col-md-5">
+                    <label for="kategoria" className="form-label">Kategoriat 
+                    <button type="button" className="btn btn-secondary py-0 px-1 mx-1" onClick={() => toggleClass("category")}>{showCategory ? "Lisää uusi" : "Piilota"}</button>
+                    </label>
                     <select id="kategoria" className="form-select mb-1" required value={bookCategory} onChange={e => setBookCategory(e.target.value)}>
-                    <option selected>Valitse...</option>
+                    <option selected>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory => (
                         <option>{bookCategory.kategoria}</option>
                     ))}
                     </select>
                     <select id="kategoria2" className="form-select mb-1" required value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
-                    <option selected>Valitse...</option>
+                    <option selected>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory2 => (
                         <option>{bookCategory2.kategoria}</option>
                     ))}
                     </select>
                     <select id="kategoria3" className="form-select mb-1" required value={bookCategory3} onChange={e => setBookCategory3(e.target.value)}>
-                    <option selected>Valitse...</option>
+                    <option selected>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory3 => (
                         <option>{bookCategory3.kategoria}</option>
                     ))}
                     </select>
                     <select id="kategoria4" className="form-select" required value={bookCategory4} onChange={e => setBookCategory4(e.target.value)}>
-                    <option selected>Valitse...</option>
+                    <option selected>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory4 => (
                         <option>{bookCategory4.kategoria}</option>
                     ))}
@@ -256,6 +296,22 @@ export default function AddItem() {
                     <label for="tiedosto" className="form-label">Lisää kuva</label>
                     <input className="form-control text-end" type="file" name="file" id="file" onChange={handleChange}/>
                 </div>
+
+                {/* Uusi kategoria */}
+                <section className={"row p-2 publisherContainer m-1" + `section ${showCategory ? "hidden" : ""}`}>
+                    <div className="col-md-4">
+                        {/* //Eipä tuota input kenttää muuten saa keskelle.  */}
+                    </div>
+                    <div className="col-md-4 text-center" >
+                        <label for="julkaisijaNimi" className="form-label">Kategorian nimi</label>
+                        <input type="text" className="form-control" id="kategoriaNimi" name="kategoriaNimi" value={newCategory} placeholder="Kategorian nimi" onChange={e => setNewCategory(e.target.value)}/>
+                        <button onClick={addCategory} className="btn btn-info my-1" type="button">Lisää kategoria</button>
+                    </div>
+                    <div className="col-12 text-muted m-0 p-0 ps-2">
+                        <p>{savedCategory}</p>
+                    </div>
+                </section>
+
                 <div className="col-12 p-2">
                     <button type="submit" className="btn btn-primary">Lisää kirja</button>
                 </div>

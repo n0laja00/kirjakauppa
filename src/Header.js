@@ -26,10 +26,21 @@ export default function Header() {
                             <div>
                                 <Link className="link" to="/LoginPage">Login</Link>
                             </div>
+                            <div>
+                                <Link className="link" to="/Logout">Logout</Link>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+            {/* <div className="p-0 col-12 col-sm-3 col-lg-12">
+                <Navbar />
+            </div>
+            
+            <div className="col-12 col-md-9 col-lg-12">
+                <SearchBar />
+            </div> */}
+
             <Navbar />
             <div className="d-none d-lg-block">
                 <SearchBar />

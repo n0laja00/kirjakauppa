@@ -1,10 +1,11 @@
-import { Switch, Route, useLocation } from 'react-router';
+import { Switch, Route, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import './App.css';
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
 import LoginPage from './LoginPage';
+import Logout from './Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
 // import Navbar from './Navbar';
@@ -17,6 +18,8 @@ import Registry from './registryComponents/Registry';
 
 function App() {
   const [category, setCategory] = useState(null);
+  const [user, setUser] = useState(null);
+  console.log("käyttäjä", user)
 
   let location = useLocation();
 
@@ -34,9 +37,18 @@ function App() {
         <Switch>
           <Route path="/" render={() => <Content
             category={category} />} exact />
-          <Route path="/LoginPage" component={LoginPage} />
+          <Route path="/LoginPage" render={() =>
+            <LoginPage setUser={setUser}/> 
+            } 
+          />
+          <Route path="/logout" render={() => 
+            <Logout setUser={setUser} />
+            }/>
           <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/AddItem" component={AddItem} />
+          <Route path="/AddItem" render={() => 
+            <AddItem user={user}/>
+            }
+          />
           {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} />}

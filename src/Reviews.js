@@ -1,8 +1,9 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import Reviewsmap from './Reviewsmap';
+
 
 export default function Reviews() {
-
     const URL = 'http://localhost/kirjakauppa/';
     const params = useParams();
     const id = params.id;
@@ -12,8 +13,11 @@ export default function Reviews() {
     const [review, setReview] = useState([]);
     const [name, setName] = useState('');
     const [title, setTitle] = useState('');
-    const [text, setText] = useState('')
+    const [text, setText] = useState('');
+    const [rating, setRating] = useState(null)
+    const [hover, setHover] = useState(null)
     const [error, setError] = useState('');
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         let status = 0;
@@ -26,6 +30,7 @@ export default function Reviews() {
                 (res) => {
                     if (status === 200) {
                         setReview(res);
+                        setIsLoaded(true);
                     }
                 }, (error) => {
                     setError(error);
@@ -33,14 +38,8 @@ export default function Reviews() {
             )
     }, [submit])
 
-
-    function updateReview() {
-        setSubmit(!submit);
-    }
-
     function saveReview(e) {
         e.preventDefault();
-        let status = 0;
         fetch(URL + 'lisaaArvostelu.php', {
             method: 'POST',
             headers: {
@@ -50,55 +49,75 @@ export default function Reviews() {
                 nimimerkki: name,
                 otsikko: title,
                 teksti: text,
-                kirjaNro: id
+                kirjaNro: id,
+                arvosana: rating
             })
-        }) 
-            .then((res) => res.json(...review, res))
+        })
+            .then((res) => res.json(res))
             .then((res) => {
+                setSubmit(!submit);
                 setName('');
                 setTitle('');
                 setText('');
+                setRating(null)
             })
     }
 
-    return (
-        <>
-            <div className="row">
-                <div className="col mx-3 mt-5 p-4 bottomBg customBorder">
-                    <h3>
-                        <u>Kirjan arvostelut</u>
-                    </h3>
-                    <div className="col mt-3">
-                        {review.map(rev => (
-                            <div key={rev.arvosteluNro}>
-                                <h4 className="col">{rev.otsikko}</h4>
-                                <div className="col">{rev.teksti}</div>
-                                <div className="col text-end mt-3">Arvostelija: {rev.nimimerkki}</div>
-                                <div className="col mb-3 text-end border-bottom border-primary"> {rev.luotu} </div>
-                            </div>
-                        ))}
-                    </div>
-                </div>
+    if (!isLoaded) {
+        return <div className="row justify-content-center pt-5">
+            <div className="col-auto d-block">
+                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
             </div>
-            <form onSubmit={saveReview} method="POST">
-                <div className="row">
-                    <div className="row col mx-3 mt-5 p-4 bottomBg customBorder">
-                        <div className="col-12">
+            <h2 className="col-auto d-block">Loading...</h2>
+        </div>;
+    } else {
+        return (
+            <>
+                {/* arvostelujen map komponentti */}
+                <Reviewsmap review={review} />
+
+                <form onSubmit={saveReview} method="POST">
+                    <div className="row  mx-3 mt-5 p-4 bottomBg customBorder">
+                        <div className="col-sm-6">
                             <label for="reviewerName" className="form-label">Arvostelija</label>
                             <input type="text" className="form-control" id="reviewerName" name="reviewerName" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} required />
                         </div>
-                        <div className="col-12">
+                        <div className="col-sm-6">
                             <label for="reviewTitle" className="form-label">Otsikko</label>
                             <input type="text" className="form-control" id="reviewTitle" name="reviewTitle" placeholder="Arvostelun otsikko" value={title} onChange={e => setTitle(e.target.value)} required />
                         </div>
                         <div className="mb-3">
-                            <label for="reviewText" className="form-label">Arvostelu</label>
+                            <label for="reviewText" className="form-label  mt-2">Arvostelu</label>
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
-                            <button className="btn btn-primary col-6 mt-4">Lähetä arvostelu</button>
+                            <div className="col-sm-6 mt-2">Montako tähteä antaisit kirjalle?</div>
+
+                            <div className="col-sm-6 mt-2">
+                                {/* tähtiarvostelu */}
+                                {[...Array(5)].map((star, i) => {
+                                    const ratingValue = i + 1;
+                                    return (
+                                        <label>
+                                            <input className="hidden"
+                                                type="radio"
+                                                name="rating"
+                                                value={ratingValue}
+                                                onClick={() => setRating(ratingValue)}
+                                            />
+                                            <i className="fa fa-star fa-2x"
+                                                id={ratingValue <= (hover || rating) ? "starHover" : "starDefault"}
+                                                onMouseEnter={() => setHover(ratingValue)}
+                                                onMouseLeave={() => setHover(null)}>
+                                            </i>
+                                        </label>
+                                    )
+                                })}
+                            </div>
+
+                            <button className="btn btn-primary col-auto mt-3">Lähetä</button>
                         </div>
                     </div>
-                </div>
-            </form>
-        </>
-    )
+                </form>
+            </>
+        )
+    }
 }

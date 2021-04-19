@@ -13,9 +13,9 @@ const AddToCart = ({item}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        const books = cart;
+        let books = JSON.parse(localStorage.getItem('cart'));
 
-        if(books.some((yksi) => yksi.kirjaNro === item.kirjaNro)) {
+        if(cart.some((yksi) => yksi.kirjaNro === item.kirjaNro)) {
             
             const change = 1;
             const itemIndex = books.findIndex((book) => book.kirjaNro === item.kirjaNro);
@@ -29,8 +29,11 @@ const AddToCart = ({item}) => {
                 hinta,
                 maara
             }});
+            
         }
-        
+        setKirjaNumero('');
+        setHinta('');
+        setMaara('')
     }
 
     return ( 

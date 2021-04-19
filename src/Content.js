@@ -13,6 +13,7 @@ export default function Content({ category }) {
     const newbooks = "uutuusKirjat.php";
     const URL = 'http://localhost/kirjakauppa/navKategoriat.php/';
     const [categories, setCategories] = useState([]);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         fetch(URL)
@@ -20,9 +21,7 @@ export default function Content({ category }) {
             .then(
                 (result) => {
                     setCategories(result);
-                    console.log('rendered')
-
-                    // setIsLoaded(true);
+                    setIsLoaded(true);
                 }, (error) => {
                     // setError(error);
                     // setIsLoaded(false);
@@ -30,10 +29,18 @@ export default function Content({ category }) {
             )
     }, [category])
 
-    return (
-        <div className="row">
-            <div>
-                <div className="row py-5 d-flex justify-content-center">
+
+    if (!isLoaded) {
+        return <div className="row justify-content-center pt-5">
+            <div className="col-auto d-block">
+                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+            </div>
+            <h2 className="col-auto d-block">Loading...</h2>
+        </div>;
+    } else {
+        return (
+            <>
+                <div className="row py-5 justify-content-center">
                     <div className="col-md-8 col-sm-8 mx-5 mb-5 p-5 customBorder">
                         <h1 className="pb-3">Tervetuloa</h1>
                         <p>Ruotsalainen kirjakauppa on vuonna 2021 perustettu kirjakauppa. Valikoimamme on laaja, ja kirjoja löytyykin sivuiltamme useista eri kategorioista.</p>
@@ -41,20 +48,24 @@ export default function Content({ category }) {
                     </div>
                 </div>
 
-                <div className="row pb-5 d-flex justify-content-center">
+                <div className="row pb-5 justify-content-center">
                     <div className="row">
                         <h1 className="pb-4 col-12 text-center">Kategoriat</h1>
                     </div>
                     <div className="row justify-content-center">
                         {categories.map(category => (
-
-                            <Link key={category.kategoriaNro} className="col-sm-2 m-2 btn categoryButton" to={{
-                                pathname: '/AllBooks',
-                                state: {
-                                    id: category.kategoriaNro,
-                                    name: category.kategoria
-                                }
-                            }}>{category.kategoria}</Link>
+                            <div className="d-flex align-items-center col-sm-3 btn categoryButton m-2">
+                                <Link key={category.kategoriaNro} className="col text-center link"
+                                    to={{
+                                        pathname: '/AllBooks',
+                                        state: {
+                                            id: category.kategoriaNro,
+                                            name: category.kategoria
+                                        }
+                                    }}>
+                                    {category.kategoria}
+                                </Link>
+                            </div>
                         ))}
                     </div>
                 </div>
@@ -63,10 +74,10 @@ export default function Content({ category }) {
                     <BookCarousel bookdata={selected} />
                 </div>
                 <h3>Uutuudet</h3>
-                <div className="row carouslBorder">
+                <div className="row carouselBorder">
                     <BookCarousel bookdata={newbooks} />
                 </div>
-            </div>
-        </div>
-    )
+            </>
+        )
+    }
 }
