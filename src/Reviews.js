@@ -8,7 +8,6 @@ export default function Reviews() {
     const params = useParams();
     const id = params.id;
 
-
     const [submit, setSubmit] = useState(false);
     const [review, setReview] = useState([]);
     const [name, setName] = useState('');
@@ -53,7 +52,6 @@ export default function Reviews() {
                 arvosana: rating
             })
         })
-            .then((res) => res.json(res))
             .then((res) => {
                 setSubmit(!submit);
                 setName('');
@@ -75,7 +73,6 @@ export default function Reviews() {
             <>
                 {/* arvostelujen map komponentti */}
                 <Reviewsmap review={review} />
-
                 <form onSubmit={saveReview} method="POST">
                     <div className="row  mx-3 mt-5 p-4 bottomBg customBorder">
                         <div className="col-sm-6">
