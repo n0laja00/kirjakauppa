@@ -9,18 +9,19 @@ const AddToCart = ({item}) => {
     const [maara, setMaara] = useState(1);
     const {cart} = useContext(CartContext);
 
+    
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        
+        const books = cart;
 
-        if(cart.some((yksi) => yksi.kirjaNro === item.kirjaNro)) {
-            const books = cart;
+        if(books.some((yksi) => yksi.kirjaNro === item.kirjaNro)) {
+            
             const change = 1;
             const itemIndex = books.findIndex((book) => book.kirjaNro === item.kirjaNro);
             
-            cart[itemIndex].maara = cart[itemIndex].maara + change;
-            console.log(cart[itemIndex].maara);
+            books[itemIndex].maara = books[itemIndex].maara + change;
+            console.log(books[itemIndex].maara);
             localStorage.setItem('cart', JSON.stringify(books));
         } else {
             dispatch({type: 'ADD_TO_CART', item: {
@@ -28,17 +29,15 @@ const AddToCart = ({item}) => {
                 hinta,
                 maara
             }});
-            setKirjaNumero('');
-            setHinta('');
-            setMaara('')
         }
+        
     }
 
     return ( 
         <form onSubmit={handleSubmit}>
             <button className="btn btn-primary m-3 col-8" type="submit" value={item.kirjaNro} onClick={(e) => setKirjaNumero(e.target.value)}>Lisää Ostoskoriin</button>
             <input type="number" value={item.hinta} onSubmit= {(e) => setHinta(e.target.value)} hidden/>
-            <input type="number" value={maara} onSubmit= {(e) => setMaara(e.target.value)} hidden/>
+            
         </form>
      );
 }
