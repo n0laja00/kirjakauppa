@@ -45,7 +45,7 @@ export default function Registry() {
                 ostoskori: cart,
                 paymentMethod: paymentMethod,
                 toimitusosoite: shippingAddress,
-                shippingMethod: toimitustapa,
+
             })
         })
         .then(res=> {
