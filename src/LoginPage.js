@@ -39,7 +39,7 @@ export default function LoginPage({setUser}) {
     return (
         <form onSubmit={login}>
             <div className="row mt-3 py-4 d-flex justify-content-center">
-                <div className="col-3">
+                <div className="col-8 col-md-6 col-lg-3">
                 <h1 className="pb-3">Kirjautuminen</h1>
                     <div>
                         <label className="visually-hidden">Käyttäjänimi</label>
