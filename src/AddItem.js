@@ -1,5 +1,6 @@
-import { useState, useEffect, React } from 'react'
+import { useState, useEffect, React } from 'react';
 import { Redirect } from 'react-router';
+import EditItemList from './EditItemList';
 
 export default function AddItem({user}) {
 
@@ -195,6 +196,7 @@ export default function AddItem({user}) {
     }
 
     return (
+        <>
         <div className="addItemContainer">
             <h3>Lisää tuote:</h3>
             <form className="row g-3 addItemForm mt-1" onSubmit={addBook}>
@@ -327,5 +329,8 @@ export default function AddItem({user}) {
                 </div>
                 </form>
         </div>
+
+        <EditItemList/>
+    </>
     )
 }
