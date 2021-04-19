@@ -260,7 +260,6 @@ footer {
   width: 50%;
   float: left;
   padding: 0px;
-  height: 300.15px;
 }
 
 
@@ -435,8 +434,20 @@ footer {
 }
 
 .bookBrowseImg {
+  max-width: 100%;
+  height: auto;
   width: 100%;
   height: 100%;
+}
+
+@media only screen and (max-width: 1200px) {
+  .bookBrowseImg, .bookImgCarousel {
+    max-height: 471px;
+  }
+}
+
+.bookImgCarousel {
+  height: 440px;
 }
 
 .bookCartImg {

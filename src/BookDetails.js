@@ -46,14 +46,14 @@ export default function BookDetails() {
                             <h1 className="col-12 px-5 my-4">{el.kirjaNimi}</h1>
                         </div>
                         <div className="row">
-                            <div className="col-sm-6">
+                            <div className="col-md-6">
                                 <img className="card-img-top customBorder mb-3 bookBrowseImg" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                             </div>
-                            <div className="col-sm-6">
+                            <div className="col-md-6">
                                 <div className="col-12 customBorder bottomBg p-4">
-                                    <h3 className="col-sm-12">Kuvaus</h3>
-                                    <div className="col-sm-12">{el.kuvaus}</div>
-                                    <div className="col-sm-12">{el.keskiarvo}</div>
+                                    <h3 className="col-md-12">Kuvaus</h3>
+                                    <div className="col-md-12">{el.kuvaus}</div>
+                                    <div className="col-md-12">{el.keskiarvo}</div>
                                     <div className="mt-4 col-12 text-center"> <h4>{el.hinta} €</h4></div>
                                     <div className="text-center">
                                         <CartContextProvider>

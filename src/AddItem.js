@@ -27,7 +27,7 @@ export default function AddItem({user}) {
     const [showPublisher, setShowPublisher] = useState(true);
 
     //Julkaisulistan päivittäminen 
-    const [submit, setSubmit] = useState(0);
+    const [submit, setSubmit] = useState(false);
 
     //Kategorian lisääminen 
     const [newCategory, setNewCategory] = useState('');
@@ -116,10 +116,11 @@ export default function AddItem({user}) {
             }
         )
         .then((res) => res.json())
+        .then((res) => {
         if(bookName !== '' && bookDesc !== '' && bookPrice !== '' && bookExpense !== '' && bookPage !== '' && publisher !== '' && bookPublished !== '' && bookWriterFN
         !== '' && bookWriterLN !== '' && bookCategory !== '') {
         setSaved("Tiedot tallennettu!");
-        setSubmit(submit+1);
+        setSubmit(!submit);
         setBookName('');
         setBookDesc('');
         setBookPrice('');
@@ -134,12 +135,12 @@ export default function AddItem({user}) {
         setBookCategory3('');
         setBookCategory4('');
         }
+        })
         }
     }
 
     function addPublisher(e) {
         e.preventDefault();
-        setSubmit(submit+1);
         const formData = new FormData();
         formData.append('publisher',newPublisher);
         formData.append('phonenumber',newPublisherPhone);
@@ -151,18 +152,20 @@ export default function AddItem({user}) {
             body: formData 
             }
         )
-        .then((res) => res.json())
-        if (newPublisher !== '' && newPublisherPhone !== '' && newPublisherEmail !== '') {
-        setSavedPublisher("Tiedot tallennettu!");
-        setNewPublisher('');
-        setNewPublisherPhone('');
-        setNewPublisherEmail('');
-        }
+        .then((res) => {
+            if (newPublisher !== '' && newPublisherPhone !== '' && newPublisherEmail !== '') {
+            setSavedPublisher("Tiedot tallennettu!");
+            setNewPublisher('');
+            setNewPublisherPhone('');
+            setNewPublisherEmail('');
+            setSubmit(!submit);
+            }
+        })
+        
     }
 
     function addCategory(e) {
         e.preventDefault();
-        setSubmit(submit+1);
         const formData = new FormData();
         formData.append('category',newCategory);
 
@@ -172,11 +175,13 @@ export default function AddItem({user}) {
             body: formData 
             }
         )
-        .then((res) => res.json())
+        .then((res) => {
         if (newCategory !== '') {
         setSavedCategory("Tiedot tallennettu!");
         setNewCategory('');
+        setSubmit(!submit);
         }
+        })
     }
 
     function toggleClass(classToShow) {
@@ -299,7 +304,7 @@ export default function AddItem({user}) {
                 </div>
 
                 {/* Uusi kategoria */}
-                <section className={"row p-2 publisherContainer m-1" + `section ${showCategory ? "hidden" : ""}`}>
+                <section className={"row p-2 publisherContainer m-1" + `section ${showCategory ? 'hidden' : ""}`}>
                     <div className="col-md-4">
                         {/* //Eipä tuota input kenttää muuten saa keskelle.  */}
                     </div>
