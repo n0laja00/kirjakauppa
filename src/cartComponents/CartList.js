@@ -58,7 +58,7 @@ const CartList = () => {
             <div className="col-12 text-end">
                 <h5>Hinta: {totalCost} €</h5>
             </div>
-            
+            <ToRegistry/>
         </div>
      ) : (
          <div className="empty"> Ei kirjoja! </div>

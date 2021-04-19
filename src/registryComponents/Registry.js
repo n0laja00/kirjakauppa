@@ -14,9 +14,9 @@ export default function Registry() {
     const [city, setCity] = useState('');
     const [postalCode, setPostalCode] = useState('');
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
-    const [paymentMethod, setPaymentMethod] = useState('');
+    const [paymentMethod, setPaymentMethod] = useState('lasku');
     const [shippingAddress, setShippingAddress] = useState('');
-    const [shippingMethod, setShippingMethod] = useState('');
+    const [shippingMethod, setShippingMethod] = useState('lähinKauppa');
     
 
     
@@ -43,9 +43,13 @@ export default function Registry() {
                 postitmp: city,
                 postiNro: postalCode,
                 ostoskori: cart,
-                paymentMethod: paymentMethod,
+                maksutapa: paymentMethod,
                 toimitusosoite: shippingAddress,
+<<<<<<< HEAD
 
+=======
+                toimitustapa: shippingMethod,
+>>>>>>> 13119e2599d3c5593e50dfa823915b1ff3198d59
             })
         })
         .then(res=> {
@@ -68,8 +72,11 @@ export default function Registry() {
         setPhone('');
         setCorporation('');
         setAddress('');
-        setCity('');
         setPostalCode('');
+        setCity('');
+        setPaymentMethod('');
+        setShippingAddress('');
+        setShippingMethod('');
         localStorage.setItem('cart', JSON.stringify([]));
         
     };
@@ -87,7 +94,7 @@ export default function Registry() {
         <div className="row">
             <h1 className=" col mt-2">Kassa</h1>
             <div className="row">
-                <form className="col" onSubmit={test}>
+                <form className="col" onSubmit={handleSubmit}>
                     <div className="col mt-3 ">
                         <div className="row">
                             <label className="float-start col">Etunimi
@@ -104,7 +111,7 @@ export default function Registry() {
                             </label>
                         </div>
                         <div className="mt-3 row">
-                            <label>Sähköposti
+                            <label>Puhelin
                                 <input type="text" value={phone} required className="form-control form-control-lg" name="phone" placeholder="Puhelin (tarvitaan yhteydenpitoon)" onChange={e => setPhone(e.target.value)}/>
                             </label>
                         </div>
@@ -126,6 +133,7 @@ export default function Registry() {
                                 <input type="text" value={city} required className="form-control form-control-lg" name="city" placeholder="Kaupunki" onChange={e => setCity(e.target.value)}/>
                             </label>
                         </div>
+
                         <div className="mt-3">
                             <h1>Toimitus</h1>
                         </div>
@@ -136,28 +144,7 @@ export default function Registry() {
                         </div>
                         <div className="mt-3 row">
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input " type="radio" name="paymentMethod" id="paymentMethodRadios1" value="lasku" onChange={e => setPaymentMethod(e.target.value)} />
-                                <label className="form-check-label" for="paymentMethodRadios1">
-                                    Lasku
-                                </label>
-                            </div>
-                            <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios2" value="postissa" onClick={e => setPaymentMethod(e.target.value)}/>
-                                <label className="form-check-label" for="paymentMethodRadios2">
-                                    Postissa
-                                </label>
-                            </div>
-                            <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios3" value="pankkikortti" onClick={e => setPaymentMethod(e.target.value)}/>
-                                <label className="form-check-label" for="paymentMethodRadios3">
-                                    Pankkikortti
-                                </label>
-                            </div>
-                        </div>
-
-                        <div className="mt-3 row">
-                            <div className="form-check form-control-lg">
-                                <input className="form-check-input " type="radio" name="shippingMethod" id="shippingMethodRadios1" value="lähinKauppa" onChange={e => setShippingMethod(e.target.value)} />
+                                <input className="form-check-input " type="radio" name="shippingMethod" id="shippingMethodRadios1" value="lähinKauppa" onChange={e => setShippingMethod(e.target.value)} defaultChecked />
                                 <label className="form-check-label" for="shippingMethodRadios1">
                                     Nouda Lähimmästä Kaupasta
                                 </label>
@@ -181,7 +168,27 @@ export default function Registry() {
                                 </label>
                             </div>
                         </div>
-                        <input type="submit"/>
+
+                        <div className="mt-3">
+                            <h1>Laskutus</h1>
+                        </div>
+                        <div className="mt-3 row">
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input " type="radio" name="paymentMethod" id="paymentMethodRadios1" value="lasku" onChange={e => setPaymentMethod(e.target.value)} defaultChecked />
+                                <label className="form-check-label" for="paymentMethodRadios1">
+                                    Lasku
+                                </label>
+                            </div>
+                            <div className="form-check form-control-lg">
+                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios2" value="postissa" onClick={e => setPaymentMethod(e.target.value)}/>
+                                <label className="form-check-label" for="paymentMethodRadios2">
+                                    Maksu postissa
+                                </label>
+                            </div>
+                        </div>
+                        
+                      
+                        <button type="submit" class="btn btn-primary">Tilaa</button>
                     </div>
                 </form>
                 <div className="col">
