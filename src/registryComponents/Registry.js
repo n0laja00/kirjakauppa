@@ -2,6 +2,7 @@ import React, {useState}  from 'react'
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 
+
 export default function Registry() {
     const [tilaus, setTilaus] = useState([]);
     const [firstName, setFirstName] = useState('');
@@ -60,6 +61,8 @@ export default function Registry() {
         setAddress('');
         setCity('');
         setPostalCode('');
+        localStorage.setItem('cart', JSON.stringify([]));
+        
     };
 
 
