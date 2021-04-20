@@ -4,7 +4,7 @@ import CartContextProvider from '../contexts/CartContext'
 
 
 export default function Registry() {
-    const [tilaus, setTilaus] = useState([]);
+    let kassa = true;
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastTName]= useState('');
     const [email, setEmail] = useState('');
@@ -90,7 +90,7 @@ export default function Registry() {
         <div className="row">
             <h1 className=" col mt-2">Kassa</h1>
             <div className="row">
-                <form className="col" onSubmit={handleSubmit}>
+                <form className="col-sm-12 col-md-12 col-lg-6" onSubmit={handleSubmit}>
                     <div className="col mt-3 ">
                         <div className="row">
                             <label className="float-start col">Etunimi
@@ -187,10 +187,10 @@ export default function Registry() {
                         <button type="submit" class="btn btn-primary">Tilaa</button>
                     </div>
                 </form>
-                <div className="col">
+            <div className="col-sm-12 col-md-12 col-lg-6">
                 <div className="ms-5 mt-2 h-25 w-75 d-inline-block float-md-end float-sm-center">
                     <CartContextProvider>
-                        <CartList></CartList>
+                        <CartList kassa={kassa}></CartList>
                     </CartContextProvider>
                 </div>
             </div>

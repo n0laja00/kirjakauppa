@@ -29,7 +29,7 @@ export default function LoginPage({setUser}) {
     
         if (response.ok) {
           setUser(json);
-          history.push('/AddItem');
+          history.push('/EditItemList');
         } else {
           alert("Kirjautuminen epäonnistui. Tarkista käyttäjänimi ja salasana.");
         }

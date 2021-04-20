@@ -262,7 +262,6 @@ footer {
   padding: 0px;
 }
 
-
 @media only screen and (max-width: 1000px) {
   .float_child {
     width: 100%;
@@ -441,7 +440,8 @@ footer {
 }
 
 @media only screen and (max-width: 1200px) {
-  .bookBrowseImg, .bookImgCarousel {
+  .bookBrowseImg,
+  .bookImgCarousel {
     max-height: 471px;
   }
 }
@@ -470,7 +470,7 @@ footer {
   color: rgb(174, 174, 174);
 }
 #starHover {
-color: rgb(255, 196, 0);
+  color: rgb(255, 196, 0);
 }
 
 /* prompt lisätty ostoskoriin */
@@ -481,7 +481,7 @@ color: rgb(255, 196, 0);
   max-width: 150px;
   top: 0;
   right: 0;
-  left:0;
+  left: 0;
   margin: auto;
   text-align: center;
   animation: promptFrames ease-in 2s;
@@ -492,22 +492,22 @@ color: rgb(255, 196, 0);
   -webkit-animation: promptFrames ease 1s;
   -webkit-animation-iteration-count: 1;
   -webkit-transform-origin: 50% 50%;
-  -webkit-animation-fill-mode:forwards; /*Chrome 16+, Safari 4+*/ 
+  -webkit-animation-fill-mode: forwards; /*Chrome 16+, Safari 4+*/
   -moz-animation: promptFrames ease 1s;
   -moz-animation-iteration-count: 1;
   -moz-transform-origin: 50% 50%;
-  -moz-animation-fill-mode:forwards; /*FF 5+*/
+  -moz-animation-fill-mode: forwards; /*FF 5+*/
   -o-animation: promptFrames ease 1s;
   -o-animation-iteration-count: 1;
   -o-transform-origin: 50% 50%;
-  -o-animation-fill-mode:forwards; /*Not implemented yet*/
+  -o-animation-fill-mode: forwards; /*Not implemented yet*/
   -ms-animation: promptFrames ease 1s;
   -ms-animation-iteration-count: 1;
   -ms-transform-origin: 50% 50%;
-  -ms-animation-fill-mode:forwards; /* IE 10+ */
+  -ms-animation-fill-mode: forwards; /* IE 10+ */
 }
 
-@keyframes promptFrames{
+@keyframes promptFrames {
   0%,
   100% {
     opacity: 0;
@@ -515,4 +515,33 @@ color: rgb(255, 196, 0);
   50% {
     opacity: 1;
   }
+}
+/*Tuotteiden lisäyksen CRUD pöytä*/
+
+.kuvaus {
+  max-width: 100px;
+}
+
+.itemTable {
+  overflow-x: auto;
+}
+
+table,
+th,
+td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  background-color: white;
+}
+
+th,
+td {
+  padding: 15px;
+}
+
+.listaValinta:hover {
+  background-color: rgb(229, 255, 0) !important;
 }

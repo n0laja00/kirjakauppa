@@ -1,14 +1,13 @@
 import React, {useContext, useEffect, useState } from 'react';
 import CartContextProvider, { CartContext } from '../contexts/CartContext';
 import CartDetails from './CartDetails';
-import { Switch, Route } from 'react-router';
-import { Link } from 'react-router-dom'
-import Registry from '../registryComponents/Registry.js';
+
 import ToRegistry from './ToRegistry';
 
 /*sfc*/
-const CartList = () => {
+const CartList = (prop) => {
     const { cart } = useContext(CartContext);
+    let kassa = prop.kassa;
     const [totalCost, setTotalCost] = useState(0);
     const {dispatch} = useContext(CartContext)
     const [kori, setKori] = useState([cart]);
@@ -43,14 +42,12 @@ const CartList = () => {
     }, [kori]);
 
 
-
-
     return cart.length ? ( 
         <div className = "row cart-list">
             <h1 className="text-primary pb-5">Ostoskori</h1>
                 <ul className="col-12">
                     { cart.map(item => {
-                        return (<CartDetails item={item} key={item.id} handleDelete={handleDelete} />) 
+                        return (<CartDetails item={item} key={item.id} handleDelete={handleDelete} kassa={kassa}/>) 
                         
                     })}
                 </ul>
@@ -58,7 +55,8 @@ const CartList = () => {
             <div className="col-12 text-end">
                 <h5>Hinta: {totalCost} €</h5>
             </div>
-            <ToRegistry/>
+            
+            <ToRegistry kassa={kassa}/>
         </div>
      ) : (
          <div className="empty"> Ei kirjoja! </div>

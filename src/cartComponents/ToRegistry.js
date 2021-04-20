@@ -3,10 +3,11 @@ import { Link } from 'react-router-dom'
 import { CartContext } from '../contexts/CartContext.js';
 import Registry from '../registryComponents/Registry.js';
 
-const ToRegistry = () => {
+const ToRegistry = (prop) => {
     let { cart } = useContext(CartContext);
     let cartLength = cart.length;
     const [cartState, setCartState] = useState(false);
+    let kassa = prop.kassa
     
 
     useEffect(() => {
@@ -18,7 +19,7 @@ const ToRegistry = () => {
     return ( 
         
         <div className="col-12 mb-5 mt-3">
-            <div className={"" + `section ${cartState ? "hidden" : ""}`}>
+            <div className={"" + `div ${cartState ? "hidden" : ""}` + `div ${kassa ? "hidden" : ""}`}>
                 <Link className="link varjo" to="/registryComponents/Registry">
                         <a className="btn1 float-end">Kassalle</a>
                 </Link>
