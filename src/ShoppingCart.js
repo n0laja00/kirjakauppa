@@ -23,7 +23,6 @@ const ShoppingCart = () => {
             <div>
                 <CartContextProvider>
                     <CartList/> 
-                    
                 </CartContextProvider>
             </div>
         </div> 

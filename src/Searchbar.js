@@ -1,44 +1,47 @@
-// import { useState, useEffect } from 'react'
-// import TextField from '@material-ui/core/TextField';
-// import Autocomplete from '@material-ui/lab/Autocomplete';
+import { useState, useEffect } from 'react'
+import TextField from '@material-ui/core/TextField';
+import Autocomplete from '@material-ui/lab/Autocomplete';
 
 export default function SearchBar() {
 
     // Ehdotusten listauksen kokeilu koodia:
 
-    // const [books, setBooks] = useState([]);
-    // const URL3 = 'http://localhost/kirjakauppa/haku.php/';
+    const [books, setBooks] = useState([]);
+    const URL3 = 'http://localhost/kirjakauppa/haku2.php/';
 
-    // useEffect(() => {
-    //     fetch(URL3)
-    //         .then(response => response.json())
-    //         .then(
-    //             (result) => {
-    //                 setBooks(result);
-    //             }, (error) => {
-    //                 alert(error);
-    //             }
-    //         )
-    // }, [])
+    useEffect(() => {
+        fetch(URL3)
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    setBooks(result);
+                }, (error) => {
+                    alert(error);
+                }
+            )
+    }, [])
 
     // Autocomplete koodi:
 
-    // const [myOptions, setMyOptions] = useState([])
-    
-    // function getDataFromAPI() {
-    //     console.log("Options Fetched from API")
-    
-    //     fetch('http://localhost/kirjakauppa/haku2.php').then((response) => {
-    //     return response.json()
-    //     }).then((res) => {
-    //     console.log(res)
+    const [myOptions, setMyOptions] = useState([]);
 
-    //     for (let i = 0; i < res.length; i++) {
-    //         myOptions.push(res[i].kirjaNimi)
-    //     }
-    //     setMyOptions(myOptions)
-    //     })
-    // }
+    
+    
+    function getDataFromAPI() {
+        fetch('http://localhost/kirjakauppa/haku2.php').then((response) => {
+        return response.json()
+        }).then((res) => {
+
+        for (let i = 0; i < res.length; i++) {
+            myOptions.push(res[i].kirjaNimi)
+        }
+        var newArray = [];
+        var newArray = myOptions.filter(function(elem, pos) {
+                return myOptions.indexOf(elem) == pos;
+        });
+        setMyOptions(newArray)
+        })
+    }
 
     return (
         <>
@@ -51,14 +54,16 @@ export default function SearchBar() {
                 <div className="row">
                     <div className="input-group d-flex justify-content-center">
                             <div className="form-outline col-md-6 col-9">
-                                <input className="form-control input-lg" 
+                                {/* <input className="form-control input-lg" 
                                     type="text" 
                                     id="header-search"
                                     placeholder="Hae toivomaasi kirjaa..."
                                     name="s"
-                                    />
+                                    /> */}
 
-                                {/* <Autocomplete
+                                <Autocomplete
+                                    freeSolo
+                                    autoSelect
                                     autoComplete
                                     autoHighlight
                                     options={myOptions}
@@ -70,7 +75,7 @@ export default function SearchBar() {
                                             name="s"
                                             onChange={getDataFromAPI}/>
                                     )}
-                                /> */}
+                                />
                             </div>
                             <button className="loginButton col-2">
                                 <i className="fa fa-search"></i>
