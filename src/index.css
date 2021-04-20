@@ -63,3 +63,9 @@ a.btn1:after{
 a.btn1:hover{
   background-color:rgb(43, 201, 61);
 }
+
+.cartItemImg {
+  min-width: 100px;
+  max-width: 100%;
+}
+
