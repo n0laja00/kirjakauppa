@@ -15,7 +15,6 @@ import Reviews from './Reviews';
 import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
 
-
 function App() {
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
