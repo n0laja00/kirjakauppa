@@ -8,7 +8,8 @@ import CartContextProvider from './contexts/CartContext'
 
 const ShoppingCart = () => {
     let localState = localStorage.getItem('cart').length;
-    const [cartState, setCartState] = useState(false)
+    const [cartState, setCartState] = useState(false);
+    let kassa = false;
     
 
     useEffect(() => {
@@ -22,7 +23,7 @@ const ShoppingCart = () => {
         <div className="row mt-3 py-4 d-flex justify-content-center cart-page">
             <div>
                 <CartContextProvider>
-                    <CartList/> 
+                    <CartList kassa={kassa}/> 
                 </CartContextProvider>
             </div>
         </div> 

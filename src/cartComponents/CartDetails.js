@@ -4,9 +4,10 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
-const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
+const CartDetails = ({item, handleDelete, kassa}) /*item annetaan alas proppina*/ => {
 
     const [book, setBook] = useState([])
+    
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(true);
     const URL = 'http://localhost/kirjakauppa/haeKirjaNro.php/'
@@ -37,14 +38,6 @@ const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
     }, []);
     
     
-    /*useEffect(() => {
-        
-        let count = result1
-        setTotalPrice(totalPrice+Number(count))
-        
-        console.log(totalPrice)
-    }, [])*/
-        
    
 
 
@@ -59,19 +52,20 @@ const CartDetails = ({item, handleDelete}) /*item annetaan alas proppina*/ => {
             
             <li className="row">
                 {book.map(el => (
-                    <div className="row">
-                        <div className="col-md-12 cartItem col-sm-12 col-lg-6 float-start d-none d-lg-block">
-                            <img className="cartItemImg img-fluid" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                    <div className="">
+                        <div className="float-start d-none d-lg-block">
+                            <img className="cartItemImg img-fluid col-4" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>
-                        <Link to={'/BookDetails/'+ el.kirjaNro} className="link col-md-12 col-lg-6 text-end text-md-center">
-                            <h4 className="col-12 col-md-12 col-sm-12 cartItem ">{el.kirjaNro} {el.kirjaNimi}</h4>
-                            <p className="cartItem col-md-12 col-sm-12"> {el.sukunimi}, {el.etunimi} </p>
+
+                        <Link to={'/BookDetails/'+ el.kirjaNro} className="link">
+                            <h4 className="text-lg-end text-md-center text-sm-center">{el.kirjaNro} {el.kirjaNimi}</h4>
+                            <p className="text-lg-end text-md-center text-sm-center"> {el.sukunimi}, {el.etunimi} </p>
                         </Link>
                        
                         <h5 className="hinta cartItem text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
                         
-                        <div className="col text-lg-end text-lg-end text-md-center">
-                            <button className="btn btn-danger col-md-8 col-sm-12" onClick={() => handleDelete(el, item)} type="button">Poista</button>
+                        <div className={"col text-lg-end text-md-center text-sm-center" + `${kassa ? " hidden" : ""}`}>
+                            <button className="btn btn-danger col-2 col-sm-3" onClick={() => handleDelete(el, item)} type="button">Poista</button>
                         </div>
                         
                     </div> 
