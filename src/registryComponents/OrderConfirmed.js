@@ -9,9 +9,9 @@ export default function OrderConfirmed() {
 
     return (
         <div className="col-12 text-center">
-            <h2>Tilaus vahvistettu.</h2>
+            <h2 className="my-3">Tilaus vahvistettu.</h2>
             <p>Siirryt automaattisesti takaisin etusivulle 10 sekunnin kuluttua.</p>
-            <Link to="/">Tai klikkaa tästä jatkaaksesi heti</Link>
+            <Link to="/">Klikkaa tästä siirtyäksesi heti.</Link>
         </div>
     )
 }

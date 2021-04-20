@@ -160,8 +160,8 @@ export default function Registry() {
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
-                                <label className="form-check-label" for="shippingMethodRadios3">
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios4" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
+                                <label className="form-check-label" for="shippingMethodRadios4">
                                     Pikaposti (Matkahuolto)
                                 </label>
                             </div>
