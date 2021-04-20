@@ -9,11 +9,11 @@ import Logout from './Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
 // import Navbar from './Navbar';
-import AddItem from './AddItem';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
 import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
+import EditItemList from './EditItemList';
 
 
 function App() {
@@ -45,8 +45,8 @@ function App() {
             <Logout setUser={setUser} />
             }/>
           <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/AddItem" render={() => 
-            <AddItem user={user}/>
+          <Route path="/EditItemList" render={() => 
+            <EditItemList user={user}/>
             }
           />
           {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
