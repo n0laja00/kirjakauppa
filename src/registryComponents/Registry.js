@@ -1,4 +1,6 @@
 import React, {useState}  from 'react'
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 
@@ -183,8 +185,8 @@ export default function Registry() {
                             </div>
                         </div>
                         
-                      
-                        <button type="submit" class="btn btn-primary">Tilaa</button>
+                        <Link to="/OrderConfirmed" className="btn btn-primary">Tilaa</Link>
+                        {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
                     </div>
                 </form>
             <div className="col-sm-12 col-md-12 col-lg-6">

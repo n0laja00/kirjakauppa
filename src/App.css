@@ -489,7 +489,7 @@ footer {
   animation-delay: 200ms;
   transform-origin: 50% 50%;
   animation-fill-mode: forwards; /*when the spec is finished*/
-  -webkit-animation: promptFrames ease 1s;
+  -webkit-animation: promptFrames ease 2s;
   -webkit-animation-iteration-count: 1;
   -webkit-transform-origin: 50% 50%;
   -webkit-animation-fill-mode: forwards; /*Chrome 16+, Safari 4+*/
