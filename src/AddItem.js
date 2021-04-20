@@ -116,7 +116,6 @@ export default function AddItem({user}) {
             body: formData 
             }
         )
-        .then((res) => res.json())
         .then((res) => {
         if(bookName !== '' && bookDesc !== '' && bookPrice !== '' && bookExpense !== '' && bookPage !== '' && publisher !== '' && bookPublished !== '' && bookWriterFN
         !== '' && bookWriterLN !== '' && bookCategory !== '') {

@@ -472,3 +472,30 @@ footer {
 #starHover {
 color: rgb(255, 196, 0);
 }
+
+/*Tuotteiden lisäyksen CRUD pöytä*/ 
+
+.kuvaus {
+  max-width: 100px;
+}
+
+.itemTable {
+  overflow-x: auto;
+}
+
+table, th, td {
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+
+table {
+  background-color: white;
+}
+
+th, td {
+  padding: 15px;
+}
+
+.listaValinta:hover {
+  background-color: rgb(229, 255, 0) !important;
+}
