@@ -48,13 +48,8 @@ const CartDetails = ({ item, handleDelete, kassa }) /*item annetaan alas proppin
                             <img className="cartItemImg img-fluid col-sm-4 col-md-2 col-lg-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>
 
-<<<<<<< HEAD
                         <Link to={'/BookDetails/'+ el.kirjaNro} className="link">
                             <h4 className="text-lg-end text-md-center text-md-sm text-sm-center text-break">{el.kirjaNro} {el.kirjaNimi}</h4>
-=======
-                        <Link to={'/BookDetails/' + el.kirjaNro} className="link">
-                            <h4 className="text-lg-end text-md-center text-sm-center">{el.kirjaNro} {el.kirjaNimi}</h4>
->>>>>>> ae49a9fbbcd5332ca69ddf92816767cece75dca5
                             <p className="text-lg-end text-md-center text-sm-center"> {el.sukunimi}, {el.etunimi} </p>
                         </Link>
 
