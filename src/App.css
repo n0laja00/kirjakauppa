@@ -494,8 +494,25 @@ table {
 
 th, td {
   padding: 15px;
+  position: relative;
 }
 
 .listaValinta:hover {
   background-color: rgb(229, 255, 0) !important;
+}
+
+.poistoPainike {
+  color: red;
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  font-size: 15px;
+  text-decoration: none;
+  border: solid 1px black;
+}
+
+.poistoPainike:hover {
+  cursor: pointer;
+  background-color: black;
+  color: red;
 }
