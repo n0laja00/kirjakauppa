@@ -324,8 +324,6 @@ export default function AddItem({user}) {
                 </div>
                 </form>
         </div>
-
-        <EditItemList/>
     </>
     )
 }

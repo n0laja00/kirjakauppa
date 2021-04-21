@@ -1,9 +1,11 @@
 import { useEffect, useState, React } from 'react';
 import { Redirect } from 'react-router';
+import AddItem from './AddItem';
 
 export default function EditItemList({user}) {
 
     const [books, setBooks] = useState([]);
+    const [switchComponents, setSwitchComponents] = useState(false);
     const URL = 'http://localhost/kirjakauppa/';
 
     useEffect(() => {
@@ -33,10 +35,19 @@ export default function EditItemList({user}) {
     //     return <Redirect to="/LoginPage" />
     // }
 
+    function toggleClass() {
+        setSwitchComponents(!switchComponents);
+    }
+
+    function onRemove(book) {
+        let bookNumber = book.kirjaNro; 
+        
+    }
+
     return (
         <>
+        <section className={"p-0" + `section ${switchComponents ? "hidden" : ""}`}>
         <div className="itemTable">
-            <p>testitesti</p>
             <table>
                 <tr className="text-center">
                     <th>Tuotenimi</th>
@@ -53,14 +64,19 @@ export default function EditItemList({user}) {
             {books.map(book => (
                 <>
                 <tr className="listaValinta">
-                <td>{book.kirjaNimi}</td>
+                <td><a className="poistoPainike"
+                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) this.onRemove(book) } }>
+                     Poista</a>{book.kirjaNimi}
+                </td>
                 <td>{book.sivuNro}</td>
                 <td>{book.hinta}</td>
                 <td>{book.ale}</td>
                 <td>{book.kustannus}</td>
                 <td className="cut-text kuvaus">{book.kuvaus}</td>
                 <td>{book.kuva}</td>
-                <td>{book.julkaisija}</td>
+                <td><a className="poistoPainike"
+                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän julkaisijan:' + book.julkaisija + '?')) this.onCancel(book) } }>
+                     Poista</a>{book.julkaisija}</td>
                 <td>{book.julkaistu}</td>
                 <td>{book.luotu}</td>
                 </tr>
@@ -68,48 +84,12 @@ export default function EditItemList({user}) {
              ))}
             </table>
         </div>
-        <button>Lisää uusi</button>
-
-        <form class="row g-3">
-            <div class="col-md-6">
-            <label for="kirjanimi" class="form-label">Kirjan nimi</label>
-            <input type="kirjanimi" class="form-control" id="kirjanimi"/>
-            </div>
-            <div class="col-12">
-            <label for="inputAddress" class="form-label">Address</label>
-            <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St"/>
-            </div>
-            <div class="col-12">
-            <label for="inputAddress2" class="form-label">Address 2</label>
-            <input type="text" class="form-control" id="inputAddress2" placeholder="Apartment, studio, or floor"/>
-            </div>
-            <div class="col-md-6">
-            <label for="inputCity" class="form-label">City</label>
-            <input type="text" class="form-control" id="inputCity"/>
-            </div>
-            <div class="col-md-4">
-            <label for="inputState" class="form-label">State</label>
-            <select id="inputState" class="form-select">
-                <option selected>Choose...</option>
-                <option>...</option>
-            </select>
-            </div>
-            <div class="col-md-2">
-            <label for="inputZip" class="form-label">Zip</label>
-            <input type="text" class="form-control" id="inputZip"/>
-            </div>
-            <div class="col-12">
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="gridCheck"/>
-                <label class="form-check-label" for="gridCheck">
-                Check me out
-                </label>
-            </div>
-            </div>
-            <div class="col-12">
-            <button type="submit" class="btn btn-primary">Sign in</button>
-            </div>
-        </form>
+        <button onClick={toggleClass} className="mt-2 btn btn-primary">Lisää uusi</button>
+    </section>
+    <section className={"p-0" + `section ${switchComponents ? "" : "hidden"}`}>
+    <AddItem/>
+    <button onClick={toggleClass} className="ms-2 btn btn-primary">Kaikki tuotteet</button>
+    </section>
     </>
     )
 }

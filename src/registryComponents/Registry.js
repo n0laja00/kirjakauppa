@@ -1,4 +1,6 @@
 import React, {useState}  from 'react'
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 
@@ -158,8 +160,8 @@ export default function Registry() {
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
-                                <label className="form-check-label" for="shippingMethodRadios3">
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios4" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
+                                <label className="form-check-label" for="shippingMethodRadios4">
                                     Pikaposti (Matkahuolto)
                                 </label>
                             </div>
@@ -183,8 +185,8 @@ export default function Registry() {
                             </div>
                         </div>
                         
-                      
-                        <button type="submit" class="btn btn-primary">Tilaa</button>
+                        <Link to="/OrderConfirmed" className="btn btn-primary">Tilaa</Link>
+                        {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
                     </div>
                 </form>
             <div className="col-sm-12 col-md-12 col-lg-6">
