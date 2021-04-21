@@ -101,8 +101,8 @@ export default function Registry() {
     }
 
     return (
-        <div className="row">
-            <h1 className=" col mt-2">Kassa</h1>
+        <div className="row registry_page">
+            <h1 className="text-primary col mt-2">Kassa</h1>
             <div className="row">
                 <form className="col-sm-12 col-md-12 col-lg-4" onSubmit={handleSubmit}>
                     <div className="col mt-3 ">
@@ -144,8 +144,8 @@ export default function Registry() {
                             </label>
                         </div>
 
-                        <div className="mt-3">
-                            <h1>Toimitus</h1>
+                        <div className="mt-3 text-primary">
+                            <h1 className="text-primary">Toimitus</h1>
                         </div>
                         <div className="mt-3 row">
                             <label>Toimitusosoite (Valinainen)
@@ -190,7 +190,7 @@ export default function Registry() {
                         </div>
 
                         <div className="mt-3">
-                            <h1>Laskutus</h1>
+                            <h1 className="text-primary">Laskutus</h1>
                         </div>
                         <div className="mt-3 row">
                             <div className="form-check form-control-lg">
@@ -206,9 +206,10 @@ export default function Registry() {
                                 </label>
                             </div>
                         </div>
-                        
-                        <Link to="/OrderConfirmed" className="btn btn-primary">Tilaa</Link>
-                        {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
+                        <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">
+                            <Link to="/OrderConfirmed" className="btn btn-primary col-8">Tilaa</Link>
+                            {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
+                        </div>
                     </div>
                 </form>
             <div className="col-sm-12 col-md-12 col-lg-8">
