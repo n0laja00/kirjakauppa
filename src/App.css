@@ -234,26 +234,14 @@ footer {
 
 /*Book Carousel */
 
-.book_divider {
-  border-right: 2px solid #00000093;
-}
-.book_divider:hover {
-  background-color: #ffc444cc;
-}
-
-.float_container {
-  padding: 10px;
-  overflow: auto;
-}
-
 .float_child {
   width: 40%;
   float: left;
 }
 
 .float_child p {
-  margin-bottom: 40%;
-  margin-left: 20%;
+  position: relative;
+  border: 1px solid black;
 }
 
 .float_child_book_img {
@@ -277,9 +265,7 @@ footer {
     text-align: left;
     height: 500px !important;
   }
-  .float_child_book_img img {
-    height: 500px;
-  }
+
 }
 
 @media only screen and (max-width: 770px) {
@@ -295,7 +281,6 @@ footer {
   padding-top: 20px;
   padding-bottom: 20px;
   height: 100px;
-  margin: 5px;
   overflow-wrap: break-word;
 }
 
@@ -333,9 +318,6 @@ footer {
   cursor: pointer;
 }
 
-.carouselBorder {
-  border: 2px solid rgb(0, 108, 170);
-}
 
 /*Footer map*/
 
@@ -368,19 +350,25 @@ footer {
   }
 }
 
-/* VAIHEESSA AllBooks.js tyylit */
+/* AllBooks.js tyylit */
 
 /* source: https://stackoverflow.com/questions/486563/overflowhidden-dots-at-the-end
  */
 .cut-text {
-  font-size: 0.9em;
   text-overflow: ellipsis;
   overflow: hidden;
   height: 1.2em;
   white-space: nowrap;
 }
-.addToCartBtn {
+
+/* ostoskoriin-painike ja lue lisää */
+.readMoreBtn {
   background-color: #66b8fc;
+  border: 1px solid black;
+}
+.readMoreBtn:hover
+ {
+  background-color: #c1e0f8;
   border: 1px solid black;
 }
 
@@ -403,27 +391,40 @@ footer {
   background-color: #ffc444cc;
 }
 
-/* HistoryNav.js */
-.navHistory {
+/* Breadcrumbs.js */
+.breadCrumbs {
   margin-top: 5px;
   font-size: 0.8em;
 }
-.navHistory i {
+.breadCrumbs i {
   position: absolute;
   font-size: 1.2em;
 }
 @media only screen and (max-width: 991px) {
-  .navHistory {
+  .breadCrumbs {
     margin-top: 5px;
     font-size: 0.7em;
   }
-  .navHistory i {
+  .breadCrumbs i {
     position: absolute;
     font-size: 1.3em;
   }
 }
 .hidden {
   display: none;
+}
+
+/* karusellin kuvat */
+.image_container{
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+
+}
+.image_container img
+ {
+max-height: 600px;
+width: auto;
 }
 
 .publisherContainer {

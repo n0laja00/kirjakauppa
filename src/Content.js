@@ -24,7 +24,7 @@ export default function Content({ category }) {
                     setIsLoaded(true);
                 }, (error) => {
                     // setError(error);
-                    // setIsLoaded(false);
+                    setIsLoaded(false);
                 }
             )
     }, [category])
@@ -69,7 +69,7 @@ export default function Content({ category }) {
                         ))}
                     </div>
                 </div>
-                <h3>Kuukauden kirjat tms</h3>
+                <h3>Kuukauden kirjat</h3>
                 <div className="row carouselBorder">
                     <BookCarousel bookdata={selected} />
                 </div>
