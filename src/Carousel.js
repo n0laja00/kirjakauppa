@@ -13,7 +13,7 @@ export default function BookCarousel({ bookdata }) {
   const imgURL = 'http://localhost/kirjakauppa/img/';
   const [isLoaded, setIsLoaded] = useState(false);
 
-
+  console.log(bookdata)
   useEffect(() => {
     let status = 0;
 
