@@ -29,12 +29,17 @@ export default function LoginPage({setUser}) {
     
         if (response.ok) {
           setUser(json);
-          history.push('/EditItemList');
+          history.push('/');
         } else {
           alert("Kirjautuminen epäonnistui. Tarkista käyttäjänimi ja salasana.");
         }
     
       }
+
+    // tämä sivulle jonne ei pääse kirjautumatta
+    //   if (user===null) {
+    //     return <Redirect to="/LoginPage" />
+    // }
 
     return (
         <form onSubmit={login}>

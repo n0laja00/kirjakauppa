@@ -31,7 +31,7 @@ export default function Breadcrumbs() {
     //return, jos ei etusivulla
     if (pathname !== "/") {
         return (
-            <div className="row navHistory">
+            <div className="row breadCrumbs">
                 <Link to="/" className="link col-auto varjo"> <i className="fa fa-home"></i> </Link>
                 <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
                 <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
@@ -44,7 +44,7 @@ export default function Breadcrumbs() {
         )
     } else { /* return etusivulla */
         return (
-            <div className="row navHistory">
+            <div className="row breadCrumbs">
                 <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
                 <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
                 <div className="col-auto">

@@ -1,39 +1,19 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import TextField from '@material-ui/core/TextField';
 import Autocomplete from '@material-ui/lab/Autocomplete';
 
 export default function SearchBar() {
-
-    // Ehdotusten listauksen kokeilu koodia:
-
-    const [books, setBooks] = useState([]);
-    const URL3 = 'http://localhost/kirjakauppa/haku2.php/';
-
-    useEffect(() => {
-        fetch(URL3)
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    setBooks(result);
-                }, (error) => {
-                    alert(error);
-                }
-            )
-    }, [])
-
     // Autocomplete koodi:
-
     const [myOptions, setMyOptions] = useState([]);
 
-    
-    
     function getDataFromAPI() {
-        fetch('http://localhost/kirjakauppa/haku2.php').then((response) => {
+        fetch('http://localhost/kirjakauppa/kaikkiKirjat.php').then((response) => {
         return response.json()
         }).then((res) => {
 
         for (let i = 0; i < res.length; i++) {
             myOptions.push(res[i].kirjaNimi)
+            myOptions.push(res[i].etunimi + " " + res[i].sukunimi)
         }
         var newArray = [];
         var newArray = myOptions.filter(function(elem, pos) {
@@ -71,7 +51,7 @@ export default function SearchBar() {
                                         <TextField {...params} 
                                             type="text" 
                                             id="header-search"
-                                            label="Hae toivomaasi kirjaa..."
+                                            label="Hae kirjaa..."
                                             name="s"
                                             onChange={getDataFromAPI}/>
                                     )}
@@ -83,26 +63,6 @@ export default function SearchBar() {
                     </div>
                 </div>
             </form>
-            {/* <ul className="col-11">
-                {books.map((post) => (
-                    <li key={post.kirjaNro}>{post.kirjaNimi}</li>
-                ))}
-            </ul>
-
-            <Autocomplete
-                style={{ width: 500 }}
-                freeSolo
-                autoComplete
-                autoHighlight
-                options={myOptions}
-                renderInput={(params) => (
-                    <TextField {...params}
-                    onChange={getDataFromAPI}
-                    variant="outlined"
-                    label="Hae toivomaasi kirjaa..."
-                    />
-                )}
-            /> */}
         </>
     )
 }

@@ -14,7 +14,7 @@ import Reviews from './Reviews';
 import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
 import EditItemList from './EditItemList';
-
+import OrderConfirmed from './registryComponents/OrderConfirmed';
 
 function App() {
   const [category, setCategory] = useState(null);
@@ -36,7 +36,7 @@ function App() {
         <Breadcrumbs />
         <Switch>
           <Route path="/" render={() => <Content
-            category={category} />} exact />
+            setCategory={setCategory} />} exact />
           <Route path="/LoginPage" render={() =>
             <LoginPage setUser={setUser}/> 
             } 
@@ -56,6 +56,7 @@ function App() {
           <Route path="/BookDetails/:id" component={BookDetails} />
           <Route path="/Reviews/:id" component={Reviews} />
           <Route path="/registryComponents/Registry" component={Registry} />
+          <Route path="/OrderConfirmed" component={OrderConfirmed} />
         </Switch>
       </main>
       <div className="container bottomBg">
