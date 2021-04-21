@@ -29,9 +29,9 @@ export default function EditItemList({user}) {
         )
       }, [])
 
-    if (user===null) {
-        return <Redirect to="/LoginPage" />
-    }
+    // if (user===null) {
+    //     return <Redirect to="/LoginPage" />
+    // }
 
     return (
         <>
