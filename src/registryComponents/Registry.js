@@ -1,10 +1,12 @@
 import React, {useState}  from 'react'
+import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 
 
 export default function Registry() {
-    const [tilaus, setTilaus] = useState([]);
+    let kassa = true;
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastTName]= useState('');
     const [email, setEmail] = useState('');
@@ -90,7 +92,7 @@ export default function Registry() {
         <div className="row">
             <h1 className=" col mt-2">Kassa</h1>
             <div className="row">
-                <form className="col" onSubmit={handleSubmit}>
+                <form className="col-sm-12 col-md-12 col-lg-6" onSubmit={handleSubmit}>
                     <div className="col mt-3 ">
                         <div className="row">
                             <label className="float-start col">Etunimi
@@ -158,8 +160,8 @@ export default function Registry() {
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
-                                <label className="form-check-label" for="shippingMethodRadios3">
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios4" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
+                                <label className="form-check-label" for="shippingMethodRadios4">
                                     Pikaposti (Matkahuolto)
                                 </label>
                             </div>
@@ -183,14 +185,14 @@ export default function Registry() {
                             </div>
                         </div>
                         
-                      
-                        <button type="submit" class="btn btn-primary">Tilaa</button>
+                        <Link to="/OrderConfirmed" className="btn btn-primary">Tilaa</Link>
+                        {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
                     </div>
                 </form>
-                <div className="col">
+            <div className="col-sm-12 col-md-12 col-lg-6">
                 <div className="ms-5 mt-2 h-25 w-75 d-inline-block float-md-end float-sm-center">
                     <CartContextProvider>
-                        <CartList></CartList>
+                        <CartList kassa={kassa}></CartList>
                     </CartContextProvider>
                 </div>
             </div>

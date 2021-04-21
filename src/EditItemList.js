@@ -39,6 +39,11 @@ export default function EditItemList({user}) {
         setSwitchComponents(!switchComponents);
     }
 
+    function onRemove(book) {
+        let bookNumber = book.kirjaNro; 
+        
+    }
+
     return (
         <>
         <section className={"p-0" + `section ${switchComponents ? "hidden" : ""}`}>
@@ -60,7 +65,7 @@ export default function EditItemList({user}) {
                 <>
                 <tr className="listaValinta">
                 <td><a className="poistoPainike"
-                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) this.onCancel(book) } }>
+                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) this.onRemove(book) } }>
                      Poista</a>{book.kirjaNimi}
                 </td>
                 <td>{book.sivuNro}</td>
