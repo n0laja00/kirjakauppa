@@ -53,12 +53,12 @@ const CartDetails = ({item, handleDelete, kassa}) /*item annetaan alas proppina*
             <li className="row">
                 {book.map(el => (
                     <div className="">
-                        <div className="float-start d-none d-lg-block">
-                            <img className="cartItemImg img-fluid col-4" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                        <div className="float-start d-none d-lg-block col-6">
+                            <img className="cartItemImg img-fluid col-sm-4 col-md-2 col-lg-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>
 
                         <Link to={'/BookDetails/'+ el.kirjaNro} className="link">
-                            <h4 className="text-lg-end text-md-center text-sm-center">{el.kirjaNro} {el.kirjaNimi}</h4>
+                            <h4 className="text-lg-end text-md-center text-md-sm text-sm-center text-break">{el.kirjaNro} {el.kirjaNimi}</h4>
                             <p className="text-lg-end text-md-center text-sm-center"> {el.sukunimi}, {el.etunimi} </p>
                         </Link>
                        
