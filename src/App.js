@@ -36,7 +36,7 @@ function App() {
         <Breadcrumbs />
         <Switch>
           <Route path="/" render={() => <Content
-            category={category} />} exact />
+            setCategory={setCategory} />} exact />
           <Route path="/LoginPage" render={() =>
             <LoginPage setUser={setUser}/> 
             } 

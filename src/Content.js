@@ -2,7 +2,7 @@ import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
 import BookCarousel from './Carousel'
 
-export default function Content({ category }) {
+export default function Content({ setCategory }) {
 
     //Tässä on kirjat, jotka menee book carouseliin. Ne on tässä vielä ja jos aika riittää tehdään muuttujille niin, että ylläpitäjänä voit valita kuukauden kirjat.
     const book1 = "Jannen kirja";
@@ -16,18 +16,21 @@ export default function Content({ category }) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        fetch(URL)
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    setCategories(result);
-                    setIsLoaded(true);
-                }, (error) => {
-                    // setError(error);
-                    setIsLoaded(false);
-                }
-            )
-    }, [category])
+        (async() => {
+        try {
+            const response = await fetch(URL);
+            const json = await response.json();
+            if (response.ok) {
+                setCategories(json);
+                setCategory(json[0]);
+                setIsLoaded(true);
+            } else {
+                alert(json.error);
+            }
+        } catch (error) {
+            alert(error);
+        }}) ()
+    }, [])
 
 
     if (!isLoaded) {
@@ -54,18 +57,29 @@ export default function Content({ category }) {
                     </div>
                     <div className="row justify-content-center">
                         {categories.map(category => (
-                            <div className="d-flex align-items-center col-sm-3 btn categoryButton m-2">
-                                <Link key={category.kategoriaNro} className="col text-center link"
-                                    to={{
-                                        pathname: '/AllBooks',
-                                        state: {
-                                            id: category.kategoriaNro,
-                                            name: category.kategoria
-                                        }
-                                    }}>
+                            <Link key={category.kategoriaNro} className="d-flex col-sm-3 btn align-items-center justify-content-center categoryButton m-2 link"
+                                to={{
+                                    pathname: '/AllBooks',
+                                    state: {
+                                        id: category.kategoriaNro,
+                                        name: category.kategoria
+                                    }
+                                }}>
                                     {category.kategoria}
-                                </Link>
-                            </div>
+                            </Link>
+
+                            // <div className="d-flex align-items-center col-sm-3 btn categoryButton m-2">
+                            //     <Link key={category.kategoriaNro} className="col text-center link"
+                            //         to={{
+                            //             pathname: '/AllBooks',
+                            //             state: {
+                            //                 id: category.kategoriaNro,
+                            //                 name: category.kategoria
+                            //             }
+                            //         }}>
+                            //         {category.kategoria}
+                            //     </Link>
+                            // </div>
                         ))}
                     </div>
                 </div>

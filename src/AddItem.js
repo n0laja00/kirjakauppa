@@ -83,10 +83,6 @@ export default function AddItem({user}) {
         )
     }, [submit])
 
-    if (user===null) {
-        return <Redirect to="/LoginPage" />
-    }
-
     function handleChange(e) {
         setImage(e.target.files[0]);
       }
@@ -328,8 +324,6 @@ export default function AddItem({user}) {
                 </div>
                 </form>
         </div>
-
-        <EditItemList/>
     </>
     )
 }
