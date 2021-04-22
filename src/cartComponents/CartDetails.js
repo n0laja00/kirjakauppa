@@ -4,7 +4,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
 
-const CartDetails = ({ item, handleDelete, kassa }) /*item annetaan alas proppina*/ => {
+const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annetaan alas proppina*/ => {
 
     const [book, setBook] = useState([])
     const [error, setError] = useState('');
@@ -49,14 +49,18 @@ const CartDetails = ({ item, handleDelete, kassa }) /*item annetaan alas proppin
                         </div>
 
                         <Link to={'/BookDetails/'+ el.kirjaNro} className="link">
-                            <h4 className="text-lg-end text-md-center text-md-sm text-sm-center text-break">{el.kirjaNro} {el.kirjaNimi}</h4>
+                            <h4 className="text-lg-end text-md-center text-md-sm text-sm-center text-break">{el.kirjaNimi}</h4>
                             <p className="text-lg-end text-md-center text-sm-center"> {el.sukunimi}, {el.etunimi} </p>
                         </Link>
 
                         <h5 className="hinta cartItem text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
 
-                        <div className={"col text-lg-end text-md-center text-sm-center" + `${kassa ? " hidden" : ""}`}>
-                            <button className="btn btn-danger col-2 col-sm-3" onClick={() => handleDelete(el, item)} type="button">Poista</button>
+                        <div className={"row" + `${kassa ? " hidden" : ""}`}>
+                            <div className="text-lg-end text-md-end text-sm-center">
+                                <button className="btn btn-danger col-sm-3 col-md-3 col-lg-3 fa fa-minus-circle fa-lg" onClick={() => handleDelete(el, item)} type="button"></button>
+                                <button className="ms-2 btn btn-success col-sm-3 col-md-3 col-lg-3 fa fa-plus-circle fa-lg" onClick={() => handleAddition(el, item)} type="button"></button>
+                            </div>
+
                         </div>
 
                     </div>
