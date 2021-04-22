@@ -23,7 +23,6 @@ export default function Navbar() {
     // }, [])
 
     return (
-        <div className="row">
             <nav className="d-flex align-items-end navbar navbar-expand-lg navbar-light">
                 {/* <a className="navbar-brand" href="#">Navbar</a> */}
                 <button className="navbar-toggler col-auto"
@@ -37,7 +36,7 @@ export default function Navbar() {
                 </button>
                 {/* tyhjä col-1, että navigoinnin ikonit pysyy keskellä */}
                 <div className="col-1"></div>
-                <div className="collapse navbar-collapse row" id="navbarNavDropdown">
+                <div className="mx-auto collapse navbar-collapse row" id="navbarNavDropdown">
                     <ul className="navbar-nav navbar col-1 col-sm-2 col-lg-12 ">
                         <li key={"Kaikki kirjat"} className="nav-item border-xs-bottom border-lg-bottom-0 border-md-right border-lg-right-0 mb-2 mb-lg-0">
                             <Link className="link"
@@ -195,14 +194,15 @@ export default function Navbar() {
                                 </div>
                             </Link>
                         </li>
+                        
                     </ul>
+                   
                 </div>
                 {/* tyhjä col-1, että navigoinnin ikonit pysyy keskellä */}
-                <div className="d-none d-lg-block col"></div>
+                <div className="d-none d-lg-block col-1"></div>
                 <div className="d-block d-lg-none col justify-content-center">
-                    <SearchBar />
+                    <SearchBar />  
                 </div>
             </nav>
-        </div>
     )
 }

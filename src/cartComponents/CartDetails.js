@@ -44,21 +44,21 @@ const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annet
             <li className="row">
                 {book.map(el => (
                     <div className="">
-                        <div className="float-start d-none d-lg-block col-6">
+                        <div className="float-start d-none d-lg-block col-4">
                             <img className="cartItemImg img-fluid col-sm-4 col-md-2 col-lg-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>
 
                         <Link to={'/BookDetails/'+ el.kirjaNro} className="link">
-                            <h4 className="text-lg-end text-md-center text-md-sm text-sm-center text-break">{el.kirjaNimi}</h4>
-                            <p className="text-lg-end text-md-center text-sm-center"> {el.sukunimi}, {el.etunimi} </p>
+                            <h4 className="text-lg-end text-md-center text-md-sm text-center text-break">{el.kirjaNimi}</h4>
+                            <p className="text-lg-end text-md-center text-sm-center text-center"> {el.sukunimi}, {el.etunimi} </p>
                         </Link>
 
                         <h5 className="hinta cartItem text-end" value={el.hinta} onChange={(e) => handleTotalPrice(e.target.value)}> {item.maara} x {el.hinta} €</h5>
 
                         <div className={"row" + `${kassa ? " hidden" : ""}`}>
-                            <div className="text-lg-end text-md-end text-sm-center">
-                                <button className="btn btn-danger col-sm-3 col-md-3 col-lg-3 fa fa-minus-circle fa-lg" onClick={() => handleDelete(el, item)} type="button"></button>
-                                <button className="ms-2 btn btn-success col-sm-3 col-md-3 col-lg-3 fa fa-plus-circle fa-lg" onClick={() => handleAddition(el, item)} type="button"></button>
+                            <div className="text-lg-end text-md-end text-sm-center text-center">
+                                <button className="btn btn-danger text-wrap col-5 fa fa-minus-circle fa-lg" onClick={() => handleDelete(el, item)} type="button"></button>
+                                <button className="ms-2 btn btn-success text-wrap col-5 fa fa-plus-circle fa-lg" onClick={() => handleAddition(el, item)} type="button"></button>
                             </div>
 
                         </div>

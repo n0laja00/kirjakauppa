@@ -11,8 +11,6 @@ const CartList = (prop) => {
     const [totalCost, setTotalCost] = useState(0);
     const {dispatch} = useContext(CartContext)
     const [kori, setKori] = useState([cart]);
-    console.log("tämä on kori:")
-    console.log(kori);
 
     const handleDelete = (item, cartObject) => {
         const books = cart;
