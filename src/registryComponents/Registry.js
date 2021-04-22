@@ -1,6 +1,5 @@
 import React, {useState}  from 'react'
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 
@@ -21,7 +20,7 @@ export default function Registry() {
     const [shippingMethod, setShippingMethod] = useState('lähinKauppa');
     const [shippingPostalCode, setShippingPostalCode] = useState('');
     const [shippingCity, setShippingCity] = useState('');
-    
+    let history = useHistory();
 
     
     function handleSubmit (e) {
@@ -35,6 +34,7 @@ export default function Registry() {
             setShippingCity(city);
         };
         e.preventDefault();
+
         const URL = 'http://localhost/kirjakauppa/';
         let status = 0; 
         fetch(URL + 'asetaTilaus.php', {
@@ -88,7 +88,7 @@ export default function Registry() {
         setShippingPostalCode('');
         setShippingCity('');
         localStorage.setItem('cart', JSON.stringify([]));
-        
+        history.push('/OrderConfirmed');
     };
 
 
@@ -148,18 +148,18 @@ export default function Registry() {
                             <h1 className="text-primary">Toimitus</h1>
                         </div>
                         <div className="mt-3 row">
-                            <label>Toimitusosoite (Valinainen)
+                            <label>Toimitusosoite (Valinnainen)
                                 <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)}/>
                             </label>
                         </div>
                         <div className="mt-3 row">
-                            <label>Postinumero (Valinainen)
-                                <input type="text" value={shippingPostalCode} minlength="4" maxlength="5" required className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)}/>
+                            <label>Postinumero (Valinnainen)
+                                <input type="text" value={shippingPostalCode} minlength="4" maxlength="5" className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)}/>
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Kaupunki (Valinnainen)
-                                <input type="text" value={shippingCity} required className="form-control form-control-lg" name="shippingCity" placeholder="Kaupunki (Valinnainen)" onChange={e => setShippingCity(e.target.value)}/>
+                                <input type="text" value={shippingCity} className="form-control form-control-lg" name="shippingCity" placeholder="Kaupunki (Valinnainen)" onChange={e => setShippingCity(e.target.value)}/>
                             </label>
                         </div>
                         <div className="mt-3 row">
@@ -206,9 +206,8 @@ export default function Registry() {
                                 </label>
                             </div>
                         </div>
+                        <button type="submit" class="btn btn-primary">Tilaa</button>
                         <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">
-                            <Link to="/OrderConfirmed" className="btn btn-primary col-8">Tilaa</Link>
-                            {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
                         </div>
                     </div>
                 </form>
