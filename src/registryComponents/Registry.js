@@ -212,13 +212,13 @@ export default function Registry() {
                         </div>
                     </div>
                 </form>
-            <div className="col-sm-12 col-md-12 col-lg-8">
-                <div className="ms-5 mt-2 h-25 w-75 d-inline-block float-md-end float-sm-center">
-                    <CartContextProvider>
-                        <CartList kassa={kassa}></CartList>
-                    </CartContextProvider>
+                <div className="col-sm-12 col-md-12 col-lg-8 d-none d-md-block">
+                    <div className="mt-2 h-25 w-75 d-inline-block float-md-end float-sm-center">
+                        <CartContextProvider>
+                            <CartList kassa={kassa}></CartList>
+                        </CartContextProvider>
+                    </div>
                 </div>
-            </div>
             </div>
         </div>
         
