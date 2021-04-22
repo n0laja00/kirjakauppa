@@ -112,10 +112,6 @@ export default function AddItem({user, updateBook, selected}) {
         )
     }, [submit])
 
-    if (user===null) {
-        return <Redirect to="/LoginPage" />
-    }
-
     function handleChange(e) {
         setImage(e.target.files[0]);
       }

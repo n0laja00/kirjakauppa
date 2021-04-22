@@ -32,6 +32,16 @@ const CartList = (prop) => {
         setKori([cart]);
     };
 
+    const handleAddition = (item, cartObject) => {
+        const books = cart;
+        const change = 1;
+        const itemIndex = books.findIndex((book) => book.kirjaNro === item.kirjaNro);        
+            cart[itemIndex].maara = cart[itemIndex].maara + change;
+            localStorage.setItem('cart', JSON.stringify(books));
+            setKori(cart[itemIndex].maara);
+        setKori([cart]);
+    };
+
     useEffect(() => {
         console.log(cart);
         const hinta = 0; 
@@ -47,7 +57,7 @@ const CartList = (prop) => {
             <h1 className="text-primary pb-5">Ostoskori</h1>
                 <ul className="col-12">
                     { cart.map(item => {
-                        return (<CartDetails item={item} key={item.id} handleDelete={handleDelete} kassa={kassa}/>) 
+                        return (<CartDetails item={item} key={item.id} handleDelete={handleDelete} handleAddition={handleAddition} kassa={kassa}/>) 
                         
                     })}
                 </ul>

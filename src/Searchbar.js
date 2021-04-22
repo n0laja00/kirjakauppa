@@ -51,7 +51,7 @@ export default function SearchBar() {
                                         <TextField {...params} 
                                             type="text" 
                                             id="header-search"
-                                            label="Hae toivomaasi kirjaa..."
+                                            label="Hae kirjaa..."
                                             name="s"
                                             onChange={getDataFromAPI}/>
                                     )}

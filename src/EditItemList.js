@@ -37,9 +37,9 @@ export default function EditItemList({user}) {
         )
       }, [submit])
 
-    if (user===null) {
-        return <Redirect to="/LoginPage" />
-    }
+    // if (user===null) {
+    //     return <Redirect to="/LoginPage" />
+    // }
 
     function toggleClass() {
         setSwitchComponents(!switchComponents);

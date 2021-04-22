@@ -19,13 +19,21 @@ export default function Registry() {
     const [paymentMethod, setPaymentMethod] = useState('lasku');
     const [shippingAddress, setShippingAddress] = useState('');
     const [shippingMethod, setShippingMethod] = useState('lähinKauppa');
+    const [shippingPostalCode, setShippingPostalCode] = useState('');
+    const [shippingCity, setShippingCity] = useState('');
     
 
     
     function handleSubmit (e) {
         if (shippingAddress.length <= 0) {
             setShippingAddress(address);
-        }
+        };
+        if (shippingPostalCode.length <= 0) {
+            setShippingPostalCode(postalCode);
+        };
+        if (shippingCity.length <= 0) {
+            setShippingCity(city);
+        };
         e.preventDefault();
         const URL = 'http://localhost/kirjakauppa/';
         let status = 0; 
@@ -48,6 +56,8 @@ export default function Registry() {
                 maksutapa: paymentMethod,
                 toimitusosoite: shippingAddress,
                 toimitustapa: shippingMethod,
+                toimituspostitmp: shippingCity,
+                toimituspostinro: shippingPostalCode
             })
         })
         .then(res=> {
@@ -75,6 +85,8 @@ export default function Registry() {
         setPaymentMethod('');
         setShippingAddress('');
         setShippingMethod('');
+        setShippingPostalCode('');
+        setShippingCity('');
         localStorage.setItem('cart', JSON.stringify([]));
         
     };
@@ -89,10 +101,10 @@ export default function Registry() {
     }
 
     return (
-        <div className="row">
-            <h1 className=" col mt-2">Kassa</h1>
+        <div className="row registry_page">
+            <h1 className="text-primary col mt-2">Kassa</h1>
             <div className="row">
-                <form className="col-sm-12 col-md-12 col-lg-6" onSubmit={handleSubmit}>
+                <form className="col-sm-12 col-md-12 col-lg-4" onSubmit={handleSubmit}>
                     <div className="col mt-3 ">
                         <div className="row">
                             <label className="float-start col">Etunimi
@@ -132,12 +144,22 @@ export default function Registry() {
                             </label>
                         </div>
 
-                        <div className="mt-3">
-                            <h1>Toimitus</h1>
+                        <div className="mt-3 text-primary">
+                            <h1 className="text-primary">Toimitus</h1>
                         </div>
                         <div className="mt-3 row">
                             <label>Toimitusosoite (Valinainen)
-                                <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite" onChange={e => setShippingAddress(e.target.value)}/>
+                                <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <label>Postinumero (Valinainen)
+                                <input type="text" value={shippingPostalCode} minlength="4" maxlength="5" required className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)}/>
+                            </label>
+                        </div>
+                        <div className="mt-3 row">
+                            <label>Kaupunki (Valinnainen)
+                                <input type="text" value={shippingCity} required className="form-control form-control-lg" name="shippingCity" placeholder="Kaupunki (Valinnainen)" onChange={e => setShippingCity(e.target.value)}/>
                             </label>
                         </div>
                         <div className="mt-3 row">
@@ -168,7 +190,7 @@ export default function Registry() {
                         </div>
 
                         <div className="mt-3">
-                            <h1>Laskutus</h1>
+                            <h1 className="text-primary">Laskutus</h1>
                         </div>
                         <div className="mt-3 row">
                             <div className="form-check form-control-lg">
@@ -184,12 +206,13 @@ export default function Registry() {
                                 </label>
                             </div>
                         </div>
-                        
-                        <Link to="/OrderConfirmed" className="btn btn-primary">Tilaa</Link>
-                        {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
+                        <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">
+                            <Link to="/OrderConfirmed" className="btn btn-primary col-8">Tilaa</Link>
+                            {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
+                        </div>
                     </div>
                 </form>
-            <div className="col-sm-12 col-md-12 col-lg-6">
+            <div className="col-sm-12 col-md-12 col-lg-8">
                 <div className="ms-5 mt-2 h-25 w-75 d-inline-block float-md-end float-sm-center">
                     <CartContextProvider>
                         <CartList kassa={kassa}></CartList>

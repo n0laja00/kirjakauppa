@@ -31,7 +31,6 @@ export default function AllBooks({ category }) {
 
     useEffect(() => {
         let address = URL1 + category?.id;
-
         if (query !== null) {
             address = URL3 + query;
         } else if (category?.id === "22") {
@@ -54,9 +53,9 @@ export default function AllBooks({ category }) {
     }, [category, query])
 
     if (!isLoaded) {
-        return <div className="row justify-content-center pt-5">  
-        <div className="col-auto d-block">
-            <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+        return <div className="row justify-content-center pt-5">
+            <div className="col-auto d-block">
+                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
             </div>
             <h2 className="col-auto d-block">Loading...</h2>
         </div>;
@@ -76,7 +75,7 @@ export default function AllBooks({ category }) {
                                 <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
                                 <h5 className="card-subtitle col-md-12 text-end p-3">{book.hinta} €</h5>
                                 <Link to={'/BookDetails/' + book.kirjaNro} className="link text-center">
-                                    <div className="my-3 btn addToCartBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
+                                    <div className="my-3 btn readMoreBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
                                 </Link>
                                 <CartContextProvider>
                                     <AddToCart item={book} />
