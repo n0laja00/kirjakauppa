@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import Navbar from './Navbar'
 import SearchBar from './Searchbar'
 import { Link } from 'react-router-dom'
+import { cartReducer } from './reducers/cartReducer';
 
-export default function Header() {
+export default function Header() {    
     return (
         <div className="row header py-3 shadow">
            

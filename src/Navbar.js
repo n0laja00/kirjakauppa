@@ -195,12 +195,14 @@ export default function Navbar() {
                                 </div>
                             </Link>
                         </li>
+                        
                     </ul>
+                   
                 </div>
                 {/* tyhjä col-1, että navigoinnin ikonit pysyy keskellä */}
                 <div className="d-none d-lg-block col"></div>
                 <div className="d-block d-lg-none col justify-content-center">
-                    <SearchBar />
+                    <SearchBar />  
                 </div>
             </nav>
         </div>
