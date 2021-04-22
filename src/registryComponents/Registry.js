@@ -148,7 +148,7 @@ export default function Registry() {
                             <h1 className="text-primary">Toimitus</h1>
                         </div>
                         <div className="mt-3 row">
-                            <label>Toimitusosoite (Valinainen)
+                            <label>Toimitusosoite (Valinnainen)
                                 <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)}/>
                             </label>
                         </div>
