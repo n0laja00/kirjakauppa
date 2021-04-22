@@ -1,6 +1,5 @@
 import React, {useState}  from 'react'
-import { Redirect } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useHistory } from 'react-router';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 
@@ -21,7 +20,7 @@ export default function Registry() {
     const [shippingMethod, setShippingMethod] = useState('lähinKauppa');
     const [shippingPostalCode, setShippingPostalCode] = useState('');
     const [shippingCity, setShippingCity] = useState('');
-    
+    let history = useHistory();
 
     
     function handleSubmit (e) {
@@ -35,6 +34,7 @@ export default function Registry() {
             setShippingCity(city);
         };
         e.preventDefault();
+
         const URL = 'http://localhost/kirjakauppa/';
         let status = 0; 
         fetch(URL + 'asetaTilaus.php', {
@@ -88,7 +88,7 @@ export default function Registry() {
         setShippingPostalCode('');
         setShippingCity('');
         localStorage.setItem('cart', JSON.stringify([]));
-        
+        history.push('/OrderConfirmed');
     };
 
 
@@ -206,9 +206,7 @@ export default function Registry() {
                                 </label>
                             </div>
                         </div>
-                        
-                        <Link to="/OrderConfirmed" className="btn btn-primary">Tilaa</Link>
-                        {/* <button type="submit" class="btn btn-primary" onClick={Redirect to ="/"}>Tilaa</button> */}
+                        <button type="submit" class="btn btn-primary">Tilaa</button>
                     </div>
                 </form>
             <div className="col-sm-12 col-md-12 col-lg-8">
