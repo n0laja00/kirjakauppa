@@ -16,6 +16,8 @@ import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
 import EditItemList from './EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
+import UpdateItem from './UpdateItem';
+import CartContextProvider from './contexts/CartContext';
 
 function App() {
   const [category, setCategory] = useState(null);
@@ -33,7 +35,9 @@ function App() {
   return (
     <div>
       <main className="container pb-5">
-        <Header />
+        <CartContextProvider>
+          <Header />
+        </CartContextProvider>
         <Breadcrumbs />
         <Switch>
           <Route path="/" render={() => <Content
@@ -59,6 +63,7 @@ function App() {
             category={category} user={user}/>}
             exact />
           <Route path="/BookDetails/:id" component={BookDetails} />
+          <Route path="/UpdateItem/:id" component={UpdateItem}/>
           <Route path="/Reviews/:id" component={Reviews} />
           <Route path="/registryComponents/Registry" component={Registry} />
           <Route path="/OrderConfirmed" component={OrderConfirmed} />

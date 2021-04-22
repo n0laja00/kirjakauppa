@@ -68,7 +68,7 @@ export default function AllBooks({ category }) {
                 </div>
                 <div className="row justify-content-center p-5 text-center">
                     {books.map(book => (
-                        <div className="card col-sm-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
+                        <div className="card col-md-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
                             <img className="card-img-top p-4 bookBrowseImg" src={imgURL + book.kuva} alt={book.kirjaNimi}></img>
                             <div className="row">
                                 <h5 className="card-title col-12">{book.kirjaNimi}</h5>

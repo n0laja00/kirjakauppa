@@ -48,7 +48,7 @@ export default function Breadcrumbs() {
                 <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
                 <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
                 <div className="col-auto">
-                    <u>Home</u>
+                    Home
                 </div>
             </div>
         )
