@@ -6,6 +6,12 @@ export default function EditItemList({user}) {
 
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
+    const[bookNo, setBookNo] = useState('');
+    const[selected, setSelected] = useState(false);
+
+    //Kirjalistan päivittäminen 
+    const [submit, setSubmit] = useState(false);
+
     const URL = 'http://localhost/kirjakauppa/';
 
     useEffect(() => {
@@ -29,7 +35,7 @@ export default function EditItemList({user}) {
            alert("An error has occurred, please try again later.");
           }
         )
-      }, [])
+      }, [submit])
 
     if (user===null) {
         return <Redirect to="/LoginPage" />
@@ -37,11 +43,31 @@ export default function EditItemList({user}) {
 
     function toggleClass() {
         setSwitchComponents(!switchComponents);
+        setSubmit(!submit);
     }
 
-    function onRemove(book) {
-        let bookNumber = book.kirjaNro; 
-        
+    function onRemove(bookNr) {
+        let bookNumber = bookNr; 
+
+        const formData = new FormData();
+        formData.append('bookNr',bookNumber);
+
+        fetch (URL + 'poistaKirja.php',
+            {
+            method: 'POST',
+            body: formData 
+            }
+        )
+        .then((res) => {
+            setSubmit(!submit);
+        }
+        )
+    }
+
+    function updateSelect(bookNo, selected) {
+        setSwitchComponents(!switchComponents);
+        setBookNo(bookNo);
+        setSelected(true);
     }
 
     return (
@@ -63,9 +89,9 @@ export default function EditItemList({user}) {
                 </tr>
             {books.map(book => (
                 <>
-                <tr className="listaValinta">
+                <tr className="listaValinta" onClick={updateSelect(book.kirjaNro, true)}>
                 <td><a className="poistoPainike"
-                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) this.onRemove(book) } }>
+                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) onRemove(book.kirjaNro) } }>
                      Poista</a>{book.kirjaNimi}
                 </td>
                 <td>{book.sivuNro}</td>
@@ -74,9 +100,7 @@ export default function EditItemList({user}) {
                 <td>{book.kustannus}</td>
                 <td className="cut-text kuvaus">{book.kuvaus}</td>
                 <td>{book.kuva}</td>
-                <td><a className="poistoPainike"
-                 onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän julkaisijan:' + book.julkaisija + '?')) this.onCancel(book) } }>
-                     Poista</a>{book.julkaisija}</td>
+                <td>{book.julkaisija}</td>
                 <td>{book.julkaistu}</td>
                 <td>{book.luotu}</td>
                 </tr>
@@ -87,7 +111,7 @@ export default function EditItemList({user}) {
         <button onClick={toggleClass} className="mt-2 btn btn-primary">Lisää uusi</button>
     </section>
     <section className={"p-0" + `section ${switchComponents ? "" : "hidden"}`}>
-    <AddItem/>
+    <AddItem updateBook = {bookNo} selected = {selected}/>
     <button onClick={toggleClass} className="ms-2 btn btn-primary">Kaikki tuotteet</button>
     </section>
     </>

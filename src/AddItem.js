@@ -2,12 +2,22 @@ import { useState, useEffect, React } from 'react';
 import { Redirect } from 'react-router';
 import EditItemList from './EditItemList';
 
-export default function AddItem({user}) {
+export default function AddItem({user, updateBook, selected}) {
 
+    //Kirjan päivittämiseen 
+    const [books, setBooks] = useState([]);
+
+    const[update, setUpdate] = useState(false);
+
+    if(selected === true) {
+        setUpdate(true);
+    }
+
+    //Kirjan lisäämiseen
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
     const [publisher, setPublisher] = useState('publisher');
-    const [bookName, setBookName] = useState(''); 
+    const [bookName, setBookName] = useState('testitesti'); 
     const [bookWriterFN, setBookWriterFN] = useState(''); 
     const [bookWriterLN, setBookWriterLN] = useState(''); 
     const [bookPage, setBookPage] = useState(''); 
@@ -73,6 +83,25 @@ export default function AddItem({user}) {
     
             if(status === 200) {
         setAllCategories(res);
+        } else {
+            alert(res.error);
+        }
+    
+        }, (error) => {
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
+        }
+        )
+
+        fetch(URL + "kaikkiKirjat.php")
+        .then (res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+    
+            if(status === 200) {
+        setBooks(res);
         } else {
             alert(res.error);
         }
