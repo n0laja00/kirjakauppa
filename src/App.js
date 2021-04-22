@@ -5,6 +5,7 @@ import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
 import LoginPage from './LoginPage';
+import LoginSuccessful from './LoginSuccessful';
 import Logout from './Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
@@ -41,6 +42,10 @@ function App() {
             <LoginPage setUser={setUser}/> 
             } 
           />
+          <Route path="/LoginSuccessful" render={() => 
+            <LoginSuccessful user={user}/>
+            }
+          />
           <Route path="/logout" render={() => 
             <Logout setUser={setUser} />
             }/>
@@ -51,7 +56,7 @@ function App() {
           />
           {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
           <Route path="/AllBooks" render={() => <AllBooks
-            category={category} />}
+            category={category} user={user}/>}
             exact />
           <Route path="/BookDetails/:id" component={BookDetails} />
           <Route path="/Reviews/:id" component={Reviews} />
