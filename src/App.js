@@ -15,6 +15,7 @@ import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
 import EditItemList from './EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
+import UpdateItem from './UpdateItem';
 
 function App() {
   const [category, setCategory] = useState(null);
@@ -54,6 +55,7 @@ function App() {
             category={category} />}
             exact />
           <Route path="/BookDetails/:id" component={BookDetails} />
+          <Route path="/UpdateItem/:id" component={UpdateItem}/>
           <Route path="/Reviews/:id" component={Reviews} />
           <Route path="/registryComponents/Registry" component={Registry} />
           <Route path="/OrderConfirmed" component={OrderConfirmed} />

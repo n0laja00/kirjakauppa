@@ -1,5 +1,6 @@
 import { useEffect, useState, React } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
 
 export default function EditItemList({user}) {
@@ -65,9 +66,9 @@ export default function EditItemList({user}) {
     }
 
     function updateSelect(bookNo, selected) {
-        setSwitchComponents(!switchComponents);
+        toggleClass();
         setBookNo(bookNo);
-        setSelected(true);
+        setSelected(selected);
     }
 
     return (
@@ -89,7 +90,10 @@ export default function EditItemList({user}) {
                 </tr>
             {books.map(book => (
                 <>
-                <tr className="listaValinta" onClick={updateSelect(book.kirjaNro, true)}>
+                <tr className="listaValinta">
+                <Link to={'/UpdateItem/' + book.kirjaNro}>
+                    <button>kirjuli</button>
+                </Link>
                 <td><a className="poistoPainike"
                  onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) onRemove(book.kirjaNro) } }>
                      Poista</a>{book.kirjaNimi}
@@ -111,7 +115,7 @@ export default function EditItemList({user}) {
         <button onClick={toggleClass} className="mt-2 btn btn-primary">Lisää uusi</button>
     </section>
     <section className={"p-0" + `section ${switchComponents ? "" : "hidden"}`}>
-    <AddItem updateBook = {bookNo} selected = {selected}/>
+    <AddItem/>
     <button onClick={toggleClass} className="ms-2 btn btn-primary">Kaikki tuotteet</button>
     </section>
     </>
