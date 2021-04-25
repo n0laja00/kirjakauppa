@@ -7,8 +7,7 @@ export default function EditItemList({user}) {
 
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
-    const[bookNo, setBookNo] = useState('');
-    const[selected, setSelected] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     //Kirjalistan päivittäminen 
     const [submit, setSubmit] = useState(false);
@@ -27,7 +26,8 @@ export default function EditItemList({user}) {
           (res) => {
      
             if(status === 200) {
-           setBooks(res);
+                setBooks(res);
+                setIsLoaded(true);
            } else {
              alert(res.error);
            }
@@ -65,11 +65,14 @@ export default function EditItemList({user}) {
         )
     }
 
-    function updateSelect(bookNo, selected) {
-        toggleClass();
-        setBookNo(bookNo);
-        setSelected(selected);
-    }
+    if (!isLoaded) {
+        return <div className="row justify-content-center pt-5">
+            <div className="col-auto d-block">
+                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+            </div>
+            <h2 className="col-auto d-block">Loading...</h2>
+        </div>;
+    } else {
 
     return (
         <>
@@ -91,12 +94,11 @@ export default function EditItemList({user}) {
             {books.map(book => (
                 <>
                 <tr className="listaValinta">
-                <Link to={'/UpdateItem/' + book.kirjaNro}>
-                    <button>kirjuli</button>
-                </Link>
+                
                 <td><a className="poistoPainike"
                  onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) onRemove(book.kirjaNro) } }>
                      Poista</a>{book.kirjaNimi}
+                     <a className="muokkaaPainike"><Link to={'/UpdateItem/' + book.kirjaNro} className="link">Muokkaa</Link></a>
                 </td>
                 <td>{book.sivuNro}</td>
                 <td>{book.hinta}</td>
@@ -120,4 +122,5 @@ export default function EditItemList({user}) {
     </section>
     </>
     )
+}
 }

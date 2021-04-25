@@ -566,3 +566,24 @@ td {
   background-color: black;
   color: red;
 }
+
+.muokkaaPainike {
+  color: blue;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 15px;
+  text-decoration: none;
+  border: solid 1px black;
+}
+
+.muokkaaPainike:hover {
+  cursor: pointer;
+  background-color: rgb(114, 111, 111);
+  color: blue;
+}
+
+.nothing {
+  text-decoration: none;
+  display: none;
+}
