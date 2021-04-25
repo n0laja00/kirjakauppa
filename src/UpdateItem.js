@@ -2,6 +2,7 @@ import { useState, useEffect, React } from 'react';
 import { Redirect } from 'react-router';
 import EditItemList from './EditItemList';
 import { useParams } from 'react-router';
+import Loading from './Loading';
 
 export default function AddItem({user}) {
 

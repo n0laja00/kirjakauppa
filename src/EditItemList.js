@@ -14,7 +14,6 @@ export default function EditItemList({ user }) {
     const [submit, setSubmit] = useState(false);
 
     const URL = 'http://localhost/kirjakauppa/';
-    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         let status = 0;
