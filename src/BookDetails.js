@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
+import Loading from './Loading';
 import Rating from './Rating';
 
 export default function BookDetails() {
@@ -31,12 +32,9 @@ export default function BookDetails() {
     }, [id])
 
     if (!isLoaded) {
-        return <div className="row justify-content-center pt-5">
-            <div className="col-auto d-block">
-                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-            </div>
-            <h2 className="col-auto d-block">Loading...</h2>
-        </div>;
+        return (
+            <Loading />
+        )
     } else {
         return (
             <>

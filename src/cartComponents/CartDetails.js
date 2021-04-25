@@ -3,12 +3,13 @@ import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
+import Loading from '../Loading';
 
 const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annetaan alas proppina*/ => {
 
     const [book, setBook] = useState([])
     const [error, setError] = useState('');
-    const [isLoaded, setIsLoaded] = useState(true);
+    const [isLoaded, setIsLoaded] = useState(false);
     const URL = 'http://localhost/kirjakauppa/haeKirjaNro.php/'
     const imgURL = 'http://localhost/kirjakauppa/img/';
 
@@ -31,16 +32,11 @@ const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annet
     }, []);
 
     if (!isLoaded) {
-        return <div className="row justify-content-center pt-5">
-            <div className="col-auto d-block">
-                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-            </div>
-            <h2 className="col-auto d-block">Loading...</h2>
-        </div>;
-    } else {
-
         return (
-
+            <Loading />
+        )
+    } else {
+        return (
             <li className="row">
                 {book.map(el => (
                     <div className="">
