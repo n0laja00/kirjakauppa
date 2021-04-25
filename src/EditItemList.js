@@ -1,5 +1,6 @@
 import { useEffect, useState, React } from 'react';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
 import Loading from './Loading';
 
@@ -7,6 +8,12 @@ export default function EditItemList({ user }) {
 
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
+    const [bookNo, setBookNo] = useState('');
+    const [selected, setSelected] = useState(false);
+
+    //Kirjalistan päivittäminen 
+    const [submit, setSubmit] = useState(false);
+
     const URL = 'http://localhost/kirjakauppa/';
     const [isLoaded, setIsLoaded] = useState(false);
 
@@ -24,6 +31,7 @@ export default function EditItemList({ user }) {
 
                     if (status === 200) {
                         setBooks(res);
+                        setIsLoaded(true)
                     } else {
                         alert(res.error);
                     }
@@ -40,18 +48,37 @@ export default function EditItemList({ user }) {
 
     function toggleClass() {
         setSwitchComponents(!switchComponents);
+        setSubmit(!submit);
     }
 
-    function onRemove(book) {
-        let bookNumber = book.kirjaNro;
+    function onRemove(bookNr) {
+        let bookNumber = bookNr;
 
+        const formData = new FormData();
+        formData.append('bookNr', bookNumber);
+
+        fetch(URL + 'poistaKirja.php',
+            {
+                method: 'POST',
+                body: formData
+            }
+        )
+            .then((res) => {
+                setSubmit(!submit);
+            }
+            )
+    }
+
+    function updateSelect(bookNo, selected) {
+        toggleClass();
+        setBookNo(bookNo);
+        setSelected(selected);
     }
 
     if (!isLoaded) {
-        return (
-            <Loading />
-        )
-    } else {
+       return <Loading />
+    }
+    else {
         return (
             <>
                 <section className={"p-0" + `section ${switchComponents ? "hidden" : ""}`}>
@@ -72,8 +99,11 @@ export default function EditItemList({ user }) {
                             {books.map(book => (
                                 <>
                                     <tr className="listaValinta">
+                                        <Link to={'/UpdateItem/' + book.kirjaNro}>
+                                            <button>kirjuli</button>
+                                        </Link>
                                         <td><a className="poistoPainike"
-                                            onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) this.onRemove(book) }}>
+                                            onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) onRemove(book.kirjaNro) }}>
                                             Poista</a>{book.kirjaNimi}
                                         </td>
                                         <td>{book.sivuNro}</td>
@@ -82,9 +112,7 @@ export default function EditItemList({ user }) {
                                         <td>{book.kustannus}</td>
                                         <td className="cut-text kuvaus">{book.kuvaus}</td>
                                         <td>{book.kuva}</td>
-                                        <td><a className="poistoPainike"
-                                            onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän julkaisijan:' + book.julkaisija + '?')) this.onCancel(book) }}>
-                                            Poista</a>{book.julkaisija}</td>
+                                        <td>{book.julkaisija}</td>
                                         <td>{book.julkaistu}</td>
                                         <td>{book.luotu}</td>
                                     </tr>

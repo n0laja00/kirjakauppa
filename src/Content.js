@@ -17,27 +17,26 @@ export default function Content({ setCategory }) {
     const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
-        (async() => {
-        try {
-            const response = await fetch(URL);
-            const json = await response.json();
-            if (response.ok) {
-                setCategories(json);
-                setCategory(json[0]);
-                setIsLoaded(true);
-            } else {
-                alert(json.error);
+        (async () => {
+            try {
+                const response = await fetch(URL);
+                const json = await response.json();
+                if (response.ok) {
+                    setCategories(json);
+                    setCategory(json[0]);
+                    setIsLoaded(true);
+                } else {
+                    alert(json.error);
+                }
+            } catch (error) {
+                alert(error);
             }
-        } catch (error) {
-            alert(error);
-        }}) ()
+        })()
     }, [])
 
 
     if (!isLoaded) {
-        return(
-            <Loading />
-        )
+        return <Loading />
     } else {
         return (
             <>
@@ -63,7 +62,7 @@ export default function Content({ setCategory }) {
                                         name: category.kategoria
                                     }
                                 }}>
-                                    {category.kategoria}
+                                {category.kategoria}
                             </Link>
 
                             // <div className="d-flex align-items-center col-sm-3 btn categoryButton m-2">

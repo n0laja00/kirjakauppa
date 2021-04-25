@@ -32,9 +32,7 @@ const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annet
     }, []);
 
     if (!isLoaded) {
-        return (
-            <Loading />
-        )
+        return <Loading />
     } else {
         return (
             <li className="row">
@@ -44,7 +42,7 @@ const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annet
                             <img className="cartItemImg img-fluid col-sm-4 col-md-2 col-lg-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>
 
-                        <Link to={'/BookDetails/'+ el.kirjaNro} className="link">
+                        <Link to={'/BookDetails/' + el.kirjaNro} className="link">
                             <h4 className="text-lg-end text-md-center text-md-sm text-center text-break">{el.kirjaNimi}</h4>
                             <p className="text-lg-end text-md-center text-sm-center text-center"> {el.sukunimi}, {el.etunimi} </p>
                         </Link>

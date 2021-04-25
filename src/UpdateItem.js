@@ -1,8 +1,22 @@
 import { useState, useEffect, React } from 'react';
 import { Redirect } from 'react-router';
 import EditItemList from './EditItemList';
+import { useParams } from 'react-router';
 
 export default function AddItem({user}) {
+
+    const [isLoaded, setIsLoaded] = useState(false);
+    //Kirjan päivittämiseen 
+    const [books, setBooks] = useState([]);
+    const[updateCategories, setUpdateCategories] = useState([]);
+    let category = 0;
+
+    
+    
+    const params = useParams();
+    const id = params.id;
+    const URL = 'http://localhost/kirjakauppa/';
+
 
     //Kirjan lisäämiseen
     const [allPublishers, setAllPublishers] = useState([]);
@@ -40,11 +54,21 @@ export default function AddItem({user}) {
     const [savedPublisher, setSavedPublisher] = useState('');
     const [savedCategory, setSavedCategory] = useState('');
 
-    const URL = 'http://localhost/kirjakauppa/';
 
     useEffect(() => {
         let status = 0;
-
+        {books.map(book => ( 
+            setBookName(book.kirjaNimi),
+            setPublisher(book.julkaisija),
+            setBookWriterFN(book.etunimi),
+            setBookWriterLN(book.sukunimi),
+            setBookPage(book.sivuNro),
+            setBookPrice(book.hinta),
+            setBookExpense(book.kustannus),
+            setBookDesc(book.kuvaus),
+            setBookPublished(book.pvmJulkaistu)
+            // MIKSI TÄMÄ TOIMII??
+        ))}
         fetch(URL + "julkaisijatLisaaTuote.php")
         .then (res => {
         status = parseInt(res.status);
@@ -63,7 +87,10 @@ export default function AddItem({user}) {
         alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
         }
         )
-    
+    }, [submit])
+
+    useEffect(() => {
+        let status = 0;
         fetch(URL + "kategoriatLisaaTuote.php")
         .then (res => {
         status = parseInt(res.status);
@@ -82,7 +109,51 @@ export default function AddItem({user}) {
         alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
         }
         )
+    }, [submit])
 
+    useEffect(() => {
+        let status = 0;
+        fetch(URL + "haeKirjaNro.php/" + id)
+        .then (res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+            if(status === 200) {
+            setBooks(res);
+        } else {
+            alert(res.error);
+        }
+    
+        }, (error) => {
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
+        }
+        )
+        
+    }, [submit])
+
+    useEffect(() => {
+        let status = 0;
+        fetch(URL + "haeKirjanKategoriat.php/" + id)
+        .then (res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+    
+            if(status === 200) {
+        setUpdateCategories(res);
+        setIsLoaded(true);
+        } else {
+            alert(res.error);
+        }
+    
+        }, (error) => {
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
+        }
+        )
     }, [submit])
 
     function handleChange(e) {
@@ -192,10 +263,21 @@ export default function AddItem({user}) {
         }
     }
 
+
+
+    if (!isLoaded) {
+        return <div className="row justify-content-center pt-5">
+            <div className="col-auto d-block">
+                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
+            </div>
+            <h2 className="col-auto d-block">Loading...</h2>
+        </div>;
+    } else {
     return (
         <>
         <div className="addItemContainer">
-            <h3>Lisää tuote:</h3>
+            <h3>Muokkaa tuotetta:</h3>
+            {books.map(book => (
             <form className="row g-3 addItemForm mt-1" onSubmit={addBook}>
                 <div className="col-md-6">
                     <label for="kirjaNimi" className="form-label">Kirjan nimi</label>
@@ -263,37 +345,24 @@ export default function AddItem({user}) {
                 </div>
                 <div className="col-md-3">
                     <label for="julkaistu" className="form-label">Julkaistu</label>
-                    <input type="date" className="form-control" id="julkaistu" value={bookPublished} required onChange={e => setBookPublished(e.target.value)}/>
+                    <input type="date" className="form-control" id="julkaistu" value={bookPublished}  required onChange={e => setBookPublished(e.target.value)}/>
                 </div>
 
                 <div className="col-md-5">
                     <label for="kategoria" className="form-label">Kategoriat 
                     <button type="button" className="btn btn-secondary py-0 px-1 mx-1" onClick={() => toggleClass("category")}>{showCategory ? "Lisää uusi" : "Piilota"}</button>
                     </label>
-                    <select id="kategoria" className="form-select mb-1" required value={bookCategory} onChange={e => setBookCategory(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
+
+                    {updateCategories.map(category => (
+                    <select id="kategoria" className="form-select mb-1" required value={category.kategoria} onChange={e => setBookCategory(e.target.value)}>
+                    <option>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory => (
                         <option>{bookCategory.kategoria}</option>
                     ))}
                     </select>
-                    <select id="kategoria2" className="form-select mb-1" required value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
-                    {allBookCategories.map(bookCategory2 => (
-                        <option>{bookCategory2.kategoria}</option>
+                    
                     ))}
-                    </select>
-                    <select id="kategoria3" className="form-select mb-1" required value={bookCategory3} onChange={e => setBookCategory3(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
-                    {allBookCategories.map(bookCategory3 => (
-                        <option>{bookCategory3.kategoria}</option>
-                    ))}
-                    </select>
-                    <select id="kategoria4" className="form-select" required value={bookCategory4} onChange={e => setBookCategory4(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
-                    {allBookCategories.map(bookCategory4 => (
-                        <option>{bookCategory4.kategoria}</option>
-                    ))}
-                    </select>
+
                 </div>
 
                 <div className="col-md-4">
@@ -325,7 +394,9 @@ export default function AddItem({user}) {
                         <p>{saved}</p>
                 </div>
                 </form>
+                ))}
         </div>
     </>
     )
+}
 }

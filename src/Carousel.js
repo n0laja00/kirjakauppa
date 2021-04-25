@@ -67,9 +67,7 @@ export default function BookCarousel({ bookdata }) {
   };
 
   if (!isLoaded) {
-    return(
-      <Loading />
-    )
+    return <Loading />
   } else {
     return (
       <Carousel

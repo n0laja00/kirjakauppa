@@ -54,9 +54,7 @@ export default function AllBooks({ category }) {
     }, [category, query])
 
     if (!isLoaded) {
-        return(
-            <Loading />
-        )
+        return <Loading />
     } else {
         return (
             <div className="row">

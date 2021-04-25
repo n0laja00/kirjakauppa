@@ -32,9 +32,7 @@ export default function BookDetails() {
     }, [id])
 
     if (!isLoaded) {
-        return (
-            <Loading />
-        )
+        return <Loading />
     } else {
         return (
             <>

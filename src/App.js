@@ -5,6 +5,7 @@ import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
 import LoginPage from './LoginPage';
+import LoginSuccessful from './LoginSuccessful';
 import Logout from './Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
@@ -15,6 +16,7 @@ import Breadcrumbs from './Breadcrumbs';
 import Registry from './registryComponents/Registry';
 import EditItemList from './EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
+import UpdateItem from './UpdateItem';
 import CartContextProvider from './contexts/CartContext';
 
 function App() {
@@ -44,6 +46,10 @@ function App() {
             <LoginPage setUser={setUser}/> 
             } 
           />
+          <Route path="/LoginSuccessful" render={() => 
+            <LoginSuccessful user={user}/>
+            }
+          />
           <Route path="/logout" render={() => 
             <Logout setUser={setUser} />
             }/>
@@ -54,9 +60,10 @@ function App() {
           />
           {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
           <Route path="/AllBooks" render={() => <AllBooks
-            category={category} />}
+            category={category} user={user}/>}
             exact />
           <Route path="/BookDetails/:id" component={BookDetails} />
+          <Route path="/UpdateItem/:id" component={UpdateItem}/>
           <Route path="/Reviews/:id" component={Reviews} />
           <Route path="/registryComponents/Registry" component={Registry} />
           <Route path="/OrderConfirmed" component={OrderConfirmed} />
