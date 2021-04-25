@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import Loading from './Loading';
 import Reviewsmap from './Reviewsmap';
 
 
@@ -62,12 +63,7 @@ export default function Reviews() {
     }
 
     if (!isLoaded) {
-        return <div className="row justify-content-center pt-5">
-            <div className="col-auto d-block">
-                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-            </div>
-            <h2 className="col-auto d-block">Loading...</h2>
-        </div>;
+        return <Loading />
     } else {
         return (
             <>
@@ -87,7 +83,6 @@ export default function Reviews() {
                             <label for="reviewText" className="form-label  mt-2">Arvostelu</label>
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
                             <div className="col-sm-6 mt-2">Montako tähteä antaisit kirjalle?</div>
-
                             <div className="col-sm-6 mt-2">
                                 {/* tähtiarvostelu */}
                                 {[...Array(5)].map((star, i) => {
@@ -109,7 +104,6 @@ export default function Reviews() {
                                     )
                                 })}
                             </div>
-
                             <button className="btn btn-primary col-auto mt-3">Lähetä</button>
                         </div>
                     </div>

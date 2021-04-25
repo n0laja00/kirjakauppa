@@ -3,6 +3,7 @@ import 'react-multi-carousel/lib/styles.css';
 import uuid from "react-uuid"
 import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
 export default function BookCarousel({ bookdata }) {
@@ -13,7 +14,6 @@ export default function BookCarousel({ bookdata }) {
   const imgURL = 'http://localhost/kirjakauppa/img/';
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(bookdata)
   useEffect(() => {
     let status = 0;
 
@@ -24,7 +24,6 @@ export default function BookCarousel({ bookdata }) {
       })
       .then(
         (res) => {
-
           if (status === 200) {
             setBooks(res);
             setIsLoaded(true)
@@ -68,12 +67,7 @@ export default function BookCarousel({ bookdata }) {
   };
 
   if (!isLoaded) {
-    return <div className="row justify-content-center pt-5">
-      <div className="col-auto d-block">
-        <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-      </div>
-      <h2 className="col-auto d-block">Loading...</h2>
-    </div>;
+    return <Loading />
   } else {
     return (
       <Carousel

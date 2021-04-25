@@ -22,22 +22,24 @@ export default function Logout({setUser}) {
 
 
   return (
-    <div className="row mt-3 py-4 d-flex justify-content-center">
-      <div className="col-4"/>
-      <div className="col-4">
-        <div className="text-center">
-          <h3>You have logged out</h3>
-          <div>
-            <Link to="/">Takaisin etusivulle</Link>
+    <>
+      <div className="row d-flex justify-content-center" >
+          <div className="col-md-8 col-lg-6">
+              <div className="customLoginBorder  p-4 my-3">
+                  <h3 className="text-center text-white">Olet kirjautunut ulos</h3>
+                  <div className="text-center mt-4">
+                    <i class="fa fa-genderless text-white" aria-hidden="true"></i>
+                    <Link class="text-white" to="/">Takaisin etusivulle</Link>
+                  </div>
+                  <div className="text-center mt-3">
+                    <i class="fa fa-genderless text-white" aria-hidden="true"></i>
+                    <Link class="text-white" to="/LoginPage">Kirjaudu sisään</Link>
+                  </div>
+                  <div className="col-12 my-2"></div>
+              </div>
           </div>
-          <div>
-            <Link to="/LoginPage">Sign in</Link>
-          </div>
-        </div>
       </div>
-      <div className="col-4"/>
-    </div>
-
+    </>
     
   )
 }

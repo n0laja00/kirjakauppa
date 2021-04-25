@@ -2,8 +2,9 @@ import { useEffect, useState, React } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
+import Loading from './Loading';
 
-export default function EditItemList({user}) {
+export default function EditItemList({ user }) {
 
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
@@ -13,6 +14,7 @@ export default function EditItemList({user}) {
     const [submit, setSubmit] = useState(false);
 
     const URL = 'http://localhost/kirjakauppa/';
+    const [isLoaded, setIsLoaded] = useState(false);
 
     useEffect(() => {
         let status = 0;
@@ -48,31 +50,27 @@ export default function EditItemList({user}) {
     }
 
     function onRemove(bookNr) {
-        let bookNumber = bookNr; 
+        let bookNumber = bookNr;
 
         const formData = new FormData();
-        formData.append('bookNr',bookNumber);
+        formData.append('bookNr', bookNumber);
 
-        fetch (URL + 'poistaKirja.php',
+        fetch(URL + 'poistaKirja.php',
             {
-            method: 'POST',
-            body: formData 
+                method: 'POST',
+                body: formData
             }
         )
-        .then((res) => {
-            setSubmit(!submit);
-        }
-        )
+            .then((res) => {
+                setSubmit(!submit);
+            }
+            )
     }
 
     if (!isLoaded) {
-        return <div className="row justify-content-center pt-5">
-            <div className="col-auto d-block">
-                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-            </div>
-            <h2 className="col-auto d-block">Loading...</h2>
-        </div>;
-    } else {
+        return <Loading />
+     }
+     else {
 
     return (
         <>
