@@ -16,15 +16,13 @@ const AddToCart = ({ item }) => {
     //     console.log('Do something after counter has changed', counter);
     // }, [counter]);
 
-    // add to cart prompt
+    // lisää ostoskoriin prompt
     const promptHandler = (e) => {
         setTimeout(() => {
             e.preventDefault();
             setPrompt(true);
         }, setPrompt(false))
     };
-
-
 
     const handleSubmit = (e) => {
 
@@ -52,7 +50,6 @@ const AddToCart = ({ item }) => {
         setMaara('');
 
     };
-
 
     return (
         <>  

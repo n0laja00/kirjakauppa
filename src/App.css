@@ -57,6 +57,11 @@ p {
   border: 3px solid white;
   border-radius: 50px 50px 50px 2px;
 }
+
+.customLoginBorder {
+  border: 3px solid white;
+  border-radius: 50px 50px 50px 2px;
+}
 @media (max-width: 575px) {
   .customBorder {
     border: none;
@@ -122,6 +127,20 @@ p {
 .loginButton:hover {
   background-color: #49d4ec;
   border: 1px solid #b9926cc4;
+}
+
+.text-white {
+  text-decoration: none;
+}
+.text-white:hover {
+  text-decoration: underline;
+}
+h3.text-white:hover {
+  text-decoration: none;
+}
+
+.fa-genderless {
+  padding-right: 2px;
 }
 
 /* kategoriapainikkeet */
@@ -300,6 +319,7 @@ footer {
   -webkit-filter: drop-shadow(10px 10px 10px black);
   filter: drop-shadow(10px 10px 10px black);
 }
+
 .custom_right_arrow:hover {
   opacity: 1;
   cursor: pointer;
@@ -543,7 +563,7 @@ table {
 
 th,
 td {
-  padding: 15px;
+  padding: 20px;
   position: relative;
 }
 
@@ -565,4 +585,25 @@ td {
   cursor: pointer;
   background-color: black;
   color: red;
+}
+
+.muokkaaPainike {
+  color: blue;
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  font-size: 15px;
+  text-decoration: none;
+  border: solid 1px black;
+}
+
+.muokkaaPainike:hover {
+  cursor: pointer;
+  background-color: rgb(114, 111, 111);
+  color: blue;
+}
+
+.nothing {
+  text-decoration: none;
+  display: none;
 }

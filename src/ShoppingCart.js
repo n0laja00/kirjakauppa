@@ -5,30 +5,25 @@ import ToRegistry from './cartComponents/ToRegistry'
 import CartContextProvider from './contexts/CartContext'
 
 
-
 const ShoppingCart = () => {
     let localState = localStorage.getItem('cart').length;
     const [cartState, setCartState] = useState(false);
     let kassa = false;
-    
 
     useEffect(() => {
-        if(localState >= 3) {setCartState(false);}
-        else{setCartState(true)};
+        if (localState >= 3) { setCartState(false); }
+        else { setCartState(true) };
         localState = localStorage.getItem('cart').length;
-    },[])
-
-    return ( 
-        
+    }, [])
+    return (
         <div className="row mt-3 py-4 d-flex justify-content-center cart-page">
             <div>
                 <CartContextProvider>
-                    <CartList kassa={kassa}/> 
+                    <CartList kassa={kassa} />
                 </CartContextProvider>
             </div>
-        </div> 
-        
-   );
+        </div>
+    );
 }
- 
+
 export default ShoppingCart;

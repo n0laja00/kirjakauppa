@@ -1,9 +1,25 @@
-import { useState, useEffect, React } from 'react';
+import { useState, useEffect, React, componentDidMount } from 'react';
 import { Redirect } from 'react-router';
 import EditItemList from './EditItemList';
+import { useParams } from 'react-router';
+import Loading from '../Loading';
 
 export default function AddItem({user}) {
 
+
+
+    const [isLoaded, setIsLoaded] = useState(false);
+    //Kirjan päivittämiseen 
+    const [books, setBooks] = useState([]);
+    const[updateCategories, setUpdateCategories] = useState([]);
+    const categories = [];
+    
+    
+    const params = useParams();
+    const id = params.id;
+    const URL = 'http://localhost/kirjakauppa/';
+
+    //Kirjan lisäämiseen
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
     const [publisher, setPublisher] = useState('publisher');
@@ -39,8 +55,36 @@ export default function AddItem({user}) {
     const [savedPublisher, setSavedPublisher] = useState('');
     const [savedCategory, setSavedCategory] = useState('');
 
-    const URL = 'http://localhost/kirjakauppa/';
 
+
+    function updateFields() {
+        {books.map(book => ( 
+            setBookName(book.kirjaNimi),
+            setPublisher(book.julkaisija),
+            setBookWriterFN(book.etunimi),
+            setBookWriterLN(book.sukunimi),
+            setBookPage(book.sivuNro),
+            setBookPrice(book.hinta),
+            setBookExpense(book.kustannus),
+            setBookDesc(book.kuvaus),
+            setBookPublished(book.pvmJulkaistu)
+        ))}
+        {updateCategories.map(category => (
+            categories.push(category.kategoria)
+        ))}
+        if (categories[0] != undefined) {
+        setBookCategory(categories[0]);
+        }
+        if (categories[1] != undefined) {
+        setBookCategory2(categories[1]);
+        }
+        if (categories[2] != undefined) {
+        setBookCategory3(categories[2]);
+        }
+        if (categories[3] != undefined) {
+        setBookCategory4(categories[3]);
+        }
+    }
     useEffect(() => {
         let status = 0;
 
@@ -62,7 +106,10 @@ export default function AddItem({user}) {
         alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
         }
         )
-        
+    }, [submit])
+
+    useEffect(() => {
+        let status = 0;
         fetch(URL + "kategoriatLisaaTuote.php")
         .then (res => {
         status = parseInt(res.status);
@@ -83,16 +130,67 @@ export default function AddItem({user}) {
         )
     }, [submit])
 
+    useEffect(() => {
+        let status = 0;
+        fetch(URL + "haeKirjaNro.php/" + id)
+        .then (res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+            if(status === 200) {
+            setBooks(res);
+        } else {
+            alert(res.error);
+        }
+    
+        }, (error) => {
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
+        }
+        )
+        
+    }, [submit])
+
+    useEffect(() => {
+        let status = 0;
+        fetch(URL + "haeKirjanKategoriat.php/" + id)
+        .then (res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+    
+            if(status === 200) {
+            setUpdateCategories(res);
+            setIsLoaded(true);
+        } else {
+            alert(res.error);
+        }
+    
+        }, (error) => {
+        alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
+        }
+        )
+    }, [submit])
+
+    useEffect(() => {
+        updateFields();
+    }, [isLoaded, books])
+
     function handleChange(e) {
         setImage(e.target.files[0]);
       }
 
-    function addBook(e) {
+    function updateBook(e) {
         //Tiedoston lisäys 
         e.preventDefault();
-        if(image !== null) {
         const formData = new FormData();
-        formData.append('file',image);
+        if (image != undefined) {
+            formData.append('file',image);
+        }
+        formData.append('bookNo', id);
         formData.append('bookName',bookName);
         formData.append('bookDesc',bookDesc);
         formData.append('bookPrice',bookPrice);
@@ -106,7 +204,7 @@ export default function AddItem({user}) {
         formData.append('bookCategory2',bookCategory2);
         formData.append('bookCategory3',bookCategory3);
         formData.append('bookCategory4',bookCategory4);
-        fetch (URL + 'lisaaTuote.php',
+        fetch (URL + 'kirjanMuokkaus.php',
             {
             method: 'POST',
             body: formData 
@@ -116,7 +214,6 @@ export default function AddItem({user}) {
         if(bookName !== '' && bookDesc !== '' && bookPrice !== '' && bookExpense !== '' && bookPage !== '' && publisher !== '' && bookPublished !== '' && bookWriterFN
         !== '' && bookWriterLN !== '' && bookCategory !== '') {
         setSaved("Tiedot tallennettu!");
-        setSubmit(!submit);
         setBookName('');
         setBookDesc('');
         setBookPrice('');
@@ -132,7 +229,6 @@ export default function AddItem({user}) {
         setBookCategory4('');
         }
         })
-        }
     }
 
     function addPublisher(e) {
@@ -190,11 +286,17 @@ export default function AddItem({user}) {
         }
     }
 
+ 
+
+    if (!isLoaded) {
+        return <Loading />
+     }
+     else {
     return (
         <>
         <div className="addItemContainer">
-            <h3>Lisää tuote:</h3>
-            <form className="row g-3 addItemForm mt-1" onSubmit={addBook}>
+            <h3>Muokkaa tuotetta:</h3>
+            <form className="row g-3 addItemForm mt-1" onSubmit={updateBook}>
                 <div className="col-md-6">
                     <label for="kirjaNimi" className="form-label">Kirjan nimi</label>
                     <input type="text" className="form-control" id="kirjaNimi" name="kirjanimi" value={bookName} placeholder="Kirjan nimi" required onChange={e => setBookName(e.target.value)}/>
@@ -261,37 +363,41 @@ export default function AddItem({user}) {
                 </div>
                 <div className="col-md-3">
                     <label for="julkaistu" className="form-label">Julkaistu</label>
-                    <input type="date" className="form-control" id="julkaistu" value={bookPublished} required onChange={e => setBookPublished(e.target.value)}/>
+                    <input type="date" className="form-control" id="julkaistu" value={bookPublished}  required onChange={e => setBookPublished(e.target.value)}/>
                 </div>
 
                 <div className="col-md-5">
                     <label for="kategoria" className="form-label">Kategoriat 
                     <button type="button" className="btn btn-secondary py-0 px-1 mx-1" onClick={() => toggleClass("category")}>{showCategory ? "Lisää uusi" : "Piilota"}</button>
                     </label>
+
+
                     <select id="kategoria" className="form-select mb-1" required value={bookCategory} onChange={e => setBookCategory(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
+                    <option value="">Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory => (
                         <option>{bookCategory.kategoria}</option>
                     ))}
                     </select>
-                    <select id="kategoria2" className="form-select mb-1" required value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
+                    <select id="kategoria2" className="form-select mb-1" value={bookCategory2} onChange={e => setBookCategory2(e.target.value)}>
+                    <option selected value="">Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory2 => (
                         <option>{bookCategory2.kategoria}</option>
                     ))}
                     </select>
-                    <select id="kategoria3" className="form-select mb-1" required value={bookCategory3} onChange={e => setBookCategory3(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
+                    <select id="kategoria3" className="form-select mb-1" value={bookCategory3} onChange={e => setBookCategory3(e.target.value)}>
+                    <option value="" selected>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory3 => (
                         <option>{bookCategory3.kategoria}</option>
                     ))}
                     </select>
-                    <select id="kategoria4" className="form-select" required value={bookCategory4} onChange={e => setBookCategory4(e.target.value)}>
-                    <option selected>Valitse yksi tai useampi...</option>
+                    <select id="kategoria4" className="form-select" value={bookCategory4} onChange={e => setBookCategory4(e.target.value)}>
+                    <option value="" selected>Valitse yksi tai useampi...</option>
                     {allBookCategories.map(bookCategory4 => (
                         <option>{bookCategory4.kategoria}</option>
                     ))}
                     </select>
+                    
+
                 </div>
 
                 <div className="col-md-4">
@@ -316,14 +422,16 @@ export default function AddItem({user}) {
                 </section>
 
                 <div className="col-12 p-2">
-                    <button type="submit" className="btn btn-primary">Lisää kirja</button>
+                    <button type="submit" className="btn btn-primary">Tallenna muutokset</button>
                 </div>
 
                 <div className="col-12 text-muted m-0 p-0">
                         <p>{saved}</p>
                 </div>
                 </form>
+                
         </div>
     </>
     )
+}
 }

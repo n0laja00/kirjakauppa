@@ -2,6 +2,7 @@ import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
 import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
+import Loading from './Loading';
 
 
 export default function AllBooks({ category }) {
@@ -53,18 +54,13 @@ export default function AllBooks({ category }) {
     }, [category, query])
 
     if (!isLoaded) {
-        return <div className="row justify-content-center pt-5">
-            <div className="col-auto d-block">
-                <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-            </div>
-            <h2 className="col-auto d-block">Loading...</h2>
-        </div>;
+        return <Loading />
     } else {
         return (
             <div className="row">
                 <div className="col-12 text-center py-4">
                     <h1>{title()}</h1>
-                    <Link className="link" to="/EditItemList">Lisää kirja</Link>
+                    <Link className="link" to="/EditItemList">Muokkaa/Lisää tuotteita</Link>
                 </div>
                 <div className="row justify-content-center p-5 text-center">
                     {books.map(book => (

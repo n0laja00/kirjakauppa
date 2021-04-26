@@ -1,13 +1,16 @@
-import React, {useState}  from 'react'
+import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
+import LoadingButton from '../LoadingButton';
+import OrderConfirmed from './OrderConfirmed';
 
 
 export default function Registry() {
     let kassa = true;
+    let history = useHistory();
     const [firstName, setFirstName] = useState('');
-    const [lastName, setLastTName]= useState('');
+    const [lastName, setLastTName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
     const [corporation, setCorporation] = useState('');
@@ -17,20 +20,19 @@ export default function Registry() {
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
     const [paymentMethod, setPaymentMethod] = useState('lasku');
     const [shippingAddress, setShippingAddress] = useState(address);
-    const [shippingMethod, setShippingMethod] = useState('lähinKauppa');
-    const [shippingPostalCode, setShippingPostalCode] = useState(postalCode);
-    const [shippingCity, setShippingCity] = useState(city);
-    let history = useHistory();
+    const [shippingMethod, setShippingMethod] = useState('lk');
+    const [shippingPostalCode, setShippingPostalCode] = useState('');
+    const [shippingCity, setShippingCity] = useState('');
+    const [isConfirmed, setIsConfirmed] = useState(false);
 
-    
-    function handleSubmit (e) {
+    function handleSubmit(e) {
         e.preventDefault();
 
         const URL = 'http://localhost/kirjakauppa/';
-        let status = 0; 
+        let status = 0;
         fetch(URL + 'asetaTilaus.php', {
             method: 'POST',
-            headers : {
+            headers: {
                 'Accept': 'application/json',
                 'Content-type': 'application/json'
             },
@@ -51,20 +53,19 @@ export default function Registry() {
                 toimituspostinro: shippingPostalCode
             })
         })
-        .then(res=> {
-            status = parseInt(res.status); 
-            return res.json(); 
-          })
-        .then ((res) => {
-            if (status === 200) {
-                
-                console.log('tilaus tehty');
-            } else {
-                alert(res.error);
-              }
+            .then(res => {
+                status = parseInt(res.status);
+                return res.json();
+            })
+            .then((res) => {
+                if (status === 200) {
+                    history.push('/OrderConfirmed');
+                } else {
+                    alert(res.error);
+                }
             }, (error) => {
-              alert(error)
-        })
+                alert(error)
+            })
         setFirstName('');
         setLastTName('');
         setEmail('');
@@ -79,7 +80,7 @@ export default function Registry() {
         setShippingPostalCode('');
         setShippingCity('');
         localStorage.setItem('cart', JSON.stringify([]));
-        history.push('/OrderConfirmed');
+        setIsConfirmed(true);
     };
 
 
@@ -99,39 +100,39 @@ export default function Registry() {
                     <div className="col mt-3 ">
                         <div className="row">
                             <label className="float-start col">Etunimi
-                                <input type="text" value={firstName} maxlength="20" required className="form-control form-control-lg" name="firstName" placeholder="Etunimi" onChange={e => setFirstName(e.target.value)}/>
+                                <input type="text" value={firstName} maxlength="20" required className="form-control form-control-lg" name="firstName" placeholder="Etunimi" onChange={e => setFirstName(e.target.value)} />
                             </label>
                             <label className="float-end col"> Sukunimi
-                                <input type="text" value={lastName} maxlength="20" required className="form-control form-control-lg" name="lastName" placeholder="Sukunimi" onChange={e => setLastTName(e.target.value)}/>
+                                <input type="text" value={lastName} maxlength="20" required className="form-control form-control-lg" name="lastName" placeholder="Sukunimi" onChange={e => setLastTName(e.target.value)} />
                             </label>
                         </div>
                         <h2 className="col mt-4">Yhteystiedot:</h2>
                         <div className="mt-3 row">
                             <label>Sähköposti
-                                <input type="email" value={email} maxlength="80" required className="form-control form-control-lg" name="email" placeholder="Sähköposti" onChange={e => setEmail(e.target.value)}/>
+                                <input type="email" value={email} maxlength="80" required className="form-control form-control-lg" name="email" placeholder="Sähköposti" onChange={e => setEmail(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Puhelin
-                                <input type="text" value={phone} required className="form-control form-control-lg" name="phone" placeholder="Puhelin (tarvitaan yhteydenpitoon)" onChange={e => setPhone(e.target.value)}/>
+                                <input type="text" value={phone} required className="form-control form-control-lg" name="phone" placeholder="Puhelin (tarvitaan yhteydenpitoon)" onChange={e => setPhone(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Yritys / yhteisö
-                                <input type="text" value={corporation} className="form-control form-control-lg" name="corporation" placeholder="Yritys / yhteisö (valinnainen)" onChange={e => setCorporation(e.target.value)}/>
+                                <input type="text" value={corporation} className="form-control form-control-lg" name="corporation" placeholder="Yritys / yhteisö (valinnainen)" onChange={e => setCorporation(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Osoite
-                                <input type="text" value={address} maxlength="50" required className="form-control form-control-lg" name="address" placeholder="Osoite" onChange={e => setAddress(e.target.value)}/>
+                                <input type="text" value={address} maxlength="50" required className="form-control form-control-lg" name="address" placeholder="Osoite" onChange={e => setAddress(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label className="float-start col">Postinumero
-                                <input type="text" value={postalCode} minlength="4" maxlength="5" required className="form-control form-control-lg" name="postalCode" placeholder="Postinumero" onChange={e => setPostalCode(e.target.value)}/>
-                           </label>
-                           <label className="float-end col">Kaupunki
-                                <input type="text" value={city} required className="form-control form-control-lg" name="city" placeholder="Kaupunki" onChange={e => setCity(e.target.value)}/>
+                                <input type="text" value={postalCode} minlength="4" maxlength="5" required className="form-control form-control-lg" name="postalCode" placeholder="Postinumero" onChange={e => setPostalCode(e.target.value)} />
+                            </label>
+                            <label className="float-end col">Kaupunki
+                                <input type="text" value={city} required className="form-control form-control-lg" name="city" placeholder="Kaupunki" onChange={e => setCity(e.target.value)} />
                             </label>
                         </div>
 
@@ -140,17 +141,17 @@ export default function Registry() {
                         </div>
                         <div className="mt-3 row">
                             <label>Toimitusosoite (Valinnainen)
-                                <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)}/>
+                                <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Postinumero (Valinnainen)
-                                <input type="text" value={shippingPostalCode} minlength="4" maxlength="5" className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)}/>
+                                <input type="text" value={shippingPostalCode} minlength="4" maxlength="5" className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Kaupunki (Valinnainen)
-                                <input type="text" value={shippingCity} className="form-control form-control-lg" name="shippingCity" placeholder="Kaupunki (Valinnainen)" onChange={e => setShippingCity(e.target.value)}/>
+                                <input type="text" value={shippingCity} className="form-control form-control-lg" name="shippingCity" placeholder="Kaupunki (Valinnainen)" onChange={e => setShippingCity(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
@@ -191,14 +192,14 @@ export default function Registry() {
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios2" value="postissa" onClick={e => setPaymentMethod(e.target.value)}/>
+                                <input className="form-check-input" type="radio" name="paymentMethod" id="paymentMethodRadios2" value="postissa" onClick={e => setPaymentMethod(e.target.value)} />
                                 <label className="form-check-label" for="paymentMethodRadios2">
                                     Maksu postissa
                                 </label>
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Tilaa</button>
-                        <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">
+                
+                        <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">{!isConfirmed ? (<button type="submit" class="btn btn-primary">Tilaa</button>) : (<LoadingButton />)}
                         </div>
                     </div>
                 </form>
@@ -211,7 +212,7 @@ export default function Registry() {
                 </div>
             </div>
         </div>
-        
-        
+
+
     )
 }
