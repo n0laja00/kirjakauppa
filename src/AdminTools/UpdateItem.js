@@ -1,10 +1,12 @@
-import { useState, useEffect, React } from 'react';
+import { useState, useEffect, React, componentDidMount } from 'react';
 import { Redirect } from 'react-router';
 import EditItemList from './EditItemList';
 import { useParams } from 'react-router';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 export default function AddItem({user}) {
+
+
 
     const [isLoaded, setIsLoaded] = useState(false);
     //Kirjan päivittämiseen 
@@ -70,10 +72,18 @@ export default function AddItem({user}) {
         {updateCategories.map(category => (
             categories.push(category.kategoria)
         ))}
+        if (categories[0] != undefined) {
         setBookCategory(categories[0]);
+        }
+        if (categories[1] != undefined) {
         setBookCategory2(categories[1]);
+        }
+        if (categories[2] != undefined) {
         setBookCategory3(categories[2]);
+        }
+        if (categories[3] != undefined) {
         setBookCategory4(categories[3]);
+        }
     }
     useEffect(() => {
         let status = 0;
@@ -131,7 +141,6 @@ export default function AddItem({user}) {
         (res) => {
             if(status === 200) {
             setBooks(res);
-            updateFields();
         } else {
             alert(res.error);
         }
@@ -164,7 +173,11 @@ export default function AddItem({user}) {
         alert("Virhe on tapahtunut, yritä uudelleen myöhemmin.");
         }
         )
-    }, [])
+    }, [submit])
+
+    useEffect(() => {
+        updateFields();
+    }, [isLoaded, books])
 
     function handleChange(e) {
         setImage(e.target.files[0]);
@@ -273,7 +286,7 @@ export default function AddItem({user}) {
         }
     }
 
-
+ 
 
     if (!isLoaded) {
         return <Loading />
@@ -282,7 +295,7 @@ export default function AddItem({user}) {
     return (
         <>
         <div className="addItemContainer">
-            <h3>Muokkaa tuotetta:</h3> <button className="btn btn-primary" type="button" onClick={updateFields}>Tuo valmiit tiedot</button>
+            <h3>Muokkaa tuotetta:</h3>
             <form className="row g-3 addItemForm mt-1" onSubmit={updateBook}>
                 <div className="col-md-6">
                     <label for="kirjaNimi" className="form-label">Kirjan nimi</label>

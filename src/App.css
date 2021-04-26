@@ -319,6 +319,7 @@ footer {
   -webkit-filter: drop-shadow(10px 10px 10px black);
   filter: drop-shadow(10px 10px 10px black);
 }
+
 .custom_right_arrow:hover {
   opacity: 1;
   cursor: pointer;
@@ -561,7 +562,7 @@ table {
 
 th,
 td {
-  padding: 15px;
+  padding: 20px;
   position: relative;
 }
 

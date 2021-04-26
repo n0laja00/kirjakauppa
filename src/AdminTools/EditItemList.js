@@ -2,7 +2,7 @@ import { useEffect, useState, React } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
-import Loading from './Loading';
+import Loading from '../Loading';
 
 export default function EditItemList({ user }) {
 
@@ -80,7 +80,6 @@ export default function EditItemList({ user }) {
                     <th>Tuotenimi</th>
                     <th>Sivumäärä</th>
                     <th>Hinta</th>
-                    <th>Ale</th>
                     <th>Kustannus</th>
                     <th>Kuvaus</th>
                     <th>Kuvanimi</th>
@@ -99,7 +98,6 @@ export default function EditItemList({ user }) {
                 </td>
                 <td>{book.sivuNro}</td>
                 <td>{book.hinta}</td>
-                <td>{book.ale}</td>
                 <td>{book.kustannus}</td>
                 <td className="cut-text kuvaus">{book.kuvaus}</td>
                 <td>{book.kuva}</td>
