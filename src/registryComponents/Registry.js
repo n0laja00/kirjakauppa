@@ -16,23 +16,14 @@ export default function Registry() {
     const [postalCode, setPostalCode] = useState('');
     const [cart, setCart] = useState(JSON.parse(localStorage.getItem('cart')));
     const [paymentMethod, setPaymentMethod] = useState('lasku');
-    const [shippingAddress, setShippingAddress] = useState('');
+    const [shippingAddress, setShippingAddress] = useState(address);
     const [shippingMethod, setShippingMethod] = useState('lähinKauppa');
-    const [shippingPostalCode, setShippingPostalCode] = useState('');
-    const [shippingCity, setShippingCity] = useState('');
+    const [shippingPostalCode, setShippingPostalCode] = useState(postalCode);
+    const [shippingCity, setShippingCity] = useState(city);
     let history = useHistory();
 
     
     function handleSubmit (e) {
-        if (shippingAddress.length <= 0) {
-            setShippingAddress(address);
-        };
-        if (shippingPostalCode.length <= 0) {
-            setShippingPostalCode(postalCode);
-        };
-        if (shippingCity.length <= 0) {
-            setShippingCity(city);
-        };
         e.preventDefault();
 
         const URL = 'http://localhost/kirjakauppa/';
@@ -164,25 +155,25 @@ export default function Registry() {
                         </div>
                         <div className="mt-3 row">
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input " type="radio" name="shippingMethod" id="shippingMethodRadios1" value="lähinKauppa" onChange={e => setShippingMethod(e.target.value)} defaultChecked />
+                                <input className="form-check-input " type="radio" name="shippingMethod" id="shippingMethodRadios1" value="lk" onChange={e => setShippingMethod(e.target.value)} defaultChecked />
                                 <label className="form-check-label" for="shippingMethodRadios1">
                                     Nouda Lähimmästä Kaupasta
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios2" value="postiin" onClick={e => setShippingMethod(e.target.value)}/>
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios2" value="p" onClick={e => setShippingMethod(e.target.value)}/>
                                 <label className="form-check-label" for="shippingMethodRadios2">
                                     Postiin
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="matkahuolto" onClick={e => setShippingMethod(e.target.value)}/>
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios3" value="mh" onClick={e => setShippingMethod(e.target.value)}/>
                                 <label className="form-check-label" for="shippingMethodRadios3">
                                     Matkahuolto
                                 </label>
                             </div>
                             <div className="form-check form-control-lg">
-                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios4" value="pikaposti" onClick={e => setShippingMethod(e.target.value)}/>
+                                <input className="form-check-input" type="radio" name="shippingMethod" id="shippingMethodRadios4" value="pp" onClick={e => setShippingMethod(e.target.value)}/>
                                 <label className="form-check-label" for="shippingMethodRadios4">
                                     Pikaposti (Matkahuolto)
                                 </label>

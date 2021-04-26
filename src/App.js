@@ -35,7 +35,7 @@ function App() {
       <main className="container pb-5">
         <CartContextProvider>
           <Header />
-        </CartContextProvider>
+        
         <Breadcrumbs />
         <Switch>
           <Route path="/" render={() => <Content
@@ -61,6 +61,7 @@ function App() {
           <Route path="/registryComponents/Registry" component={Registry} />
           <Route path="/OrderConfirmed" component={OrderConfirmed} />
         </Switch>
+        </CartContextProvider>
       </main>
       <div className="container bottomBg">
         <Footer />

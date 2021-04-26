@@ -1,6 +1,7 @@
 import React, {createContext,useReducer, useEffect} from 'react';
 import { cartReducer } from '../reducers/cartReducer';
 import uuid from 'react-uuid';
+import CartIcon from '../CartIcon';
 
 export const CartContext = createContext();
 
@@ -14,13 +15,13 @@ const CartContextProvider = (props) => {
 
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart));
-       
+        
     }, [cart]);
-
     return ( 
         <CartContext.Provider value = {{cart, dispatch}}>
             {props.children}
         </CartContext.Provider>
+        
      );
 }
  

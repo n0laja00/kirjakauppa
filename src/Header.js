@@ -2,8 +2,9 @@ import React, {useState, useEffect, useContext} from 'react'
 import Navbar from './Navbar'
 import SearchBar from './Searchbar'
 import { Link } from 'react-router-dom'
-import { cartReducer } from './reducers/cartReducer';
-import { CartContext } from './contexts/CartContext';
+
+import CartContextProvider, { CartContext } from './contexts/CartContext';
+import CartIcon from './CartIcon';
 
 export default function Header() {
 
@@ -34,11 +35,7 @@ export default function Header() {
                     <div className="text-end">
                         
                         <div className="shopcart_cs">
-                            
-                            <Link className="link varjo" to="/ShoppingCart">
-                                <i className="fa fa-shopping-cart mx-1" aria-hidden="true">{quantity}</i>
-                            </Link>
-                            
+                            <CartIcon/>
                             <div>
                                 <Link className="link" to="/LoginPage">Login</Link>
                             </div>
