@@ -3,6 +3,7 @@ import { useHistory } from 'react-router';
 import CartList from '../cartComponents/CartList'
 import CartContextProvider from '../contexts/CartContext'
 import LoadingButton from '../LoadingButton';
+import OrderConfirmed from './OrderConfirmed';
 
 
 export default function Registry() {
@@ -206,8 +207,8 @@ export default function Registry() {
                                 </label>
                             </div>
                         </div>
-                        {!isConfirmed ? (<button type="submit" class="btn btn-primary">Tilaa</button>) : (<LoadingButton />)}
-                        <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">
+                
+                        <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">{!isConfirmed ? (<button type="submit" class="btn btn-primary">Tilaa</button>) : (<LoadingButton />)}
                         </div>
                     </div>
                 </form>
