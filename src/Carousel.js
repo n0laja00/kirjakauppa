@@ -76,17 +76,20 @@ export default function BookCarousel({ bookdata }) {
         centerMode={true}
         responsive={responsive}
         infinite={true}
-        removeArrowOnDeviceType={["tablet", "mobile"]} >
+        removeArrowOnDeviceType={["tablet", "mobile"]}
+      >
 
         {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
-          <div className="row d-block book_divider carousel_container mx-1" key={uuid()}>
-            <div className="card col-lg-11 cardHover" key={book.kirjaNimi}>
-              <div className="image_container">
-                {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
-                <Link to={'/BookDetails/' + book.kirjaNro}> <img className="card-img-top py-3" src={imgURL + book.kuva} alt={book.kirjaNimi}>
-                </img></Link>
-              </div>
+          <div className="row col-11 mb-3 justify-content-center" key={uuid()}>
+            <div className="card col-12 cardHover" key={book.kirjaNimi}>
+              {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
+              <Link to={'/BookDetails/' + book.kirjaNro} className="d-flex justify-content-center">
+                <img className="carousel-card-img-top py-3"
+                  src={imgURL + book.kuva}
+                  alt={book.kirjaNimi}>
+                </img>
+              </Link>
               <div className="row">
                 <h3 className="card-font col-12 cut-text text-center col-auto"><b>{book.kirjaNimi}</b></h3>
                 <div className="text-center d-none d-lg-block card-font cut-text col-12">{book.kuvaus}</div>

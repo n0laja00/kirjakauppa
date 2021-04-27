@@ -81,8 +81,8 @@ export default function Content({ setCategory }) {
                     </div>
                 </div>
                 <h3>Kuukauden kirjat</h3>
-                <div className="row carouselBorder">
-                    <BookCarousel bookdata={selected} />
+                <div className="row carouselBorder mb-5">
+                    <BookCarousel bookdata={selected}/>
                 </div>
                 <h3>Uutuudet</h3>
                 <div className="row carouselBorder">

@@ -420,7 +420,7 @@ footer {
   border-radius: 10px;
 }
 .cardHover:hover {
-  box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
+  box-shadow: -5px 5px 2px 1px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   border: 1px solid rgb(0, 0, 0, 0.5);
 }
@@ -473,17 +473,27 @@ footer {
 }
 
 /* karusellin kuvat */
-.image_container {
+/* .image_container {
   display: flex;
   justify-content: center;
-}
+} */
 .card-font {
   font-size: 1em;
 }
 
-.image_container img {
-  max-width: 100%;
-  height: auto;
+.carousel-card-img-top {
+  display: flex;
+  max-height: 350px;
+  width: auto;
+}
+
+@media only screen and (max-width: 520px) {
+  .carousel-card-img-top {
+    display: flex;
+    max-height: 250px;
+    width: auto;
+    padding: 50px;
+  }
 }
 
 .publisherContainer {
@@ -498,20 +508,16 @@ footer {
   }
 }
 
-
 /*  korttien kuvat ja niiden responsiivisuus *PUKE* */
 @media only screen and (max-width: 381px) {
-  .bookBrowseImg,
-  .bookImgCarousel,
-  .card-img-top, .card-img-top img {
+  .card-img-top,
+  .card-img-top img {
     display: flex;
     max-height: 100px;
     width: auto;
   }
 }
 @media only screen and (min-width: 576px) {
-  .bookBrowseImg,
-  .bookImgCarousel,
   .card-img-top,
   .card-img-top img {
     display: flex;
@@ -520,8 +526,6 @@ footer {
   }
 }
 @media only screen and (min-width: 768px) {
-  .bookBrowseImg,
-  .bookImgCarousel,
   .card-img-top,
   .card-img-top img {
     display: flex;
@@ -530,8 +534,6 @@ footer {
   }
 }
 @media only screen and (max-width: 1199px) {
-  .bookBrowseImg,
-  .bookImgCarousel,
   .card-img-top {
     display: flex;
     max-height: 20px;
@@ -539,10 +541,7 @@ footer {
   }
 }
 
-
 @media only screen and (max-width: 1399px) {
-  .bookBrowseImg,
-  .bookImgCarousel,
   .card-img-top {
     display: flex;
     max-height: 400px;
@@ -551,15 +550,12 @@ footer {
 }
 
 @media only screen and (min-width: 1400px) {
-  .bookBrowseImg,
-  .bookImgCarousel,
   .card-img-top {
     display: flex;
     max-height: 450px;
     width: auto;
   }
 }
-
 
 .bookImgCarousel {
   height: 440px;
