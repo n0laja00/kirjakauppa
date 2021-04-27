@@ -38,18 +38,15 @@ export default function BookDetails() {
             <>
                 {book.map(el => (
                     <div className="row" key={el.kirjaNro}>
-                        <div className="row">
                             <h1 className="col-12 px-5 my-4">{el.kirjaNimi}</h1>
-                        </div>
-                        <div className="row">
                             <div className="col-md-6">
-                                <img className="card-img-top customBorder mb-3 bookBrowseImg" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                                <img className="customBorder mb-3 img-fluid" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                             </div>
                             <div className="col-md-6">
                                 <div className="col-12 customBorder bottomBg p-4">
-                                    <h3 className="col-md-12">Kuvaus</h3>
-                                    <div className="col-md-12">{el.kuvaus}</div>
-                                    <div className="col-md-12">{el.keskiarvo}</div>
+                                    <h3 className="col">Kuvaus</h3>
+                                    <div className="col">{el.kuvaus}</div>
+                                    <div className="col">{el.keskiarvo}</div>
                                     <div className="mt-4 col-12 text-center"> <h4>{el.hinta} €</h4></div>
                                     <div className="text-center">
                                         <CartContextProvider>
@@ -69,7 +66,6 @@ export default function BookDetails() {
                                     </div>
                                     <Link to={'/Reviews/' + id}>Lue arvostelut</Link>
                                 </div>
-                            </div>
                         </div>
                     </div>
                 ))}

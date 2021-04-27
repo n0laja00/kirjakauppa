@@ -312,8 +312,8 @@ footer {
 /*Custom arrows for carousel*/
 .custom_right_arrow {
   position: absolute !important;
-  width: 10%;
-  height: 10%;
+  width: 8%;
+  height: 8%;
   opacity: 0.8;
   right: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
@@ -327,8 +327,8 @@ footer {
 
 .custom_left_arrow {
   position: absolute !important;
-  width: 10%;
-  height: 10%;
+  width: 8%;
+  height: 8%;
   opacity: 0.8;
   left: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
@@ -436,16 +436,17 @@ footer {
 }
 
 /* karusellin kuvat */
-.image_container{
-  z-index: 1;
+.image_container {
   display: flex;
   justify-content: center;
-
 }
-.image_container img
- {
-max-height: 600px;
-width: auto;
+.card-font {
+  font-size: 1em;
+}
+
+.image_container img {
+max-width: 100%;
+height: auto;
 }
 
 .publisherContainer {
@@ -454,12 +455,10 @@ width: auto;
   margin-top: 2%;
 }
 
-.bookBrowseImg {
-  max-width: 100%;
-  height: auto;
-  width: 100%;
-  height: 100%;
-}
+/* .bookBrowseImg img{
+  max-height: 80%;
+  width: auto;
+} */
 
 @media only screen and (max-width: 1200px) {
   .bookBrowseImg,
