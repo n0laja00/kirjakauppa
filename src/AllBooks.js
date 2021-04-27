@@ -4,7 +4,7 @@ import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
 
 
-export default function AllBooks({ category }) {
+export default function AllBooks({ category, user }) {
 
     const [books, setBooks] = useState([]);
     const [error, setError] = useState('');
@@ -26,6 +26,15 @@ export default function AllBooks({ category }) {
         } else {
             let otsikko = category?.name;
             return otsikko;
+        }
+    }
+
+    function muokkaus() {
+        if (user === null) {
+            return;
+        }
+        if (user.id === "1" && user.fname === "Admin" && user.lname === "käyttäjä") {
+            return <Link className="link" to="/EditItemList">Lisää kirja</Link>;
         }
     }
 
@@ -64,7 +73,7 @@ export default function AllBooks({ category }) {
             <div className="row">
                 <div className="col-12 text-center py-4">
                     <h1>{title()}</h1>
-                    <Link className="link" to="/EditItemList">Lisää kirja</Link>
+                    {muokkaus()}
                 </div>
                 <div className="row justify-content-center p-5 text-center">
                     {books.map(book => (

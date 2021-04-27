@@ -62,8 +62,34 @@ p {
   border: 3px solid white;
   border-radius: 50px 50px 50px 2px;
 }
+.userDisplayBorder {
+  border: 1px solid #127cb9c4;
+  border-radius: 50px 50px 50px 50px;
+}
+.fa-user-circle-o {
+  font-size: xx-large;
+}
+.kayttaja {
+  font-size: large;
+  padding-top: 3px;
+  padding-left: 3px;
+}
+.loginLinkki {
+  text-decoration: none;
+  color:rgb(255, 255, 134);
+}
+.loginLinkki:hover, .userDisplayBorder:hover {
+  color:rgb(255, 255, 134);
+  border-color: white;
+}
+
 @media (max-width: 575px) {
   .customBorder {
+    border: none;
+  }
+}
+@media (max-width: 992px) {
+  .userDisplayBorder {
     border: none;
   }
 }
@@ -120,13 +146,13 @@ p {
 /* Login ja search painikkeet */
 .loginButton {
   border-radius: 20px 5px 20px 5px;
-  background-color: #73def1;
+  background-color: #66b8fc;
   border: 1px solid #127cb9c4;
 }
 
 .loginButton:hover {
-  background-color: #49d4ec;
-  border: 1px solid #b9926cc4;
+  color: white;
+  border: 1px solid white;
 }
 
 .text-white {

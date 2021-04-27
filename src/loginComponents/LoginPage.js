@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { useHistory } from 'react-router';
 import { Link } from 'react-router-dom';
 
-export default function LoginPage({setUser}) {
+export default function LoginPage({setUser, setUserStorage}) {
   const [email, setEmail] = useState('admin.user.0988');
   const [password,setPassword] = useState('saariselanritari123');
   const URL = 'http://localhost/kirjakauppa/login.php/';
@@ -30,6 +30,7 @@ export default function LoginPage({setUser}) {
   
       if (response.ok) {
         setUser(json);
+        sessionStorage.setItem = (json);
         history.push('/LoginSuccessful');
       } else {
         alert("Kirjautuminen epäonnistui. Tarkista käyttäjänimi ja salasana.");
