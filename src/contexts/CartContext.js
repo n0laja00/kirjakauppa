@@ -1,7 +1,7 @@
 import React, {createContext,useReducer, useEffect} from 'react';
 import { cartReducer } from '../reducers/cartReducer';
 import uuid from 'react-uuid';
-import CartIcon from '../CartIcon';
+
 
 export const CartContext = createContext();
 

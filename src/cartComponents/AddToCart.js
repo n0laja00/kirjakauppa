@@ -1,5 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
-import CartIcon from '../CartIcon';
+
 import { CartContext } from '../contexts/CartContext';
 import { cartReducer } from '../reducers/cartReducer';
 import PromptAdded from './PromptAdded';
