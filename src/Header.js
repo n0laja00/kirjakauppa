@@ -5,12 +5,6 @@ import { Link } from 'react-router-dom'
 
 export default function Header() {
 
-
-
-
-
-    
-    
     return (
         <div className="row header py-3 shadow">
            
