@@ -34,6 +34,10 @@ export default function LoginSuccessful({user}) {
                         </div>
                         <div className="text-center mt-3">
                         <i class="fa fa-genderless text-white" aria-hidden="true"></i>
+                            <Link to="/SeeOrders" className="text-white">Tarkastele Tilauksia</Link>
+                        </div>
+                        <div className="text-center mt-3">
+                        <i class="fa fa-genderless text-white" aria-hidden="true"></i>
                             <Link to="/Logout" className="text-white">Kirjaudu ulos</Link>
                         </div>
                         
