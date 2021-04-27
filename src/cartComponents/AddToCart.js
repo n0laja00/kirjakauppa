@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from 'react';
+
 import { CartContext } from '../contexts/CartContext';
 import { cartReducer } from '../reducers/cartReducer';
 import PromptAdded from './PromptAdded';
@@ -42,19 +43,23 @@ const AddToCart = ({ item }) => {
                     maara
                 }
             });
+            
         }
         setKirjaNumero('');
         setHinta('');
         setMaara('');
+
     };
 
     return (
-        <>
+        <>  
             <PromptAdded prompt={prompt} />
             <form onSubmit={handleSubmit}>
                 <button className="btn btn-primary m-3 col-8" type="submit" value={item.kirjaNro} onClick={(e) => { setKirjaNumero(e.target.value); promptHandler(e) }}>Lisää ostoskoriin</button>
                 <input type="number" value={item.hinta} onSubmit={(e) => setHinta(e.target.value)} hidden />
+                
             </form>
+
         </>
     );
 }
