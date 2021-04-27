@@ -84,7 +84,7 @@ export default function BookCarousel({ bookdata }) {
             <div className="card col-lg-11 cardHover" key={book.kirjaNimi}>
               <div className="image_container">
                 {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
-                <Link to={'/BookDetails/' + book.kirjaNro}> <img className="card-img-top py-3 img-fluid" src={imgURL + book.kuva} alt={book.kirjaNimi}>
+                <Link to={'/BookDetails/' + book.kirjaNro}> <img className="card-img-top py-3" src={imgURL + book.kuva} alt={book.kirjaNimi}>
                 </img></Link>
               </div>
               <div className="row">

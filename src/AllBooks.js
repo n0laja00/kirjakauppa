@@ -71,12 +71,20 @@ export default function AllBooks({ category, user }) {
                     <h1>{title()}</h1>
                     {muokkaus()}
                 </div>
-                <div className="row justify-content-center p-5 text-center">
+                <div className="row p-5 text-center">
                     {books.map(book => (
-                        <div className="card col-sm-10 col-lg-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
+                        <div className="row card col-sm-10 col-lg-5 mx-2 my-3 cardHover" 
+                        key={book.kirjaNimi}>
                             {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
-                            <Link to={'/BookDetails/' + book.kirjaNro}><img className="card-img-top p-4 img-fluid" src={imgURL + book.kuva} alt={book.kirjaNimi}></img></Link>
-                            <div className="row">
+                            <div className="col-12 d-flex justify-content-center p-5">
+                                <Link to={'/BookDetails/' + book.kirjaNro}>
+                                    <img className="col-auto shadow card-img-top"
+                                        src={imgURL + book.kuva}
+                                        alt={book.kirjaNimi}>
+                                    </img>
+                                </Link>
+                            </div>
+                            <div className="row-auto">
                                 <h5 className="card-title col-12">{book.kirjaNimi}</h5>
                                 <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
                                 <h5 className="card-subtitle text-center col-md-12 text-end p-3"><b>{book.hinta} €</b></h5>

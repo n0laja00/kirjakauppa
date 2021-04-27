@@ -76,10 +76,11 @@ p {
 }
 .loginLinkki {
   text-decoration: none;
-  color:rgb(255, 255, 134);
+  color: rgb(255, 255, 134);
 }
-.loginLinkki:hover, .userDisplayBorder:hover {
-  color:rgb(255, 255, 134);
+.loginLinkki:hover,
+.userDisplayBorder:hover {
+  color: rgb(255, 255, 134);
   border-color: white;
 }
 
@@ -491,17 +492,56 @@ footer {
   margin-top: 2%;
 }
 
-/* .bookBrowseImg img{
-  max-height: 80%;
-  width: auto;
-} */
-
-@media only screen and (max-width: 1200px) {
+/*  korttien kuvat ja niiden responsiivisuus *PUKE* */
+@media only screen and (min-width: 350px) {
   .bookBrowseImg,
-  .bookImgCarousel {
-    max-height: 471px;
+  .bookImgCarousel,
+  .card-img-top, .card-img-top img {
+    display: flex;
+    max-height: 246px;
+    width: auto;
   }
 }
+@media only screen and (min-width: 576px) {
+  .bookBrowseImg,
+  .bookImgCarousel,
+  .card-img-top,
+  .card-img-top img {
+    display: flex;
+    max-height: 300px;
+    width: auto;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .bookBrowseImg,
+  .bookImgCarousel,
+  .card-img-top,
+  .card-img-top img {
+    display: flex;
+    max-height: 330px;
+    width: auto;
+  }
+}
+@media only screen and (min-width: 1199px) {
+  .bookBrowseImg,
+  .bookImgCarousel,
+  .card-img-top {
+    display: flex;
+    max-height: 400px;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 1400px) {
+  .bookBrowseImg,
+  .bookImgCarousel,
+  .card-img-top {
+    display: flex;
+    max-height: 510px;
+    width: auto;
+  }
+}
+
 
 .bookImgCarousel {
   height: 440px;
