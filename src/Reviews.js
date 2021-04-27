@@ -84,7 +84,7 @@ export default function Reviews() {
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
                             <div className="col-sm-6 mt-2">Montako tähteä antaisit kirjalle?</div>
                             <div className="col-sm-6 mt-2">
-                                {/* tähtiarvostelu */}
+                                {/* tähtiarvostelu - source: https://www.youtube.com/watch?v=eDw46GYAIDQ */}
                                 {[...Array(5)].map((star, i) => {
                                     const ratingValue = i + 1;
                                     return (

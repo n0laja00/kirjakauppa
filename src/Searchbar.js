@@ -54,7 +54,7 @@ export default function SearchBar() {
                                 )}
                             />
                         </div>
-                        <button className="loginButton col-2">
+                        <button className="btn btn-primary col-auto">
                             <i className="fa fa-search"></i>
                         </button>
                     </div>

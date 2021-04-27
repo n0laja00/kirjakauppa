@@ -69,8 +69,8 @@ export default function AllBooks({ category }) {
                             <Link to={'/BookDetails/' + book.kirjaNro}><img className="card-img-top p-4 img-fluid" src={imgURL + book.kuva} alt={book.kirjaNimi}></img></Link>
                             <div className="row">
                                 <h5 className="card-title col-12">{book.kirjaNimi}</h5>
-                                <div className="card-text col-sm-12">{book.kuvaus}</div>
-                                <h5 className="card-subtitle col-md-12 text-end p-3">{book.hinta} €</h5>
+                                <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
+                                <h5 className="card-subtitle text-center col-md-12 text-end p-3"><b>{book.hinta} €</b></h5>
                                 <Link to={'/BookDetails/' + book.kirjaNro} className="link text-center">
                                     <div className="my-3 btn readMoreBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
                                 </Link>

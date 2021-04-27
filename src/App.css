@@ -285,7 +285,6 @@ footer {
     text-align: left;
     height: 500px !important;
   }
-
 }
 
 @media only screen and (max-width: 770px) {
@@ -339,7 +338,6 @@ footer {
   cursor: pointer;
 }
 
-
 /*Footer map*/
 
 .map {
@@ -378,7 +376,6 @@ footer {
 .cut-text {
   text-overflow: ellipsis;
   overflow: hidden;
-  height: 1.2em;
   white-space: nowrap;
 }
 
@@ -387,8 +384,7 @@ footer {
   background-color: #66b8fc;
   border: 1px solid black;
 }
-.readMoreBtn:hover
- {
+.readMoreBtn:hover {
   background-color: #c1e0f8;
   border: 1px solid black;
 }
@@ -400,6 +396,20 @@ footer {
   box-shadow: -5px 5px 20px rgba(0, 0, 0, 0.4);
   border-radius: 20px;
   border: 1px solid rgb(0, 0, 0, 0.5);
+}
+
+/* bookdetails.js tyylit */
+.bookDetailsBg {
+  background-color: rgb(252, 252, 252, 0.95);
+  border-radius: 5px;
+  border: 5px solid rgba(213, 233, 248);
+  box-shadow: -2px 2px 20px rgba(0, 0, 0, 0.5);
+}
+
+.bookDetailsBorder {
+  border: 5px solid rgba(213, 233, 248);
+  box-shadow: -5px 5px 50px rgba(0, 0, 0, 0.5);
+  border-radius: 5px;
 }
 
 /* AddItem tuotteen lisääminen */
@@ -445,8 +455,8 @@ footer {
 }
 
 .image_container img {
-max-width: 100%;
-height: auto;
+  max-width: 100%;
+  height: auto;
 }
 
 .publisherContainer {
@@ -497,6 +507,7 @@ height: auto;
 /* prompt lisätty ostoskoriin */
 .prompt {
   border: 1px solid #37485a;
+  background-color: white;
   font-size: 1.2em;
   border-radius: 5px;
   z-index: 1;
