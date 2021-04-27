@@ -492,13 +492,20 @@ footer {
   margin-top: 2%;
 }
 
-/*  korttien kuvat ja niiden responsiivisuus *PUKE* */
 @media only screen and (min-width: 350px) {
+  .card {
+    max-width: 330px;
+  }
+}
+
+
+/*  korttien kuvat ja niiden responsiivisuus *PUKE* */
+@media only screen and (max-width: 381px) {
   .bookBrowseImg,
   .bookImgCarousel,
   .card-img-top, .card-img-top img {
     display: flex;
-    max-height: 246px;
+    max-height: 100px;
     width: auto;
   }
 }
@@ -508,7 +515,7 @@ footer {
   .card-img-top,
   .card-img-top img {
     display: flex;
-    max-height: 300px;
+    max-height: 250px;
     width: auto;
   }
 }
@@ -522,7 +529,18 @@ footer {
     width: auto;
   }
 }
-@media only screen and (min-width: 1199px) {
+@media only screen and (max-width: 1199px) {
+  .bookBrowseImg,
+  .bookImgCarousel,
+  .card-img-top {
+    display: flex;
+    max-height: 20px;
+    width: auto;
+  }
+}
+
+
+@media only screen and (max-width: 1399px) {
   .bookBrowseImg,
   .bookImgCarousel,
   .card-img-top {
@@ -537,7 +555,7 @@ footer {
   .bookImgCarousel,
   .card-img-top {
     display: flex;
-    max-height: 510px;
+    max-height: 450px;
     width: auto;
   }
 }
