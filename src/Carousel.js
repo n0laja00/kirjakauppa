@@ -3,6 +3,7 @@ import 'react-multi-carousel/lib/styles.css';
 import uuid from "react-uuid"
 import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
+import Loading from './Loading';
 
 // https://www.npmjs.com/package/react-multi-carousel sivulta mallia
 export default function BookCarousel({ bookdata }) {
@@ -13,7 +14,6 @@ export default function BookCarousel({ bookdata }) {
   const imgURL = 'http://localhost/kirjakauppa/img/';
   const [isLoaded, setIsLoaded] = useState(false);
 
-  console.log(bookdata)
   useEffect(() => {
     let status = 0;
 
@@ -24,7 +24,6 @@ export default function BookCarousel({ bookdata }) {
       })
       .then(
         (res) => {
-
           if (status === 200) {
             setBooks(res);
             setIsLoaded(true)
@@ -41,17 +40,17 @@ export default function BookCarousel({ bookdata }) {
 
   const responsive = {
     desktop: {
-      breakpoint: { max: 3000, min: 1000 },
-      items: 1,
+      breakpoint: { max: 3000, min: 992 },
+      items: 2,
       slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
-      breakpoint: { max: 1000, min: 770 },
-      items: 1,
+      breakpoint: { max: 991, min: 768 },
+      items: 2,
       slidesToSlide: 1 // optional, default to 1.
     },
     mobile: {
-      breakpoint: { max: 770, min: 0 },
+      breakpoint: { max: 767, min: 0 },
       items: 1,
       slidesToSlide: 1 // optional, default to 1.
     }
@@ -68,12 +67,7 @@ export default function BookCarousel({ bookdata }) {
   };
 
   if (!isLoaded) {
-    return <div className="row justify-content-center pt-5">
-      <div className="col-auto d-block">
-        <i className="fa fa-spinner fa-spin fa-3x" aria-hidden="true"></i>
-      </div>
-      <h2 className="col-auto d-block">Loading...</h2>
-    </div>;
+    return <Loading />
   } else {
     return (
       <Carousel
@@ -87,19 +81,20 @@ export default function BookCarousel({ bookdata }) {
         {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
           <div className="row d-block book_divider carousel_container mx-1" key={uuid()}>
-            <div className="card col-11 mx-4 my-3 cardHover" key={book.kirjaNimi}>
+            <div className="card col-lg-11 cardHover" key={book.kirjaNimi}>
               <div className="image_container">
-                <img className="card-img-top p-4 img-fluid" src={imgURL + book.kuva} alt={book.kirjaNimi}>
-                </img>
+                {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
+                <Link to={'/BookDetails/' + book.kirjaNro}> <img className="card-img-top py-3 img-fluid" src={imgURL + book.kuva} alt={book.kirjaNimi}>
+                </img></Link>
               </div>
-              <div className="row d-sm-block d-none">
-                <h3 className="px-5 card-title cut-text col-auto">{book.kirjaNimi}</h3>
-                <div className="px-5 card-text cut-text col-auto">{book.kuvaus}</div>
-                <h5 className="px-5 card-subtitle col-auto p-3"><b>{book.hinta} €</b></h5>
+              <div className="row">
+                <h3 className="card-font col-12 cut-text text-center col-auto"><b>{book.kirjaNimi}</b></h3>
+                <div className="text-center d-none d-lg-block card-font cut-text col-12">{book.kuvaus}</div>
+                <h5 className="card-font col-12 cut-text text-center col-auto my-3">{book.hinta} €</h5>
               </div>
               <div className="row">
                 <Link to={'/BookDetails/' + book.kirjaNro} className="link text-center">
-                  <div className="mb-4 btn readMoreBtn col-sm-8 col-md-6" name={book.kirjaNimi}>Lue lisää</div>
+                  <div className="mb-4 btn readMoreBtn col-auto" name={book.kirjaNimi}>Lue lisää</div>
                 </Link>
               </div>
             </div>

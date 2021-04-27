@@ -9,8 +9,6 @@ export default function PromptAdded({ prompt }) {
             </div>
         )
     } else {
-        return (
-            null
-        )
+        return null
     }
 }

@@ -2,13 +2,13 @@ import { useEffect, useState, React } from 'react';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
+import Loading from '../Loading';
 
-export default function EditItemList({user}) {
+export default function EditItemList({ user }) {
 
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
-    const[bookNo, setBookNo] = useState('');
-    const[selected, setSelected] = useState(false);
+    const [isLoaded, setIsLoaded] = useState(false);
 
     //Kirjalistan päivittäminen 
     const [submit, setSubmit] = useState(false);
@@ -27,7 +27,8 @@ export default function EditItemList({user}) {
           (res) => {
      
             if(status === 200) {
-           setBooks(res);
+                setBooks(res);
+                setIsLoaded(true);
            } else {
              alert(res.error);
            }
@@ -48,28 +49,27 @@ export default function EditItemList({user}) {
     }
 
     function onRemove(bookNr) {
-        let bookNumber = bookNr; 
+        let bookNumber = bookNr;
 
         const formData = new FormData();
-        formData.append('bookNr',bookNumber);
+        formData.append('bookNr', bookNumber);
 
-        fetch (URL + 'poistaKirja.php',
+        fetch(URL + 'poistaKirja.php',
             {
-            method: 'POST',
-            body: formData 
+                method: 'POST',
+                body: formData
             }
         )
-        .then((res) => {
-            setSubmit(!submit);
-        }
-        )
+            .then((res) => {
+                setSubmit(!submit);
+            }
+            )
     }
 
-    function updateSelect(bookNo, selected) {
-        toggleClass();
-        setBookNo(bookNo);
-        setSelected(selected);
-    }
+    if (!isLoaded) {
+        return <Loading />
+     }
+     else {
 
     return (
         <>
@@ -80,7 +80,6 @@ export default function EditItemList({user}) {
                     <th>Tuotenimi</th>
                     <th>Sivumäärä</th>
                     <th>Hinta</th>
-                    <th>Ale</th>
                     <th>Kustannus</th>
                     <th>Kuvaus</th>
                     <th>Kuvanimi</th>
@@ -91,16 +90,14 @@ export default function EditItemList({user}) {
             {books.map(book => (
                 <>
                 <tr className="listaValinta">
-                <Link to={'/UpdateItem/' + book.kirjaNro}>
-                    <button>kirjuli</button>
-                </Link>
+                
                 <td><a className="poistoPainike"
                  onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) onRemove(book.kirjaNro) } }>
                      Poista</a>{book.kirjaNimi}
+                     <a className="muokkaaPainike"><Link to={'/UpdateItem/' + book.kirjaNro} className="link">Muokkaa</Link></a>
                 </td>
                 <td>{book.sivuNro}</td>
                 <td>{book.hinta}</td>
-                <td>{book.ale}</td>
                 <td>{book.kustannus}</td>
                 <td className="cut-text kuvaus">{book.kuvaus}</td>
                 <td>{book.kuva}</td>
@@ -120,4 +117,5 @@ export default function EditItemList({user}) {
     </section>
     </>
     )
+}
 }

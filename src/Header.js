@@ -1,18 +1,10 @@
-import React, {useState, useEffect, useContext} from 'react'
+import React from 'react'
 import Navbar from './Navbar'
 import SearchBar from './Searchbar'
 import { Link } from 'react-router-dom'
-import { cartReducer } from './reducers/cartReducer';
-import { CartContext } from './contexts/CartContext';
 
 export default function Header({user}) {
 
-    const {cart} = useContext(CartContext)
-    const [kori, setKori] = useState([cart]);
-    const [quantity, setQuantity] = useState('');
-    useEffect(() => {
-        setQuantity(cart.length)
-    },[cart])
 
     function userName() {
         
@@ -57,7 +49,7 @@ export default function Header({user}) {
                         <div className="shopcart_cs col-12">
                             
                             <Link className="link varjo" to="/ShoppingCart">
-                                <i className="fa fa-shopping-cart mx-1" aria-hidden="true">{quantity}</i>
+                                <i className="fa fa-shopping-cart mx-1" aria-hidden="true"></i>
                             </Link>
                             
                         </div>
