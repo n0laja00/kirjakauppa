@@ -4,12 +4,11 @@ import './App.css';
 import Content from './Content';
 import Footer from './Footer';
 import Header from './Header';
-import LoginPage from './LoginPage';
-import LoginSuccessful from './LoginSuccessful';
-import Logout from './Logout';
+import LoginPage from './loginComponents/LoginPage';
+import LoginSuccessful from './loginComponents/LoginSuccessful';
+import Logout from './loginComponents/Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
-// import Navbar from './Navbar';
 import BookDetails from './BookDetails';
 import Reviews from './Reviews';
 import Breadcrumbs from './Breadcrumbs';
@@ -24,6 +23,11 @@ function App() {
   const [user, setUser] = useState(null);
   console.log("käyttäjä", user)
 
+  function setUserStorage(e) {
+    sessionStorage.setItem = (e);
+  }
+  
+
   let location = useLocation();
 
   useEffect(() => {
@@ -35,40 +39,28 @@ function App() {
   return (
     <div>
       <main className="container pb-5">
-        <CartContextProvider>
-          <Header />
-        
+          <Header user={user}/>
         <Breadcrumbs />
         <Switch>
-          <Route path="/" render={() => <Content
-            setCategory={setCategory} />} exact />
-          <Route path="/LoginPage" render={() =>
-            <LoginPage setUser={setUser}/> 
-            } 
-          />
-          <Route path="/LoginSuccessful" render={() => 
-            <LoginSuccessful user={user}/>
-            }
-          />
-          <Route path="/logout" render={() => 
-            <Logout setUser={setUser} />
-            }/>
+          <Route path="/" render={() => <Content setCategory={setCategory} />} exact />
+          
+          <Route path="/LoginPage" render={() => <LoginPage setUser={setUser} setUserStorage={setUserStorage} />} />
+          <Route path="/LoginSuccessful" render={() => <LoginSuccessful user={user} />} />
+          <Route path="/logout" render={() => <Logout setUser={setUser} />} />
+
           <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/EditItemList" render={() => 
-            <EditItemList user={user}/>
-            }
-          />
-          {/* <Route path="/Navbar" component={Navbar} setCategory={setCategory} /> */}
+          <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
+
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} user={user}/>}
             exact />
+
           <Route path="/BookDetails/:id" component={BookDetails} />
           <Route path="/UpdateItem/:id" component={UpdateItem}/>
           <Route path="/Reviews/:id" component={Reviews} />
           <Route path="/registryComponents/Registry" component={Registry} />
           <Route path="/OrderConfirmed" component={OrderConfirmed} />
         </Switch>
-        </CartContextProvider>
       </main>
       <div className="container bottomBg">
         <Footer />
