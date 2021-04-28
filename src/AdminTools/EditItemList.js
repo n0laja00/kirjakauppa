@@ -3,6 +3,7 @@ import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
 import Loading from '../Loading';
+import CarouselBookSelect from './CarouselBookSelect';
 
 export default function EditItemList({ user }) {
 
@@ -114,6 +115,9 @@ export default function EditItemList({ user }) {
     <section className={"p-0" + `section ${switchComponents ? "" : "hidden"}`}>
     <AddItem/>
     <button onClick={toggleClass} className="ms-2 btn btn-primary">Kaikki tuotteet</button>
+    </section>
+    <section>
+        <CarouselBookSelect/>
     </section>
     </>
     )

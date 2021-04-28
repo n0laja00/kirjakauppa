@@ -82,7 +82,7 @@ export default function BookCarousel({ bookdata }) {
         {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
           <div className="row justify-content-center mx-1 my-3" key={uuid()}>
-            <div className="card shadow cardHover col-xl-10" key={book.kirjaNimi}>
+            <div className="card shadow cardHover col-xl-10" ke y={book.kirjaNimi}>
               {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
               <Link to={'/BookDetails/' + book.kirjaNro} className="d-flex justify-content-center">
                 <img className="carousel-card-img-top p-3"
