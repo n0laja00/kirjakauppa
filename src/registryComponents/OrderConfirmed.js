@@ -1,28 +1,25 @@
-import { React, useEffect, useState } from 'react'
+import { React, useState, useEffect } from 'react'
 import { Link, useHistory } from 'react-router-dom';
 
 export default function OrderConfirmed() {
     let history = useHistory();
-    const [timer, setTimer] = useState(5000);
+    const [counter, setCounter] = useState(10);
 
-
-
-    function stopTimeout() {
-        const time = setTimeout(() => console.log('stopped'), 0)
-        clearTimeout(time);
-    }
-
-    setTimeout(function () {
-        console.log('started');
-        history.push('/');
-    }, timer);
-
+    // counter -1 laskuri
+    useEffect(() => {
+        counter > 0 && setTimeout(() => setCounter(counter - 1), 1000);
+        if (counter === 0) {
+            history.push('/');
+        }
+    }, [counter]);
 
     return (
-        <div className="col-12 text-center">
-            <h2 className="my-3">Kiitos tilauksesta!</h2>
-            <p>Siirryt automaattisesti takaisin etusivulle 10 sekunnin kuluttua.</p>
-            <Link to="/" onClick={stopTimeout}>Klikkaa tästä siirtyäksesi heti.</Link>
+        <div className="row d-flex justify-content-center m-2">
+            <div className="col-auto text-center bookDetailsBg m-3 p-3 p-md-5">
+                <h2>Kiitos tilauksestasi!</h2>
+                <p>Siirryt automaattisesti takaisin etusivulle {counter} sekunnin kuluttua..</p>
+                <Link to="/" onClick={() => setCounter(0)}>Tai klikkaa tästä siirtyäksesi heti.</Link>
+            </div>
         </div>
     )
 }

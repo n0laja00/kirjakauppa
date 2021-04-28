@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import uuid from 'react-uuid';
 import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
 import Loading from './Loading';
@@ -26,6 +27,7 @@ export default function BookDetails() {
                     setIsLoaded(true);
                 }, (error) => {
                     setError(error);
+                    console.log(error)
                     setIsLoaded(false);
                 }
             )
@@ -37,35 +39,36 @@ export default function BookDetails() {
         return (
             <>
                 {book.map(el => (
-                    <div className="row" key={el.kirjaNro}>
-                            <h1 className="col-12 px-5 my-4">{el.kirjaNimi}</h1>
-                            <div className="col-md-6">
-                                <img className="customBorder mb-3 img-fluid" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                    <div className="row " key={uuid()}>
+                        <h1 className="col-12 my-4 ">{el.kirjaNimi}</h1>
+                        <div className="col-md-6">
+                            <img className="mb-3 img-fluid bookDetailsBorder" src={imgURL + el.kuva} alt={el.kirjaNimi} />
+                        </div>
+                        <div className="col-md-6">
+                            <div className="col-12 bookDetailsBg p-4 ">
+                                <h3 className="col">Kuvaus</h3>
+                                <div className="col">{el.kuvaus}</div>
+                                <div className="col">{el.keskiarvo}</div>
+                                <div className="mt-4 col-12 text-center"> <h4><b>{el.hinta} €</b></h4></div>
+                                <div className="text-center">
+                                    <CartContextProvider>
+                                        <AddToCart item={el} />
+                                    </CartContextProvider>
+                                </div>
                             </div>
-                            <div className="col-md-6">
-                                <div className="col-12 customBorder bottomBg p-4">
-                                    <h3 className="col">Kuvaus</h3>
-                                    <div className="col">{el.kuvaus}</div>
-                                    <div className="col">{el.keskiarvo}</div>
-                                    <div className="mt-4 col-12 text-center"> <h4>{el.hinta} €</h4></div>
-                                    <div className="text-center">
-                                        <CartContextProvider>
-                                            <AddToCart item={el} />
-                                        </CartContextProvider>
-                                    </div>
+                            <div className="bookDetailsBg p-4 my-3">
+                                <h3 className="col-12">Kirjan tiedot</h3>
+                                <div className="col-12">Kirjan nimi: {el.kirjaNimi}</div>
+                                <div className="col-12">Kirjailija: {el.sukunimi}, {el.etunimi}</div>
+                                <div className="col-12">Sivuja: {el.sivuNro} </div>
+                                <div className="col-12">Julkaisuvuosi: {el.julkaistu} </div>
+                                <div className="col-12">Julkaisija: {el.julkaisija} </div>
+                                <div className="col-12 my-2">
+                                    <Rating rated={el.arvosana} />
                                 </div>
-                                <div className="customBorder bottomBg p-4 my-3">
-                                    <h3 className="col-12">Kirjan tiedot</h3>
-                                    <div className="col-12">Kirjan nimi: {el.kirjaNimi}</div>
-                                    <div className="col-12">Kirjailija: {el.sukunimi}, {el.etunimi}</div>
-                                    <div className="col-12">Sivuja: {el.sivuNro} </div>
-                                    <div className="col-12">Julkaisuvuosi: {el.julkaistu} </div>
-                                    <div className="col-12">Julkaisija: {el.julkaisija} </div>
-                                    <div className="col-12 my-2">
-                                        <Rating rated={el.arvosana} />
-                                    </div>
-                                    <Link to={'/Reviews/' + id}>Lue arvostelut</Link>
+                                <div className="col-1"><Link to={'/Reviews/' + id}><h5>Arvostelut</h5></Link>
                                 </div>
+                            </div>
                         </div>
                     </div>
                 ))}

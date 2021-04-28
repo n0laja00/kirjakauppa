@@ -45,10 +45,9 @@ export default function AllBooks({ category, user }) {
             address = URL3 + query;
         } else if (category?.id === "22") {
             address = URL2;
-        } else if (category?.id === undefined) {
+        } else if (category?.id == undefined) {
             address = URL2;
         };
-
         fetch(address)
             .then(response => response.json())
             .then(
@@ -66,20 +65,30 @@ export default function AllBooks({ category, user }) {
         return <Loading />
     } else {
         return (
-            <div className="row">
+            <>
                 <div className="col-12 text-center py-4">
                     <h1>{title()}</h1>
                     {muokkaus()}
                 </div>
-                <div className="row justify-content-center p-5 text-center">
+                <div className="row justify-content-center text-center">
                     {books.map(book => (
-                        <div className="card col-sm-10 col-lg-5 mx-2 my-3 cardHover" key={book.kirjaNimi}>
+                        <div className="row card col-6 col-10 col-md-5 col-lg-4 col-xl-3 m-2 cardHover"
+                            key={book.kirjaNimi}>
                             {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
-                            <Link to={'/BookDetails/' + book.kirjaNro}><img className="card-img-top p-4 img-fluid" src={imgURL + book.kuva} alt={book.kirjaNimi}></img></Link>
-                            <div className="row">
-                                <h5 className="card-title col-12">{book.kirjaNimi}</h5>
-                                <div className="card-text col-sm-12">{book.kuvaus}</div>
-                                <h5 className="card-subtitle col-md-12 text-end p-3">{book.hinta} €</h5>
+                            <div className="col-12 d-flex justify-content-center py-2">
+                                <Link to={'/BookDetails/' + book.kirjaNro}>
+                                    <img className="col-auto shadow card-img-top"
+                                        src={imgURL + book.kuva}
+                                        alt={book.kirjaNimi}>
+                                    </img>
+                                </Link>
+                            </div>
+                            <div className="row-auto">
+                                <h5 className="card-title cut-text col-12">{book.kirjaNimi}</h5>
+                                <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
+                                <h5 className="card-subtitle text-center col-md-12 text-end p-3">
+                                    <b>{book.hinta} €</b>
+                                </h5>
                                 <Link to={'/BookDetails/' + book.kirjaNro} className="link text-center">
                                     <div className="my-3 btn readMoreBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
                                 </Link>
@@ -90,7 +99,7 @@ export default function AllBooks({ category, user }) {
                         </div>
                     ))}
                 </div>
-            </div>
+            </>
         )
     }
 }
