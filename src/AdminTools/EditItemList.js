@@ -5,7 +5,6 @@ import AddItem from './AddItem';
 import Loading from '../Loading';
 
 export default function EditItemList({ user }) {
-
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
@@ -39,9 +38,12 @@ export default function EditItemList({ user }) {
         )
       }, [submit])
 
-    // if (user===null) {
-    //     return <Redirect to="/LoginPage" />
-    // }
+    if (user === null) {
+        return <Redirect to="/" />;
+    } else if (user.id !== "1" || user.fname !== "Admin" || user.lname !== "käyttäjä") {
+        return <Redirect to="/" />;
+    }
+    
 
     function toggleClass() {
         setSwitchComponents(!switchComponents);

@@ -17,15 +17,27 @@ import EditItemList from './AdminTools/EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
+import AddItem from './AdminTools/AddItem';
 
 function App() {
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
-  console.log("käyttäjä", user)
 
   function setUserStorage(e) {
-    sessionStorage.setItem = (e);
+    const newUser = e;
+    setUser(newUser);
+    sessionStorage.setItem('kayttaja', JSON.stringify(newUser));
   }
+  function clearUserStorage() {
+    sessionStorage.clear('kayttaja');
+    setUser(null);
+  }
+
+  useEffect(() => {
+    if ('kayttaja' in sessionStorage) {
+      setUser(JSON.parse(sessionStorage.getItem('kayttaja')))
+    }
+  }, [])
   
 
   let location = useLocation();
@@ -46,10 +58,11 @@ function App() {
           
           <Route path="/LoginPage" render={() => <LoginPage setUser={setUser} setUserStorage={setUserStorage} />} />
           <Route path="/LoginSuccessful" render={() => <LoginSuccessful user={user} />} />
-          <Route path="/logout" render={() => <Logout setUser={setUser} />} />
+          <Route path="/logout" render={() => <Logout setUser={setUser} clearUser={clearUserStorage} />} />
 
           <Route path="/ShoppingCart" component={ShoppingCart} />
           <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
+          <Route path="/AddItem" render={() => <AddItem user={user} />} />
 
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} user={user}/>}
