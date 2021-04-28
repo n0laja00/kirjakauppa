@@ -17,6 +17,8 @@ import EditItemList from './AdminTools/EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
+import OrderView from './AdminTools/OrderView';
+
 
 function App() {
   const [category, setCategory] = useState(null);
@@ -49,6 +51,8 @@ function App() {
           <Route path="/logout" render={() => <Logout setUser={setUser} />} />
 
           <Route path="/ShoppingCart" component={ShoppingCart} />
+          <Route path="/AdminTools/OrderView" component={OrderView} />
+
           <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
 
           <Route path="/AllBooks" render={() => <AllBooks

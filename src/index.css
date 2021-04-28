@@ -81,3 +81,16 @@ a.btn1:hover{
   max-width: 100%;
 }
 
+.order_list {
+  list-style-type: none;
+}
+
+.borderless_table{
+  border: none !important;
+  background: none !important;
+}
+
+.bg_table{
+  background: #ffffffec;
+}
+
