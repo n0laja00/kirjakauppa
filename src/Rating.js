@@ -1,4 +1,5 @@
 import { React } from 'react'
+import uuid from 'react-uuid';
 
 export default function Rating({ rated }) {
     return (
@@ -6,7 +7,7 @@ export default function Rating({ rated }) {
             {[...Array(5)].map((star, i) => {
                 const ratingValue = i + 1;
                 return (
-                    <label>
+                    <label key={uuid()}>
                         <input className="hidden"
                             type="radio"
                             name="rated"

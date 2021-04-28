@@ -339,7 +339,7 @@ footer {
 .custom_right_arrow {
   position: absolute !important;
   width: 8%;
-  height: 8%;
+  height: 10%;
   opacity: 0.8;
   right: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
@@ -354,7 +354,7 @@ footer {
 .custom_left_arrow {
   position: absolute !important;
   width: 8%;
-  height: 8%;
+  height: 10%;
   opacity: 0.8;
   left: 5px !important;
   -webkit-filter: drop-shadow(10px 10px 10px black);
@@ -406,7 +406,7 @@ footer {
   white-space: nowrap;
 }
 
-/* ostoskoriin-painike ja lue lisää */
+/* lue lisää-painike */
 .readMoreBtn {
   background-color: #66b8fc;
   border: 1px solid black;
@@ -416,6 +416,14 @@ footer {
   border: 1px solid black;
 }
 
+/* kortit */
+
+/* fonttikoko */
+.card-font {
+  font-size: 1em;
+}
+
+/* korttien hover */
 .cardHover {
   border-radius: 10px;
 }
@@ -424,6 +432,7 @@ footer {
   border-radius: 20px;
   border: 1px solid rgb(0, 0, 0, 0.5);
 }
+
 
 /* bookdetails.js tyylit */
 .bookDetailsBg {
@@ -440,7 +449,6 @@ footer {
 }
 
 /* AddItem tuotteen lisääminen */
-
 .addItemContainer {
   padding: 20px;
 }
@@ -458,6 +466,7 @@ footer {
   position: absolute;
   font-size: 1.2em;
 }
+/* breadcrumbs responsiivisuus */
 @media only screen and (max-width: 991px) {
   .breadCrumbs {
     margin-top: 5px;
@@ -468,31 +477,44 @@ footer {
     font-size: 1.3em;
   }
 }
+
 .hidden {
   display: none;
 }
 
 /* karusellin kuvat */
-/* .image_container {
-  display: flex;
-  justify-content: center;
-} */
-.card-font {
-  font-size: 1em;
+
+/* testing */
+.carouselBorder {
+  border: 2px solid white;
+  border-radius: 50px;
+  /* box-shadow: 2px 10px 20px rgba(0, 0, 0, 0.5); */
 }
+@media only screen and (max-width: 575px) {
+  .carouselBorder {
+    border: none;
+    border-radius: 0px;
+  }
+}
+
 
 .carousel-card-img-top {
   display: flex;
-  max-height: 350px;
-  width: auto;
+  max-height: 300px;
+  max-width: auto;
 }
 
-@media only screen and (max-width: 520px) {
+@media only screen and (min-width: 360px) {
   .carousel-card-img-top {
-    display: flex;
+    max-height: 210px;
+    width: auto;
+  }
+}
+
+@media only screen and (min-width: 520px) {
+  .carousel-card-img-top {
     max-height: 250px;
     width: auto;
-    padding: 50px;
   }
 }
 
@@ -509,33 +531,32 @@ footer {
 }
 
 /*  korttien kuvat ja niiden responsiivisuus *PUKE* */
+
+.card-img-top{
+  display: flex;
+  max-width: 300px;
+}
+
 @media only screen and (max-width: 381px) {
-  .card-img-top,
-  .card-img-top img {
-    display: flex;
+  .card-img-top {
     max-height: 100px;
     width: auto;
   }
 }
 @media only screen and (min-width: 576px) {
-  .card-img-top,
-  .card-img-top img {
-    display: flex;
+  .card-img-top {
     max-height: 250px;
     width: auto;
   }
 }
 @media only screen and (min-width: 768px) {
-  .card-img-top,
-  .card-img-top img {
-    display: flex;
+  .card-img-top {
     max-height: 330px;
     width: auto;
   }
 }
 @media only screen and (max-width: 1199px) {
   .card-img-top {
-    display: flex;
     max-height: 20px;
     width: auto;
   }
@@ -543,7 +564,6 @@ footer {
 
 @media only screen and (max-width: 1399px) {
   .card-img-top {
-    display: flex;
     max-height: 400px;
     width: auto;
   }
@@ -551,7 +571,6 @@ footer {
 
 @media only screen and (min-width: 1400px) {
   .card-img-top {
-    display: flex;
     max-height: 450px;
     width: auto;
   }

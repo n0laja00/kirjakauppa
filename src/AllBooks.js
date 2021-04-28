@@ -48,7 +48,6 @@ export default function AllBooks({ category, user }) {
         } else if (category?.id === undefined) {
             address = URL2;
         };
-
         fetch(address)
             .then(response => response.json())
             .then(
@@ -73,8 +72,8 @@ export default function AllBooks({ category, user }) {
                 </div>
                 <div className="row justify-content-center text-center">
                     {books.map(book => (
-                        <div className="row card col-6 col-10 col-md-5 col-lg-4 col-xl-3 m-2 cardHover" 
-                        key={book.kirjaNimi}>
+                        <div className="row card col-6 col-10 col-md-5 col-lg-4 col-xl-3 m-2 cardHover"
+                            key={book.kirjaNimi}>
                             {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
                             <div className="col-12 d-flex justify-content-center py-2">
                                 <Link to={'/BookDetails/' + book.kirjaNro}>
@@ -87,7 +86,9 @@ export default function AllBooks({ category, user }) {
                             <div className="row-auto">
                                 <h5 className="card-title cut-text col-12">{book.kirjaNimi}</h5>
                                 <div className="card-text cut-text col-sm-12">{book.kuvaus}</div>
-                                <h5 className="card-subtitle text-center col-md-12 text-end p-3"><b>{book.hinta} €</b></h5>
+                                <h5 className="card-subtitle text-center col-md-12 text-end p-3">
+                                    <b>{book.hinta} €</b>
+                                </h5>
                                 <Link to={'/BookDetails/' + book.kirjaNro} className="link text-center">
                                     <div className="my-3 btn readMoreBtn col-8" name={book.kirjaNimi}>Lue lisää</div>
                                 </Link>

@@ -41,7 +41,7 @@ export default function BookCarousel({ bookdata }) {
   const responsive = {
     desktop: {
       breakpoint: { max: 3000, min: 992 },
-      items: 2,
+      items: 3,
       slidesToSlide: 1 // optional, default to 1.
     },
     tablet: {
@@ -76,16 +76,16 @@ export default function BookCarousel({ bookdata }) {
         centerMode={true}
         responsive={responsive}
         infinite={true}
-        removeArrowOnDeviceType={["tablet", "mobile"]}
-      >
+        removeArrowOnDeviceType={["tablet", "mobile"]} 
+        className="carouselBorder">
 
         {/* Ulommaisin DIV on yksi kirjakarusellin tuote. */}
         {books.map(book => (
-          <div className="row col-11 mb-3 justify-content-center" key={uuid()}>
-            <div className="card col-12 cardHover" key={book.kirjaNimi}>
+          <div className="row justify-content-center mx-1 my-3" key={uuid()}>
+            <div className="card shadow cardHover col-xl-10" key={book.kirjaNimi}>
               {/* kuvaa klikkaamalla pääsee kirjan sivulle */}
               <Link to={'/BookDetails/' + book.kirjaNro} className="d-flex justify-content-center">
-                <img className="carousel-card-img-top py-3"
+                <img className="carousel-card-img-top p-3"
                   src={imgURL + book.kuva}
                   alt={book.kirjaNimi}>
                 </img>

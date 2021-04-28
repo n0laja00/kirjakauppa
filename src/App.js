@@ -21,7 +21,6 @@ import CartContextProvider from './contexts/CartContext';
 function App() {
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
-  console.log("käyttäjä", user)
 
   function setUserStorage(e) {
     sessionStorage.setItem = (e);

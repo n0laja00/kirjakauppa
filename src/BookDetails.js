@@ -1,6 +1,7 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import uuid from 'react-uuid';
 import AddToCart from './cartComponents/AddToCart';
 import CartContextProvider from './contexts/CartContext';
 import Loading from './Loading';
@@ -26,6 +27,7 @@ export default function BookDetails() {
                     setIsLoaded(true);
                 }, (error) => {
                     setError(error);
+                    console.log(error)
                     setIsLoaded(false);
                 }
             )
@@ -37,7 +39,7 @@ export default function BookDetails() {
         return (
             <>
                 {book.map(el => (
-                    <div className="row " key={el.kirjaNro}>
+                    <div className="row " key={uuid()}>
                         <h1 className="col-12 my-4 ">{el.kirjaNimi}</h1>
                         <div className="col-md-6">
                             <img className="mb-3 img-fluid bookDetailsBorder" src={imgURL + el.kuva} alt={el.kirjaNimi} />
