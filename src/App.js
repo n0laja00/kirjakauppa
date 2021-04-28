@@ -17,15 +17,21 @@ import EditItemList from './AdminTools/EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
+import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 function App() {
+
+
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
+  const [book1, setBook1] = useState('');
 
   function setUserStorage(e) {
     sessionStorage.setItem = (e);
   }
-  
+
+
+
 
   let location = useLocation();
 

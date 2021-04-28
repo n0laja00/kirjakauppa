@@ -10,6 +10,10 @@ export default function EditItemList({ user }) {
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
+    const [book1, setBook1] = useState('');
+    const [book2, setBook2] = useState('');
+    const [book3, setBook3] = useState('');
+    const [book4, setBook4] = useState('');
 
     //Kirjalistan päivittäminen 
     const [submit, setSubmit] = useState(false);
@@ -75,6 +79,8 @@ export default function EditItemList({ user }) {
     return (
         <>
         <section className={"p-0" + `section ${switchComponents ? "hidden" : ""}`}>
+            <p>{book1}</p>
+            <p>{book2}</p>
         <div className="itemTable">
             <table>
                 <tr className="text-center">
@@ -117,7 +123,8 @@ export default function EditItemList({ user }) {
     <button onClick={toggleClass} className="ms-2 btn btn-primary">Kaikki tuotteet</button>
     </section>
     <section>
-        <CarouselBookSelect/>
+        <CarouselBookSelect
+         sendToCarousel={bookS1 => setBook1(bookS1), bookS2 => setBook2(bookS2)}/>
     </section>
     </>
     )
