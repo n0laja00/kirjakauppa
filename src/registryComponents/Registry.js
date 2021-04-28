@@ -83,18 +83,7 @@ export default function Registry() {
         localStorage.setItem('cart', JSON.stringify([]));
         setIsConfirmed(true);
     };
-
-
-    function test(e) {
-        e.preventDefault();
-        if (shippingAddress.length <= 0) {
-            setShippingAddress(address);
-        }
-        console.log(shippingAddress);
-    }
-
-
-
+    
         return (
             <div className="row registry_page">
                 <h1 className="text-primary col mt-2">Kassa</h1>

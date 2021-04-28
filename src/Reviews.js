@@ -1,5 +1,6 @@
 import { React, useState, useEffect } from 'react'
 import { useParams } from 'react-router';
+import uuid from 'react-uuid';
 import Loading from './Loading';
 import Reviewsmap from './Reviewsmap';
 
@@ -72,15 +73,15 @@ export default function Reviews() {
                 <form onSubmit={saveReview} method="POST">
                     <div className="row  mx-3 mt-5 p-4 bottomBg customBorder">
                         <div className="col-sm-6">
-                            <label for="reviewerName" className="form-label">Arvostelija</label>
+                            <label htmlFor="reviewerName" className="form-label">Arvostelija</label>
                             <input type="text" className="form-control" id="reviewerName" name="reviewerName" placeholder="Nimi" value={name} onChange={e => setName(e.target.value)} required />
                         </div>
                         <div className="col-sm-6">
-                            <label for="reviewTitle" className="form-label">Otsikko</label>
+                            <label htmlFor="reviewTitle" className="form-label">Otsikko</label>
                             <input type="text" className="form-control" id="reviewTitle" name="reviewTitle" placeholder="Arvostelun otsikko" value={title} onChange={e => setTitle(e.target.value)} required />
                         </div>
                         <div className="mb-3">
-                            <label for="reviewText" className="form-label  mt-2">Arvostelu</label>
+                            <label htmlFor="reviewText" className="form-label  mt-2">Arvostelu</label>
                             <textarea className="form-control" id="reviewText" name="reviewText" rows="3" placeholder="Kirjoita arvostelu tähän" value={text} onChange={e => setText(e.target.value)}></textarea>
                             <div className="col-sm-6 mt-2">Montako tähteä antaisit kirjalle?</div>
                             <div className="col-sm-6 mt-2">
@@ -88,7 +89,7 @@ export default function Reviews() {
                                 {[...Array(5)].map((star, i) => {
                                     const ratingValue = i + 1;
                                     return (
-                                        <label>
+                                        <label key={uuid()}>
                                             <input className="hidden"
                                                 type="radio"
                                                 name="rating"

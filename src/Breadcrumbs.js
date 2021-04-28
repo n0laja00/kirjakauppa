@@ -1,6 +1,7 @@
 import { useState, useEffect, React } from 'react'
 import { useHistory } from 'react-router'
 import { Link } from 'react-router-dom';
+import uuid from 'react-uuid'
 
 export default function Breadcrumbs() {
 
@@ -33,20 +34,20 @@ export default function Breadcrumbs() {
         return (
             <div className="row breadCrumbs">
                 <Link to="/" className="link col-auto varjo"> <i className="fa fa-home"></i> </Link>
-                <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
-                <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
+                <Link to="#" className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
+                    <Link to="#" className="link col-auto varjo" onClick={goToPreviousPath}>Edellinen</Link>
 
                 {/* breadcrumbs-taulukon map span-elementteihin */}
                 {breadCrumbs.map(item => (
-                    <span className="col-auto">{item} </span>
+                    <span className="col-auto" key={uuid()}>{item} </span>
                 ))}
             </div>
         )
     } else { /* return etusivulla */
         return (
             <div className="row breadCrumbs">
-                <Link className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
-                <Link className="link col-auto" onClick={goToPreviousPath}>Edellinen </Link>
+                <Link to="#" className="link col-auto varjo" onClick={goToPreviousPath}> <i className="fa fa-arrow-circle-left"></i> </Link>
+                <Link to="#" className="link col-auto varjo" onClick={goToPreviousPath}>Edellinen </Link>
                 <div className="col-auto">
                     Home
                 </div>
