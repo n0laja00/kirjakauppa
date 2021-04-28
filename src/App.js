@@ -17,18 +17,21 @@ import EditItemList from './AdminTools/EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
-import OrderView from './AdminTools/OrderView';
-
+import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 function App() {
+
+
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
-  console.log("käyttäjä", user)
+  const [book1, setBook1] = useState('');
 
   function setUserStorage(e) {
     sessionStorage.setItem = (e);
   }
-  
+
+
+
 
   let location = useLocation();
 
@@ -51,7 +54,7 @@ function App() {
           <Route path="/logout" render={() => <Logout setUser={setUser} />} />
 
           <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/AdminTools/OrderView" component={OrderView} />
+
 
           <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
 

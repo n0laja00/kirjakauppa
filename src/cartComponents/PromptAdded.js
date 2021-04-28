@@ -4,7 +4,7 @@ export default function PromptAdded({ prompt }) {
 
     if (prompt) {
         return (
-            <div className="bg-warning prompt shadow">
+            <div className="prompt shadow">
                 Lisätty ostoskoriin.
             </div>
         )

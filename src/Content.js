@@ -2,19 +2,19 @@ import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
 import BookCarousel from './Carousel'
 import Loading from './Loading';
+import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 export default function Content({ setCategory }) {
 
     //Tässä on kirjat, jotka menee book carouseliin. Ne on tässä vielä ja jos aika riittää tehdään muuttujille niin, että ylläpitäjänä voit valita kuukauden kirjat.
-    const book1 = "Jannen kirja";
-    const book2 = "Terror of London";
-    const book3 = "Maamme Kauneus";
-    const book4 = "Jalkaväen Kauhein Hetki";
-    const selected = "kuukaudenkirjat.php?book1=" + book1 + "&book2=" + book2 + "&book3=" + book3 + "&book4=" + book4;
+
+    const selected = "kuukaudenkirjat.php";
     const newbooks = "uutuusKirjat.php";
     const URL = 'http://localhost/kirjakauppa/navKategoriat.php/';
     const [categories, setCategories] = useState([]);
     const [isLoaded, setIsLoaded] = useState(false);
+
+  
 
     useEffect(() => {
         (async () => {
@@ -81,8 +81,8 @@ export default function Content({ setCategory }) {
                     </div>
                 </div>
                 <h3>Kuukauden kirjat</h3>
-                <div className="row carouselBorder">
-                    <BookCarousel bookdata={selected} />
+                <div className="row carouselBorder mb-5">
+                    <BookCarousel bookdata={selected}/>
                 </div>
                 <h3>Uutuudet</h3>
                 <div className="row carouselBorder">

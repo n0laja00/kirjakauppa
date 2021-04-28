@@ -1,4 +1,5 @@
 import React from 'react'
+import uuid from 'react-uuid'
 import Rating from './Rating'
 
 export default function Reviewsmap({ review }) {
@@ -9,7 +10,7 @@ export default function Reviewsmap({ review }) {
             </h3>
             <div className="col mt-3">
                 {review.map(rev => (
-                    <div className="row" key={rev.arvosteluNro}>
+                    <div className="row" key={uuid()}>
                         <h4 className="col-sm-6 mb-3">{rev.otsikko}</h4>
                         <div className="col-sm-6">
                         <Rating rated={rev.arvosana}/>
