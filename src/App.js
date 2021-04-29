@@ -18,10 +18,15 @@ import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
 import AddItem from './AdminTools/AddItem';
+import OrderView from './AdminTools/OrderView';
+import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 function App() {
+
+
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
+  const [book1, setBook1] = useState('');
 
   function setUserStorage(e) {
     const newUser = e;
@@ -61,6 +66,8 @@ function App() {
           <Route path="/logout" render={() => <Logout setUser={setUser} clearUser={clearUserStorage} />} />
 
           <Route path="/ShoppingCart" component={ShoppingCart} />
+          <Route path="/AdminTools/OrderView" render={() => <OrderView user={user} />}  />
+
           <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
           <Route path="/AddItem" render={() => <AddItem user={user} />} />
 

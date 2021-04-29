@@ -16,12 +16,20 @@ export default function LoginSuccessful({user}) {
 
     function muokkaus() {
         if (user.id === "1" && user.fname === "Admin" && user.lname === "käyttäjä") {
-            return <div className="text-center mt-3">
-            <Link to="/EditItemList" className="text-white">
-                <i class="fa fa-genderless" aria-hidden="true"></i>
-                Muokkaa tuotteita
-            </Link>
-        </div>;
+            return <>
+                <div className="text-center mt-3">
+                    <Link to="/EditItemList" className="text-white">
+                        <i class="fa fa-genderless" aria-hidden="true"></i>
+                        Muokkaa tuotteita
+                    </Link>
+                </div>
+                <div className="text-center mt-3">             
+                    <Link to="../AdminTools/OrderView" className="text-white">
+                        <i class="fa fa-genderless" aria-hidden="true"></i>
+                        Tarkastele tilauksia
+                    </Link>
+                </div>
+            </>;
         }
     }
 
@@ -46,7 +54,7 @@ export default function LoginSuccessful({user}) {
                                 Kirjaudu ulos
                             </Link>
                         </div>
-                        
+
                         <div className="col-12 my-2">
                         </div>
                     </div>
