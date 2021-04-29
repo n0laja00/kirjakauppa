@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Header from './Header';
 import LoginPage from './loginComponents/LoginPage';
 import LoginSuccessful from './loginComponents/LoginSuccessful';
+import AccountSettings from './loginComponents/AccountSettings';
 import Logout from './loginComponents/Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
@@ -63,6 +64,7 @@ function App() {
           
           <Route path="/LoginPage" render={() => <LoginPage setUser={setUser} setUserStorage={setUserStorage} />} />
           <Route path="/LoginSuccessful" render={() => <LoginSuccessful user={user} />} />
+          <Route path="/loginComponents/AccountSettings" render={() => <AccountSettings user={user} />} />
           <Route path="/logout" render={() => <Logout setUser={setUser} clearUser={clearUserStorage} />} />
 
           <Route path="/ShoppingCart" component={ShoppingCart} />

@@ -10,7 +10,6 @@ export default function LoginSuccessful({user}) {
 
     function userName() {
         if (user.fname !== undefined)
-        console.log(user.fname)
         return user.fname;
     }
 
@@ -47,6 +46,12 @@ export default function LoginSuccessful({user}) {
                             </Link>
                         </div>
                         {muokkaus()}
+                        <div className="text-center mt-3">
+                            <Link to="/loginComponents/AccountSettings" className="text-white">
+                                <i class="fa fa-genderless" aria-hidden="true"></i>
+                                Tilin asetukset
+                            </Link>
+                        </div>
                         <div className="text-center mt-3">
                         
                             <Link to="/Logout" className="text-white">
