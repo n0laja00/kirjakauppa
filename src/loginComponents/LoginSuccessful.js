@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
 
@@ -10,18 +10,25 @@ export default function LoginSuccessful({user}) {
 
     function userName() {
         if (user.fname !== undefined)
-        console.log(user.fname)
         return user.fname;
     }
 
     function muokkaus() {
         if (user.id === "1" && user.fname === "Admin" && user.lname === "käyttäjä") {
-            return <div className="text-center mt-3">
-            <Link to="/EditItemList" className="text-white">
-                <i class="fa fa-genderless" aria-hidden="true"></i>
-                Muokkaa tuotteita
-            </Link>
-        </div>;
+            return <>
+                <div className="text-center mt-3">
+                    <Link to="/EditItemList" className="text-white">
+                        <i class="fa fa-genderless" aria-hidden="true"></i>
+                        Muokkaa tuotteita
+                    </Link>
+                </div>
+                <div className="text-center mt-3">             
+                    <Link to="../AdminTools/OrderView" className="text-white">
+                        <i class="fa fa-genderless" aria-hidden="true"></i>
+                        Tarkastele tilauksia
+                    </Link>
+                </div>
+            </>;
         }
     }
 
@@ -40,13 +47,19 @@ export default function LoginSuccessful({user}) {
                         </div>
                         {muokkaus()}
                         <div className="text-center mt-3">
+                            <Link to="/loginComponents/AccountSettings" className="text-white">
+                                <i class="fa fa-genderless" aria-hidden="true"></i>
+                                Tilin asetukset
+                            </Link>
+                        </div>
+                        <div className="text-center mt-3">
                         
                             <Link to="/Logout" className="text-white">
                                 <i class="fa fa-genderless" aria-hidden="true"></i>
                                 Kirjaudu ulos
                             </Link>
                         </div>
-                        
+
                         <div className="col-12 my-2">
                         </div>
                     </div>
