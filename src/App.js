@@ -17,7 +17,6 @@ import EditItemList from './AdminTools/EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
-import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 function App() {
 
