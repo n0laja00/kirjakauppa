@@ -18,7 +18,6 @@ import EditItemList from './AdminTools/EditItemList';
 import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
-import AddItem from './AdminTools/AddItem';
 import OrderView from './AdminTools/OrderView';
 import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
@@ -71,7 +70,6 @@ function App() {
           <Route path="/AdminTools/OrderView" render={() => <OrderView user={user} />}  />
 
           <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
-          <Route path="/AddItem" render={() => <AddItem user={user} />} />
 
           <Route path="/AllBooks" render={() => <AllBooks
             category={category} user={user}/>}
