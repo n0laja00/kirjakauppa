@@ -165,6 +165,7 @@ const SeeOrders = () => {
                                   </div>
                                   <div>
                                     <label>Toimuksen Tila:
+                                      <p>k = käsittelyssä, l = lähetetty, s = saapunut, v = vastaanotettu.</p>
                                       <input value={editToimitusTila} onChange={e => setEditToimitusTila(e.target.value)}/>
                                     </label>
                                   </div>
