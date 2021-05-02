@@ -92,16 +92,16 @@ export default function Registry() {
                         <div className="col mt-3 ">
                             <div className="row">
                                 <label className="float-start col">Etunimi
-                                <input type="text" value={firstName} maxlength="20" required className="form-control form-control-lg" name="firstName" placeholder="Etunimi" onChange={e => setFirstName(e.target.value)} />
+                                <input type="text" value={firstName} maxLength="20" required className="form-control form-control-lg" name="firstName" placeholder="Etunimi" onChange={e => setFirstName(e.target.value)} />
                                 </label>
                                 <label className="float-end col"> Sukunimi
-                                <input type="text" value={lastName} maxlength="20" required className="form-control form-control-lg" name="lastName" placeholder="Sukunimi" onChange={e => setLastTName(e.target.value)} />
+                                <input type="text" value={lastName} maxLength="20" required className="form-control form-control-lg" name="lastName" placeholder="Sukunimi" onChange={e => setLastTName(e.target.value)} />
                                 </label>
                             </div>
                             <h2 className="col mt-4">Yhteystiedot:</h2>
                             <div className="mt-3 row">
                                 <label>Sähköposti
-                                <input type="email" value={email} maxlength="80" required className="form-control form-control-lg" name="email" placeholder="Sähköposti" onChange={e => setEmail(e.target.value)} />
+                                <input type="email" value={email} maxLength="80" required className="form-control form-control-lg" name="email" placeholder="Sähköposti" onChange={e => setEmail(e.target.value)} />
                                 </label>
                             </div>
                             <div className="mt-3 row">
@@ -116,12 +116,12 @@ export default function Registry() {
                             </div>
                             <div className="mt-3 row">
                                 <label>Osoite
-                                <input type="text" value={address} maxlength="50" required className="form-control form-control-lg" name="address" placeholder="Osoite" onChange={e => setAddress(e.target.value)} />
+                                <input type="text" value={address} maxLength="50" required className="form-control form-control-lg" name="address" placeholder="Osoite" onChange={e => setAddress(e.target.value)} />
                                 </label>
                             </div>
                             <div className="mt-3 row">
                                 <label className="float-start col">Postinumero
-                                <input type="text" value={postalCode} minlength="4" maxlength="5" required className="form-control form-control-lg" name="postalCode" placeholder="Postinumero" onChange={e => setPostalCode(e.target.value)} />
+                                <input type="text" value={postalCode} minlength="4" maxLength="5" required className="form-control form-control-lg" name="postalCode" placeholder="Postinumero" onChange={e => setPostalCode(e.target.value)} />
                                 </label>
                                 <label className="float-end col">Kaupunki
                                 <input type="text" value={city} required className="form-control form-control-lg" name="city" placeholder="Kaupunki" onChange={e => setCity(e.target.value)} />
@@ -133,12 +133,12 @@ export default function Registry() {
                             </div>
                             <div className="mt-3 row">
                                 <label>Toimitusosoite (Valinnainen)
-                                <input type="text" value={shippingAddress} maxlength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)} />
+                                <input type="text" value={shippingAddress} maxLength="50" className="form-control form-control-lg" name="shippingAddress" placeholder="Toimitusosoite (Valinnainen)" onChange={e => setShippingAddress(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
                             <label>Postinumero (Valinnainen)
-                                <input type="text" value={shippingPostalCode} minlength="4" maxlength="5" className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)} />
+                                <input type="text" value={shippingPostalCode} minlength="4" maxLength="5" className="form-control form-control-lg" name="shippingPostalCode" placeholder="Postinumero (Valinnainen)" onChange={e => setShippingPostalCode(e.target.value)} />
                             </label>
                         </div>
                         <div className="mt-3 row">
@@ -197,7 +197,7 @@ export default function Registry() {
                                 </div>
                             </div>
 
-                            <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">{!isConfirmed ? (<button type="submit" class="btn btn-primary">Tilaa</button>) : (<LoadingButton />)}
+                            <div className="col text-lg-end text-md-center text-sm-center mt-5 mb-4">{!isConfirmed ? (<button type="submit" className="btn btn-primary">Tilaa</button>) : (<LoadingButton />)}
                             </div>
                         </div>
                     </form>

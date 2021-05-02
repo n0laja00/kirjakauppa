@@ -1,6 +1,6 @@
 import { useEffect, useState, React } from 'react';
-import { Link } from 'react-router-dom';
 import Loading from '../Loading';
+
 
 export default function CarouselBookSelect(props) {
 
@@ -74,30 +74,30 @@ export default function CarouselBookSelect(props) {
             <h3>Valitse etusivulla näytettävät kuukauden kirjat</h3>
             <form onSubmit={addBookCarousel}>
             <select id="kirja1" className="form-select my-1" required onChange={e => setBook1(e.target.value)}>
-                    <option selected>Valitse ensimmäinen kirja</option>
+                    <option>Valitse ensimmäinen kirja</option>
                     {books.map(book => (
-                        <option>{book.kirjaNimi}</option>
+                        <option key={book.kirjaNro}>{book.kirjaNimi}</option>
                     ))}
             </select>
 
             <select id="kirja2" className="form-select my-1" required onChange={e => setBook2(e.target.value)}>
-                    <option selected>Valitse toinen kirja</option>
+                    <option>Valitse toinen kirja</option>
                     {books.map(book => (
-                        <option>{book.kirjaNimi}</option>
+                        <option key={book.kirjaNro}>{book.kirjaNimi}</option>
                     ))}
             </select>
 
             <select id="kirja3" className="form-select my-1" required onChange={e => setBook3(e.target.value)}>
-                    <option selected>Valitse kolmas kirja</option>
+                    <option>Valitse kolmas kirja</option>
                     {books.map(book => (
-                        <option>{book.kirjaNimi}</option>
+                        <option key={book.kirjaNro}>{book.kirjaNimi}</option>
                     ))}
             </select>
 
             <select id="kirja4" className="form-select my-1" required onChange={e => setBook4(e.target.value)}>
-                    <option selected>Valitse neljäs kirja</option>
+                    <option>Valitse neljäs kirja</option>
                     {books.map(book => (
-                        <option>{book.kirjaNimi}</option>
+                        <option key={book.kirjaNro}>{book.kirjaNimi}</option>
                     ))}
             </select>
             <button className="btn btn-primary">Lähetä tiedot</button>

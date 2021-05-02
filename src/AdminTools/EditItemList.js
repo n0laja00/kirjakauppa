@@ -4,15 +4,13 @@ import { Link } from 'react-router-dom';
 import AddItem from './AddItem';
 import Loading from '../Loading';
 import CarouselBookSelect from './CarouselBookSelect';
+import uuid from "react-uuid"
 
 export default function EditItemList({ user }) {
     const [books, setBooks] = useState([]);
     const [switchComponents, setSwitchComponents] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
-    const [book1, setBook1] = useState('');
-    const [book2, setBook2] = useState('');
-    const [book3, setBook3] = useState('');
-    const [book4, setBook4] = useState('');
+
 
     //Kirjalistan päivittäminen 
     const [submit, setSubmit] = useState(false);
@@ -81,10 +79,10 @@ export default function EditItemList({ user }) {
     return (
         <>
         <section className={"p-0" + `section ${switchComponents ? "hidden" : ""}`}>
-            <p>{book1}</p>
-            <p>{book2}</p>
+            
         <div className="itemTable">
             <table>
+                <thead>
                 <tr className="text-center">
                     <th>Tuotenimi</th>
                     <th>Sivumäärä</th>
@@ -96,14 +94,15 @@ export default function EditItemList({ user }) {
                     <th>Julkaisupäivä</th>
                     <th>Luotu</th>
                 </tr>
+                </thead>
             {books.map(book => (
-                <>
+                <tbody key={uuid()}>
                 <tr className="listaValinta">
                 
                 <td><a className="poistoPainike"
                  onClick={() => { if (window.confirm('Oletko varma, että haluat poistaa tämän tuotteen:' + book.kirjaNimi + '?')) onRemove(book.kirjaNro) } }>
                      Poista</a>{book.kirjaNimi}
-                     <a className="muokkaaPainike"><Link to={'/UpdateItem/' + book.kirjaNro} className="link">Muokkaa</Link></a>
+                     <Link to={'/UpdateItem/' + book.kirjaNro} className="link muokkaaPainike">Muokkaa</Link>
                 </td>
                 <td>{book.sivuNro}</td>
                 <td>{book.hinta}</td>
@@ -114,7 +113,7 @@ export default function EditItemList({ user }) {
                 <td>{book.julkaistu}</td>
                 <td>{book.luotu}</td>
                 </tr>
-                </>
+                </tbody>
              ))}
             </table>
         </div>
@@ -125,8 +124,7 @@ export default function EditItemList({ user }) {
     <button onClick={toggleClass} className="ms-2 btn btn-primary">Kaikki tuotteet</button>
     </section>
     <section>
-        <CarouselBookSelect
-         sendToCarousel={bookS1 => setBook1(bookS1), bookS2 => setBook2(bookS2)}/>
+        <CarouselBookSelect />
     </section>
     </>
     )

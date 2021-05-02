@@ -29,14 +29,14 @@ export default function Logout({clearUser}) {
               <div className="customLoginBorder  p-4 my-3">
                   <h3 className="text-center text-white">Olet kirjautunut ulos</h3>
                   <div className="text-center mt-4">
-                    <Link class="text-white" to="/LoginPage">
-                      <i class="fa fa-genderless" aria-hidden="true"></i>
+                    <Link className="text-white" to="/LoginPage">
+                      <i className="fa fa-genderless" aria-hidden="true"></i>
                       Kirjaudu sisään
                     </Link>
                   </div>
                   <div className="text-center mt-3">
-                    <Link class="text-white" to="/">
-                      <i class="fa fa-genderless" aria-hidden="true"></i>
+                    <Link className="text-white" to="/">
+                      <i className="fa fa-genderless" aria-hidden="true"></i>
                       Takaisin etusivulle
                     </Link>
                   </div>
