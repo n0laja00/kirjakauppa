@@ -1,9 +1,7 @@
 import { useState, useEffect, React } from 'react';
-import { Redirect } from 'react-router';
 import EditItemList from './EditItemList';
 
-export default function AddItem({user}) {
-
+export default function AddItem() {
     //Kirjan lisäämiseen
     const [allPublishers, setAllPublishers] = useState([]);
     const [allBookCategories, setAllCategories] = useState([]);
