@@ -1,8 +1,11 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
 import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 
-export default function LoginSuccessful({user}) {
+export default function AccountSettings({user}) {
+
+    let history = useHistory();
     
     if (user===null) {
         return <Redirect to="/LoginPage" />
@@ -10,12 +13,19 @@ export default function LoginSuccessful({user}) {
 
     function userName() {
         if (user.fname !== undefined)
-        return user.fname;
+        return user.fname + " " + user.lname;
     }
 
     function muokkaus() {
         if (user.id === "1" && user.fname === "Admin" && user.lname === "käyttäjä") {
             return <>
+                <div className="text-center mt-3">
+                    <Link className="text-white" to={{pathname: '/AllBooks',
+                        state: {id: "22", name: "Kaikki kirjat"}}}>
+                        <i className="fa fa-genderless" aria-hidden="true"></i>
+                        Tarkastele kirjoja
+                    </Link>
+                </div>
                 <div className="text-center mt-3">
                     <Link to="/EditItemList" className="text-white">
                         <i className="fa fa-genderless" aria-hidden="true"></i>
@@ -32,26 +42,59 @@ export default function LoginSuccessful({user}) {
         }
     }
 
+    function remove(id) {
+        let status = 0;
+        fetch('http://localhost/kirjakauppa/deleteUser.php/', {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-type': 'application/json',
+        },
+        body: JSON.stringify({
+            id: id
+        })
+        })
+        .then(res => {
+        status = parseInt(res.status);
+        return res.json();
+        })
+        .then(
+        (res) => {
+            if (status === 200) {
+                alert('Tilisi on poistettu.');
+                history.push('/Logout');
+            } else {
+            alert(res.error);
+            }
+        }, (error) => {
+            alert(error);
+        }
+        )
+    }
+
+
+    function poisto() {
+        if (user.id !== "1" || user.fname !== "Admin" || user.lname !== "käyttäjä") {
+            return <div className="text-center mt-3">
+                        <button onClick={() => remove(user.id)} className="loginButton mt-2 px-5 py-1">Poista tili</button>
+                    </div>
+                }
+    }
+    
+
     return (
         <>
             <div className="row d-flex justify-content-center" >
-                <div className="col-md-6">
+                <div className="col-md-8 col-lg-6">
                     <div className="customLoginBorder p-4 my-3">
-                        <h3 className="text-center text-white">Tervetuloa {userName()}</h3>
+                        <h3 className="text-center text-white">{userName()}</h3>
                         <div className="text-center mt-4">
-                            <Link className="text-white" to={{pathname: '/AllBooks',
-                                state: {id: "22", name: "Kaikki kirjat"}}}>
+                            <Link className="text-white" to="/">
                                 <i className="fa fa-genderless" aria-hidden="true"></i>
-                                Tarkastele kirjoja
+                                Takaisin Kirjakauppaan
                             </Link>
                         </div>
                         {muokkaus()}
-                        <div className="text-center mt-3">
-                            <Link to="/loginComponents/AccountSettings" className="text-white">
-                                <i className="fa fa-genderless" aria-hidden="true"></i>
-                                Tilin asetukset
-                            </Link>
-                        </div>
                         <div className="text-center mt-3">
                         
                             <Link to="/Logout" className="text-white">
@@ -59,7 +102,7 @@ export default function LoginSuccessful({user}) {
                                 Kirjaudu ulos
                             </Link>
                         </div>
-
+                        {poisto()}
                         <div className="col-12 my-2">
                         </div>
                     </div>

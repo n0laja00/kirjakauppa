@@ -24,8 +24,8 @@ export default function Header({user}) {
                 </ul>;
         } else {
             return  <ul className="dropdown-menu" aria-labelledby="dropdownMenu2">
-                    <li><Link className="link dropdown-item" to="/LoginPage">Tilin asetukset</Link></li>
-                    <li><hr class="dropdown-divider"/></li>
+                    <li><Link className="link dropdown-item" to="/loginComponents/AccountSettings">Tilin asetukset</Link></li>
+                    <li><hr className="dropdown-divider"/></li>
                     <li><Link className="link dropdown-item" to="/Logout">Kirjaudu ulos</Link></li>
                 </ul>;
         }

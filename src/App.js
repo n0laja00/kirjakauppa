@@ -6,6 +6,7 @@ import Footer from './Footer';
 import Header from './Header';
 import LoginPage from './loginComponents/LoginPage';
 import LoginSuccessful from './loginComponents/LoginSuccessful';
+import AccountSettings from './loginComponents/AccountSettings';
 import Logout from './loginComponents/Logout';
 import ShoppingCart from './ShoppingCart';
 import AllBooks from './AllBooks';
@@ -18,21 +19,29 @@ import OrderConfirmed from './registryComponents/OrderConfirmed';
 import UpdateItem from './AdminTools/UpdateItem';
 import CartContextProvider from './contexts/CartContext';
 import OrderView from './AdminTools/OrderView';
-import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 function App() {
 
 
   const [category, setCategory] = useState(null);
   const [user, setUser] = useState(null);
-  const [book1, setBook1] = useState('');
 
   function setUserStorage(e) {
-    sessionStorage.setItem = (e);
+    const newUser = e;
+    setUser(newUser);
+    sessionStorage.setItem('kayttaja', JSON.stringify(newUser));
+  }
+  function clearUserStorage() {
+    sessionStorage.clear('kayttaja');
+    setUser(null);
   }
 
-
-
+  useEffect(() => {
+    if ('kayttaja' in sessionStorage) {
+      setUser(JSON.parse(sessionStorage.getItem('kayttaja')))
+    }
+  }, [])
+  
 
   let location = useLocation();
 
@@ -52,10 +61,11 @@ function App() {
           
           <Route path="/LoginPage" render={() => <LoginPage setUser={setUser} setUserStorage={setUserStorage} />} />
           <Route path="/LoginSuccessful" render={() => <LoginSuccessful user={user} />} />
-          <Route path="/logout" render={() => <Logout setUser={setUser} />} />
+          <Route path="/loginComponents/AccountSettings" render={() => <AccountSettings user={user} />} />
+          <Route path="/logout" render={() => <Logout setUser={setUser} clearUser={clearUserStorage} />} />
 
           <Route path="/ShoppingCart" component={ShoppingCart} />
-          <Route path="/AdminTools/OrderView" component={OrderView} />
+          <Route path="/AdminTools/OrderView" render={() => <OrderView user={user} />}  />
 
           <Route path="/EditItemList" render={() => <EditItemList user={user} />} />
 

@@ -2,7 +2,6 @@ import { useState, useEffect, React } from 'react'
 import { Link } from 'react-router-dom';
 import BookCarousel from './Carousel'
 import Loading from './Loading';
-import CarouselBookSelect from './AdminTools/CarouselBookSelect';
 
 export default function Content({ setCategory }) {
 

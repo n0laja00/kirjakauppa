@@ -55,8 +55,8 @@ const AddToCart = ({ item }) => {
         <>  
             <PromptAdded prompt={prompt} />
             <form onSubmit={handleSubmit}>
-                <button className="btn btn-primary m-3 col-8" type="submit" value={item.kirjaNro} onClick={(e) => { setKirjaNumero(e.target.value); promptHandler(e) }}>Lisää ostoskoriin</button>
-                <input type="number" value={item.hinta} onSubmit={(e) => setHinta(e.target.value)} hidden />
+                <button className="btn btn-primary m-3 col-8" type="submit" defaultValue={item.kirjaNro} onClick={(e) => { setKirjaNumero(e.target.value); promptHandler(e) }}>Lisää ostoskoriin</button>
+                <input type="number" defaultValue={item.hinta} onSubmit={(e) => setHinta(e.target.value)} hidden />
                 
             </form>
 

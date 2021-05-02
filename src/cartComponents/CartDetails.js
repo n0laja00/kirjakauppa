@@ -3,6 +3,7 @@ import DropdownItem from 'react-bootstrap/esm/DropdownItem';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { CartContext } from '../contexts/CartContext';
+import uuid from 'react-uuid';
 import Loading from '../Loading';
 
 const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annetaan alas proppina*/ => {
@@ -37,7 +38,7 @@ const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annet
         return (
             <li className="row">
                 {book.map(el => (
-                    <div className="">
+                    <div key={uuid()} className="">
                         <div className="float-start d-none d-lg-block col-4">
                             <img className="cartItemImg img-fluid col-sm-4 col-md-2 col-lg-2" src={imgURL + el.kuva} alt={el.kirjaNimi} />
                         </div>

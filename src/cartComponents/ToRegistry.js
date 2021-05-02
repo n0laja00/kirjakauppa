@@ -20,8 +20,8 @@ const ToRegistry = (prop) => {
         
         <div className="col-12 mb-5 mt-3">
             <div className={"" + `div ${cartState ? "hidden" : ""}` + `div ${kassa ? "hidden" : ""}`}>
-                <Link className="link varjo" to="/registryComponents/Registry">
-                        <a className="btn1 float-end">Kassalle</a>
+                <Link className="link varjo btn1 float-end" to="/registryComponents/Registry">
+                    Kassalle
                 </Link>
             </div>
         </div>
