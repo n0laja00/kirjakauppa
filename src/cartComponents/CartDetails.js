@@ -8,7 +8,7 @@ import Loading from '../Loading';
 
 const CartDetails = ({ item, handleDelete, handleAddition, kassa }) /*item annetaan alas proppina*/ => {
 
-    const [book, setBook] = useState([])
+    const [book, setBook] = useState([]);
     const [error, setError] = useState('');
     const [isLoaded, setIsLoaded] = useState(false);
     const URL = 'http://localhost/kirjakauppa/haeKirjaNro.php/'
