@@ -120,7 +120,7 @@ const SeeOrders = () => {
                                 Tilausnumero 
                               </th>
                               <th className="word-break" scope="col">
-                                Asiakasnumero
+                                Asiakasnumero ja Nimi
                               </th>
                               <th className="word-break" scope="col">
                                 Toimitusosoite
@@ -139,7 +139,7 @@ const SeeOrders = () => {
                               {item.tilausNro && item.tilausNro}
                             </th>
                             <td>
-                              {item.tilausNro && item.asNro} 
+                              {item.tilausNro && item.asNro} {item.tilausNro && item.asEtunimi} {item.tilausNro && item.asSukunimi} 
                             </td>
                             <td>
                               {item.tilausNro && item.toimitusOsoite} {item.tilausNro && item.toimitusPostiNro}&nbsp;
@@ -151,7 +151,7 @@ const SeeOrders = () => {
                               <p>Sähköposti: {item.tilausNro && item.email}</p>
                             </td>
                             <td>
-                              <p>maksutapa: {item.tilausNro && item.maksutapa}</p>
+                              <p>Maksutapa: {item.tilausNro && item.maksutapa}</p>
                               <p>Maksettu: {editItem?.tilausNro !== item.tilausNro && item.maksettu}</p>
                               <p>Toimituksen Tila: {editItem?.tilausNro !== item.tilausNro && item.toimitusTila}</p>
 
@@ -169,12 +169,12 @@ const SeeOrders = () => {
                                     </label>
                                   </div>
                                 </div>
-                                <button className="btn btn-outline-primary btn-sm mt-2">Save</button>
-                                <button type="button" className="btn btn-outline-secondary btn-sm mt-2" onClick={() => setEditedOstos(null)}>Cancel</button>
+                                <button className="btn btn-outline-primary btn-sm mt-2">Tallenna</button>
+                                <button type="button" className="btn btn-outline-secondary btn-sm mt-2" onClick={() => setEditedOstos(null)}>Keskeytä</button>
                               </form>
                               }&nbsp;
                               {editItem===null &&
-                                <a type="button" className="btn btn-warning float-end btn-md" onClick={() => setEditedOstos(item)} href="#">
+                                <a type="button" className="btn btn-warning float-end btn-md" onClick={() => setEditedOstos(item)}>
                                   Muokkaa
                                 </a>  
                               } 
